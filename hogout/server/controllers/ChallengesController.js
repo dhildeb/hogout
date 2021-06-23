@@ -43,4 +43,22 @@ export class ChallengesController extends BaseController {
       next(error)
     }
   }
+
+  async editChallenge(req, res, next) {
+    try {
+      const challenge = await challengesService.editChallenge(req.params.id, req.body)
+      res.send(challenge)
+    } catch (error) {
+      next(error)
+    }
+  }
+
+  async deleteChallenge(req, res, next) {
+    try {
+      const challenge = await challengesService.deleteChallenge(req.params.id)
+      res.send(challenge)
+    } catch (error) {
+      next(error)
+    }
+  }
 }

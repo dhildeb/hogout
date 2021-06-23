@@ -15,6 +15,16 @@ class ChallengesService {
     const challenge = await dbContext.Challenges.create(newChallenge)
     return challenge
   }
+
+  async editChallenge(id, body) {
+    const challenge = await dbContext.Challenges.findByIdAndUpdate(id, body, { new: true })
+    return challenge
+  }
+
+  async deleteChallenge(id) {
+    const challenge = await dbContext.Challenges.findByIdAndDelete(id)
+    return challenge
+  }
 }
 
 export const challengesService = new ChallengesService()
