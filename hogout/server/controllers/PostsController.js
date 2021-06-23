@@ -6,7 +6,7 @@ export class PostsController extends BaseController {
   constructor() {
     super('api')
     this.router
-      .get('/boards/:id/posts', this.getAllPosts)
+      .get('/challenges/:id/posts', this.getAllPosts)
       .use(Auth0Provider.getAuthorizedUserInfo)
       .post('/posts', this.createPost)
       .put('/posts/:id', this.editPost)
