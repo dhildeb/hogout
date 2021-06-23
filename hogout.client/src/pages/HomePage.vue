@@ -30,8 +30,17 @@
 </template>
 
 <script>
+import { reactive } from '@vue/reactivity'
 export default {
-  name: 'Home'
+  name: 'Home',
+  setup() {
+    const state = reactive({
+
+    })
+    return {
+      state
+    }
+  }
 }
 </script>
 
