@@ -17,7 +17,7 @@ export class AccountController extends BaseController {
       const profile = await accountService.getProfile(req.params.id)
       res.send(profile)
     } catch (error) {
-
+      next(error)
     }
   }
 
