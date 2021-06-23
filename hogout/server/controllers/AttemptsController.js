@@ -1,4 +1,5 @@
 import { Auth0Provider } from '@bcwdev/auth0provider'
+import { attemptsService } from '../services/AttemptsService'
 import BaseController from '../utils/BaseController'
 
 export class AttemptsController extends BaseController {
@@ -10,25 +11,54 @@ export class AttemptsController extends BaseController {
       .get('/account/:id/attempts', this.getAttemptsByCreatorId)
       .use(Auth0Provider.getAuthorizedUserInfo)
       .post('/challenges/:id/attempts', this.createAttempt)
-      .delete('/attempts/:id', this.deleteAttempt)
+      .delete('/challenges/:id/attempts', this.deleteAttempt)
   }
+
   async getAllAttempts(req, res, next) {
     try {
-      const attempts = await 
+      const attempts = await attemptsService.getAllAttempts()
+      res.send(attempts)
     } catch (error) {
       next(error)
     }
   }
-  getAttemptsByChallengeId(arg0, getAttemptsByChallengeId) {
-    throw new Error("Method not implemented.")
+
+  async getAttemptsByChallengeId(req, res, next) {
+    try {
+      const attempts = await attemptsService.getAttemptsByChallengeId(req.params.id)
+      res.send(attempts)
+    } catch (error) {
+      next(error)
+    }
   }
-  getAttemptsByCreatorId(arg0, getAttemptsByCreatorId) {
-    throw new Error("Method not implemented.")
+
+  async getAttemptsByCreatorId(req, res, next) {
+    try {
+      const attempts = await attemptsService.getAttemptsByCreatorId(req.params.id)
+      res.send(attempts)
+    } catch (error) {
+      next(error)
+    }
   }
-  createAttempt(arg0, createAttempt) {
-    throw new Error("Method not implemented.")
+
+  async createAttempt(req, res, next) {
+    try {
+      const newAttempt = req.body
+      newAttempt.creatorId = req.userInfo.id
+      newAttempt.challengeId = req.params.id
+      const attempt = await attemptsService.createAttempt(newAttempt)
+      res.send(attempt)
+    } catch (error) {
+      next(error)
+    }
   }
-  deleteAttempt(arg0, deleteAttempt) {
-    throw new Error("Method not implemented.")
+
+  async deleteAttempt(req, res, next) {
+    try {
+      const attempt = await attemptsService.deleteAttempt(req.params.id, req.userInfo.id)
+      res.send(attempt)
+    } catch (error) {
+      next(error)
+    }
   }
 }
