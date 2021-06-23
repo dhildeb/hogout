@@ -4,12 +4,11 @@ import BaseController from '../utils/BaseController'
 
 export class AttemptsController extends BaseController {
   constructor() {
-    super('api')
+    super('api/attempts/')
     this.router
-      .get('/attempts', this.getAllAttempts)
-      .get('/challenges/:id/attempts', this.getAttemptsByChallengeId)
+      .get('', this.getAllAttempts)
       .get('/account/:id/attempts', this.getAttemptsByCreatorId)
-      .use(Auth0Provider.getAuthorizedUserInfo)
+      .use('', Auth0Provider.getAuthorizedUserInfo)
       .post('/challenges/:id/attempts', this.createAttempt)
       .delete('/challenges/:id/attempts', this.deleteAttempt)
   }
@@ -17,15 +16,6 @@ export class AttemptsController extends BaseController {
   async getAllAttempts(req, res, next) {
     try {
       const attempts = await attemptsService.getAllAttempts()
-      res.send(attempts)
-    } catch (error) {
-      next(error)
-    }
-  }
-
-  async getAttemptsByChallengeId(req, res, next) {
-    try {
-      const attempts = await attemptsService.getAttemptsByChallengeId(req.params.id)
       res.send(attempts)
     } catch (error) {
       next(error)
