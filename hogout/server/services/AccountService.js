@@ -39,7 +39,8 @@ function sanitizeBody(body) {
     name: body.name,
     picture: body.picture,
     bio: body.bio,
-    location: body.location
+    location: body.location,
+    banner: body.banner
   }
   return writable
 }
