@@ -8,7 +8,8 @@ export const ChallengesSchema = new Schema(
     description: { type: String, required: true },
     rules: { type: String, required: true },
     location: { type: String, required: true },
-    image: { type: String }
+    image: { type: String },
+    banner: { type: String }
 
   }
 )
