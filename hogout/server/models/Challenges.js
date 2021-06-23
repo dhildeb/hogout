@@ -8,6 +8,7 @@ export const ChallengesSchema = new Schema(
     restaurant: { type: String, required: true },
     rewards: { type: String, required: true },
     rules: { type: String, required: true },
+    state: { type: String },
     location: { type: String, required: true },
     image: { type: String },
     banner: { type: String }
