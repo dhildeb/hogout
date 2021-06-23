@@ -12,14 +12,26 @@ const routes = [
     component: loadPage('HomePage')
   },
   {
-    path: '/about',
-    name: 'About',
-    component: loadPage('AboutPage')
+    path: '/profile/:id',
+    name: 'Profile',
+    component: loadPage('ProfilePage')
   },
   {
-    path: '/account',
-    name: 'Account',
-    component: loadPage('AccountPage'),
+    path: '/settings',
+    name: 'Settings',
+    component: loadPage('SettingsPage'),
+    beforeEnter: authGuard
+  },
+  {
+    path: '/challenge',
+    name: 'Challenge',
+    component: loadPage('ChallengePage'),
+    beforeEnter: authGuard
+  },
+  {
+    path: '/profile',
+    name: 'Profile',
+    component: loadPage('ProfilePage'),
     beforeEnter: authGuard
   }
 ]

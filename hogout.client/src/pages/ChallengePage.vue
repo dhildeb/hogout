@@ -1,12 +1,12 @@
 <template>
   <h1>
-    Home
+    Challenge
   </h1>
 </template>
 
 <script>
 export default {
-  name: 'Home'
+  name: 'Challenge'
 }
 </script>
 
