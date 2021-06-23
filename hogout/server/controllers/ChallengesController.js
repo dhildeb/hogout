@@ -5,7 +5,7 @@ import BaseController from '../utils/BaseController'
 
 export class ChallengesController extends BaseController {
   constructor() {
-    super('/api/challenges')
+    super('api/challenges')
     this.router
       .get('', this.getAllChallenges)
       .get('/:id', this.getChallengeById)
