@@ -31,13 +31,23 @@
       </button>
     </div>
     <div class="row">
-      <div class="col">
+      <div class="col d-flex align-items-center justify-content-end mx-2">
         <img class="rounded-circle" src="https://placebear.com/50/50" alt="">
-        <p>{{ state.attempt }}</p>
+        <i class="mdi mdi-close"></i>
+        <p class="m-0">
+          {{ state.attempts.length }}
+        </p>
       </div>
-      <div class="col">
+      <div class="col d-flex align-items-center mx-2">
         <img class="rounded-circle" src="https://placebear.com/50/50" alt="">
+        <i class="mdi mdi-close"></i>
+        <p class="m-0">
+          {{ state.wins.length }}
+        </p>
       </div>
+    </div>
+    <div class="row">
+      <p><b>Difficulty:</b></p>
     </div>
   </div>
 </template>
@@ -45,28 +55,18 @@
 <script>
 import { reactive } from '@vue/reactivity'
 import { AppState } from '../AppState'
-import { computed, watchEffect } from '@vue/runtime-core'
-import { challengesService } from '../services/ChallengesService'
-import { attemptsService } from '../services/AttemptsService'
-import { useRoute } from 'vue-router'
-import Notification from '../utils/Notification'
+import { computed } from '@vue/runtime-core'
+
 export default {
   setup() {
-    const route = useRoute()
     const state = reactive({
       challenge: computed(() => AppState.activeChallenge),
-      attempt: computed(() => AppState.attempts.filter(a => a.challengeId === state.challenge._id))
+      attempts: computed(() => AppState.attempts.filter(a => a.challengeId === state.challenge._id)),
+      wins: computed(() => AppState.attempts.filter(a => a.challengeId === state.challenge._id && a.completed)),
+      rating: computed(() => AppState.reviewRatings),
+      difficulty: computed(() => AppState.difficultyRatings)
     })
-    watchEffect(async() => {
-      try {
-        if (route.name === 'Challenge') {
-          await challengesService.getChallengeById(route.params.id)
-          await attemptsService.getAllAttempts()
-        }
-      } catch (error) {
-        Notification.toast(error.message, 'error')
-      }
-    })
+
     return {
       state,
       openMaps() {
