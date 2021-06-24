@@ -3,7 +3,7 @@ import { BadRequest } from '../utils/Errors'
 
 class PostsService {
   async getAllPosts(id) {
-    const posts = await dbContext.Posts.find({ challengeId: id })
+    const posts = await dbContext.Posts.find({ challengeId: id }).populate('creator', 'name picture')
     return posts
   }
 
