@@ -2,11 +2,12 @@
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
       <div class="d-flex flex-column align-items-center">
-        <img
-          alt="logo"
-          src="../assets/img/cw-logo.png"
-          height="45"
-        />
+        Home
+      </div>
+    </router-link>
+    <router-link class="navbar-brand d-flex" :to="{ name: 'Profile', params: {id: state.account.id}}">
+      <div class="d-flex flex-column align-items-center">
+        Profile
       </div>
     </router-link>
     <button
@@ -74,7 +75,8 @@ export default {
   name: 'Navbar',
   setup() {
     const state = reactive({
-      dropOpen: false
+      dropOpen: false,
+      account: computed(() => AppState.account)
     })
     return {
       state,
