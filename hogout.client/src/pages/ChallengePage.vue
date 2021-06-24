@@ -9,6 +9,7 @@ import { useRoute } from 'vue-router'
 import { challengesService } from '../services/ChallengesService'
 import { attemptsService } from '../services/AttemptsService'
 import { ratingsService } from '../services/RatingsService'
+import Notification from '../utils/Notification'
 export default {
   name: 'Challenge',
   setup() {
