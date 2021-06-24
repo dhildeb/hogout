@@ -1,6 +1,6 @@
 import { Auth0Provider } from '@bcwdev/auth0provider'
-import { difficultyRatingsService } from '../services/DifficultyRatingsService'
-import BaseController from '../utils/BaseController'
+import { difficultyRatingsService } from '../../hogout/server/services/DifficultyRatingsService'
+import BaseController from '../../hogout/server/utils/BaseController'
 
 export class DifficultyRatingsController extends BaseController {
   constructor() {
