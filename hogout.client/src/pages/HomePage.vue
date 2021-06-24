@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <div class="row justify-content-between">
+    <div class="row justify-content-between bg-white py-4">
       <div class="col-6 text-center">
         <div class="dropdown">
           <button class="btn btn-outline-secondary dropdown-toggle"
@@ -57,11 +57,11 @@ export default {
     })
     watchEffect(async() => {
       await challengesService.getAllChallenges()
-      AppState.difficultyRatings = await ratingsService.getDifficultyRatings()
-      AppState.reviewRatings = await ratingsService.getReviewRatings()
+      await ratingsService.getDifficultyRatings()
+      await ratingsService.getReviewRatings()
+      console.log(AppState.difficultyRatings)
+      console.log(AppState.reviewRatings)
     })
-    console.log(AppState.difficultyRatings)
-    console.log(AppState.reviewRatings)
     return {
       state,
       setState(newState) {
