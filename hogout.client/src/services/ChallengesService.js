@@ -9,7 +9,7 @@ class ChallengesService {
 
   async getChallengeById(id) {
     const res = await api.get('api/challenges/' + id)
-    AppState.challenges = res.data
+    AppState.activeChallenge = res.data
   }
 }
 
