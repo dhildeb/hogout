@@ -30,7 +30,7 @@
         Find Location
       </button>
     </div>
-    <div class="row">
+    <div class="row mb-3">
       <div class="col d-flex align-items-center justify-content-end mx-2">
         <img class="rounded-circle" src="https://placebear.com/50/50" alt="">
         <i class="mdi mdi-close"></i>
@@ -46,8 +46,28 @@
         </p>
       </div>
     </div>
-    <div class="row">
-      <p><b>Difficulty:</b></p>
+    <div class="row justify-content-center">
+      <p><b>Difficulty: </b></p>
+    </div>
+    <div class="row justify-content-center">
+      <p><b>User Rating: </b></p>
+    </div>
+    <div class="row mx-2">
+      <h3>
+        Rules
+      </h3>
+      <p>{{ state.challenge.rules }}</p>
+    </div>
+    <div class="row mx-2">
+      <h3>
+        Rewards
+      </h3>
+      <p>{{ state.challenge.rewards }}</p>
+    </div>
+    <div class="row justify-content-center my-3">
+      <button @click="ITookChallenge" class="btn btn-primary btn-block">
+        I TOOK ON THIS CHALLENGE
+      </button>
     </div>
   </div>
 </template>
@@ -63,8 +83,8 @@ export default {
       challenge: computed(() => AppState.activeChallenge),
       attempts: computed(() => AppState.attempts.filter(a => a.challengeId === state.challenge._id)),
       wins: computed(() => AppState.attempts.filter(a => a.challengeId === state.challenge._id && a.completed)),
-      rating: computed(() => AppState.reviewRatings),
-      difficulty: computed(() => AppState.difficultyRatings)
+      aveRatings: computed(() => AppState.reviewRatings),
+      aveDifficulty: computed(() => AppState.difficultyRatings)
     })
 
     return {
