@@ -8,3 +8,8 @@ export const AttempsSchema = new Schema({
 },
 { timestamps: true, toJSON: { virtuals: true } }
 )
+
+AttempsSchema.virtual('challenge',
+  {
+
+  })
