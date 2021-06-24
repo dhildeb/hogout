@@ -1,7 +1,7 @@
 import mongoose from 'mongoose'
 const Schema = mongoose.Schema
 
-export const AttempsSchema = new Schema({
+export const AttemptsSchema = new Schema({
   creatorId: { type: mongoose.Types.ObjectId, ref: 'Account', required: true },
   challengeId: { type: mongoose.Types.ObjectId, ref: 'Challenges', required: true },
   completed: { type: Boolean, default: false, required: true }
@@ -9,7 +9,7 @@ export const AttempsSchema = new Schema({
 { timestamps: true, toJSON: { virtuals: true } }
 )
 
-AttempsSchema.virtual('challenge',
+AttemptsSchema.virtual('challenge',
   {
     localField: 'creatorId',
     foreignField: '_id',
