@@ -9,6 +9,7 @@ class PostsService {
 
   async createPost(newPost) {
     const post = await dbContext.Posts.create(newPost)
+    await post.populate('creator', 'name picture').execPopulate()
     return post
   }
 
@@ -18,6 +19,7 @@ class PostsService {
       throw new BadRequest('You do not have permission to edit this post.')
     }
     const editedPost = await dbContext.Posts.findByIdAndUpdate(id, body, { new: true })
+    editedPost.populate('creator', 'name picture').execPopulate()
     return editedPost
   }
 
