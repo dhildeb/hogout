@@ -19,10 +19,12 @@ export class ChallengesController extends BaseController {
       .get('/:id/review', this.getReviewRatingsByChallengeId)
       .get('/:id/posts', this.getAllPosts)
       .use('', Auth0Provider.getAuthorizedUserInfo)
+      .post('/:id/attempts', this.createAttempt)
       .post('/:id/review', this.handleReviewRating)
       .post('', this.createChallenge)
       .post('/:id/difficulty', this.handleDifficultyRating)
       .put('/:id', this.editChallenge)
+      .delete('/:id/attempts', this.deleteAttempt)
       .delete('/:id', this.deleteChallenge)
   }
 
@@ -124,6 +126,27 @@ export class ChallengesController extends BaseController {
       req.body.creatorId = req.userInfo.id
       const rating = await reviewRatingsService.handleRating(req.params.id, req.userInfo, req.body)
       res.send(rating)
+    } catch (error) {
+      next(error)
+    }
+  }
+
+  async createAttempt(req, res, next) {
+    try {
+      const newAttempt = req.body
+      newAttempt.creatorId = req.userInfo.id
+      newAttempt.challengeId = req.params.id
+      const attempt = await attemptsService.createAttempt(newAttempt)
+      res.send(attempt)
+    } catch (error) {
+      next(error)
+    }
+  }
+
+  async deleteAttempt(req, res, next) {
+    try {
+      const attempt = await attemptsService.deleteAttempt(req.params.id, req.userInfo.id)
+      res.send(attempt)
     } catch (error) {
       next(error)
     }

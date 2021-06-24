@@ -1,6 +1,11 @@
 import { dbContext } from '../db/DbContext'
 
 class ChallengesService {
+  async getChallengesByUserId(id) {
+    const challenges = await dbContext.Challenges.findById({ creatorId: id })
+    return challenges
+  }
+
   async getAllChallenges() {
     const challenges = await dbContext.Challenges.find({})
     return challenges
