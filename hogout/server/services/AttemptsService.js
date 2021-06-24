@@ -2,6 +2,19 @@ import { dbContext } from '../db/DbContext'
 import { BadRequest } from '../utils/Errors'
 
 class AttemptsService {
+  async getChallengesByUserId(id) {
+    const uniqueChallenges = []
+    const challenges = await dbContext.Attempts.find({ creatorId: id }).populate('challenge', 'name restaurant rewards rules state location image banner')
+    challenges.foreach(c => {
+      const check = uniqueChallenges.find(ch => ch.id === c.id)
+      if (!check) {
+        uniqueChallenges.push(c)
+      }
+    }
+    )
+    return uniqueChallenges
+  }
+
   async getAllAttempts() {
     const attempts = await dbContext.Attempts.find({})
     return attempts
