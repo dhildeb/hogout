@@ -12,7 +12,7 @@ class DifficultyRatingsService {
   }
 
   async handleRating(id, userId, body) {
-    const rating = await dbContext.DifficultyRatings.find({ challengeId: id, creatorId: userId })
+    const rating = await dbContext.DifficultyRatings.findOne({ challengeId: id, creatorId: userId })
     if (!rating) {
       const newRating = await dbContext.DifficultyRatings.create(body)
       return newRating
