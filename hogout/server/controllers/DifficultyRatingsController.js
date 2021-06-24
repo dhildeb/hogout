@@ -4,7 +4,7 @@ import BaseController from '../utils/BaseController'
 
 export class DifficultyRatingsController extends BaseController {
   constructor() {
-    super('api/difficulty')
+    super('api/difficulties')
     this.router
       .get('', this.getAllRatings)
       .use('', Auth0Provider.getAuthorizedUserInfo)

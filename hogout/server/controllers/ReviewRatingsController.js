@@ -4,7 +4,7 @@ import BaseController from '../utils/BaseController'
 
 export class ReviewRatingsController extends BaseController {
   constructor() {
-    super('api/review')
+    super('api/reviews')
     this.router
       .get('', this.getAllRatings)
   }
