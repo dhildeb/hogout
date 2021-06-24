@@ -1,29 +1,40 @@
 <template>
   <div class="container">
-    <div class="row">
-      <h1>nav</h1>
-    </div>
     <div class="row justify-content-between">
       <div class="col-6 text-center">
         <div class="dropdown">
-          <button class="btn btn-secondary dropdown-toggle"
+          <button class="btn btn-outline-secondary dropdown-toggle"
                   type="button"
                   id="dropdownMenuButton"
                   data-toggle="dropdown"
                   aria-haspopup="true"
                   aria-expanded="false"
           >
-            State
+            {{ state.state }}
           </button>
-          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" @click="setState('idaho')">
             <a class="dropdown-item">Idaho</a>
           </div>
         </div>
       </div>
       <div class="col-6 text-center">
-        <button class="btn btn-primary">
-          difficulty
-        </button>
+        <div class="dropdown">
+          <div class="btn btn-outline-primary dropdown-toggle"
+               id="dropdownMenuButton"
+               data-toggle="dropdown"
+               aria-haspopup="true"
+               aria-expanded="false"
+          >
+            {{ state.difficulty }}
+          </div>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" @click="filterDifficulty('guinea pig')">guinea pig</a>
+            <a class="dropdown-item" @click="filterDifficulty('piglet')">piglet</a>
+            <a class="dropdown-item" @click="filterDifficulty('pig')">pig</a>
+            <a class="dropdown-item" @click="filterDifficulty('hog')">hog</a>
+            <a class="dropdown-item" @click="filterDifficulty('wild boar')">wild boar</a>
+          </div>
+        </div>
       </div>
     </div>
     <ChallengeCard v-for="challenge in state.challenges" :key="challenge.id" :challenge="challenge" />
@@ -39,13 +50,21 @@ export default {
   name: 'Home',
   setup() {
     const state = reactive({
-      challenges: computed(() => AppState.challenges)
+      challenges: computed(() => AppState.challenges),
+      state: 'state',
+      difficulty: 'difficulty'
     })
     watchEffect(() => {
       challengesService.getAllChallenges()
     })
     return {
-      state
+      state,
+      setState(newState) {
+        state.state = newState
+      },
+      filterDifficulty(difficulty) {
+        state.difficulty = difficulty
+      }
     }
   }
 }
