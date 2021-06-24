@@ -6,10 +6,11 @@
     <div class="col-12">
       <span>{{ post.body }}</span>
     </div>
-    <div class="col-12"></div>
-    <img class="pic-size" :src="post.image1" :alt="post.id" v-if="post.image1">
-    <img class="pic-size" :src="post.image2" :alt="post.id" v-if="post.image2">
-    <img class="pic-size" :src="post.image3" :alt="post.id" v-if="post.image3">
+    <div class="col-12">
+      <img class="pic-size" :src="post.image1" :alt="post.id" v-if="post.image1">
+      <img class="pic-size" :src="post.image2" :alt="post.id" v-if="post.image2">
+      <img class="pic-size" :src="post.image3" :alt="post.id" v-if="post.image3">
+    </div>
   </div>
 </template>
 
