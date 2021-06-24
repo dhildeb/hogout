@@ -4,7 +4,7 @@ import BaseController from '../utils/BaseController'
 
 export class AttemptsController extends BaseController {
   constructor() {
-    super('api/attempts/')
+    super('api/attempts')
     this.router
       .get('', this.getAllAttempts)
       .get('/account/:id/attempts', this.getAttemptsByCreatorId)
