@@ -46,6 +46,7 @@ import { reactive } from '@vue/reactivity'
 import { computed, watchEffect } from '@vue/runtime-core'
 import { AppState } from '../AppState'
 import { challengesService } from '../services/ChallengesService'
+import { ratingsService } from '../services/RatingsService'
 export default {
   name: 'Home',
   setup() {
@@ -54,9 +55,13 @@ export default {
       state: 'state',
       difficulty: 'difficulty'
     })
-    watchEffect(() => {
-      challengesService.getAllChallenges()
+    watchEffect(async() => {
+      await challengesService.getAllChallenges()
+      AppState.difficultyRatings = await ratingsService.getDifficultyRatings()
+      AppState.reviewRatings = await ratingsService.getReviewRatings()
     })
+    console.log(AppState.difficultyRatings)
+    console.log(AppState.reviewRatings)
     return {
       state,
       setState(newState) {

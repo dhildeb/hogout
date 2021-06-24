@@ -1,24 +1,25 @@
 <template>
-  <div class="row py-3 justify-content-center bg-white">
-    <div class="col-10 border rounded shadow d-flex bg-light">
-      <img class="img-fluid p-2" :src="challenge.image" alt="">
-      <div class="d-flex flex-column">
-        <b class="p-1">{{ challenge.name }}</b>
-        <em class="p-1">{{ challenge.state }}</em>
-        <div>
-          <span>{{ state.difficulty }}</span>
-          <span>{{ state.rating }}</span>
+  <router-link :to="{name: 'Challenge', params: {id: challenge.id}}">
+    <div class="row py-3 justify-content-center bg-white">
+      <div class="col-10 border rounded shadow d-flex bg-light">
+        <img class="img-fluid p-2" :src="challenge.image" alt="">
+        <div class="d-flex flex-column">
+          <b class="p-1">{{ challenge.name }}</b>
+          <em class="p-1">{{ challenge.state }}</em>
+          <div>
+            <span>{{ state.difficulty }}</span>
+            <span>{{ state.rating }}</span>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+  </router-link>
 </template>
 
 <script>
 import { reactive } from '@vue/reactivity'
-import { computed, watchEffect } from '@vue/runtime-core'
+import { computed } from '@vue/runtime-core'
 import { AppState } from '../AppState'
-import { ratingsService } from '../services/RatingsService'
 export default {
   props: {
     challenge: { type: Object, required: true }
@@ -47,10 +48,6 @@ export default {
         })
         return totalRatings / totalVotes
       })
-    })
-    watchEffect(async() => {
-      // AppState.difficultyRatings = await ratingsService.getDifficultyRatings()
-      // AppState.reviewRatings = ratingsService.getReviewRatings()
     })
     return {
       state
