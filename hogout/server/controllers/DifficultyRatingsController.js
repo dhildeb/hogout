@@ -6,7 +6,7 @@ export class DifficultyRatingsController extends BaseController {
   constructor() {
     super('api/difficulty')
     this.router
-      .get('/difficulty', this.getAllRatings)
+      .get('', this.getAllRatings)
       .use('', Auth0Provider.getAuthorizedUserInfo)
   }
 
