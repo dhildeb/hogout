@@ -50,7 +50,7 @@ export default {
     })
     watchEffect(() => {
       AppState.difficultyRatings = ratingsService.getDifficultyRatings()
-      AppState.reviewRatings = ratingsService.getReviewRatings()
+      // AppState.reviewRatings = ratingsService.getReviewRatings()
     })
     return {
       state
