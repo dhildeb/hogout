@@ -1,13 +1,13 @@
 <template>
   <div class="row py-3 justify-content-center bg-white">
-    <div class="col-10 border rounded shadow d-flex bg-light" @click="goThere">
+    <div class="col-10 click border rounded shadow d-flex bg-light p-0" @click="goThere">
       <img class="img-fluid p-2" :src="challenge.image" alt="">
-      <div class="d-flex flex-column w-100">
+      <div class="d-flex flex-column w-100 px-2">
         <b class="p-1">{{ challenge.name }}</b>
         <em class="p-1">{{ challenge.state }}</em>
         <div class="d-flex justify-content-between">
           <span>reviews: {{ getReviewRating(challenge) }}/5</span>
-          <span>difficulty: {{ getDifficultyRating(challenge) }}/5</span>
+          <span>difficulty: <em>{{ getDifficultyRating(challenge) }}</em></span>
         </div>
       </div>
     </div>
@@ -48,5 +48,8 @@ export default {
 .img-fluid{
   min-height: 100px;
   max-width: 100px;
+}
+.click{
+  cursor: pointer;
 }
 </style>

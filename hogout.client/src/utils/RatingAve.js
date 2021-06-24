@@ -10,7 +10,23 @@ export function difficultyRatingAve(challengeId) {
     }
   })
   if (totalVotes === 0) {
-    return 3
+    return 'not rated'
+  }
+  const dif = totalRatings / totalVotes
+  if (dif < 1.5) {
+    return 'guinea pig'
+  }
+  if (dif < 2.5) {
+    return 'piglet'
+  }
+  if (dif < 3.5) {
+    return 'pig'
+  }
+  if (dif < 4.5) {
+    return 'hog'
+  }
+  if (dif > 4.4) {
+    return 'wild boar'
   }
   return totalRatings / totalVotes
 }
@@ -27,6 +43,5 @@ export function reviewRatingAve(challengeId) {
   if (totalVotes === 0) {
     return 3
   }
-  console.log(totalRatings / totalVotes)
   return totalRatings / totalVotes
 }

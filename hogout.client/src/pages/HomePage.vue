@@ -59,8 +59,6 @@ export default {
       await challengesService.getAllChallenges()
       await ratingsService.getDifficultyRatings()
       await ratingsService.getReviewRatings()
-      console.log(AppState.difficultyRatings)
-      console.log(AppState.reviewRatings)
     })
     return {
       state,
