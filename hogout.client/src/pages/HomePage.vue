@@ -26,16 +26,23 @@
         </button>
       </div>
     </div>
+    <ChallengeCard v-for="challenge in state.challenges" :key="challenge.id" :challenge="challenge" />
   </div>
 </template>
 
 <script>
 import { reactive } from '@vue/reactivity'
+import { computed, watchEffect } from '@vue/runtime-core'
+import { AppState } from '../AppState'
+import { challengesService } from '../services/ChallengesService'
 export default {
   name: 'Home',
   setup() {
     const state = reactive({
-
+      challenges: computed(() => AppState.challenges)
+    })
+    watchEffect(() => {
+      challengesService.getAllChallenges()
     })
     return {
       state
