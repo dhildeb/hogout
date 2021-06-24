@@ -2,7 +2,7 @@
   <div class="row">
     <div class="card col-12">
       <div class="card-header shadow">
-        <img :src="post.creator.picture" :alt="post.creator.name">
+        <img :src="post.creator.picture" :alt="post.creator.name" @click="loadProfile">
       </div>
       <div class="card-body">
         <div class="row">
@@ -19,10 +19,15 @@
 </template>
 
 <script>
+import { router } from '../router'
 export default {
   props: { post: { type: Object, required: true } },
-  setup() {
-
+  setup(props) {
+    return {
+      loadProfile() {
+        router.push({ path: `/profile/${props.post.creatorId}` })
+      }
+    }
   }
 }
 </script>
