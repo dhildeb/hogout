@@ -12,6 +12,7 @@ class AttemptsService {
       }
     }
     )
+    return uniqueChallenges
   }
 
   async getAllAttempts() {
