@@ -18,6 +18,12 @@ class AttemptsService {
 
     AppState.attempts.push(new Attempt(res.data))
   }
+
+  async deleteAttempt(challengeId) {
+    const res = await api.delete('api/challenges/' + challengeId + '/attempts')
+    AppState.profileAttempts = AppState.profileAttempts.filter(a => a.id !== res.data.id)
+    AppState.attempts = AppState.attempts.filter(a => a.id !== res.data.id)
+  }
 }
 
 export const attemptsService = new AttemptsService()
