@@ -96,7 +96,7 @@ export class ChallengesController extends BaseController {
   async handleDifficultyRating(req, res, next) {
     try {
       req.body.creatorId = req.userInfo.id
-      const rating = await difficultyRatingsService.handleRating(req.params.id, req.userInfo, req.body)
+      const rating = await difficultyRatingsService.handleRating(req.params.id, req.userInfo.id, req.body)
       res.send(rating)
     } catch (error) {
       next(error)
@@ -124,7 +124,7 @@ export class ChallengesController extends BaseController {
   async handleReviewRating(req, res, next) {
     try {
       req.body.creatorId = req.userInfo.id
-      const rating = await reviewRatingsService.handleRating(req.params.id, req.userInfo, req.body)
+      const rating = await reviewRatingsService.handleRating(req.params.id, req.userInfo.id, req.body)
       res.send(rating)
     } catch (error) {
       next(error)

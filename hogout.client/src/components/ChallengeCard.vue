@@ -48,8 +48,9 @@ export default {
         return totalRatings / totalVotes
       })
     })
-    watchEffect(() => {
-      AppState.difficultyRatings = ratingsService.getDifficultyRatings()
+    watchEffect(async() => {
+      AppState.difficultyRatings = await ratingsService.getDifficultyRatings()
+      console.log(AppState.difficultyRatings)
       // AppState.reviewRatings = ratingsService.getReviewRatings()
     })
     return {
