@@ -13,7 +13,7 @@ export function difficultyRatingAve(challengeId) {
     return 'not rated'
   }
   const dif = totalRatings / totalVotes
-  if (dif < 1.5) {
+  if (dif < 1.6) {
     return 'guinea pig'
   }
   if (dif < 2.5) {
@@ -25,7 +25,7 @@ export function difficultyRatingAve(challengeId) {
   if (dif < 4.5) {
     return 'hog'
   }
-  if (dif > 4.4) {
+  if (dif > 4.5) {
     return 'wild boar'
   }
   return totalRatings / totalVotes

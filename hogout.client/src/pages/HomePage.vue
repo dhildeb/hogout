@@ -37,7 +37,7 @@
         </div>
       </div>
     </div>
-    <ChallengeCard v-for="challenge in state.challenges" :key="challenge.id" :challenge="challenge" />
+    <ChallengeCard v-for="challenge in state.temp" :key="challenge.id" :challenge="challenge" />
   </div>
 </template>
 
@@ -47,11 +47,13 @@ import { computed, watchEffect } from '@vue/runtime-core'
 import { AppState } from '../AppState'
 import { challengesService } from '../services/ChallengesService'
 import { ratingsService } from '../services/RatingsService'
+import { difficultyRatingAve } from '../utils/RatingAve'
 export default {
   name: 'Home',
   setup() {
     const state = reactive({
       challenges: computed(() => AppState.challenges),
+      temp: computed(() => AppState.tempChallenges),
       state: 'state',
       difficulty: 'difficulty'
     })
@@ -59,14 +61,23 @@ export default {
       await challengesService.getAllChallenges()
       await ratingsService.getDifficultyRatings()
       await ratingsService.getReviewRatings()
+      AppState.tempChallenges = AppState.challenges
     })
     return {
       state,
       setState(newState) {
         state.state = newState
       },
-      filterDifficulty(difficulty) {
-        state.difficulty = difficulty
+      filterDifficulty(dStr) {
+        AppState.tempChallenges = []
+        state.difficulty = dStr
+        state.challenges.forEach(c => {
+          const currentR = difficultyRatingAve(c.id)
+          if (currentR === dStr) {
+            AppState.tempChallenges.push(c)
+          }
+        })
+        console.log(AppState.tempChallenges)
       }
     }
   }
