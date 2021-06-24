@@ -1,7 +1,7 @@
 <template>
   <div class="row">
     <div class="card col-12">
-      <div class="card-header">
+      <div class="card-header shadow">
         <img :src="post.creator.picture" :alt="post.creator.name">
       </div>
       <div class="card-body">
