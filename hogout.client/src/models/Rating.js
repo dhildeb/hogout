@@ -3,5 +3,6 @@ export class Rating {
     this.creatorId = data.creatorId
     this.challengeId = data.challengeId
     this.rating = data.rating
+    this.id = data.id
   }
 }
