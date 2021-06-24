@@ -11,7 +11,7 @@
         <div class="row">
           <img :src="post.image1" :alt="post.id" v-if="post.image1">
           <img :src="post.image2" :alt="post.id" v-if="post.image2">
-          <img :src="post.image1" :alt="post.id" v-if="post.image1">
+          <img :src="post.image3" :alt="post.id" v-if="post.image3">
         </div>
       </div>
     </div>
