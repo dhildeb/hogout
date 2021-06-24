@@ -11,6 +11,8 @@ class ChallengesService {
     const res = await api.get('api/challenges/' + id)
     AppState.activeChallenge = res.data
   }
+
+  async 
 }
 
 export const challengesService = new ChallengesService()
