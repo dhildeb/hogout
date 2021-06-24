@@ -19,9 +19,10 @@ export class ChallengesController extends BaseController {
       .get('/:id/review', this.getReviewRatingsByChallengeId)
       .get('/:id/posts', this.getAllPosts)
       .use('', Auth0Provider.getAuthorizedUserInfo)
+      .post('', this.createChallenge)
+      .post('/:id/posts', this.createPost)
       .post('/:id/attempts', this.createAttempt)
       .post('/:id/review', this.handleReviewRating)
-      .post('', this.createChallenge)
       .post('/:id/difficulty', this.handleDifficultyRating)
       .put('/:id', this.editChallenge)
       .delete('/:id/attempts', this.deleteAttempt)
@@ -150,6 +151,18 @@ export class ChallengesController extends BaseController {
     try {
       const attempt = await attemptsService.deleteAttempt(req.params.id, req.userInfo.id)
       res.send(attempt)
+    } catch (error) {
+      next(error)
+    }
+  }
+
+  async createPost(req, res, next) {
+    try {
+      const newPost = req.body
+      newPost.creatorId = req.userInfo.id
+      newPost.challengeId = req.params.id
+      const post = await postsService.createPost(newPost)
+      res.send(post)
     } catch (error) {
       next(error)
     }

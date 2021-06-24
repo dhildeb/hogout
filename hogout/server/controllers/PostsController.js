@@ -11,21 +11,9 @@ export class PostsController extends BaseController {
       .get('/likes', this.getAllLikes)
       .get('/:id/likes', this.getLikesByPostId)
       .use('/', Auth0Provider.getAuthorizedUserInfo)
-      .post('/', this.createPost)
       .post('/:id/likes', this.handleLike)
       .put('/:id', this.editPost)
       .delete('/:id', this.deletePost)
-  }
-
-  async createPost(req, res, next) {
-    try {
-      const newPost = req.body
-      newPost.creatorId = req.userInfo.id
-      const post = await postsService.createPost(newPost)
-      res.send(post)
-    } catch (error) {
-      next(error)
-    }
   }
 
   async editPost(req, res, next) {
