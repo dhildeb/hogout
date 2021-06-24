@@ -9,9 +9,9 @@
           <span>{{ post.body }}</span>
         </div>
         <div class="row">
-          <img :src="post.image1" :alt="" v-if="post.image1">
-          <img :src="post.image2" :alt="" v-if="post.image2">
-          <img :src="post.image1" :alt="" v-if="post.image1">
+          <img :src="post.image1" :alt="post.id" v-if="post.image1">
+          <img :src="post.image2" :alt="post.id" v-if="post.image2">
+          <img :src="post.image1" :alt="post.id" v-if="post.image1">
         </div>
       </div>
     </div>

@@ -1,4 +1,3 @@
-import { Auth0Provider } from '@bcwdev/auth0provider'
 import { reviewRatingsService } from '../services/ReviewRatingsService'
 import BaseController from '../utils/BaseController'
 
