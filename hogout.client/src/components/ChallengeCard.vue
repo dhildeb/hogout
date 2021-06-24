@@ -49,8 +49,7 @@ export default {
       })
     })
     watchEffect(async() => {
-      AppState.difficultyRatings = await ratingsService.getDifficultyRatings()
-      console.log(AppState.difficultyRatings)
+      // AppState.difficultyRatings = await ratingsService.getDifficultyRatings()
       // AppState.reviewRatings = ratingsService.getReviewRatings()
     })
     return {
