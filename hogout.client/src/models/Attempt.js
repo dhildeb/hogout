@@ -3,6 +3,6 @@ export class Attempt {
     this.creatorId = data.creatorId
     this.challengeId = data.challengeId
     this.completed = data.completed
-    this.id = data.id
+    this.id = data._id
   }
 }
