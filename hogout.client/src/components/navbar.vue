@@ -2,7 +2,7 @@
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
       <div class="d-flex flex-column align-items-center">
-        Home
+        Hog Out
       </div>
     </router-link>
     <router-link class="navbar-brand d-flex" :to="{ name: 'Profile', params: {id: state.account.id}}">
