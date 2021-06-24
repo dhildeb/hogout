@@ -1,5 +1,5 @@
 <template>
-  <div class="row">
+  <div class="d-none d-sm-block">
     This is the Desktop
   </div>
 </template>
