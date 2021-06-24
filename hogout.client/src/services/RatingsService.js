@@ -1,6 +1,6 @@
-const { AppState } = require('../AppState')
-const { Rating } = require('../models/Rating')
-const { api } = require('./AxiosService')
+import { AppState } from '../AppState'
+import { Rating } from '../models/Rating'
+import { api } from './AxiosService'
 
 class RatingsService {
   async getDifficultyRatings() {
