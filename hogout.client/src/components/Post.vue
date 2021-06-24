@@ -1,19 +1,15 @@
 <template>
   <div class="row">
-    <div class="card col-12">
-      <div class="card-header shadow">
-        <img :src="post.creator.picture" :alt="post.creator.name" @click="loadProfile">
-      </div>
-      <div class="card-body">
-        <div class="row">
-          <span>{{ post.body }}</span>
-        </div>
-        <div class="row">
-          <img :src="post.image1" :alt="post.id" v-if="post.image1">
-          <img :src="post.image2" :alt="post.id" v-if="post.image2">
-          <img :src="post.image3" :alt="post.id" v-if="post.image3">
-        </div>
-      </div>
+    <div class="col-12">
+      <img :src="post.creator.picture" :alt="post.creator.name" @click="loadProfile">
+    </div>
+    <div class="col-12">
+      <span>{{ post.body }}</span>
+    </div>
+    <div class="col-12">
+      <img class="pic-size" :src="post.image1" :alt="post.id" v-if="post.image1">
+      <img class="pic-size" :src="post.image2" :alt="post.id" v-if="post.image2">
+      <img class="pic-size" :src="post.image3" :alt="post.id" v-if="post.image3">
     </div>
   </div>
 </template>
@@ -33,5 +29,9 @@ export default {
 </script>
 
 <style>
+.pic-size{
+  width: 100vw;
+  height: ;
 
+}
 </style>
