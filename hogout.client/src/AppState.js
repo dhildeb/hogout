@@ -9,6 +9,7 @@ export const AppState = reactive({
   activeProfile: {},
   activeChallenge: {},
   attempts: [],
+  profileAttempts: [],
   difficultyRatings: [],
   reviewRatings: [],
   postLikes: []

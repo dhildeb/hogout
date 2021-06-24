@@ -10,7 +10,7 @@ class AttemptsService {
 
   async getAttemptsByCreatorId(id) {
     const res = await api.get('api/account/' + id + '/attempts')
-    AppState.attempts = res.data.map(a => new Attempt(a))
+    AppState.profileAttempts = res.data.map(a => new Attempt(a))
   }
 
   async createAttempt(challengeId, newAttempt) {
