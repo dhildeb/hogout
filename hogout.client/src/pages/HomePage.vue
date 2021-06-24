@@ -28,6 +28,7 @@
             {{ state.difficulty }}
           </div>
           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" @click="filterReset()">all</a>
             <a class="dropdown-item" @click="filterDifficulty('guinea pig')">guinea pig</a>
             <a class="dropdown-item" @click="filterDifficulty('piglet')">piglet</a>
             <a class="dropdown-item" @click="filterDifficulty('pig')">pig</a>
@@ -77,7 +78,10 @@ export default {
             AppState.tempChallenges.push(c)
           }
         })
-        console.log(AppState.tempChallenges)
+      },
+      filterReset() {
+        state.difficulty = 'All'
+        AppState.tempChallenges = AppState.challenges
       }
     }
   }
