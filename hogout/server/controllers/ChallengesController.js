@@ -10,20 +10,20 @@ import BaseController from '../utils/BaseController'
 
 export class ChallengesController extends BaseController {
   constructor() {
-    super('api/challenges/')
+    super('api/challenges')
     this.router
       .get('', this.getAllChallenges)
-      .get(':id', this.getChallengeById)
-      .get(':id/attempts', this.getAttemptsByChallengeId)
-      .get(':id/difficulty', this.getDifficultyRatingsByChallengeId)
-      .get(':id/review', this.getReviewRatingsByChallengeId)
-      .get(':id/posts', this.getAllPosts)
+      .get('/:id', this.getChallengeById)
+      .get('/:id/attempts', this.getAttemptsByChallengeId)
+      .get('/:id/difficulty', this.getDifficultyRatingsByChallengeId)
+      .get('/:id/review', this.getReviewRatingsByChallengeId)
+      .get('/:id/posts', this.getAllPosts)
       .use('', Auth0Provider.getAuthorizedUserInfo)
-      .post(':id/review', this.handleReviewRating)
+      .post('/:id/review', this.handleReviewRating)
       .post('', this.createChallenge)
-      .post(':id/difficulty', this.handleDifficultyRating)
-      .put(':id', this.editChallenge)
-      .delete(':id', this.deleteChallenge)
+      .post('/:id/difficulty', this.handleDifficultyRating)
+      .put('/:id', this.editChallenge)
+      .delete('/:id', this.deleteChallenge)
   }
 
   async getAllChallenges(req, res, next) {
