@@ -1,57 +1,31 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark d-flex justify-content-between">
     <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
       <div class="d-flex flex-column align-items-center">
         Hog Out
       </div>
     </router-link>
-    <router-link class="navbar-brand d-flex" :to="{ name: 'Profile', params: {id: state.account.id}}">
-      <div class="d-flex flex-column align-items-center">
-        Profile
-      </div>
-    </router-link>
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-toggle="collapse"
-      data-target="#navbarText"
-      aria-controls="navbarText"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
-      <span class="navbar-toggler-icon" />
-    </button>
-    <div class="collapse navbar-collapse" id="navbarText">
-      <span class="navbar-text">
-        <button
-          class="btn btn-outline-primary text-uppercase"
-          @click="login"
-          v-if="!user.isAuthenticated"
-        >
-          Login
-        </button>
 
-        <div class="dropdown" v-else>
-          <div
-            class="dropdown-toggle"
-            @click="state.dropOpen = !state.dropOpen"
-          >
-            <img
-              :src="user.picture"
-              alt="user photo"
-              height="40"
-              class="rounded"
-            />
-            <span class="mx-3">{{ user.name }}</span>
-          </div>
+    <span class="navbar-text">
+      <button
+        class="btn btn-outline-primary text-uppercase"
+        @click="login"
+        v-if="!user.isAuthenticated"
+      >
+        Login
+      </button>
+
+      <div class="dropleft" v-else>
+        <div @click="state.dropOpen = !state.dropOpen">
+          <img class="img-fluid" src="../assets/img/burger.png" alt="Options">
           <div
             class="dropdown-menu p-0 list-group w-100"
             :class="{ show: state.dropOpen }"
             @click="state.dropOpen = false"
           >
-            <router-link :to="{ name: 'Settings' }">
-              <div class="list-group-item list-group-item-action hoverable">
-                Account
+            <router-link :to="{ name: 'Profile', params: {id: state.account.id}}">
+              <div class="list-group-item list-group-item-action rounded hoverable">
+                Profile
               </div>
             </router-link>
             <div
@@ -62,8 +36,7 @@
             </div>
           </div>
         </div>
-      </span>
-    </div>
+      </div></span>
   </nav>
 </template>
 
@@ -113,5 +86,9 @@ a:hover {
 }
 .nav-item .nav-link.router-link-exact-active{
   color: var(--primary);
+}
+.img-fluid{
+  max-width: 30px;
+  min-height: 30px;
 }
 </style>
