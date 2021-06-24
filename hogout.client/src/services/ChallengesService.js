@@ -20,7 +20,7 @@ class ChallengesService {
 
   async deleteChallenge(id) {
     const res = await api.delete('api/challenges/' + id)
-    AppState.challenges = AppState.challenges.filter(c => c.id !== id)
+    AppState.challenges = AppState.challenges.filter(c => c.id !== res.data.id)
   }
 }
 
