@@ -2,7 +2,16 @@ import { dbContext } from '../db/DbContext'
 
 class ChallengesService {
   async getChallengesByUserId(id) {
-    const challenges = await dbContext.Challenges.findById({ creatorId: id })
+    const attempts = await dbContext.Attempts.find({ creatorId: id })
+    const challenges = []
+    attempts.foreach(async a => {
+      const challenge = await dbContext.Challenges.find({ id: a.challengeId })
+      const check = challenges.find(challenge)
+      if (!check) {
+        challenges.push(challenge)
+      }
+    })
+
     return challenges
   }
 
