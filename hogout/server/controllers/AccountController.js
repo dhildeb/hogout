@@ -1,5 +1,6 @@
 import { Auth0Provider } from '@bcwdev/auth0provider'
 import { accountService } from '../services/AccountService'
+import { attemptsService } from '../services/AttemptsService'
 import { challengesService } from '../services/ChallengesService'
 import BaseController from '../utils/BaseController'
 
@@ -16,7 +17,7 @@ export class AccountController extends BaseController {
 
   async getChallengesByUserId(req, res, next) {
     try {
-      const challenges = await challengesService.getChallengesByUserId(req.params.id)
+      const challenges = await attemptsService.getChallengesByUserId(req.params.id)
       res.send(challenges)
     } catch (error) {
       next(error)

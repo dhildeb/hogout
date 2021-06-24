@@ -17,7 +17,7 @@ class ReviewRatingsService {
       const newRating = await dbContext.ReviewRatings.create(body)
       return newRating
     } else {
-      const updatedRating = await dbContext.ReviewRatings.findOneAndUpdate({ challengeId: id, creatorId: userId }, body)
+      const updatedRating = await dbContext.ReviewRatings.findOneAndUpdate({ challengeId: id, creatorId: userId }, body, { new: true })
       return updatedRating
     }
   }
