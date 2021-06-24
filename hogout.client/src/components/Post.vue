@@ -30,7 +30,8 @@ export default {
 
 <style>
 .pic-size{
-  max-width: 100vw;
+  width: 100vw;
+  height: ;
 
 }
 </style>
