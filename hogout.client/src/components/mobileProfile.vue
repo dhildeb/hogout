@@ -61,7 +61,7 @@
       </form>
     </div>
   </div>
-  <div class="row my-1 bio">
+  <div class="row my-1 bio end">
     <div class="col-12 text-center">
       <h6>{{ state.profile.bio }}</h6>
     </div>
@@ -108,12 +108,12 @@
       </form>
     </div>
   </div>
-  <div class="row my-3 awards">
+  <div class="row my-3 awards end">
     <div class="col-6 text-right">
-      <h5><i class="fas fa-lg fa-award"></i></h5>
+      <h5><i class="fas fa-lg fa-award blue-ribbon shadow"></i></h5>
     </div>
     <div class="col-6 text-left">
-      <h5><i class="fas fa-lg fa-trophy"></i></h5>
+      <h5><i class="fas fa-lg fa-trophy gold shadow"></i></h5>
     </div>
   </div>
   <div class="row mt-3 shadow">
@@ -172,5 +172,14 @@ export default {
 }
 .line{
   border-bottom: 4px solid black;
+}
+.end{
+    border-bottom: px solid rgb(109, 106, 106);
+}
+.gold{
+  color: #ffd54f;
+}
+.blue-ribbon{
+  color: #4c4cde;
 }
 </style>

@@ -66,7 +66,7 @@
         <p>{{ state.challenge.rewards }}</p>
       </div>
       <div class="row justify-content-center my-3">
-        <button @click="ITookChallenge" type="button" data-toggle="modal" data-target="#exampleModalCenter" class="btn btn-primary btn-block">
+        <button @click="ITookChallenge" type="button" data-toggle="modal" data-target="#challengeDesktopModal" class="btn btn-primary btn-block">
           I TOOK ON THIS CHALLENGE
         </button>
       </div>
@@ -78,10 +78,10 @@
 
   <!-- Modal -->
   <div class="modal fade"
-       id="exampleModalCenter"
+       id="challengeDesktopModal"
        tabindex="-1"
        role="dialog"
-       aria-labelledby="exampleModalCenterTitle"
+       aria-labelledby="challengeDesktopModalTitle"
        aria-hidden="true"
   >
     <div class="modal-dialog modal-dialog-centered" role="document">
@@ -95,11 +95,11 @@
           <h4>Choose your results!</h4>
         </div>
         <div class="modal-footer d-flex flex-column">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal" @click="createAttempt(true)">
             I Won the Challenge!
           </button>
-          <button type="button" class="btn btn-primary">
-            Save changes
+          <button type="button" class="btn btn-primary" data-dismiss="modal" @click="createAttempt(false)">
+            I Tried and Failed!
           </button>
         </div>
       </div>
@@ -111,6 +111,7 @@
 import { reactive } from '@vue/reactivity'
 import { AppState } from '../AppState'
 import { computed } from '@vue/runtime-core'
+import { attemptsService } from '../services/AttemptsService'
 
 export default {
   setup() {
@@ -120,13 +121,22 @@ export default {
       wins: computed(() => AppState.attempts.filter(a => a.challengeId === state.challenge._id && a.completed)),
       aveRatings: computed(() => AppState.reviewRatings),
       aveDifficulty: computed(() => AppState.difficultyRatings),
-      posts: computed(() => AppState.posts)
+      posts: computed(() => AppState.posts),
+      newAttempt: {}
     })
 
     return {
       state,
       openMaps() {
         window.location.href = `${state.challenge.location}${state.challenge.state}/`
+      },
+      createAttempt(result) {
+        state.newAttempt.completed = result
+        try {
+          attemptsService.createAttempt(state.challenge.id, state.newAttempt)
+        } catch (error) {
+          Notification.toast(error, 'error')
+        }
       }
     }
   }
