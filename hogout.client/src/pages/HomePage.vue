@@ -2,8 +2,8 @@
   <div class="side-bar d-none d-md-block">
     <SideBar />
   </div>
-  <div class="container bg-white">
-    <div class="row justify-content-between bg-white py-4">
+  <div class="container bg-light">
+    <div class="row justify-content-between bg-light py-4">
       <div class="col-6 text-center">
         <div class="dropdown">
           <button class="btn btn-outline-secondary dropdown-toggle"

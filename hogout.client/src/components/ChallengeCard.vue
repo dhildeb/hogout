@@ -1,14 +1,26 @@
 <template>
-  <div class="row py-3 justify-content-center">
-    <div class="col-10 col-md-8 col-lg-6 click border rounded shadow d-flex bg-light p-0 py-2" @click="goThere">
-      <img class="img-fluid p-2" :src="challenge.image" alt="">
+  <div class="row p-0 m-0 justify-content-center d-none d-md-flex">
+    <div class="col-10 col-md-8 col-lg-6 p-0">
+      <img class="banner img-fluid" :src="challenge.banner" alt="banner">
+    </div>
+  </div>
+  <div class="row pb-2 justify-content-center">
+    <div class="col-10 col-md-8 col-lg-6 click border rounded-lg shadow d-flex bg-white p-0 py-2" @click="goThere">
+      <img class="img-fluid icon over-hang p-2" :src="challenge.image" alt="icon">
       <div class="d-flex flex-column w-100 px-2">
         <b class="p-1">{{ challenge.name }}</b>
-        <em class="p-1">{{ challenge.state }}</em>
-        <div class="d-flex justify-content-between text-danger px-2">
-          <span>reviews: {{ getReviewRating(challenge) }}/5</span>
-          <span>difficulty: <em>{{ getDifficultyRating(challenge) }}</em></span>
-        </div>
+        <em class="text-secondary">{{ challenge.state }}</em>
+        <span class="p-1 text-danger">
+          <span class="text-danger" title="">Difficulty: <em>{{ getDifficultyRating(challenge) }}</em></span>
+          <div class="d-flex">
+            <p>Rating: </p>
+            <span class="mdi mdi-star pl-2"></span>
+            <span v-if="getReviewRating(challenge) > 1.5" class="mdi mdi-star"></span>
+            <span v-if="getReviewRating(challenge) > 2.4" class="mdi mdi-star"></span>
+            <span v-if="getReviewRating(challenge) > 3.4" class="mdi mdi-star"></span>
+            <span v-if="getReviewRating(challenge) > 4.5" class="mdi mdi-star"></span>
+          </div>
+        </span>
       </div>
     </div>
   </div>
@@ -45,10 +57,16 @@ export default {
 </script>
 
 <style>
-.img-fluid{
-  max-height: 100px;
+.icon{
   max-width: 100px;
+  object-fit: scale-down;
 }
+
+.banner{
+  height: 160px;
+  width: fit-content;
+}
+
 .click{
   cursor: pointer;
 }
