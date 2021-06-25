@@ -1,43 +1,45 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark d-flex justify-content-between">
-    <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
-      <div class="d-flex flex-column align-items-center">
-        Hog Out
-      </div>
-    </router-link>
+  <div class="container-fluid">
+    <div class="row bg-dark">
+      <router-link class="col-md-11 col-10 navbar-brand d-flex" :to="{ name: 'Home' }">
+        <div>
+          Hog Out
+        </div>
+      </router-link>
 
-    <span class="navbar-text">
-      <button
-        class="btn btn-outline-primary text-uppercase"
-        @click="login"
-        v-if="!user.isAuthenticated"
-      >
-        Login
-      </button>
+      <span class="navbar-text">
+        <button
+          class="btn btn-outline-primary text-uppercase"
+          @click="login"
+          v-if="!user.isAuthenticated"
+        >
+          Login
+        </button>
 
-      <div class="dropleft" v-else>
-        <div @click="state.dropOpen = !state.dropOpen">
-          <img class="img-fluid" src="../assets/img/burger.png" alt="Options">
-          <div
-            class="dropdown-menu p-0 list-group w-100"
-            :class="{ show: state.dropOpen }"
-            @click="state.dropOpen = false"
-          >
-            <router-link :to="{ name: 'Profile', params: {id: state.account.id}}">
-              <div class="list-group-item list-group-item-action rounded hoverable">
-                Profile
-              </div>
-            </router-link>
+        <div class="dropleft" v-else>
+          <div @click="state.dropOpen = !state.dropOpen">
+            <img class="img-fluid click" title="Options" src="../assets/img/burger.png" alt="Options">
             <div
-              class="list-group-item list-group-item-action hoverable"
-              @click="logout"
+              class="dropdown-menu p-0 mt-5 list-group w-100"
+              :class="{ show: state.dropOpen }"
+              @click="state.dropOpen = false"
             >
-              logout
+              <router-link :to="{ name: 'Profile', params: {id: state.account.id}}">
+                <div class="list-group-item list-group-item-action hoverable bg-darker text-light p-1 pl-3">
+                  Profile
+                </div>
+              </router-link>
+              <div
+                class="list-group-item list-group-item-action hoverable bg-darker text-light p-1 pl-3"
+                @click="logout"
+              >
+                logout
+              </div>
             </div>
           </div>
-        </div>
-      </div></span>
-  </nav>
+        </div></span>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -66,6 +68,7 @@ export default {
 </script>
 
 <style scoped>
+
 .dropdown-menu {
   user-select: none;
   display: block;
@@ -81,6 +84,10 @@ export default {
 a:hover {
   text-decoration: none;
 }
+div:hover {
+  background-color: rgb(54, 54, 54);
+  transition: all 0.15s linear;
+}
 .nav-link{
   text-transform: uppercase;
 }
@@ -90,5 +97,15 @@ a:hover {
 .img-fluid{
   max-width: 30px;
   min-height: 30px;
+}
+.bg-darker {
+  background-color: rgb(36, 36, 36);
+}
+.top{
+    top: -26px;
+    left: -34px;
+}
+.click{
+  cursor: pointer;
 }
 </style>

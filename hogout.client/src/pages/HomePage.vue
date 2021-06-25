@@ -1,5 +1,8 @@
 <template>
-  <div class="container">
+  <div class="side-bar d-none d-md-block">
+    <SideBar />
+  </div>
+  <div class="container bg-white">
     <div class="row justify-content-between bg-white py-4">
       <div class="col-6 text-center">
         <div class="dropdown">
@@ -39,6 +42,7 @@
       </div>
     </div>
     <ChallengeCard v-for="challenge in state.temp" :key="challenge.id" :challenge="challenge" />
+    <div class="row p-5"></div>
   </div>
 </template>
 
@@ -89,5 +93,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-
+.side-bar{
+  min-width: 20vh;
+}
 </style>
