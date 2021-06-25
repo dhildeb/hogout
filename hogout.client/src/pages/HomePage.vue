@@ -53,6 +53,7 @@ import { AppState } from '../AppState'
 import { challengesService } from '../services/ChallengesService'
 import { ratingsService } from '../services/RatingsService'
 import { difficultyRatingAve } from '../utils/RatingAve'
+import { accountService } from '../services/AccountService'
 export default {
   name: 'Home',
   setup() {
@@ -66,6 +67,7 @@ export default {
       await challengesService.getAllChallenges()
       await ratingsService.getDifficultyRatings()
       await ratingsService.getReviewRatings()
+      await accountService.getUserAttempts()
       AppState.tempChallenges = AppState.challenges
     })
     return {
@@ -94,6 +96,6 @@ export default {
 
 <style scoped lang="scss">
 .side-bar{
-  min-width: 20vh;
+  min-width: 30vh;
 }
 </style>

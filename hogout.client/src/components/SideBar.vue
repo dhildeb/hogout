@@ -1,8 +1,8 @@
 <template>
-  <div class="d-flex flex-column align-items-center bg-dark h-100">
-    <img class="rounded-circle" :src="state.account.picture" alt="">
+  <div class="d-flex flex-column align-items-center text-light bg-dark h-100">
+    <img class="rounded-circle profile-icon" :src="state.account.picture" alt="">
     <span>{{ state.account.name }}</span>
-    <span>{{ state.account.complete }}</span>
+    <span>{{ state.attempts }}</span>
     <span>{{ state.attempts }}</span>
   </div>
 </template>
@@ -24,8 +24,8 @@ export default {
 }
 </script>
 
-<style>
-img {
+<style scoped>
+.pofile-icon {
   max-height: 100px;
   max-width: 100px;
 }
