@@ -1,3 +1,4 @@
+import { get } from 'jquery'
 import { AppState } from '../AppState'
 import { Profile } from '../models/Profile'
 import { logger } from '../utils/Logger'
@@ -20,6 +21,24 @@ class AccountService {
       AppState.account = res.data
     } catch (error) {
       logger.error(error)
+    }
+  }
+
+  async getProfileChallenges(id) {
+    try {
+      const res = await api.get(`challenges/${id}/challenges`)
+      logger.log(res.data)
+    } catch (error) {
+      logger.log(error)
+    }
+  }
+
+  async getUserAttempts(id) {
+    try {
+      const res = await api.get(`api/attempts/account/${id}/attempts`)
+      logger.log(res.data)
+    } catch (error) {
+      logger.log(error)
     }
   }
 

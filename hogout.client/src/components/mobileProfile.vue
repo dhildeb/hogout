@@ -8,6 +8,17 @@
     <div class="col-12 text-center mt-4 pt-5">
       <h3> {{ state.profile.name }} </h3>
     </div>
+    <div class="fixed-action-btn">
+      <a class="btn-floating btn-large red">
+        <i class="mdi mdi-pencil"></i>
+      </a>
+      <ul>
+        <li><a class="btn-floating red"></a></li>
+        <li><a class="btn-floating yellow darken-1"></a></li>
+        <li><a class="btn-floating green"></a></li>
+        <li><a class="btn-floating blue"></a></li>
+      </ul>
+    </div>
     <!-- <div class="col-4 text-right mt-4 pt-5">
       <i class="fas fa-caret-down" @click="state.nameForm = !state.nameForm" name="edit name"></i>
     </div> -->
@@ -118,8 +129,7 @@
     </div>
   </div>
   <div class="row">
-    <!-- <ChallengeCard v-for="challenge in challenges" /> -->
-    challeges will go here
+    <ProfileChallengeCards />
   </div>
 </template>
 
@@ -138,7 +148,8 @@ export default {
       nameForm: false,
       bioForm: false,
       locationForm: false,
-      pictureForm: false
+      pictureForm: false,
+      challenges: computed(() => AppState.challenges)
     })
     watchEffect(() => {
       // Note - will make call to back end for the challenges attatched to profile
@@ -148,13 +159,6 @@ export default {
       async editProfile() {
         await accountService.editProfile(state.profile, route.params.id)
       }
-      // toggleName() {
-      //   // document.getElementById('name-form').classList.toggle('d-none')
-      //   // console.log('yelloorr')
-      // }
-      // hideForm() {
-      //   document.getElementById('name-form').classList.add('d-none')
-      // }
     }
   }
 }
