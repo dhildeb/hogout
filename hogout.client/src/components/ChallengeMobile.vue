@@ -33,14 +33,14 @@
       </div>
       <div class="row mb-3">
         <div class="col d-flex align-items-center justify-content-end mx-2">
-          <img class="rounded-circle" src="https://placebear.com/50/50" alt="">
+          <i class="fas fa-lg fa-award blue-ribbon"></i>
           <i class="mdi mdi-close"></i>
           <p class="m-0">
             {{ state.attempts.length }}
           </p>
         </div>
         <div class="col d-flex align-items-center mx-2">
-          <img class="rounded-circle" src="https://placebear.com/50/50" alt="">
+          <i class="fas fa-lg fa-trophy gold"></i>
           <i class="mdi mdi-close"></i>
           <p class="m-0">
             {{ state.wins.length }}
@@ -49,6 +49,7 @@
       </div>
       <div class="row justify-content-center">
         <p><b>Difficulty: </b></p>
+        <div>{{ state.aveDifficulty }}</div>
       </div>
       <div class="row justify-content-center">
         <p><b>User Rating: </b></p>
@@ -112,16 +113,16 @@ import { reactive } from '@vue/reactivity'
 import { AppState } from '../AppState'
 import { computed } from '@vue/runtime-core'
 import Notification from '../utils/Notification'
+import { difficultyRatingAve, reviewRatingAve } from '../utils/RatingAve'
 import { attemptsService } from '../services/AttemptsService'
 
 export default {
   setup() {
     const state = reactive({
+      aveDifficulty: computed(() => difficultyRatingAve(AppState.activeChallenge.id)),
       challenge: computed(() => AppState.activeChallenge),
       attempts: computed(() => AppState.attempts.filter(a => a.challengeId === state.challenge._id)),
       wins: computed(() => AppState.attempts.filter(a => a.challengeId === state.challenge._id && a.completed)),
-      aveRatings: computed(() => AppState.reviewRatings),
-      aveDifficulty: computed(() => AppState.difficultyRatings),
       posts: computed(() => AppState.posts),
       newAttempt: {}
     })
