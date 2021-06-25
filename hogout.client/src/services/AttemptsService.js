@@ -1,3 +1,5 @@
+import { logger } from '../utils/Logger'
+
 const { AppState } = require('../AppState')
 const { Attempt } = require('../models/Attempt')
 const { api } = require('./AxiosService')
@@ -14,9 +16,10 @@ class AttemptsService {
   }
 
   async createAttempt(challengeId, newAttempt) {
-    const res = await api.post('api/challenges' + challengeId + '/attempts', newAttempt)
+    const res = await api.post('api/challenges/' + challengeId + '/attempts', newAttempt)
 
     AppState.attempts.push(new Attempt(res.data))
+    logger.log(res.data)
   }
 
   async deleteAttempt(challengeId) {
