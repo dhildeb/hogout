@@ -1,13 +1,13 @@
 <template>
-  <div class="d-flex flex-column container-fluid">
-    <div class="card  ">
-      <div class="row">
+  <div class="d-flex container-fluid justify-content-center">
+    <div class="card row">
+      <div class="col-12">
         <img class="card-img-top challenge-banner" :src="state.challenge.banner" alt="Profile Banner">
       </div>
-      <div class="row justify-content-center prof-row">
+      <div class="col-12 justify-content-center">
         <img class="rounded-circle db" :src="state.challenge.image" alt="Profile Image">
       </div>
-      <div class="row sep"></div>
+      <div class="col-12 sep"></div>
 
       <div class="mt-4 mb-2 row justify-content-center">
         <h4 class="">
@@ -16,19 +16,19 @@
           </h1>
         </h4>
       </div>
-      <div class="row justify-content-center">
+      <div class="col-12 justify-content-center">
         <h6>{{ state.challenge.restaurant }}, {{ state.challenge.state }}</h6>
       </div>
-      <div class="row justify-content-center">
+      <div class="col-12 justify-content-center">
         <button
           @click="openMaps"
           class="
               btn
               btn-primary
-              btn-block
-              my-2"
+              my-2
+              location-b"
         >
-          Find Location booty
+          Find Location
         </button>
       </div>
       <div class="row mb-3">
@@ -47,33 +47,33 @@
           </p>
         </div>
       </div>
-      <div class="row justify-content-center">
+      <div class="col-12 justify-content-center">
         <p><b>Difficulty: </b></p>
       </div>
-      <div class="row justify-content-center">
+      <div class="col-12 justify-content-center">
         <p><b>User Rating: </b></p>
       </div>
-      <div class="row mx-2">
+      <div class="col-12 mx-2">
         <h3>
           Rules
         </h3>
         <p>{{ state.challenge.rules }}</p>
       </div>
-      <div class="row mx-2">
+      <div class="col-12 mx-2">
         <h3>
           Rewards
         </h3>
         <p>{{ state.challenge.rewards }}</p>
       </div>
-      <div class="row justify-content-center my-3">
+      <div class="col-12 justify-content-center my-3">
         <button @click="ITookChallenge" type="button" data-toggle="modal" data-target="#challengeDesktopModal" class="btn btn-primary btn-block">
           I TOOK ON THIS CHALLENGE
         </button>
       </div>
     </div>
-    <div v-if="state.posts.length > 0" class="container">
-      <Post v-for="p in state.posts" :key="p.id" :post="p" />
-    </div>
+  </div>
+  <div v-if="state.posts.length > 0" class="container">
+    <Post v-for="p in state.posts" :key="p.id" :post="p" />
   </div>
 
   <!-- Modal -->
@@ -151,6 +151,8 @@ export default {
   height: 30vw;
   width: 30vw;
   top: -17vw;
+  left: 6vw;
+
 }
 .prof-row{
 position: relative;
@@ -162,6 +164,9 @@ position: relative;
 }
 .challenge-banner{
   max-height: 25vw;
+}
+.location-b{
+  width: 80vw;
 }
 
 </style>
