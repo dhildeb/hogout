@@ -16,22 +16,23 @@ class AttemptsService {
   }
 
   async getAllAttempts() {
-    const attempts = await dbContext.Attempts.find({})
+    const attempts = await dbContext.Attempts.find({}).populate('challenge', 'name restaurant rewards rules state location image banner')
     return attempts
   }
 
   async getAttemptsByChallengeId(id) {
-    const attempts = await dbContext.Attempts.find({ challengeId: id })
+    const attempts = await dbContext.Attempts.find({ challengeId: id }).populate('challenge', 'name restaurant rewards rules state location image banner')
     return attempts
   }
 
   async getAttemptsByCreatorId(id) {
-    const attempts = await dbContext.Attempts.find({ creatorId: id })
+    const attempts = await dbContext.Attempts.find({ creatorId: id }).populate('challenge', 'name restaurant rewards rules state location image banner')
     return attempts
   }
 
   async createAttempt(newAttempt) {
     const attempt = await dbContext.Attempts.create(newAttempt)
+    await attempt.populate('challenge', 'name restaurant rewards rules state location image banner').execPopulate()
     return attempt
   }
 
