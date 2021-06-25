@@ -18,16 +18,24 @@
 </template>
 
 <script>
-import { onMounted } from '@vue/runtime-core'
+import { computed, onMounted, reactive } from '@vue/runtime-core'
 import { useRoute } from 'vue-router'
 import { accountService } from '../services/AccountService'
+import { AppState } from '../AppState'
 export default {
   setup() {
     const route = useRoute()
+    const state = reactive({
+      attempts: computed(() => AppState.profileAttempts.filter(a => a.creatorId === route.params.id)),
+      defeats: computed(() => AppState.profileAttempts.filter(a => a.completed === true))
+    })
     onMounted(() =>
       accountService.getProfileChallenges(route.params.id),
     accountService.getUserAttempts(route.params.id)
     )
+    return {
+      state
+    }
   }
 }
 </script>

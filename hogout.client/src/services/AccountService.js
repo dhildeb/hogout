@@ -36,6 +36,7 @@ class AccountService {
   async getUserAttempts(id) {
     try {
       const res = await api.get(`api/attempts/account/${id}/attempts`)
+      AppState.profileAttempts = res.data
       logger.log(res.data, 'attempts in the service')
     } catch (error) {
       logger.log(error)

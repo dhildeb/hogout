@@ -1,19 +1,24 @@
 <template>
-  <div class="container">
+  <div class="container color">
     <mobileProfile />
   </div>
 </template>
 
 <script>
 import mobileProfile from '../components/mobileProfile.vue'
+// import 'materialize-css/dist/css/materialize.css'
+
 export default {
   components: { mobileProfile },
-  name: 'Profile'
+  name: 'Profile',
+  setup() {
+
+  }
 }
 </script>
 
-<style lang="scss" scoped>
+<style scoped>
 .color{
-  background-color: #DBDBDB;
+  background-color: #e8e8e8;
 }
 </style>
