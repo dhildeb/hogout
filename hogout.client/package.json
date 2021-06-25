@@ -17,7 +17,8 @@
     "socket.io-client": "^4.1.2",
     "sweetalert2": "^11.0.17",
     "vue": "^3.0.11",
-    "vue-router": "^4.0.8"
+    "vue-router": "^4.0.8",
+    "vue-screen-size": "^1.0.1"
   },
   "devDependencies": {
     "@vue/cli-plugin-eslint": "~4.5.13",

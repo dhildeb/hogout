@@ -1,5 +1,9 @@
 <template>
-  <div class="d-sm-none d-block d-flex flex-column">
+<<<<<<< HEAD
+  <div class="d-flex flex-column">
+=======
+  <div class=" d-flex flex-column">
+>>>>>>> f0a33f5898ae79ddf3abf61604595c58a4d245a8
     <div class="card container ">
       <div class="row">
         <img class="card-img-top" :src="state.challenge.banner" alt="Profile Banner">
@@ -144,7 +148,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .ab{
   position: absolute;
   min-width: 7rem;

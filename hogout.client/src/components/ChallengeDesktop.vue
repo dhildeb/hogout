@@ -1,5 +1,5 @@
 <template>
-  <div class="d-none d-sm-block d-flex flex-column container-fluid">
+  <div class="d-flex flex-column container-fluid">
     <div class="card  ">
       <div class="row">
         <img class="card-img-top challenge-banner" :src="state.challenge.banner" alt="Profile Banner">
@@ -28,7 +28,7 @@
               btn-block
               my-2"
         >
-          Find Location
+          Find Location booty
         </button>
       </div>
       <div class="row mb-3">
@@ -143,7 +143,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .db{
   position: absolute;
   min-width: 7rem;
