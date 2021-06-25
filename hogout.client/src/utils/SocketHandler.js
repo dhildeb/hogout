@@ -36,12 +36,10 @@ export class SocketHandler {
   }
 
   onConnected(connection) {
-    logger.log('[SOCKET_CONNECTION]', connection)
     connected = true
   }
 
   onAuthenticated(auth) {
-    logger.log('[SOCKET_AUTHENTICATED]', auth)
     const playback = [...queue]
     queue = []
     playback.forEach(e => {
@@ -59,7 +57,6 @@ export class SocketHandler {
 
   emit(action, payload = undefined) {
     if (!connected) {
-      logger.log('[ENQUEING_ACTION]', { action, payload })
       return queue.push({ action, payload })
     }
     this.socket.emit(action, payload)

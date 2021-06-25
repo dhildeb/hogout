@@ -6,6 +6,6 @@ export class Profile {
     this.location = data.location
     this.banner = data.banner
     this.bio = data.bio
-    this.id = data.id
+    this.id = data._id
   }
 }

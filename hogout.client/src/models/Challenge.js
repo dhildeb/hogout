@@ -10,6 +10,6 @@ export class Challenge {
     this.location = data.location
     this.image = data.image
     this.banner = data.banner
-    this.id = data.id
+    this.id = data._id
   }
 }

@@ -1,10 +1,9 @@
-import { Auth0Provider } from '@bcwdev/auth0provider'
 import { reviewRatingsService } from '../services/ReviewRatingsService'
 import BaseController from '../utils/BaseController'
 
 export class ReviewRatingsController extends BaseController {
   constructor() {
-    super('api/review')
+    super('api/reviews')
     this.router
       .get('', this.getAllRatings)
   }

@@ -1,6 +1,6 @@
 <template>
-  <ChallengeDesktop class="d-none d-sm-block" />
-  <ChallengeMobile class="d-sm-none d-block" />
+  <ChallengeDesktop />
+  <ChallengeMobile />
 </template>
 
 <script>
@@ -9,6 +9,8 @@ import { useRoute } from 'vue-router'
 import { challengesService } from '../services/ChallengesService'
 import { attemptsService } from '../services/AttemptsService'
 import { ratingsService } from '../services/RatingsService'
+import Notification from '../utils/Notification'
+import { postsService } from '../services/PostsService'
 export default {
   name: 'Challenge',
   setup() {
@@ -20,6 +22,7 @@ export default {
           await attemptsService.getAllAttempts()
           await ratingsService.getDifficultyRatingsByChallengeId(route.params.id)
           await ratingsService.getReviewRatingsByChallengeId(route.params.id)
+          await postsService.getPostsByChallengeId(route.params.id)
         }
       } catch (error) {
         Notification.toast(error.message, 'error')

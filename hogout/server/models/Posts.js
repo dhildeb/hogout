@@ -5,7 +5,10 @@ export const PostsSchema = new Schema(
   {
     creatorId: { type: mongoose.Types.ObjectId, ref: 'Account', required: true },
     challengeId: { type: mongoose.Types.ObjectId, ref: 'Challenges', required: true },
-    body: { type: String, requied: true }
+    body: { type: String, requied: true },
+    image1: { type: String },
+    image2: { type: String },
+    image3: { type: String }
   },
   { timestamps: true, toJSON: { virtuals: true } }
 

@@ -1,56 +1,43 @@
 <template>
-  <router-link :to="{name: 'Challenge', params: {id: challenge.id}}">
-    <div class="row py-3 justify-content-center bg-white">
-      <div class="col-10 border rounded shadow d-flex bg-light">
-        <img class="img-fluid p-2" :src="challenge.image" alt="">
-        <div class="d-flex flex-column">
-          <b class="p-1">{{ challenge.name }}</b>
-          <em class="p-1">{{ challenge.state }}</em>
-          <div>
-            <span>{{ state.difficulty }}</span>
-            <span>{{ state.rating }}</span>
-          </div>
+  <div class="row py-3 justify-content-center bg-white">
+    <div class="col-10 click border rounded shadow d-flex bg-light p-0" @click="goThere">
+      <img class="img-fluid p-2" :src="challenge.image" alt="">
+      <div class="d-flex flex-column w-100 px-2">
+        <b class="p-1">{{ challenge.name }}</b>
+        <em class="p-1">{{ challenge.state }}</em>
+        <div class="d-flex justify-content-between">
+          <span>reviews: {{ getReviewRating(challenge) }}/5</span>
+          <span>difficulty: <em>{{ getDifficultyRating(challenge) }}</em></span>
         </div>
       </div>
     </div>
-  </router-link>
+  </div>
 </template>
 
 <script>
 import { reactive } from '@vue/reactivity'
-// import { computed } from '@vue/runtime-core'
-// import { AppState } from '../AppState'
+import { difficultyRatingAve, reviewRatingAve } from '../utils/RatingAve'
+import { useRouter } from 'vue-router'
 export default {
   props: {
     challenge: { type: Object, required: true }
   },
   setup(props) {
+    const router = useRouter()
     const state = reactive({
-    // difficulty: computed(() => {
-    // let totalRatings = 0
-    // let totalVotes = 0
-    // AppState.difficultyRatings.forEach(d => {
-    //   if (d.challengeId === props.challenge.id) {
-    //     totalRatings += d.rating
-    //     totalVotes++
-    //   }
-    // })
-    // return totalRatings / totalVotes
-    // }),
-    //   rating: computed(() => {
-    //     let totalRatings = 0
-    //     let totalVotes = 0
-    //     AppState.reviewRatings.forEach(r => {
-    //       if (r.challengeId === props.challenge.id) {
-    //         totalRatings += r.rating
-    //         totalVotes++
-    //       }
-    //     })
-    //     return totalRatings / totalVotes
-    //   })
+      challengeId: props.challenge.id
     })
     return {
-      state
+      state,
+      getReviewRating(data) {
+        return reviewRatingAve(data.id)
+      },
+      getDifficultyRating(data) {
+        return difficultyRatingAve(data.id)
+      },
+      goThere() {
+        router.push({ name: 'Challenge', params: { id: state.challengeId } })
+      }
     }
   }
 
@@ -61,5 +48,8 @@ export default {
 .img-fluid{
   min-height: 100px;
   max-width: 100px;
+}
+.click{
+  cursor: pointer;
 }
 </style>

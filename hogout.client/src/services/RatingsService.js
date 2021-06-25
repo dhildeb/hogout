@@ -4,17 +4,17 @@ import { api } from './AxiosService'
 
 class RatingsService {
   async getDifficultyRatings() {
-    const res = await api.get('api/difficulty')
+    const res = await api.get('api/difficulties')
     AppState.difficultyRatings = res.data.map(r => new Rating(r))
   }
 
   async getDifficultyRatingsByChallengeId(id) {
-    const res = await api.get('api/challenges/' + id + '/difficulty')
+    const res = await api.get('api/challenges/' + id + '/difficulties')
     AppState.difficultyRatings = res.data.map(r => new Rating(r))
   }
 
   async handleDifficultyRating(challengeId, newRating) {
-    const res = await api.post('api/challenges/' + challengeId + '/difficulty', newRating)
+    const res = await api.post('api/challenges/' + challengeId + '/difficulties', newRating)
     const rating = AppState.difficultyRatings.find(r => r.id === res.data.id)
 
     if (!rating) {
@@ -26,17 +26,17 @@ class RatingsService {
   }
 
   async getReviewRatings() {
-    const res = await api.get('api/review')
+    const res = await api.get('api/reviews')
     AppState.reviewRatings = res.data.map(r => new Rating(r))
   }
 
   async getReviewRatingsByChallengeId(id) {
-    const res = await api.get('api/challenges/' + id + '/review')
+    const res = await api.get('api/challenges/' + id + '/reviews')
     AppState.reviewRatings = res.data.map(r => new Rating(r))
   }
 
   async handleReviewRating(challengeId, newRating) {
-    const res = await api.post('api/challenges/' + challengeId + '/review', newRating)
+    const res = await api.post('api/challenges/' + challengeId + '/reviews', newRating)
     const rating = AppState.reviewRatings.find(r => r.id === res.data.id)
 
     if (!rating) {
