@@ -1,5 +1,5 @@
 <template>
-  <div class="d-sm-none d-block d-flex flex-column">
+  <div class="d-flex flex-column">
     <div class="card container ">
       <div class="row">
         <img class="card-img-top" :src="state.challenge.banner" alt="Profile Banner">

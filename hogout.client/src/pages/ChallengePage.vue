@@ -1,6 +1,10 @@
 <template>
-  <ChallengeDesktop />
-  <ChallengeMobile />
+  <div class="d-sm-block d-none">
+    <ChallengeDesktop />
+  </div>
+  <div class="d-sm-none d-block">
+    <ChallengeMobile />
+  </div>
 </template>
 
 <script>
