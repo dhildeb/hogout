@@ -1,5 +1,5 @@
 <template>
-  <div class=" d-flex flex-column">
+  <div class=" d-flex flex-column our-bg">
     <div class="card container ">
       <div class="row">
         <img class="card-img-top" :src="state.challenge.banner" alt="Profile Banner">
@@ -145,6 +145,9 @@ export default {
 </script>
 
 <style scoped>
+.our-bg{
+  background-color: #E8E8E8;
+}
 .ab{
   position: absolute;
   min-width: 7rem;
