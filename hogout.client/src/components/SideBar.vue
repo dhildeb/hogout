@@ -30,7 +30,4 @@ img {
   max-width: 100px;
 }
 
-*{
-  outline: 1px solid red;
-}
 </style>
