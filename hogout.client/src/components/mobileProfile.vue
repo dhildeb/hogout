@@ -1,13 +1,5 @@
 <template>
-  <div class="row d-flex h-25" :style="{backgroundImage: `url(${state.profile.banner})`}">
-    <div class="col-12 position text-center">
-      <img :src="state.profile.picture" alt="profile-picture" class="rounded-pill postition">
-    </div>
-  </div>
-  <div class="row mt-4 pt-5">
-    <div class="col-12 text-center mt-4 pt-5">
-      <h3> {{ state.profile.name }} </h3>
-    </div>
+  <div class="row d-flex h-25 line" :style="{backgroundImage: `url(${state.profile.banner})`}">
     <div class="fixed-action-btn">
       <a class="btn-floating btn-large red">
         <i class="mdi mdi-pencil"></i>
@@ -19,14 +11,22 @@
         <li><a class="btn-floating blue"></a></li>
       </ul>
     </div>
+    <div class="col-12 position text-center">
+      <img :src="state.profile.picture" alt="profile-picture" class="rounded-pill frame">
+    </div>
+  </div>
+  <div class="row mt-4 pt-5">
+    <div class="col-12 text-center mt-4 pt-5">
+      <h3> {{ state.profile.name }} </h3>
+    </div>
     <!-- <div class="col-4 text-right mt-4 pt-5">
       <i class="fas fa-caret-down" @click="state.nameForm = !state.nameForm" name="edit name"></i>
     </div> -->
   </div>
-  <div class="row ">
-    <div class="col-12 ">
+  <div class="row form " v-if="state.nameForm">
+    <div class="col-12">
       <form @submit.prevent="editProfile()" id="nameForm" name="nameForm">
-        <div class="input-group" v-if="state.nameForm">
+        <div class="input-group">
           <label for="name" class="sr-only"> name </label>
           <input type="text" v-model="state.profile.name" class="form-control" :placeholder="state.profile.name">
           <div class="input-group-append">
@@ -46,10 +46,10 @@
       <i class="fas fa-caret-down" @click="state.locationForm = !state.locationForm" name="edit location"></i>
     </div> -->
   </div>
-  <div class="row">
+  <div class="row form" v-if="state.locationForm">
     <div class="col-12 text-center ">
       <form @submit.prevent="editProfile()">
-        <div class="input-group" v-if="state.locationForm">
+        <div class="input-group">
           <label for="location" class="sr-only"> location </label>
           <input type="text" v-model="state.profile.location" class="form-control" :placeholder="state.profile.location || 'Location'">
           <div class="input-group-append">
@@ -61,7 +61,7 @@
       </form>
     </div>
   </div>
-  <div class="row my-1">
+  <div class="row my-1 bio">
     <div class="col-12 text-center">
       <h6>{{ state.profile.bio }}</h6>
     </div>
@@ -69,10 +69,10 @@
       <i class="fas fa-caret-down" @click="state.bioForm = !state.bioForm" name="edit bio"></i>
     </div> -->
   </div>
-  <div class="row my-1">
+  <div class="row my-1 form" v-if="state.bioForm">
     <div class="col-12 text-center ">
       <form @submit.prevent="editProfile()">
-        <div class="input-group" v-if="state.bioForm">
+        <div class="input-group">
           <label for="bio" class="sr-only"> bio </label>
           <input type="text" v-model="state.profile.bio" class="form-control" :placeholder="state.profile.bio || 'bio'">
           <div class="input-group-append">
@@ -84,17 +84,10 @@
       </form>
     </div>
   </div>
-  <div class="row my-1">
-    <div class="col-12 text-center">
-    </div>
-    <!-- <div class="col-4 text-right">
-      <i class="fas fa-caret-down" @click="state.pictureForm = !state.pictureForm" name="edit picture"></i>
-    </div> -->
-  </div>
-  <div class="row my-1">
+  <div class="row my-1 from" v-if="state.pictureForm">
     <div class="col-12 text-center ">
       <form class="my-2" @submit.prevent="editProfile()">
-        <div class="input-group" v-if="state.pictureForm">
+        <div class="input-group">
           <label for="picture" class="sr-only"> picture </label>
           <input type="text" v-model="state.profile.picture" class="form-control" :placeholder="state.profile.picture || 'picture'">
           <div class="input-group-append">
@@ -103,7 +96,7 @@
             </button>
           </div>
         </div>
-        <div class="input-group" v-if="state.pictureForm">
+        <div class="input-group">
           <label for="banner" class="sr-only"> banner </label>
           <input type="text" v-model="state.profile.banner" class="form-control" :placeholder="state.profile.banner || 'banner'">
           <div class="input-group-append">
@@ -115,7 +108,7 @@
       </form>
     </div>
   </div>
-  <div class="row my-1">
+  <div class="row my-3 awards">
     <div class="col-6 text-right">
       <h5><i class="fas fa-lg fa-award"></i></h5>
     </div>
@@ -123,12 +116,12 @@
       <h5><i class="fas fa-lg fa-trophy"></i></h5>
     </div>
   </div>
-  <div class="row mt-3">
-    <div class="col-12 text-center m-auto">
+  <div class="row mt-3 shadow">
+    <div class="col-12 text-center m-auto shadow">
       <h4>Your Challenges</h4>
     </div>
   </div>
-  <div class="row">
+  <div class="row challenges">
     <ProfileChallengeCards />
   </div>
 </template>
@@ -174,5 +167,10 @@ export default {
 .position{
   margin-top: 5rem;
 }
-
+.frame{
+    border: 4px black solid;
+}
+.line{
+  border-bottom: 4px solid black;
+}
 </style>

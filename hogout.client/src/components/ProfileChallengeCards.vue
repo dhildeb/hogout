@@ -1,10 +1,10 @@
 <template>
-  <div class="col-10 m-auto d-flex shadow">
+  <div class="col-12 m-auto d-flex shadow">
     <div class="col-4 justify-content-start text-center">
       resturant pic
       <!-- <img src="" alt=""> -->
     </div>
-    <div class="col-4 justify-content-center text-center">
+    <div class="col-4 justify-content-center text-left">
       <h6>challenge title</h6>
       <p>location</p>
       <p>difficulty</p>
