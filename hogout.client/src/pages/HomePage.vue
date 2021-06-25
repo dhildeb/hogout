@@ -1,6 +1,9 @@
 <template>
-  <div class="container">
-    <div class="row justify-content-between bg-white py-4">
+  <div class="side-bar d-none d-md-block">
+    <SideBar />
+  </div>
+  <div class="container bg-light">
+    <div class="row justify-content-between bg-light py-4">
       <div class="col-6 text-center">
         <div class="dropdown">
           <button class="btn btn-outline-secondary dropdown-toggle"
@@ -39,6 +42,7 @@
       </div>
     </div>
     <ChallengeCard v-for="challenge in state.temp" :key="challenge.id" :challenge="challenge" />
+    <div class="row p-5"></div>
   </div>
 </template>
 
@@ -49,6 +53,7 @@ import { AppState } from '../AppState'
 import { challengesService } from '../services/ChallengesService'
 import { ratingsService } from '../services/RatingsService'
 import { difficultyRatingAve } from '../utils/RatingAve'
+import { accountService } from '../services/AccountService'
 export default {
   name: 'Home',
   setup() {
@@ -62,6 +67,7 @@ export default {
       await challengesService.getAllChallenges()
       await ratingsService.getDifficultyRatings()
       await ratingsService.getReviewRatings()
+      await accountService.getUserAttempts()
       AppState.tempChallenges = AppState.challenges
     })
     return {
@@ -89,5 +95,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-
+.side-bar{
+  min-width: 30vh;
+}
 </style>
