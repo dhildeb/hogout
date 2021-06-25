@@ -13,6 +13,16 @@ class AccountService {
     }
   }
 
+  async editProfile(newProfile) {
+    try {
+      const res = await api.put('/account/', newProfile)
+      logger.log(res.data)
+      AppState.account = res.data
+    } catch (error) {
+      logger.error(error)
+    }
+  }
+
   async getProfile(profileId) {
     try {
       const res = await api.get('/account/' + profileId)

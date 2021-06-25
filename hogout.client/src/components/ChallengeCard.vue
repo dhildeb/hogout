@@ -18,36 +18,36 @@
 
 <script>
 import { reactive } from '@vue/reactivity'
-import { computed } from '@vue/runtime-core'
-import { AppState } from '../AppState'
+// import { computed } from '@vue/runtime-core'
+// import { AppState } from '../AppState'
 export default {
   props: {
     challenge: { type: Object, required: true }
   },
   setup(props) {
     const state = reactive({
-      difficulty: computed(() => {
-        let totalRatings = 0
-        let totalVotes = 0
-        AppState.difficultyRatings.forEach(d => {
-          if (d.challengeId === props.challenge.id) {
-            totalRatings += d.rating
-            totalVotes++
-          }
-        })
-        return totalRatings / totalVotes
-      }),
-      rating: computed(() => {
-        let totalRatings = 0
-        let totalVotes = 0
-        AppState.reviewRatings.forEach(r => {
-          if (r.challengeId === props.challenge.id) {
-            totalRatings += r.rating
-            totalVotes++
-          }
-        })
-        return totalRatings / totalVotes
-      })
+    // difficulty: computed(() => {
+    // let totalRatings = 0
+    // let totalVotes = 0
+    // AppState.difficultyRatings.forEach(d => {
+    //   if (d.challengeId === props.challenge.id) {
+    //     totalRatings += d.rating
+    //     totalVotes++
+    //   }
+    // })
+    // return totalRatings / totalVotes
+    // }),
+    //   rating: computed(() => {
+    //     let totalRatings = 0
+    //     let totalVotes = 0
+    //     AppState.reviewRatings.forEach(r => {
+    //       if (r.challengeId === props.challenge.id) {
+    //         totalRatings += r.rating
+    //         totalVotes++
+    //       }
+    //     })
+    //     return totalRatings / totalVotes
+    //   })
     })
     return {
       state

@@ -1,14 +1,19 @@
 <template>
-  <h1>
-    Profile
-  </h1>
+  <div class="container-fluid">
+    <mobileProfile />
+  </div>
 </template>
 
 <script>
+import mobileProfile from '../components/mobileProfile.vue'
 export default {
+  components: { mobileProfile },
   name: 'Profile'
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
+.color{
+  background-color: #DBDBDB;
+}
 </style>

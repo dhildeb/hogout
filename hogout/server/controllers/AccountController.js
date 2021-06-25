@@ -3,6 +3,7 @@ import { accountService } from '../services/AccountService'
 import { attemptsService } from '../services/AttemptsService'
 import { challengesService } from '../services/ChallengesService'
 import BaseController from '../utils/BaseController'
+import { BadRequest } from '../utils/Errors'
 
 export class AccountController extends BaseController {
   constructor() {
@@ -44,7 +45,10 @@ export class AccountController extends BaseController {
 
   async editUserAccount(req, res, next) {
     try {
-      const account = await accountService.updateAccount(req.userInfo.id, req.body)
+      const account = await accountService.updateAccount(req.userInfo, req.body)
+      if (!account) {
+        throw new BadRequest('Account was not updated')
+      }
       res.send(account)
     } catch (error) {
       next(error)
