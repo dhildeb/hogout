@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import { watchEffect } from '@vue/runtime-core'
+import { onMounted, watchEffect } from '@vue/runtime-core'
 import { useRoute } from 'vue-router'
 import { challengesService } from '../services/ChallengesService'
 import { attemptsService } from '../services/AttemptsService'
@@ -19,11 +19,13 @@ export default {
   name: 'Challenge',
   setup() {
     const route = useRoute()
+    onMounted(async() =>
+      await attemptsService.getAttemptsByChallengeId(route.params.id)
+    )
     watchEffect(async() => {
       try {
         if (route.name === 'Challenge') {
           await challengesService.getChallengeById(route.params.id)
-          await attemptsService.getAllAttempts()
           await ratingsService.getDifficultyRatingsByChallengeId(route.params.id)
           await ratingsService.getReviewRatingsByChallengeId(route.params.id)
           await postsService.getPostsByChallengeId(route.params.id)

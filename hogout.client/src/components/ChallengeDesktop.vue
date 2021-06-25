@@ -7,13 +7,9 @@
       <div class="col-12 justify-content-center mb-5 pb-5">
         <img class="rounded-circle db" :src="state.challenge.image" alt="Profile Image">
       </div>
-      <div class="mb-2 col-12 justify-content-center text-center">
-        <h1 class="title-challenge">
-          {{ state.challenge.name }}
-        </h1>
-      </div>
+
       <div class="col-12 justify-content-center text-center">
-        <h4 class="rating-title">
+        <h4 class="title-challenge">
           {{ state.challenge.restaurant }}, {{ state.challenge.state }}
         </h4>
       </div>
@@ -34,35 +30,24 @@
           <b>User Rating: </b>
         </p>
       </div>
-
-      <div class="col-12 mb-3">
-        <div class="d-flex align-items-center justify-content-end mx-2">
-          <img class="rounded-circle" src="https://placebear.com/50/50" alt="">
-          <i class="mdi mdi-close"></i>
-          <p class="m-0">
-            {{ state.attempts.length }}
-          </p>
-        </div>
-        <div class="col-12 d-flex align-items-center mx-2">
-          <img class="rounded-circle" src="https://placebear.com/50/50" alt="">
-          <i class="mdi mdi-close"></i>
-          <p class="m-0">
-            {{ state.wins.length }}
-          </p>
-        </div>
+    </div>
+    <div class="row">
+      <div class="col-4">
+        {{ review }}
       </div>
-
-      <div class="col-12 mx-2">
-        <h3>
-          Rules
-        </h3>
-        <p>{{ state.challenge.rules }}</p>
+      <div class="col-4 ">
+        <img class="rounded-circle" src="https://placebear.com/250/250" alt="">
+        <i class="mdi mdi-close"></i>
+        <span class="m-0">
+          {{ state.attempts.length }}
+        </span>
       </div>
-      <div class="col-12 mx-2">
-        <h3>
-          Rewards
-        </h3>
-        <p>{{ state.challenge.rewards }}</p>
+      <div class="col-4 ">
+        <img class="rounded-circle" src="https://placebear.com/250/250" alt="">
+        <i class="mdi mdi-close"></i>
+        <span class="m-0">
+          {{ state.wins.length }}
+        </span>
       </div>
     </div>
   </div>
@@ -77,14 +62,33 @@
   </div>
   <div class="container card">
     <div class="row">
+      <div class="mb-2 col-12 justify-content-center text-center">
+        <h1 class="rating-title">
+          {{ state.challenge.restaurant }} {{ state.challenge.name }}
+        </h1>
+      </div>
       <div class="col-12 justify-content-center">
         <p class="difficulty-title">
           <b>Difficulty: </b>
+          {{ difficulty }}
         </p>
+      </div>
+      <div class="col-12 mx-2">
+        <h3>
+          Rules
+        </h3>
+        <p>{{ state.challenge.rules }}</p>
+      </div>
+      <div class="col-12 mx-2">
+        <h3>
+          Rewards
+        </h3>
+        <p>{{ state.challenge.rewards }}</p>
       </div>
     </div>
   </div>
-  <div v-if="state.posts.length > 0" class="container card">
+  <div v-if="state.posts.length > 0" class="container">
+    {{ attempts }}
     <Post v-for="p in state.posts" :key="p.id" :post="p" />
   </div>
 
@@ -124,13 +128,13 @@ import { reactive } from '@vue/reactivity'
 import { AppState } from '../AppState'
 import { computed } from '@vue/runtime-core'
 import { attemptsService } from '../services/AttemptsService'
-import { difficultyRatingAve } from '../utils/RatingAve'
+import { difficultyRatingAve, reviewRatingAve } from '../utils/RatingAve'
 
 export default {
   setup() {
     const state = reactive({
       challenge: computed(() => AppState.activeChallenge),
-      attempts: computed(() => AppState.attempts.filter(a => a.challengeId === state.challenge._id)),
+      attempts: computed(() => AppState.attempts),
       wins: computed(() => AppState.attempts.filter(a => a.challengeId === state.challenge._id && a.completed)),
       aveRatings: computed(() => AppState.reviewRatings),
       aveDifficulty: computed(() => AppState.difficultyRatings),
@@ -138,9 +142,12 @@ export default {
       newAttempt: {}
     })
     const difficulty = difficultyRatingAve(state.challenge.id)
+    const review = reviewRatingAve(state.challenge.id)
 
     return {
       state,
+      difficulty,
+      review,
       openMaps() {
         window.location.href = `${state.challenge.location}${state.challenge.state}/`
       },
