@@ -1,5 +1,5 @@
 <template>
-  <div class="d-sm-block d-none">
+  <div class="d-sm-block justify-content-center  d-none">
     <ChallengeDesktop />
   </div>
   <div class="d-sm-none d-block">
