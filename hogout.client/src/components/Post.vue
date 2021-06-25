@@ -20,10 +20,15 @@
   </div>
   <div class="row">
     <div class="col-3 py-3">
-      <img class="rounded-circle prof-pic" :src="post.creator.picture" :alt="post.creator.name" @click="loadProfile">
+      <img class="rounded-circle prof-pic m-2" :src="post.creator.picture" :alt="post.creator.name" @click="loadProfile">
     </div>
     <div class="col-9">
-      <span>{{ post.body }}</span>
+      <div class="row d-flex justify-content-end">
+        <img class="rounded-circle" src="https://placebear.com/50/50" alt="">
+      </div>
+      <div class="row">
+        <span>{{ post.body }}</span>
+      </div>
     </div>
   </div>
 </template>
@@ -74,6 +79,9 @@ position: relative;
   width: 90vw;
   height: 18rem;
   object-fit: cover;
+}
+.prof-pic{
+  width: inherit;
 }
 
 </style>
