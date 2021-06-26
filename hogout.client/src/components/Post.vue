@@ -1,36 +1,62 @@
 <template>
-  <div class="row">
-    <div class="col card pt-4 rel2">
-      <div v-if="post.image2 || post.image3" class="row justify-content-between ab2 rightarr">
+  <div class="row card pt-3">
+    <div class="col-12">
+      <div v-if="post.image2 || post.image3" class="row justify-content-between ab rightarr">
         <div class="col d-flex justify-content-end">
           <button @click="changePic('prev')" class="btn btn-primary">
             <i class="mdi mdi-arrow-right-thick"></i>
           </button>
         </div>
       </div>
-      <div v-if="post.image2 || post.image3" class="row justify-content-between ab2 leftarr">
+    </div>
+    <div class="col-12">
+      <div v-if="post.image2 || post.image3" class="row justify-content-between ab leftarr">
         <div class="col">
           <button @click="changePic('next')" class="btn btn-primary">
             <i class="mdi mdi-arrow-left-thick"></i>
           </button>
         </div>
       </div>
+    </div>
+    <div class="col-12">
       <div class="row ">
-        <div class="col-12 d-flex justify-content-center">
+        <div class="col-12 card-img-top d-flex justify-content-center">
           <img class="pic-size" :src="post.image1" :alt="post.id" v-if="state.currentPic === 1 && post.image1">
           <img class="pic-size" :src="post.image2" :alt="post.id" v-if="state.currentPic === 2 && post.image2">
           <img class="pic-size" :src="post.image3" :alt="post.id" v-if="state.currentPic === 3 && post.image3">
         </div>
       </div>
-      <div class="row">
-        <div class="col-3 py-3">
-          <img class="rounded-circle prof-pic m-2" :src="post.creator.picture" :alt="post.creator.name" @click="loadProfile">
-        </div>
-        <div class="col-7 d-flex align-items-center">
-          <span>{{ post.body }}</span>
-        </div>
-        <div class="col-2">
-          <img class=" rounded-circle prof-pic " src="https://placebear.com/300/300" alt="">
+    </div>
+    <div class="col-12">
+      <div class="row mr-1">
+        <div class="d-flex align-items-center ">
+          <div class="rel">
+            <img class="rounded-circle prof-pic m-3" :src="post.creator.picture" :alt="post.creator.name" @click="loadProfile">
+            <div class="ab medal border border-dark rounded-circle">
+              <img
+                v-if=" state.userMedals.length > 0 && state.userMedals.filter(u => u.completed).length === 0"
+                title="Attempted this challenge"
+                class="icon-pig"
+                src="../assets/img/pig-normal.png"
+                alt="Pig face"
+              >
+              <img
+                v-if=" state.userMedals.length > 0 && state.userMedals.filter(u => u.completed).length > 0"
+                title="Won this challenge"
+                class="icon-pig"
+                src="../assets/img/pig-crown.png"
+                alt="Pig face"
+              >
+            </div>
+          </div>
+          <div>
+            <h6 class="ofwrap">
+              {{ post.creator.name }}
+            </h6>
+            <p class="ofwrap">
+              {{ post.body }}
+            </p>
+          </div>
         </div>
       </div>
     </div>
@@ -40,12 +66,24 @@
 <script>
 import { reactive } from '@vue/reactivity'
 import { router } from '../router'
+import { computed, onMounted } from '@vue/runtime-core'
+import { accountService } from '../services/AccountService'
+import { useRoute } from 'vue-router'
+import { AppState } from '../AppState'
 export default {
   props: { post: { type: Object, required: true } },
   setup(props) {
+    const route = useRoute()
+    onMounted(async() =>
+      await accountService.getUserAttempts(props.post.creatorId)
+    )
     const state = reactive({
-      currentPic: 1
+      currentPic: 1,
+      shownMedal: 0,
+      userMedals: computed(() => AppState.profileAttempts.filter(c => c.challengeId === route.params.id))
+
     })
+
     return {
       state,
       loadProfile() {
@@ -64,39 +102,56 @@ export default {
         if (state.currentPic < 1) {
           state.currentPic = 3
         }
+      },
+      async getUserAttempts() {
+        await accountService.getUserAttempts(props.post.creatorId).filter(c => c.id === route.params.id)
       }
+
     }
   }
 }
 </script>
 
 <style scoped>
+.icon-pig{
+  width: 2rem;
+
+}
+
+.rel{
+position: relative;
+}
+
 .leftarr{
-left: 30px;
+left: 5px;
 top: 100px;
 }
 .rightarr{
-right: 30px;
+right: 5px;
 top: 100px;
 }
-.ab2{
+.medal{
+top: 6px;
+left: 9px;
+background: pink;
+}
+.ab{
   position: absolute;
   z-index: 1;
 }
-.medal{
-  top: 13px;
-  right: 12px;
-}
-.rel2{
-position: relative;
-}
+
 .pic-size{
-  width: 90vw;
+  width: inherit;
   height: 18rem;
   object-fit: cover;
 }
 .prof-pic{
-  width: inherit;
+
+  max-width: 4rem;
+
+}
+.ofwrap{
+  overflow-wrap: anywhere;
 }
 
 </style>

@@ -1,10 +1,9 @@
 <template>
-  <div class=" d-flex flex-column our-bg">
-    <div class="card container ">
-      <div class="row">
-        <img class="card-img-top" :src="state.challenge.banner" alt="Profile Banner">
-      </div>
-      <div class="row justify-content-center prof-row">
+  <div class="row mx-1">
+    <div class=" col card pt-2">
+      <img class="card-img-top" :src="state.challenge.banner" alt="Profile Banner">
+
+      <div class="row justify-content-center rel">
         <img class="rounded-circle ab" :src="state.challenge.image" alt="Profile Image">
       </div>
       <div class="row sep"></div>
@@ -32,15 +31,15 @@
         </button>
       </div>
       <div class="row mb-3">
-        <div class="col d-flex align-items-center justify-content-end mx-2">
-          <img class="icon-pig" src="../assets/img/pig-normal.png" alt="" srcset="">
+        <div title="Total Attempts" class="col d-flex align-items-center justify-content-end mx-2">
+          <img class="icon-pig" src="../assets/img/pig-normal.png" alt="Pig face">
           <i class="mdi mdi-close"></i>
           <p class="m-0">
             {{ state.attempts.length }}
           </p>
         </div>
-        <div class="col d-flex align-items-center mx-2">
-          <img class="icon-pig" src="../assets/img/pig-crown.png" alt="" srcset="">
+        <div title="Total Wins" class="col d-flex align-items-center mx-2">
+          <img class="icon-pig" src="../assets/img/pig-crown.png" alt="Crown Pig Face">
           <i class="mdi mdi-close"></i>
           <p class="m-0">
             {{ state.wins.length }}
@@ -89,7 +88,7 @@
         </button>
       </div>
     </div>
-    <div v-if="state.posts.length > 0" class="container">
+    <div v-if="state.posts.length > 0" class="col-12  pt-4">
       <Post v-for="p in state.posts" :key="p.id" :post="p" />
     </div>
   </div>
@@ -164,24 +163,25 @@ export default {
 </script>
 
 <style scoped>
-.our-bg{
-  background-color: #E8E8E8;
+.vw-100{
+  width: 100vw;
 }
+
 .ab{
   position: absolute;
-  min-width: 7rem;
-  min-height: 7rem;
+  min-width: 10rem;
+  min-height: 10rem;
   height: 30vw;
   width: 30vw;
   top: -15vw;
 }
-.prof-row{
+.rel{
 position: relative;
 }
 
 .sep{
-  min-height: 44px;
-  height: 10vw;
+
+  height: 11vw;
 }
 
 .icon-pig{

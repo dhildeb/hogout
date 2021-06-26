@@ -2,7 +2,7 @@
   <div class="d-sm-block justify-content-center  d-none">
     <ChallengeDesktop />
   </div>
-  <div class="d-sm-none d-block">
+  <div class="d-sm-none container  our-bg  d-block">
     <ChallengeMobile />
   </div>
 </template>
@@ -37,6 +37,8 @@ export default {
   }
 }
 </script>
-
 <style>
+.our-bg{
+  background-color: #E8E8E8;
+}
 </style>
