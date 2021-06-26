@@ -53,6 +53,7 @@
       </div>
       <div class="row justify-content-center">
         <p><b>User Rating: </b></p>
+        <div>{{ state.aveRating }}</div>
       </div>
       <div class="row mx-2">
         <h3>
@@ -120,9 +121,10 @@ export default {
   setup() {
     const state = reactive({
       aveDifficulty: computed(() => difficultyRatingAve(AppState.activeChallenge.id)),
+      aveRating: computed(() => reviewRatingAve(AppState.activeChallenge.id)),
       challenge: computed(() => AppState.activeChallenge),
-      attempts: computed(() => AppState.attempts.filter(a => a.challengeId === state.challenge._id)),
-      wins: computed(() => AppState.attempts.filter(a => a.challengeId === state.challenge._id && a.completed)),
+      attempts: computed(() => AppState.attempts),
+      wins: computed(() => AppState.attempts.filter(a => a.completed)),
       posts: computed(() => AppState.posts),
       newAttempt: {}
     })
