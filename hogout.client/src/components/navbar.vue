@@ -1,13 +1,13 @@
 <template>
-  <div class="container-fluid">
-    <div class="row bg-dark">
-      <router-link class="col-md-11 col-10 navbar-brand d-flex" :to="{ name: 'Home' }">
-        <div>
+  <div class="container-fluid nav-fit">
+    <div class="row bg-dark justify-content-between">
+      <div class="col navbar-brand d-flex m-auto">
+        <router-link :to="{ name: 'Home' }">
           Hog Out
-        </div>
-      </router-link>
+        </router-link>
+      </div>
 
-      <span class="navbar-text">
+      <span class="navbar-text pr-3">
         <button
           class="btn btn-outline-primary text-uppercase"
           @click="login"
@@ -16,27 +16,31 @@
           Login
         </button>
 
-        <div class="dropleft" v-else>
-          <div @click="state.dropOpen = !state.dropOpen">
-            <img class="img-fluid click" title="Options" src="../assets/img/burger.png" alt="Options">
-            <div
-              class="dropdown-menu p-0 mt-5 list-group w-100"
-              :class="{ show: state.dropOpen }"
-              @click="state.dropOpen = false"
-            >
-              <router-link :to="{ name: 'Profile', params: {id: state.account.id}}">
-                <div class="list-group-item list-group-item-action hoverable bg-darker text-light p-1 pl-3">
-                  Profile
-                </div>
-              </router-link>
-              <div
-                class="list-group-item list-group-item-action hoverable bg-darker text-light p-1 pl-3"
-                @click="logout"
-              >
-                logout
+        <div class="dropdown"
+             v-else
+        >
+          <img class="img-fluid click dropdown-toggle"
+               title="Options"
+               data-toggle="dropdown"
+               src="../assets/img/burger.png"
+               alt="Options"
+          >
+          <div
+            class="dropdown-menu p-0 list-group w-100"
+          >
+            <router-link :to="{ name: 'Profile', params: {id: state.account.id}}">
+              <div class="list-group-item list-group-item-action hoverable bg-darker text-light p-1 pl-3">
+                Profile
               </div>
+            </router-link>
+            <div
+              class="list-group-item list-group-item-action hoverable bg-darker text-light p-1 pl-3"
+              @click="logout"
+            >
+              logout
             </div>
           </div>
+
         </div></span>
     </div>
   </div>
@@ -46,6 +50,7 @@
 import { AuthService } from '../services/AuthService'
 import { AppState } from '../AppState'
 import { computed, reactive } from 'vue'
+import Notification from '../utils/Notification'
 export default {
   name: 'Navbar',
   setup() {
@@ -60,7 +65,9 @@ export default {
         AuthService.loginWithPopup()
       },
       async logout() {
-        AuthService.logout({ returnTo: window.location.origin })
+        if (await Notification.confirmAction('are you sure you want to logout?')) {
+          AuthService.logout({ returnTo: window.location.origin })
+        }
       }
     }
   }
@@ -84,7 +91,7 @@ export default {
 a:hover {
   text-decoration: none;
 }
-div:hover {
+.bg-darker:hover {
   background-color: rgb(54, 54, 54);
   transition: all 0.15s linear;
 }
@@ -107,5 +114,10 @@ div:hover {
 }
 .click{
   cursor: pointer;
+}
+.nav-fit{
+  margin-bottom: -20px;
+  position: fixed;
+  z-index: 1;
 }
 </style>
