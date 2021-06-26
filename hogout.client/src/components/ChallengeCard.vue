@@ -1,11 +1,11 @@
 <template>
-  <div class="row p-0 m-0 justify-content-center d-none d-md-flex">
-    <div class="col-10 col-md-8 col-lg-6 p-0">
-      <img class="banner img-fluid" :src="challenge.banner" alt="banner">
+  <div class="row p-0 my-0 justify-content-center d-none d-md-flex">
+    <div class="col-10 col-md-8 col-lg-6 shadow p-0">
+      <img class="banner img-fluid rounded-top" :src="challenge.banner" alt="banner">
     </div>
   </div>
   <div class="row pb-2 justify-content-center">
-    <div class="col-10 col-md-8 col-lg-6 click border rounded-lg shadow d-flex bg-white p-0 py-2" @click="goThere">
+    <div class="col-10 col-md-8 col-lg-6 click border rounded-bottom shadow d-flex bg-white p-0 py-2" @click="goThere">
       <img class="img-fluid icon over-hang p-2" :src="challenge.image" alt="icon">
       <div class="d-flex flex-column w-100 px-2">
         <b class="p-1">{{ challenge.name }}</b>

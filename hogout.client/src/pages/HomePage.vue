@@ -1,9 +1,9 @@
 <template>
-  <div class="side-bar d-none d-md-block">
+  <div class="side-bar d-none d-md-block" v-if="state.account.id">
     <SideBar />
   </div>
-  <div class="container bg-light">
-    <div class="row justify-content-between bg-light py-4">
+  <div class="container bg-gray mt-5">
+    <div class="row justify-content-between py-4">
       <div class="col-6 text-center">
         <div class="dropdown">
           <button class="btn btn-outline-secondary dropdown-toggle"
@@ -61,7 +61,8 @@ export default {
       challenges: computed(() => AppState.challenges),
       temp: computed(() => AppState.tempChallenges),
       state: 'state',
-      difficulty: 'difficulty'
+      difficulty: 'difficulty',
+      account: computed(() => AppState.account)
     })
     watchEffect(async() => {
       await challengesService.getAllChallenges()
@@ -97,5 +98,8 @@ export default {
 <style scoped lang="scss">
 .side-bar{
   min-width: 30vh;
+}
+.bg-gray{
+  background-color: #E8E8E8;
 }
 </style>
