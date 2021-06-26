@@ -33,14 +33,14 @@
       </div>
       <div class="row mb-3">
         <div class="col d-flex align-items-center justify-content-end mx-2">
-          <i class="fas fa-lg fa-award blue-ribbon"></i>
+          <img class="icon-pig" src="../assets/img/pig-normal.png" alt="" srcset="">
           <i class="mdi mdi-close"></i>
           <p class="m-0">
             {{ state.attempts.length }}
           </p>
         </div>
         <div class="col d-flex align-items-center mx-2">
-          <i class="fas fa-lg fa-trophy gold"></i>
+          <img class="icon-pig" src="../assets/img/pig-crown.png" alt="" srcset="">
           <i class="mdi mdi-close"></i>
           <p class="m-0">
             {{ state.wins.length }}
@@ -51,9 +51,25 @@
         <p><b>Difficulty: </b></p>
         <div>{{ state.aveDifficulty }}</div>
       </div>
-      <div class="row justify-content-center">
+      <div class="row justify-content-center m-0">
         <p><b>User Rating: </b></p>
-        <div>{{ state.aveRating }}</div>
+      </div>
+      <div class="row justify-content-center align-items-center">
+        <div :title="state.aveRating">
+          <img class="icon-fork" src="../assets/img/fullFork.png" alt="" srcset="">
+
+          <img v-if="state.aveRating > 1.5" class="icon-fork" src="../assets/img/fullFork.png" alt="" srcset="">
+          <img v-else class="icon-fork" src="../assets/img/emptyFork.png" alt="" srcset="">
+
+          <img v-if="state.aveRating > 2.4" class="icon-fork" src="../assets/img/fullFork.png" alt="" srcset="">
+          <img v-else class="icon-fork" src="../assets/img/emptyFork.png" alt="" srcset="">
+
+          <img v-if="state.aveRating > 3.4" class="icon-fork" src="../assets/img/fullFork.png" alt="" srcset="">
+          <img v-else class="icon-fork" src="../assets/img/emptyFork.png" alt="" srcset="">
+
+          <img v-if="state.aveRating > 4.5" class="icon-fork" src="../assets/img/fullFork.png" alt="" srcset="">
+          <img v-else class="icon-fork" src="../assets/img/emptyFork.png" alt="" srcset="">
+        </div>
       </div>
       <div class="row mx-2">
         <h3>
@@ -168,4 +184,13 @@ position: relative;
   height: 10vw;
 }
 
+.icon-pig{
+  width: 3.5rem;
+  margin-bottom: 1rem;
+}
+.icon-fork{
+    width: 1.3rem;
+margin-right: 5px;
+margin-left: 5px;
+}
 </style>
