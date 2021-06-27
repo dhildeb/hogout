@@ -10,15 +10,19 @@
       <div class="d-flex flex-column w-100 px-2">
         <b class="p-1">{{ challenge.name }}</b>
         <em class="text-secondary">{{ challenge.state }}</em>
-        <span class="p-1 text-danger">
-          <span class="text-danger" title="">Difficulty: <em>{{ getDifficultyRating(challenge) }}</em></span>
-          <div class="d-flex">
+        <span class="row p-1 m-0 text-danger">
+          <span class="col-12 col-md-5 p-0 pb-2 text-danger" title="">Difficulty: <em>{{ getDifficultyRating(challenge) }}</em></span>
+          <div class="col-12 col-md-6 p-0 d-flex">
             <p>Rating: </p>
-            <span class="mdi mdi-star pl-2"></span>
-            <span v-if="getReviewRating(challenge) > 1.5" class="mdi mdi-star"></span>
-            <span v-if="getReviewRating(challenge) > 2.4" class="mdi mdi-star"></span>
-            <span v-if="getReviewRating(challenge) > 3.4" class="mdi mdi-star"></span>
-            <span v-if="getReviewRating(challenge) > 4.5" class="mdi mdi-star"></span>
+            <img src="../assets/img/fullFork.png" class="img-fluid icon-fork" alt="">
+            <img v-if="getReviewRating(challenge) > 1.5" src="../assets/img/fullFork.png" class="img-fluid icon-fork" alt="">
+            <img v-else src="../assets/img/emptyFork.png" class="img-fluid icon-fork" alt="">
+            <img v-if="getReviewRating(challenge) > 2.4" src="../assets/img/fullFork.png" class="img-fluid icon-fork" alt="">
+            <img v-else src="../assets/img/emptyFork.png" class="img-fluid icon-fork" alt="">
+            <img v-if="getReviewRating(challenge) > 3.4" src="../assets/img/fullFork.png" class="img-fluid icon-fork" alt="">
+            <img v-else src="../assets/img/emptyFork.png" class="img-fluid icon-fork" alt="">
+            <img v-if="getReviewRating(challenge) > 4.5" src="../assets/img/fullFork.png" class="img-fluid icon-fork" alt="">
+            <img v-else src="../assets/img/emptyFork.png" class="img-fluid icon-fork" alt="">
           </div>
         </span>
       </div>
@@ -69,5 +73,10 @@ export default {
 
 .click{
   cursor: pointer;
+}
+.icon-fork{
+  width: .7rem;
+  margin-right: 5px;
+  margin-left: 5px;
 }
 </style>

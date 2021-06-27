@@ -1,4 +1,5 @@
 <template>
+  <div style="height: 44px;"></div>
   <div class="container-fluid nav-fit">
     <div class="row bg-dark justify-content-between">
       <div class="col navbar-brand d-flex m-auto">

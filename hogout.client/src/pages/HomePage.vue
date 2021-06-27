@@ -2,7 +2,7 @@
   <div class="side-bar d-none d-md-block" v-if="state.account.id">
     <SideBar />
   </div>
-  <div class="container bg-gray mt-5">
+  <div class="container bg-gray">
     <div class="row justify-content-between py-4">
       <div class="col-6 text-center">
         <div class="dropdown">
