@@ -24,7 +24,7 @@
           class="
               btn
               btn-primary
-              btn-block
+
               my-2"
         >
           Find Location
@@ -83,26 +83,29 @@
         <p>{{ state.challenge.rewards }}</p>
       </div>
       <div class="row justify-content-center my-3">
-        <button @click="ITookChallenge" type="button" data-toggle="modal" data-target="#exampleModalCenter" class="btn btn-primary btn-block">
+        <button type="button" data-toggle="modal" data-target="#challenge" class="btn btn-primary">
           I TOOK ON THIS CHALLENGE
         </button>
       </div>
     </div>
-    <div v-if="state.posts.length > 0" class="col-12  pt-4">
+    <div class="col-12">
+      <CreatePost />
+    </div>
+    <div v-if="state.posts.length > 0" class="col-12">
       <Post v-for="p in state.posts" :key="p.id" :post="p" />
     </div>
   </div>
 
-  <!-- Modal -->
-  <div class="modal fade"
-       id="exampleModalCenter"
+  <!-- Modal Taking On Challenge -->
+  <div class="modal fade bg-transparent"
+       id="challenge"
        tabindex="-1"
        role="dialog"
-       aria-labelledby="exampleModalCenterTitle"
+       aria-labelledby="challengeTitle"
        aria-hidden="true"
   >
     <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
+      <div class="modal-content ">
         <div class="modal-header d-flex justify-content-center">
           <h5 class="modal-title " id="exampleModalLongTitle">
             Way to HOG OUT!
