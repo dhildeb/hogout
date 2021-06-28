@@ -1,6 +1,6 @@
 <template>
   <div class="row p-0 my-0 justify-content-center d-none d-md-flex">
-    <div class="col-10 col-md-8 col-lg-6 shadow p-0">
+    <div class="col-10 col-md-8 col-lg-6 shadow p-0 click" @click="goThere">
       <img class="banner img-fluid rounded-top" :src="challenge.banner" alt="banner">
     </div>
   </div>

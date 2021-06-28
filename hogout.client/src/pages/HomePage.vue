@@ -13,10 +13,14 @@
                   aria-haspopup="true"
                   aria-expanded="false"
           >
-            {{ state.state }}
+            Rating
           </button>
-          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" @click="setState('idaho')">
-            <a class="dropdown-item">Idaho</a>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" @click="filterForks(1)">1 fork</a>
+            <a class="dropdown-item" @click="filterForks(2)">2 forks</a>
+            <a class="dropdown-item" @click="filterForks(3)">3 forks</a>
+            <a class="dropdown-item" @click="filterForks(4)">fork forks</a>
+            <a class="dropdown-item" @click="filterForks(5)">5 forks</a>
           </div>
         </div>
       </div>
@@ -52,7 +56,7 @@ import { computed, watchEffect } from '@vue/runtime-core'
 import { AppState } from '../AppState'
 import { challengesService } from '../services/ChallengesService'
 import { ratingsService } from '../services/RatingsService'
-import { difficultyRatingAve } from '../utils/RatingAve'
+import { difficultyRatingAve, reviewRatingAve } from '../utils/RatingAve'
 import { accountService } from '../services/AccountService'
 export default {
   name: 'Home',
@@ -89,6 +93,14 @@ export default {
       filterReset() {
         state.difficulty = 'All'
         AppState.tempChallenges = AppState.challenges
+      },
+      filterForks(num) {
+        AppState.tempChallenges = []
+        state.challenges.forEach(c => {
+          if (Math.round(reviewRatingAve(c.id)) === num) {
+            AppState.tempChallenges.push(c)
+          }
+        })
       }
     }
   }
