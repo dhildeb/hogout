@@ -12,7 +12,7 @@
     </div>
   </div>
   <!-- Modal Posting Review -->
-  <div class="modal fade bg-transparent"
+  <div class="modal fade bg-transparent min-100"
        id="review"
        tabindex="-1"
        role="dialog"
@@ -26,28 +26,80 @@
             Review This Challenge!
           </h5>
         </div>
-        <div class="modal-body d-flex justify-content-center">
-          <h4> star star star star star</h4>
-        </div>
-        <div class="modal-footer d-flex flex-column">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal" @click="createAttempt(true)">
-            I Won the Challenge!
-          </button>
-          <button type="button" class="btn btn-primary" data-dismiss="modal" @click="createAttempt(false)">
-            I Tried and Failed!
-          </button>
-        </div>
+        <form @submit.prevent="postComment">
+          <div>
+            <RatingComponent :current-rating="state.newPost.rating" @rated="saveRating" />
+          </div>
+
+          <label for="Rating">Rating</label>
+
+          <div>
+            <textarea required class="materialize-textarea" name="" id="" rows="10"></textarea>
+            <label for="Image">Comment</label>
+          </div>
+
+          <div>
+            <input v-model="state.newPost.img1" type="text" title="Image Url">
+            <label for="Image1">Optional Image Url</label>
+          </div>
+          <div>
+            <input v-model="state.newPost.img2" type="text" title="Image Url">
+            <label for="Image2">Optional Image Url</label>
+          </div>
+          <div>
+            <input v-model="state.newPost.img3" type="text" title="Image Url">
+            <label for="Image3">Optional Image Url</label>
+          </div>
+
+          <div class="modal-footer bg-transparent">
+            <button type="submit">
+              Submit
+            </button>
+          </div>
+        </form>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import { reactive } from '@vue/reactivity'
+import { postsService } from '../services/PostsService'
+import { useRoute } from 'vue-router'
 export default {
+  setup() {
+    const route = useRoute()
+    const state = reactive({
+      set: false,
+      newPost: {
+        rating: 1,
+        comment: '',
+        img1: null,
+        img2: null,
+        img3: null
+      }
 
+    })
+
+    return {
+      state,
+      async postComment() {
+        await postsService.createPost(route.params.id, state.newPost)
+        state.newPost = {}
+      },
+
+      saveRating(ratingNum) {
+        state.newPost.rating = ratingNum
+      }
+    }
+  }
 }
+
 </script>
 
 <style>
+.min-100{
+  min-height: 100vh;
+}
 
 </style>

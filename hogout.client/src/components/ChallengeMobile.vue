@@ -97,7 +97,7 @@
   </div>
 
   <!-- Modal Taking On Challenge -->
-  <div class="modal fade bg-transparent"
+  <div class="modal fade bg-transparent min-100"
        id="challenge"
        tabindex="-1"
        role="dialog"
@@ -195,5 +195,9 @@ position: relative;
     width: 1.3rem;
 margin-right: 5px;
 margin-left: 5px;
+}
+
+.min-100{
+  min-height: 100vh;
 }
 </style>
