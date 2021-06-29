@@ -4,9 +4,8 @@ export class Post {
     this.challengeId = data.challengeId
     this.body = data.body
     this.creator = data.creator
-    this.image1 = data.image1 || null
-    this.image2 = data.image2 || null
-    this.image3 = data.image3 || null
+    this.images = data.images || null
+
     this.id = data._id
   }
 }

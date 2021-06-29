@@ -5,11 +5,13 @@ import { api } from './AxiosService'
 class PostsService {
   async getPostsByChallengeId(id) {
     const res = await api.get('api/challenges/' + id + '/posts')
+    console.log('posts response', res.data)
     const postsArr = res.data.map(p => new Post(p))
     AppState.posts = postsArr.reverse()
   }
 
   async createPost(challengeId, newPost) {
+    console.log('new post obj', newPost)
     const res = await api.post('api/challenges/' + challengeId + '/posts', newPost)
     AppState.posts = [new Post(res.data), ...AppState.posts]
   }
