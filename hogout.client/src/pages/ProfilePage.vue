@@ -1,11 +1,22 @@
 <template>
-  <div class="container-fluid color">
+  <div class="d-none d-sm-block container-fluid">
+    <div class="row">
+      <div class="col-3 pl-0">
+        <SideBar />
+      </div>
+      <div class="col-8 justify-content-center">
+        <DesktopProfile :profile="state.profile" />
+      </div>
+    </div>
+  </div>
+
+  <div class="container-fluid color d-sm-none d-block">
     <MobileProfile :profile="state.profile" />
   </div>
 </template>
 
 <script>
-import { computed, watchEffect, reactive, onMounted } from '@vue/runtime-core'
+import { computed, watchEffect, reactive } from '@vue/runtime-core'
 import { accountService } from '../services/AccountService'
 import { useRoute } from 'vue-router'
 import { AppState } from '../AppState'
@@ -36,5 +47,8 @@ export default {
 <style scoped>
 .color{
   background-color: #e8e8e8;
+}
+.sidebar-fit{
+  left:0
 }
 </style>

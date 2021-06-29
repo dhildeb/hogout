@@ -10,7 +10,7 @@
         <img class="rounded-circle db" :src="state.challenge.image" alt="Profile Image">
       </div>
       <div class="col-8">
-        <div class="row title-challenge">
+        <div class="row title-challenge justify-content-center">
           <span>
             {{ state.challenge.restaurant }}, {{ state.challenge.state }}
           </span>
@@ -239,7 +239,7 @@ background-color: rgb(250, 245, 240);
   padding-right: 2rem;
 }
 .icon-pig-desktop{
-  height: 6rem;
+  height: 5rem;
   margin-bottom: 2rem;
   margin-left: 1rem;
   margin-right: 1rem;
@@ -248,7 +248,7 @@ background-color: rgb(250, 245, 240);
   font-size: 1.4rem;
 }
 .score-text{
-  font-size: 3rem;
+  font-size: 2rem;
 }
 
 .piggies{
