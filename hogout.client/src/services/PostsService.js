@@ -11,7 +11,7 @@ class PostsService {
 
   async createPost(challengeId, newPost) {
     const res = await api.post('api/challenges/' + challengeId + '/posts', newPost)
-    AppState.posts.push(new Post(res.data))
+    AppState.posts = [new Post(res.data), ...AppState.posts]
   }
 
   async editPost(post) {
