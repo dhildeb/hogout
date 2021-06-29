@@ -5,6 +5,6 @@ export const DifficultyRatingsSchema = new Schema(
   {
     creatorId: { type: mongoose.Types.ObjectId, ref: 'Account', required: true },
     challengeId: { type: mongoose.Types.ObjectId, ref: 'Challenges', required: true },
-    rating: { type: Number, min: 1, max: 5 }
+    rating: { type: Number, min: 1, max: 5, required: true }
   }
 )

@@ -1,5 +1,5 @@
 <template>
-  <div class="d-flex container-fluid justify-content-center card">
+  <div class="d-flex container  card main-display-challenge">
     <div class=" row justify-content-center">
       <div class="col-12">
         <img class="card-img-top challenge-banner" :src="state.challenge.banner" alt="Profile Banner">
@@ -51,19 +51,19 @@
           </div>
         </div>
       </div>
-      <div class="col-4 ">
-        <img class="rounded-circle" src="https://placebear.com/250/250" alt="">
+      <div title="Total Attempts" class="col-4 d-flex align-items-center justify-content-end">
+        <img class="icon-pig-desktop" src="../assets/img/pig-normal.png" alt="Pig face">
         <i class="mdi mdi-close"></i>
-        <span class="m-0">
+        <p class="m-0">
           {{ state.attempts.length }}
-        </span>
+        </p>
       </div>
-      <div class="col-4 ">
-        <img class="rounded-circle" src="https://placebear.com/250/250" alt="">
+      <div title="Total Wins" class="col-4 d-flex align-items-center">
+        <img class="icon-pig-desktop" src="../assets/img/pig-crown.png" alt="Crown Pig Face">
         <i class="mdi mdi-close"></i>
-        <span class="m-0">
+        <p class="m-0">
           {{ state.wins.length }}
-        </span>
+        </p>
       </div>
     </div>
   </div>
@@ -93,22 +93,30 @@
         </p>
       </div>
       <div class="col-12 mx-2">
-        <h3 class="text-center">
+        <h3 class="text-center ">
           Rules
         </h3>
-        <p>{{ state.challenge.rules }}</p>
+        <p class="challenge-desc">
+          {{ state.challenge.rules }}
+        </p>
       </div>
       <div class="col-12 mx-2">
-        <h3 class="text-center">
+        <h3 class="text-center ">
           Rewards
         </h3>
-        <p>{{ state.challenge.rewards }}</p>
+        <p class="challenge-desc">
+          {{ state.challenge.rewards }}
+        </p>
       </div>
     </div>
   </div>
-  <div v-if="state.posts.length > 0" class="container">
-    {{ attempts }}
-    <Post v-for="p in state.posts" :key="p.id" :post="p" />
+
+  <div class="container">
+    <CreatePost />
+
+    <div class="row justify-content-center" v-if="state.posts.length > 0">
+      <Post v-for="p in state.posts" :key="p.id" :post="p" />
+    </div>
   </div>
 
   <!-- Modal -->
@@ -154,9 +162,8 @@ export default {
     const state = reactive({
       challenge: computed(() => AppState.activeChallenge),
       attempts: computed(() => AppState.attempts),
-      wins: computed(() => AppState.attempts.filter(a => a.challengeId === state.challenge._id && a.completed)),
+      wins: computed(() => AppState.attempts.filter(a => a.completed)),
       aveRating: computed(() => reviewRatingAve(AppState.activeChallenge.id)),
-
       aveDifficulty: computed(() => AppState.difficultyRatings),
       posts: computed(() => AppState.posts),
       newAttempt: {}
@@ -217,6 +224,7 @@ position: relative;
 }
 .title-challenge{
   font-size: 90px;
+  margin-left: 5rem;
 }
 .difficulty-title{
   font-size: 30px;
@@ -226,7 +234,15 @@ position: relative;
 }
 .icon-fork-desktop{
   height: 13rem;
-  padding-right: .5rem;
+  padding-right: 2rem;
+}
+.icon-pig-desktop{
+  height: 22rem;
+  margin: 2rem;
+  padding-bottom: 4rem;
+}
+.challenge-desc{
+  font-size: 1.4rem;
 }
 
 </style>

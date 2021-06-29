@@ -28,26 +28,34 @@
         </div>
         <form @submit.prevent="postComment">
           <div>
-            <RatingComponent :current-rating="state.newPost.rating" @rated="saveRating" />
+            <div>
+              <RatingComponent :current-rating="state.newPost.rating" @rated="saveRating" />
+            </div>
           </div>
 
           <label for="Rating">Rating</label>
 
           <div>
-            <textarea required class="materialize-textarea" name="" id="" rows="10"></textarea>
+            <textarea v-model="state.newPost.body"
+                      required
+                      class="materialize-textarea"
+                      name=""
+                      id=""
+                      rows="10"
+            ></textarea>
             <label for="Image">Comment</label>
           </div>
 
           <div>
-            <input v-model="state.newPost.img1" type="text" title="Image Url">
+            <input v-model="state.newPost.image1" type="text" title="Image Url">
             <label for="Image1">Optional Image Url</label>
           </div>
           <div>
-            <input v-model="state.newPost.img2" type="text" title="Image Url">
+            <input v-model="state.newPost.image2" type="text" title="Image Url">
             <label for="Image2">Optional Image Url</label>
           </div>
           <div>
-            <input v-model="state.newPost.img3" type="text" title="Image Url">
+            <input v-model="state.newPost.image3" type="text" title="Image Url">
             <label for="Image3">Optional Image Url</label>
           </div>
 
@@ -66,6 +74,8 @@
 import { reactive } from '@vue/reactivity'
 import { postsService } from '../services/PostsService'
 import { useRoute } from 'vue-router'
+import $ from 'jquery'
+import Notification from '../utils/Notification'
 export default {
   setup() {
     const route = useRoute()
@@ -73,10 +83,10 @@ export default {
       set: false,
       newPost: {
         rating: 1,
-        comment: '',
-        img1: null,
-        img2: null,
-        img3: null
+        body: '',
+        image1: null,
+        image2: null,
+        image3: null
       }
 
     })
@@ -84,8 +94,13 @@ export default {
     return {
       state,
       async postComment() {
-        await postsService.createPost(route.params.id, state.newPost)
-        state.newPost = {}
+        try {
+          await postsService.createPost(route.params.id, state.newPost)
+          $('#review').modal('hide')
+          state.newPost = {}
+        } catch (error) {
+          Notification.toast(error, 'error')
+        }
       },
 
       saveRating(ratingNum) {
