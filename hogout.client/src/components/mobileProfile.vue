@@ -1,5 +1,5 @@
 <template>
-  <div class="fixed-action-btn">
+  <div class="fixed-action-btn" v-if="profile.id === state.account.id">
     <a class="btn-floating btn-large red">
       <i class="mdi mdi-pencil"></i>
     </a>
@@ -116,6 +116,7 @@
     </div>
   </div>
   <div class="row my-3 awards end">
+    <!-- FIXME wins and attemps dont persist after reload -->
     <div class="col-12 d-flex align-items-center justify-content-center">
       <img class="icon-pig" src="../assets/img/pig-crown.png" alt="">
       <p class="pt-3 pl-1">
@@ -149,14 +150,18 @@ import M from 'materialize-css'
 import { logger } from '../utils/Logger'
 
 export default {
-  // props: { user: { type: Object, required: true } },
-  setup() {
+  props: {
+    profile: { type: Object, required: true }
+  },
+  setup(props) {
     const route = useRoute()
     const state = reactive({
+      // FIXME attempts and wins dont function
       attempts: computed(() => AppState.profileAttempts.filter(a => a.creatorId === route.params.id)),
       wins: computed(() => AppState.profileAttempts.filter(a => a.completed === true && a.creatorId === route.params.id)),
       challenges: computed(() => AppState.profileChallenges),
-      profile: computed(() => AppState.account),
+      account: computed(() => AppState.account),
+      profile: computed(() => props.profile),
       nameForm: false,
       bioForm: false,
       locationForm: false,
@@ -167,7 +172,6 @@ export default {
     })
     return {
       state,
-      attempts: computed(() => AppState.activeChallenge.filter(a => a.creatorId === route.params.id)),
       findChallenges() {
         const attempts = AppState.attempts.filter(a => a.creatorId === route.params.id)
         logger.log(attempts)

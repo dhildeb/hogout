@@ -41,7 +41,7 @@ export function reviewRatingAve(challengeId) {
     }
   })
   if (totalVotes === 0) {
-    return 3
+    return 'not rated'
   }
   return totalRatings / totalVotes
 }

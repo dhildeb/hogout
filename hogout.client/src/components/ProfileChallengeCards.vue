@@ -5,9 +5,9 @@
     </div>
   </div>
   <div class="row pb-2 justify-content-center">
-    <div class="col-2 d-flex flex-column border rounded-bottom shadow d-flex bg-white p-0 py-2">
-      <span>wins</span>
-      <span>attempts</span>
+    <div class="col-10 d-flex flex-column border rounded-bottom shadow d-flex bg-white">
+      <span>wins: {{ state.wins }}</span>
+      <span>attempts: {{ state.attempts }}</span>
     </div>
     <div class="col-10 col-md-8 col-lg-6 click border rounded-bottom shadow d-flex bg-white p-0 py-2" @click="goThere">
       <img class="img-fluid icon over-hang p-2" :src="challenge.challenge.image" alt="icon">
@@ -35,32 +35,35 @@
 </template>
 
 <script>
-import { computed, reactive } from '@vue/runtime-core'
-import { useRoute, useRouter } from 'vue-router'
+import { computed, reactive, watchEffect } from '@vue/runtime-core'
+import { useRouter } from 'vue-router'
 import { AppState } from '../AppState'
 import { difficultyRatingAve, reviewRatingAve } from '../utils/RatingAve'
+import { ratingsService } from '../services/RatingsService'
 export default {
   props: {
     challenge: { type: Object, required: true }
   },
-  setup() {
-    const route = useRoute()
+  setup(props) {
     const router = useRouter()
     const state = reactive({
-      attempts: computed(() => AppState.profileAttempts.filter(a => a.creatorId === route.params.id)),
-      defeats: computed(() => AppState.profileAttempts.filter(a => a.completed === true)),
       challenge: computed(() => AppState.activeChallenge)
+    })
+    watchEffect(async() => {
+      // FIXME second search overrides first search
+      await ratingsService.getDifficultyRatingsByChallengeId(props.challenge.challenge._id)
+      await ratingsService.getReviewRatingsByChallengeId(props.challenge.challenge._id)
     })
     return {
       state,
       getReviewRating(data) {
-        return reviewRatingAve(data.id)
+        return reviewRatingAve(data._id)
       },
       getDifficultyRating(data) {
-        return difficultyRatingAve(data.id)
+        return difficultyRatingAve(data._id)
       },
       goThere() {
-        router.push({ name: 'Challenge', params: { id: state.challengeId } })
+        router.push({ name: 'Challenge', params: { id: props.challenge.challenge._id } })
       }
     }
   }
