@@ -1,6 +1,7 @@
 <template>
   <Navbar />
   <main>
+    <CreatePost />
     <router-view />
   </main>
 </template>
