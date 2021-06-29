@@ -1,5 +1,5 @@
 <template>
-  <div class="d-flex flex-column align-items-center text-light bg-light-blue side-fit h-100 p-5">
+  <div class="d-flex flex-column align-items-center text-light bg-blue side-fit h-100 p-5">
     <router-link :to="{ name: 'Profile', params: {id: state.account.id}}">
       <img class="rounded-circle profile-icon mb-3" :src="state.account.picture" alt="">
     </router-link>
