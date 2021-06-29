@@ -1,7 +1,7 @@
 <template>
   <div class="row pb-2 justify-content-center">
-    <div class="col-10 click border rounded-bottom shadow d-flex bg-white p-0 py-2 zoom" @click="goThere">
-      <img class="banner img-fluid rounded-top" :src="challenge.challenge.banner" alt="banner">
+    <div class="col-xl-6 col-md-8 col-sm-6 col-10 click border rounded-bottom shadow d-flex bg-white p-0 py-2 zoom" @click="goThere">
+      <img class="banner img-fluid rounded-top d-md-block d-none" :src="challenge.challenge.banner" alt="banner">
       <img class="img-fluid icon over-hang p-2" :src="challenge.challenge.image" alt="icon">
       <div class="d-flex flex-column w-100 px-2">
         <b class="p-1">{{ challenge.challenge.name }}</b>
