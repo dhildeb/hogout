@@ -21,9 +21,9 @@
     <div class="col-12">
       <div class="row ">
         <div class="col-12 card-img-top d-flex justify-content-center">
-          <img class="pic-size" :src="post.image1" :alt="post.id" v-if="state.currentPic === 1 && post.image1">
-          <img class="pic-size" :src="post.image2" :alt="post.id" v-if="state.currentPic === 2 && post.image2">
-          <img class="pic-size" :src="post.image3" :alt="post.id" v-if="state.currentPic === 3 && post.image3">
+          <img class="pic-size" :src="post.image1" :alt="post.id" v-if="state.currentPic === 1 && post.image1" @error="setPlaceholder">
+          <img class="pic-size" :src="post.image2" :alt="post.id" v-if="state.currentPic === 2 && post.image2" @error="setPlaceholder">
+          <img class="pic-size" :src="post.image3" :alt="post.id" v-if="state.currentPic === 3 && post.image3" @error="setPlaceholder">
         </div>
       </div>
     </div>
@@ -105,6 +105,9 @@ export default {
       },
       async getUserAttempts() {
         await accountService.getUserAttempts(props.post.creatorId).filter(c => c.id === route.params.id)
+      },
+      setPlaceholder(event) {
+        event.target.src = 'https://lh3.googleusercontent.com/proxy/EMaudhfsgQ1y8QnVlrguR9e0TD86dUl6eB6XlO5_jKqs8-n9Zb4NrneELVxIdSfl5gaj3Jrl1R6u3i4CzlGN2DI'
       }
 
     }
