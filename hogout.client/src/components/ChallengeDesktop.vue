@@ -51,19 +51,23 @@
           </div>
         </div>
       </div>
-      <div title="Total Attempts" class="col-4 d-flex align-items-center justify-content-end">
+      <div title="Total Attempts" class="col-4 d-flex align-items-center flex-wrap justify-content-center">
         <img class="icon-pig-desktop" src="../assets/img/pig-normal.png" alt="Pig face">
-        <i class="mdi mdi-close"></i>
-        <p class="m-0 score-text">
-          {{ state.attempts.length }}
-        </p>
+        <div class="d-flex align-items-center">
+          <i class="mdi mdi-close"></i>
+          <span class="m-0 score-text  text-wrap">
+            {{ state.attempts.length }}
+          </span>
+        </div>
       </div>
-      <div title="Total Wins" class="col-4 d-flex align-items-center">
+      <div title="Total Wins" class="col-4 d-flex align-items-center flex-wrap justify-content-center">
         <img class="icon-pig-desktop" src="../assets/img/pig-crown.png" alt="Crown Pig Face">
-        <i class="mdi mdi-close"></i>
-        <p class="m-0 score-text">
-          {{ state.wins.length }}
-        </p>
+        <div class="d-flex align-items-center">
+          <i class="mdi mdi-close"></i>
+          <span class="m-0 score-text  center">
+            {{ state.wins.length }}
+          </span>
+        </div>
       </div>
     </div>
   </div>
@@ -219,7 +223,7 @@ position: relative;
   height: 10vw;
 }
 .challenge-banner{
-  max-height: 25vw;
+  max-height: 17vw;
 }
 .card{
 background-color: rgb(250, 245, 240);
