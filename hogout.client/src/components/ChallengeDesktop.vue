@@ -1,5 +1,5 @@
 <template>
-  <div class="d-flex container-fluid justify-content-center card">
+  <div class="d-flex container  card main-display-challenge">
     <div class=" row justify-content-center">
       <div class="col-12">
         <img class="card-img-top challenge-banner" :src="state.challenge.banner" alt="Profile Banner">
