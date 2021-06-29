@@ -1,18 +1,18 @@
 <template>
   <div class="row card pt-3">
     <div class="col-12">
-      <div v-if="post.image2 || post.image3" class="row justify-content-between ab rightarr">
+      <div v-if="state.images.length > 1" class="row justify-content-between ab rightarr">
         <div class="col d-flex justify-content-end">
-          <button @click="changePic('prev')" class="btn btn-primary">
+          <button @click="changePic('next')" class="btn btn-primary">
             <i class="mdi mdi-arrow-right-thick"></i>
           </button>
         </div>
       </div>
     </div>
     <div class="col-12">
-      <div v-if="post.image2 || post.image3" class="row justify-content-between ab leftarr">
+      <div v-if="state.images.length > 1" class="row justify-content-between ab leftarr">
         <div class="col">
-          <button @click="changePic('next')" class="btn btn-primary">
+          <button @click="changePic('prev')" class="btn btn-primary">
             <i class="mdi mdi-arrow-left-thick"></i>
           </button>
         </div>
@@ -21,9 +21,7 @@
     <div class="col-12">
       <div class="row ">
         <div class="col-12 card-img-top d-flex justify-content-center">
-          <img class="pic-size" :src="post.image1" :alt="post.id" v-if="state.currentPic === 1 && post.image1" @error="setPlaceholder">
-          <img class="pic-size" :src="post.image2" :alt="post.id" v-if="state.currentPic === 2 && post.image2" @error="setPlaceholder">
-          <img class="pic-size" :src="post.image3" :alt="post.id" v-if="state.currentPic === 3 && post.image3" @error="setPlaceholder">
+          <img class="pic-size" :src="currentPicture()" v-if="state.images.length > 0">
         </div>
       </div>
     </div>
@@ -31,7 +29,7 @@
       <div class="row mr-1">
         <div class="d-flex align-items-center ">
           <div class="rel">
-            <img class="rounded-circle prof-pic m-3" :src="post.creator.picture" :alt="post.creator.name" @click="loadProfile">
+            <img class="rounded-circle prof-pic m-3 pointer" :src="post.creator.picture" :alt="post.creator.name" @click="loadProfile">
             <div class="ab medal border border-dark rounded-circle">
               <img
                 v-if=" state.userMedals.length > 0 && state.userMedals.filter(u => u.completed).length === 0"
@@ -78,12 +76,12 @@ export default {
       await accountService.getUserAttempts(props.post.creatorId)
     )
     const state = reactive({
-      currentPic: 1,
+      images: props.post.images,
+      currentPicIndex: 0,
       shownMedal: 0,
       userMedals: computed(() => AppState.profileAttempts.filter(c => c.challengeId === route.params.id))
 
     })
-
     return {
       state,
       loadProfile() {
@@ -91,17 +89,30 @@ export default {
       },
       changePic(direction) {
         if (direction === 'prev') {
-          state.currentPic--
+          state.currentPicIndex--
         }
         if (direction === 'next') {
-          state.currentPic++
+          // if (state.images[state.currentPicIndex] === '' || null) {
+          //   state.currentPicIndex++
+          // }
+          state.currentPicIndex++
+          // state.currentPicIndex %= props.post.images.length
         }
-        if (state.currentPic > 3) {
-          state.currentPic = 1
+        if (state.currentPicIndex > props.post.images.length - 1) {
+          state.currentPicIndex = 0
         }
-        if (state.currentPic < 1) {
-          state.currentPic = 3
+        if (state.currentPicIndex < 0) {
+          state.currentPicIndex = props.post.images.length - 1
         }
+        if (!state.images[state.currentPicIndex]) {
+          console.log('[broken link!]')
+          this.changePic(direction)
+        }
+      },
+      currentPicture() {
+        const selectedPicture = state.images[state.currentPicIndex]
+        // console.log('selected picture', selectedPicture)
+        return selectedPicture
       },
       async getUserAttempts() {
         await accountService.getUserAttempts(props.post.creatorId).filter(c => c.id === route.params.id)
@@ -155,6 +166,9 @@ background: pink;
 }
 .ofwrap{
   overflow-wrap: anywhere;
+}
+.pointer{
+  cursor: pointer;
 }
 
 </style>

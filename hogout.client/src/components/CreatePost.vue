@@ -14,7 +14,7 @@
         </div>
         <form @submit.prevent="postComment">
           <div>
-            <div>
+            <div class="my-3 forks">
               <RatingComponent :current-rating="state.newPost.rating" @rated="saveRating" />
             </div>
           </div>
@@ -33,20 +33,20 @@
           </div>
 
           <div>
-            <input v-model="state.newPost.image1" type="text" title="Image Url">
+            <input v-model="state.newPost.images[0]" type="text" title="Image Url">
             <label for="Image1">Optional Image Url</label>
           </div>
           <div>
-            <input v-model="state.newPost.image2" type="text" title="Image Url">
+            <input v-model="state.newPost.images[1]" type="text" title="Image Url">
             <label for="Image2">Optional Image Url</label>
           </div>
           <div>
-            <input v-model="state.newPost.image3" type="text" title="Image Url">
+            <input v-model="state.newPost.images[2]" type="text" title="Image Url">
             <label for="Image3">Optional Image Url</label>
           </div>
 
           <div class="modal-footer bg-transparent">
-            <button type="submit">
+            <button class="btn btn-primary" type="submit">
               Submit
             </button>
           </div>
@@ -62,6 +62,7 @@ import { postsService } from '../services/PostsService'
 import { useRoute } from 'vue-router'
 import $ from 'jquery'
 import Notification from '../utils/Notification'
+import { ratingsService } from '../services/RatingsService'
 export default {
   setup() {
     const route = useRoute()
@@ -70,9 +71,7 @@ export default {
       newPost: {
         rating: 1,
         body: '',
-        image1: null,
-        image2: null,
-        image3: null
+        images: []
       }
 
     })
@@ -82,6 +81,7 @@ export default {
       async postComment() {
         try {
           await postsService.createPost(route.params.id, state.newPost)
+          await ratingsService.handleReviewRating(route.params.id, state.newPost.rating)
           $('#review').modal('hide')
           $('.modal-backdrop').hide()
           state.newPost = {}
@@ -90,8 +90,8 @@ export default {
         }
       },
 
-      saveRating(ratingNum) {
-        state.newPost.rating = ratingNum
+      saveRating(fork) {
+        state.newPost.rating = fork
       }
     }
   }
@@ -104,4 +104,7 @@ export default {
   min-height: 100vh;
 }
 
+.forks{
+  overflow: auto;
+}
 </style>
