@@ -40,19 +40,23 @@ import { useRouter } from 'vue-router'
 import { AppState } from '../AppState'
 import { difficultyRatingAve, reviewRatingAve } from '../utils/RatingAve'
 import { ratingsService } from '../services/RatingsService'
+import { attemptsService } from '../services/AttemptsService'
 export default {
   props: {
     challenge: { type: Object, required: true }
   },
   setup(props) {
+    // FIXME attempts and wins dont function
     const router = useRouter()
     const state = reactive({
-      challenge: computed(() => AppState.activeChallenge)
+      challenge: computed(() => AppState.activeChallenge),
+      attempts: computed(() => AppState.attempts.length)
     })
     watchEffect(async() => {
       // FIXME second search overrides first search
       await ratingsService.getDifficultyRatingsByChallengeId(props.challenge.challenge._id)
       await ratingsService.getReviewRatingsByChallengeId(props.challenge.challenge._id)
+      await attemptsService.getAttemptsByChallengeId(props.challenge.challenge._id)
     })
     return {
       state,
@@ -70,6 +74,11 @@ export default {
 }
 </script>
 
-<style>
-
+<style scoped>
+.icon-fork{
+  width: .5rem;
+  height: 2.25rem;
+  margin-right: 5px;
+  margin-left: 5px;
+}
 </style>

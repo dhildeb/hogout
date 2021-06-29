@@ -69,6 +69,7 @@ export default {
 .banner{
   height: 160px;
   width: fit-content;
+  object-fit: cover;
 }
 
 .click{

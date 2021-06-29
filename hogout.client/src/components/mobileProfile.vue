@@ -155,7 +155,6 @@ export default {
   setup(props) {
     const route = useRoute()
     const state = reactive({
-      // FIXME attempts and wins dont function
       attempts: computed(() => AppState.profileAttempts.filter(a => a.creatorId === route.params.id)),
       wins: computed(() => AppState.profileAttempts.filter(a => a.completed === true && a.creatorId === route.params.id)),
       challenges: computed(() => AppState.profileChallenges),
