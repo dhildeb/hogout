@@ -5,6 +5,11 @@
 
 :root {
   --grey: #f6f6f6;
+  --dark-pink: #F48A85;
+  --pink: #FBA374;
+  --dark-green: #247B27;
+  --green: #369747;
+  --light-green: #CCA049;
 }
 
 #app {
@@ -20,4 +25,36 @@ main {
   flex-grow: 1;
   display: flex;
   align-items: stretch;
+}
+
+.text-dark-pink{
+  color: var(--dark-pink);
+}
+.text-pink{
+  color: var(--pink);
+}
+.text-dark-green{
+  color: var(--dark-green);
+}
+.text-green{
+  color: var(--green);
+}
+.text-light-green{
+  color: var(--light-green);
+}
+
+.bg-dark-pink{
+  background-color: var(--dark-pink);
+}
+.bg-pink{
+  background-color: var(--pink);
+}
+.bg-dark-green{
+  background-color: var(--dark-green);
+}
+.bg-green{
+  background-color: var(--green);
+}
+.bg-light-green{
+  background-color: var(--light-green);
 }

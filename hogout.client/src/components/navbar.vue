@@ -1,9 +1,9 @@
 <template>
   <div style="height: 44px;"></div>
   <div class="container-fluid nav-fit">
-    <div class="row bg-dark justify-content-between">
+    <div class="row bg-dark-blue justify-content-between">
       <div class="col navbar-brand d-flex m-auto">
-        <router-link :to="{ name: 'Home' }">
+        <router-link class="text-dark-pink" :to="{ name: 'Home' }">
           Hog Out
         </router-link>
       </div>
@@ -120,5 +120,8 @@ a:hover {
   margin-bottom: -20px;
   position: fixed;
   z-index: 5;
+}
+a:hover{
+  color: var(--grey)
 }
 </style>

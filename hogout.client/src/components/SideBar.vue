@@ -1,5 +1,5 @@
 <template>
-  <div class="d-flex flex-column align-items-center text-light bg-dark side-fit h-100 p-5">
+  <div class="d-flex flex-column align-items-center text-light bg-green side-fit h-100 p-5">
     <router-link :to="{ name: 'Profile', params: {id: state.account.id}}">
       <img class="rounded-circle profile-icon mb-3" :src="state.account.picture" alt="">
     </router-link>
@@ -11,7 +11,7 @@
     <span>
       <img title="Total Attempts" class="icon-pig text-light" src="../assets/img/pig-normal.png" alt="Attempts: " srcset=""> X {{ state.attempts.length }}</span>
   </div>
-  <button class="btn btn-outline-danger logout" @click="logout">
+  <button class="btn btn-danger logout" @click="logout">
     logout
   </button>
 </template>
