@@ -9,17 +9,7 @@ class PostsService {
 
   async createPost(newPost) {
     const post = await dbContext.Posts.create(newPost)
-    if (!post.image1 && post.image2 && post.image3) {
-      post.image1 = post.image2
-      post.image2 = post.image3
-      post.image3 = null
-    } else if (!post.image1 && !post.image2 && post.image3) {
-      post.image1 = post.image3
-      post.image3 = null
-    } else if (post.image1 && !post.image2 && post.image3) {
-      post.image2 = post.image3
-      post.image3 = null
-    }
+
     await post.populate('creator', 'name picture').execPopulate()
     return post
   }
