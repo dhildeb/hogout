@@ -4,36 +4,33 @@
       <div class="col-12">
         <img class="card-img-top challenge-banner" :src="state.challenge.banner" alt="Profile Banner">
       </div>
-      <div class="col-12 justify-content-center mb-5 pb-5">
+    </div>
+    <div class="row justify-content-center text-center pt-4">
+      <div class="col-4 justify-content-center mb-5 ">
         <img class="rounded-circle db" :src="state.challenge.image" alt="Profile Image">
       </div>
-
-      <div class="col-12 justify-content-center text-center pt-4">
-        <h4 class="title-challenge">
-          {{ state.challenge.restaurant }}, {{ state.challenge.state }}
-        </h4>
-      </div>
-      <div class="col-12 justify-content-center text-center">
-        <button
-          @click="openMaps"
-          class="
+      <div class="col-8">
+        <div class="row title-challenge">
+          <span>
+            {{ state.challenge.restaurant }}, {{ state.challenge.state }}
+          </span>
+        </div>
+        <div class="row justify-content-center text-center location-b">
+          <button
+            @click="openMaps"
+            class="
               btn
               btn-primary
               my-2
               "
-        >
-          Find Location
-        </button>
-      </div>
-      <div class="col-12 justify-content-center">
-        <p class="rating-title">
-          <b>User Rating: </b>
-        </p>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-4">
-        <div class="row justify-content-center align-items-center">
+          >
+            Find Location
+          </button>
+        </div>
+        <div class="row justify-content-center align-items-center text-center rating-title">
+          <span class="mr-3">
+            <b class="text-center">User Rating: </b>
+          </span>
           <div :title="state.aveRating">
             <img class="icon-fork-desktop" src="../assets/img/fullFork.png" alt="" srcset="">
 
@@ -50,37 +47,35 @@
             <img v-else class="icon-fork-desktop" src="../assets/img/emptyFork.png" alt="" srcset="">
           </div>
         </div>
-      </div>
-      <div title="Total Attempts" class="col-4 d-flex align-items-center flex-wrap justify-content-center">
-        <img class="icon-pig-desktop" src="../assets/img/pig-normal.png" alt="Pig face">
-        <div class="d-flex align-items-center">
-          <i class="mdi mdi-close"></i>
-          <span class="m-0 score-text  text-wrap">
-            {{ state.attempts.length }}
-          </span>
-        </div>
-      </div>
-      <div title="Total Wins" class="col-4 d-flex align-items-center flex-wrap justify-content-center">
-        <img class="icon-pig-desktop" src="../assets/img/pig-crown.png" alt="Crown Pig Face">
-        <div class="d-flex align-items-center">
-          <i class="mdi mdi-close"></i>
-          <span class="m-0 score-text  center">
-            {{ state.wins.length }}
-          </span>
+        <div class="row justify-content-center piggies">
+          <div title="Total Attempts" class=" d-flex align-items-center flex-wrap justify-content-center">
+            <img class="icon-pig-desktop" src="../assets/img/pig-normal.png" alt="Pig face">
+            <div class="d-flex align-items-center">
+              <i class="mdi mdi-close"></i>
+              <span class="m-0 score-text  text-wrap">
+                {{ state.attempts.length }}
+              </span>
+            </div>
+            <img class="icon-pig-desktop" src="../assets/img/pig-crown.png" alt="Crown Pig Face">
+            <div class="d-flex align-items-center">
+              <i class="mdi mdi-close"></i>
+              <span class="m-0 score-text  center">
+                {{ state.wins.length }}
+              </span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
-  <div class="col-12 d-flex justify-content-center">
-    <div class="row">
-      <div class="col-12 justify-content-center text-center">
-        <button @click="ITookChallenge" data-toggle="modal" data-target="#challengeDesktopModal" class="btn btn-primary location-b">
-          <span class=" m-auto">
+  <div class="row d-flex justify-content-center">
+    <div class="col-12 justify-content-center text-center">
+      <button @click="ITookChallenge" data-toggle="modal" data-target="#challengeDesktopModal" class="btn btn-primary">
+        <span class=" m-auto">
 
-            I TOOK ON THIS CHALLENGE
-          </span>
-        </button>
-      </div>
+          I TOOK ON THIS CHALLENGE
+        </span>
+      </button>
     </div>
   </div>
   <div class="col-12 card">
@@ -229,30 +224,35 @@ position: relative;
 background-color: rgb(250, 245, 240);
 }
 .rating-title{
-  font-size: 50px;
+  font-size: 1.7rem;
 }
 .title-challenge{
-  font-size: 4rem;
-  margin-left: 5rem;
+  font-weight: bold;
+  font-size: 2.1rem;
 }
 .difficulty-title{
   font-size: 30px;
 }
 
 .icon-fork-desktop{
-  height: 9rem;
+  height: 4rem;
   padding-right: 2rem;
 }
 .icon-pig-desktop{
-  height: 16rem;
-  margin: 2rem;
-  padding-bottom: 4rem;
+  height: 6rem;
+  margin-bottom: 2rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
 }
 .challenge-desc{
   font-size: 1.4rem;
 }
 .score-text{
-  font-size: 4rem;
+  font-size: 3rem;
+}
+
+.piggies{
+  margin-top: 1rem;
 }
 
 </style>
