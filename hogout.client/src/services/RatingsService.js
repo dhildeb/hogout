@@ -48,6 +48,7 @@ class RatingsService {
     }
   }
 
+  // TODO allow filter both difficulty and forks
   filterDifficulty(filter) {
     AppState.tempChallenges = []
     AppState.challenges.forEach(c => {
