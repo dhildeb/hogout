@@ -16,10 +16,10 @@ import { attemptsService } from '../services/AttemptsService'
 export default {
   name: 'Profile',
   setup() {
+    const route = useRoute()
     const state = reactive({
       profile: computed(() => AppState.activeProfile)
     })
-    const route = useRoute()
     watchEffect(async() => {
       await accountService.getProfileChallenges(route.params.id)
       await accountService.getProfile(route.params.id)
