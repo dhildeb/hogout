@@ -1,6 +1,6 @@
 <template>
   <Navbar />
-  <main>
+  <main class="bg-grey">
     <CreatePost />
     <router-view />
   </main>

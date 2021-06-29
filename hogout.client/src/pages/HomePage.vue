@@ -2,9 +2,9 @@
   <div class="side-bar d-none d-md-block" v-if="state.account.id">
     <SideBar />
   </div>
-  <div class="container bg-gray">
-    <div class="row justify-content-between py-4">
-      <div class="col-6 text-center">
+  <div class="container bg-grey">
+    <div class="row justify-content-center py-4">
+      <div class="col-10 col-md-8 col-lg-6 px-0 d-flex justify-content-between text-center">
         <div class="dropdown">
           <button class="btn btn-outline-secondary dropdown-toggle"
                   type="button"
@@ -16,15 +16,14 @@
             Rating
           </button>
           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <a class="dropdown-item" @click="filterForks(1)">1 fork</a>
-            <a class="dropdown-item" @click="filterForks(2)">2 forks</a>
-            <a class="dropdown-item" @click="filterForks(3)">3 forks</a>
-            <a class="dropdown-item" @click="filterForks(4)">fork forks</a>
-            <a class="dropdown-item" @click="filterForks(5)">5 forks</a>
+            <a class="dropdown-item" @click="filterForks(1)">1 Fork</a>
+            <a class="dropdown-item" @click="filterForks(2)">2 Forks</a>
+            <a class="dropdown-item" @click="filterForks(3)">3 Forks</a>
+            <a class="dropdown-item" @click="filterForks(4)">Fork Forks</a>
+            <a class="dropdown-item" @click="filterForks(5)">5 Forks</a>
           </div>
         </div>
-      </div>
-      <div class="col-6 text-center">
+
         <div class="dropdown">
           <div class="btn btn-outline-primary dropdown-toggle"
                id="dropdownMenuButton"
@@ -35,12 +34,12 @@
             {{ state.difficulty }}
           </div>
           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <a class="dropdown-item" @click="filterReset()">all</a>
-            <a class="dropdown-item" @click="filterDifficulty('guinea pig')">guinea pig</a>
-            <a class="dropdown-item" @click="filterDifficulty('piglet')">piglet</a>
-            <a class="dropdown-item" @click="filterDifficulty('pig')">pig</a>
-            <a class="dropdown-item" @click="filterDifficulty('hog')">hog</a>
-            <a class="dropdown-item" @click="filterDifficulty('wild boar')">wild boar</a>
+            <a class="dropdown-item" @click="filterReset()">All</a>
+            <a class="dropdown-item" @click="filterDifficulty('Guinea Pig')">Guinea Pig</a>
+            <a class="dropdown-item" @click="filterDifficulty('Piglet')">Piglet</a>
+            <a class="dropdown-item" @click="filterDifficulty('Pig')">Pig</a>
+            <a class="dropdown-item" @click="filterDifficulty('Hog')">Hog</a>
+            <a class="dropdown-item" @click="filterDifficulty('Wild Boar')">Wild Boar</a>
           </div>
         </div>
       </div>
@@ -57,22 +56,20 @@ import { AppState } from '../AppState'
 import { challengesService } from '../services/ChallengesService'
 import { ratingsService } from '../services/RatingsService'
 import { difficultyRatingAve, reviewRatingAve } from '../utils/RatingAve'
-import { accountService } from '../services/AccountService'
 export default {
   name: 'Home',
   setup() {
     const state = reactive({
+      account: computed(() => AppState.account),
       challenges: computed(() => AppState.challenges),
       temp: computed(() => AppState.tempChallenges),
       state: 'state',
-      difficulty: 'difficulty',
-      account: computed(() => AppState.account)
+      difficulty: 'difficulty'
     })
     watchEffect(async() => {
       await challengesService.getAllChallenges()
       await ratingsService.getDifficultyRatings()
       await ratingsService.getReviewRatings()
-      await accountService.getUserAttempts()
       AppState.tempChallenges = AppState.challenges
     })
     return {
