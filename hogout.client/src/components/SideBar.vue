@@ -46,16 +46,16 @@ export default {
 </script>
 
 <style scoped>
-.pofile-icon {
-  max-height: 100px;
-  max-width: 100px;
+.profile-icon {
+  height: 160px;
+  width: 160px;
 }
 .side-fit{
   position: fixed;
   top: 44px;
 }
 .logout{
-position: fixed;
+  position: fixed;
   left: 64px;
   top: 560px;
 }

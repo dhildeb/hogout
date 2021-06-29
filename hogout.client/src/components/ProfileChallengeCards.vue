@@ -1,5 +1,5 @@
 <template>
-  <div class="row pb-2 justify-content-center">
+  <div class="row pb-2 justify-content-center zoom">
     <div class="col-4 shadow p-0 click d-none d-md-flex" @click="goThere">
       <img class="banner img-fluid rounded-top" :src="challenge.challenge.banner" alt="banner">
     </div>
@@ -26,6 +26,23 @@
       </div>
     </div>
     <div class="col-10 col-sm-1 challenge-stats d-flex flex-column-md justify-content-around border rounded-bottom shadow bg-white">
+      <!-- options tab -->
+      <div class="dropdown click options position-absolute"
+           id="dropdownMenuButton"
+           data-toggle="dropdown"
+           aria-haspopup="true"
+           aria-expanded="false"
+           title="options"
+           v-if="state.profileId === state.account.id"
+      >
+        <h1>...</h1>
+      </div>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <button class="text-danger dropdown-item" @click="deleteAttempt">
+          Remove Attempt
+        </button>
+      </div>
+      <!-- end of options tab -->
       <span>
         <img class="icon-pig" title="Challenge Wins" src="../assets/img/pig-crown.png" alt="">
         X {{ state.wins.length }}</span>
@@ -41,6 +58,7 @@ import { computed, reactive } from '@vue/runtime-core'
 import { useRoute, useRouter } from 'vue-router'
 import { AppState } from '../AppState'
 import { difficultyRatingAve, reviewRatingAve } from '../utils/RatingAve'
+import { attemptsService } from '../services/AttemptsService'
 export default {
   props: {
     challenge: { type: Object, required: true }
@@ -51,7 +69,9 @@ export default {
     const state = reactive({
       challenge: computed(() => AppState.activeChallenge),
       attempts: computed(() => AppState.attempts.filter(a => a.creatorId === route.params.id && a.challengeId === props.challenge.challenge._id)),
-      wins: computed(() => AppState.attempts.filter(a => a.completed && a.creatorId === route.params.id && a.challengeId === props.challenge.challenge._id))
+      wins: computed(() => AppState.attempts.filter(a => a.completed && a.creatorId === route.params.id && a.challengeId === props.challenge.challenge._id)),
+      profileId: computed(() => route.params.id),
+      account: computed(() => AppState.account)
     })
     return {
       state,
@@ -63,6 +83,9 @@ export default {
       },
       goThere() {
         router.push({ name: 'Challenge', params: { id: props.challenge.challenge._id } })
+      },
+      async deleteAttempt() {
+        await attemptsService.deleteAttempt(props.challenge.challenge._id)
       }
     }
   }
@@ -84,6 +107,15 @@ export default {
   width: fit-content;
   object-fit: cover;
 }
+.options{
+  right: 8px;
+  top: -22px;
+}
+.zoom:hover{
+  transform: scale(1.1);
+  transition: all .5s linear;
+}
+
 @media screen and (min-width: 576px){
 
 .challenge-stats{
