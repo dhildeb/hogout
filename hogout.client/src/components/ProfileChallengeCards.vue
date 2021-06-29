@@ -6,8 +6,8 @@
   </div>
   <div class="row pb-2 justify-content-center">
     <div class="col-10 col-sm-2 d-flex flex-column border rounded-bottom shadow d-flex bg-white">
-      <span>wins: {{ state.wins }}</span>
-      <span>attempts: {{ state.attempts }}</span>
+      <span>wins: {{ state.wins.length }}</span>
+      <span>attempts: {{ state.attempts.length }}</span>
     </div>
     <div class="col-10 col-sm-6 click border rounded-bottom shadow d-flex bg-white p-0 py-2" @click="goThere">
       <img class="img-fluid icon over-hang p-2" :src="challenge.challenge.image" alt="icon">
@@ -35,28 +35,20 @@
 </template>
 
 <script>
-import { computed, reactive, watchEffect } from '@vue/runtime-core'
+import { computed, reactive } from '@vue/runtime-core'
 import { useRouter } from 'vue-router'
 import { AppState } from '../AppState'
 import { difficultyRatingAve, reviewRatingAve } from '../utils/RatingAve'
-import { ratingsService } from '../services/RatingsService'
-import { attemptsService } from '../services/AttemptsService'
 export default {
   props: {
     challenge: { type: Object, required: true }
   },
   setup(props) {
-    // FIXME attempts and wins dont function
     const router = useRouter()
     const state = reactive({
       challenge: computed(() => AppState.activeChallenge),
-      attempts: computed(() => AppState.attempts.length)
-    })
-    watchEffect(async() => {
-      // FIXME second search overrides first search
-      await ratingsService.getDifficultyRatingsByChallengeId(props.challenge.challenge._id)
-      await ratingsService.getReviewRatingsByChallengeId(props.challenge.challenge._id)
-      await attemptsService.getAttemptsByChallengeId(props.challenge.challenge._id)
+      attempts: computed(() => AppState.attempts.filter(a => a.creatorId === AppState.account.id && a.challengeId === props.challenge.challenge._id)),
+      wins: computed(() => AppState.attempts.filter(a => a.completed && a.creatorId === AppState.account.id && a.challengeId === props.challenge.challenge._id))
     })
     return {
       state,

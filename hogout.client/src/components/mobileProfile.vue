@@ -147,6 +147,7 @@ import { accountService } from '../services/AccountService'
 import { useRoute } from 'vue-router'
 import M from 'materialize-css'
 import { logger } from '../utils/Logger'
+import { ratingsService } from '../services/RatingsService'
 
 export default {
   props: {
@@ -165,8 +166,10 @@ export default {
       locationForm: false,
       pictureForm: false
     })
-    onMounted(() => {
+    onMounted(async() => {
       M.AutoInit()
+      await ratingsService.getDifficultyRatings()
+      await ratingsService.getReviewRatings()
     })
     return {
       state,
