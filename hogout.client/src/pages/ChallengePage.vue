@@ -1,6 +1,13 @@
 <template>
-  <div class="d-sm-block justify-content-center  d-none">
-    <ChallengeDesktop />
+  <div class="d-sm-block   d-none ">
+    <div class="row">
+      <div class="col-3">
+        <SideBar />
+      </div>
+      <div class="col-8 justify-content-center">
+        <ChallengeDesktop />
+      </div>
+    </div>
   </div>
   <div class="d-sm-none container  our-bg  d-block">
     <ChallengeMobile />
@@ -40,5 +47,9 @@ export default {
 <style>
 .our-bg{
   background-color: #E8E8E8;
+}
+.desktop-display{
+  width: 80%;
+  right: 0;
 }
 </style>

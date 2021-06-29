@@ -1,6 +1,6 @@
 <template>
   <Navbar />
-  <main class="justify-content-center">
+  <main>
     <router-view />
   </main>
 </template>

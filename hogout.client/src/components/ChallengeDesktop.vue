@@ -1,6 +1,6 @@
 <template>
-  <div class="d-flex container  card main-display-challenge">
-    <div class=" row justify-content-center">
+  <div class="d-flex col-12 card main-display-challenge">
+    <div class="row justify-content-center">
       <div class="col-12">
         <img class="card-img-top challenge-banner" :src="state.challenge.banner" alt="Profile Banner">
       </div>
@@ -8,7 +8,7 @@
         <img class="rounded-circle db" :src="state.challenge.image" alt="Profile Image">
       </div>
 
-      <div class="col-12 justify-content-center text-center">
+      <div class="col-12 justify-content-center text-center pt-4">
         <h4 class="title-challenge">
           {{ state.challenge.restaurant }}, {{ state.challenge.state }}
         </h4>
@@ -54,24 +54,24 @@
       <div title="Total Attempts" class="col-4 d-flex align-items-center justify-content-end">
         <img class="icon-pig-desktop" src="../assets/img/pig-normal.png" alt="Pig face">
         <i class="mdi mdi-close"></i>
-        <p class="m-0">
+        <p class="m-0 score-text">
           {{ state.attempts.length }}
         </p>
       </div>
       <div title="Total Wins" class="col-4 d-flex align-items-center">
         <img class="icon-pig-desktop" src="../assets/img/pig-crown.png" alt="Crown Pig Face">
         <i class="mdi mdi-close"></i>
-        <p class="m-0">
+        <p class="m-0 score-text">
           {{ state.wins.length }}
         </p>
       </div>
     </div>
   </div>
-  <div class="container-fluid">
+  <div class="col-12 d-flex justify-content-center">
     <div class="row">
       <div class="col-12 justify-content-center text-center">
         <button @click="ITookChallenge" data-toggle="modal" data-target="#challengeDesktopModal" class="btn btn-primary location-b">
-          <span class="button-text m-auto">
+          <span class=" m-auto">
 
             I TOOK ON THIS CHALLENGE
           </span>
@@ -79,7 +79,7 @@
       </div>
     </div>
   </div>
-  <div class="container card">
+  <div class="col-12 card">
     <div class="row">
       <div class="mb-2 col-12 justify-content-center text-center">
         <h1 class="rating-title">
@@ -111,16 +111,15 @@
     </div>
   </div>
 
-  <div class="container">
+  <div class="col-12">
     <CreatePost />
-
-    <div class="row justify-content-center" v-if="state.posts.length > 0">
-      <Post v-for="p in state.posts" :key="p.id" :post="p" />
-    </div>
+  </div>
+  <div class="col-12 justify-content-center" v-if="state.posts.length > 0">
+    <Post v-for="p in state.posts" :key="p.id" :post="p" />
   </div>
 
   <!-- Modal -->
-  <div class="modal fade bg-transparent"
+  <div class="modal fade bg-transparent min-100"
        id="challengeDesktopModal"
        tabindex="-1"
        role="dialog"
@@ -194,11 +193,9 @@ export default {
 <style scoped>
 .db{
   position: absolute;
-  min-width: 7rem;
-  min-height: 7rem;
-  height: 30vw;
-  width: 30vw;
-  top: -17vw;
+  height: 20vw;
+  width: 20vw;
+  top: -13vw;
   left: 6vw;
 
 }
@@ -213,36 +210,34 @@ position: relative;
 .challenge-banner{
   max-height: 25vw;
 }
-.location-b{
-  min-width: 80vw;
-
-  min-height: 13vw;
-
+.card{
+background-color: rgb(250, 245, 240);
 }
 .rating-title{
   font-size: 50px;
 }
 .title-challenge{
-  font-size: 90px;
+  font-size: 4rem;
   margin-left: 5rem;
 }
 .difficulty-title{
   font-size: 30px;
 }
-.button-text{
-  font-size: 45px;
-}
+
 .icon-fork-desktop{
-  height: 13rem;
+  height: 9rem;
   padding-right: 2rem;
 }
 .icon-pig-desktop{
-  height: 22rem;
+  height: 16rem;
   margin: 2rem;
   padding-bottom: 4rem;
 }
 .challenge-desc{
   font-size: 1.4rem;
+}
+.score-text{
+  font-size: 4rem;
 }
 
 </style>
