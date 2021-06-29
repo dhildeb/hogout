@@ -26,8 +26,9 @@ class AccountService {
 
   async getProfileChallenges(id) {
     try {
-      const res = await api.get(`challenges/${id}/challenges`)
-      logger.log(res.data)
+      const res = await api.get(`account/${id}/challenges`)
+      logger.log(res.data, 'profile challenges')
+      AppState.profileChallenges = res.data
     } catch (error) {
       logger.log(error)
     }
@@ -37,7 +38,6 @@ class AccountService {
     try {
       const res = await api.get(`api/attempts/account/${id}/attempts`)
       AppState.profileAttempts = res.data
-      logger.log(res.data, 'attempts in the service')
     } catch (error) {
       logger.log(error)
     }

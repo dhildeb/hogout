@@ -25,14 +25,7 @@ const routes = [
   {
     path: '/challenge/:id',
     name: 'Challenge',
-    component: loadPage('ChallengePage'),
-    beforeEnter: authGuard
-  },
-  {
-    path: '/profile/:id',
-    name: 'Profile',
-    component: loadPage('ProfilePage'),
-    beforeEnter: authGuard
+    component: loadPage('ChallengePage')
   }
 ]
 

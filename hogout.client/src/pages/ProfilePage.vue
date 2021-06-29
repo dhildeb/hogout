@@ -1,18 +1,23 @@
 <template>
-  <div class="container color">
-    <mobileProfile />
+  <div class="container-fluid color">
+    <MobileProfile />
   </div>
 </template>
 
 <script>
-import mobileProfile from '../components/mobileProfile.vue'
+import { onMounted } from '@vue/runtime-core'
+import { accountService } from '../services/AccountService'
+import { useRoute } from 'vue-router'
+// import MobileProfile from '../components/MobileProfile.vue'
 // import 'materialize-css/dist/css/materialize.css'
 
 export default {
-  components: { mobileProfile },
   name: 'Profile',
   setup() {
-
+    const route = useRoute()
+    onMounted(async() => {
+      await accountService.getProfileChallenges(route.params.id)
+    })
   }
 }
 </script>

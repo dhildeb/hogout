@@ -11,7 +11,7 @@ export const AttemptsSchema = new Schema({
 
 AttemptsSchema.virtual('challenge',
   {
-    localField: 'creatorId',
+    localField: 'challengeId',
     foreignField: '_id',
     justOne: true,
     ref: 'Challenges'

@@ -6,12 +6,11 @@ class AttemptsService {
     const uniqueChallenges = []
     const challenges = await dbContext.Attempts.find({ creatorId: id }).populate('challenge', 'name restaurant rewards rules state location image banner')
     challenges.forEach(c => {
-      const check = uniqueChallenges.find(ch => ch.id === c.id)
+      const check = uniqueChallenges.find(ch => ch.challengeId.toString() === c.challengeId.toString())
       if (!check) {
         uniqueChallenges.push(c)
       }
-    }
-    )
+    })
     return uniqueChallenges
   }
 
