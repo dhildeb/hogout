@@ -36,14 +36,14 @@
       <h3> {{ state.profile.name }} </h3>
     </div>
   </div>
-  <div class="row form " v-if="state.nameForm">
-    <div class="col-12">
+  <div class="row form justify-content-center" v-if="state.nameForm">
+    <div class="col-md-8">
       <form @submit.prevent="editProfile()" id="nameForm" name="nameForm">
         <div class="input-group">
           <label for="name" class="sr-only"> name </label>
           <input type="text" v-model="state.profile.name" class="form-control w-50" :placeholder="state.profile.name">
           <div class="input-group-append">
-            <button class="btn btn-outline-secondary" type="submit" id="button-addon2">
+            <button class="btn btn-outline-secondary ml-4" type="submit" id="button-addon2">
               Save
             </button>
           </div>
@@ -56,14 +56,14 @@
       <h6>{{ state.profile.location }} </h6>
     </div>
   </div>
-  <div class="row form" v-if="state.locationForm">
-    <div class="col-12 text-center ">
+  <div class="row form justify-content-center" v-if="state.locationForm">
+    <div class="col-md-8 text-center ">
       <form @submit.prevent="editProfile()">
         <div class="input-group">
           <label for="location" class="sr-only"> location </label>
           <input type="text" v-model="state.profile.location" class="form-control w-50" :placeholder="state.profile.location || 'Location'">
           <div class="input-group-append">
-            <button class="btn btn-outline-secondary" type="submit" id="button-addon2">
+            <button class="btn btn-outline-secondary ml-4" type="submit" id="button-addon2">
               Save
             </button>
           </div>
@@ -76,14 +76,14 @@
       <h6>{{ state.profile.bio }}</h6>
     </div>
   </div>
-  <div class="row my-1 form" v-if="state.bioForm">
-    <div class="col-12 text-center ">
+  <div class="row my-1 form justify-content-center" v-if="state.bioForm">
+    <div class="col-md-8 text-center">
       <form @submit.prevent="editProfile()">
         <div class="input-group">
           <label for="bio" class="sr-only"> bio </label>
           <input type="text" v-model="state.profile.bio" class="form-control w-50" :placeholder="state.profile.bio || 'bio'">
           <div class="input-group-append">
-            <button class="btn btn-outline-secondary" type="submit" id="button-addon2">
+            <button class="btn btn-outline-secondary ml-4" type="submit" id="button-addon2">
               Save
             </button>
           </div>
@@ -91,23 +91,23 @@
       </form>
     </div>
   </div>
-  <div class="row my-1 from" v-if="state.pictureForm">
-    <div class="col-12 text-center ">
+  <div class="row my-1 from justify-content-center" v-if="state.pictureForm">
+    <div class="col-md-8 text-center ">
       <form class="my-2" @submit.prevent="editProfile()">
+        <label for="picture">Profile Picture </label>
         <div class="input-group">
-          <label for="picture" class="sr-only"> picture </label>
           <input type="text" v-model="state.profile.picture" class="form-control w-50" :placeholder="state.profile.picture || 'picture'">
           <div class="input-group-append">
-            <button class="btn btn-outline-secondary" type="submit" id="button-addon2">
+            <button class="btn btn-outline-secondary ml-4" type="submit" id="button-addon2">
               Save
             </button>
           </div>
         </div>
+        <label for="banner"> Profile Banner </label>
         <div class="input-group">
-          <label for="banner" class="sr-only"> banner </label>
           <input type="text" v-model="state.profile.banner" class="form-control w-50" :placeholder="state.profile.banner || 'banner'">
           <div class="input-group-append">
-            <button class="btn btn-outline-secondary" type="submit" id="button-addon2">
+            <button class="btn btn-outline-secondary ml-4" type="submit" id="button-addon2">
               Save
             </button>
           </div>
@@ -117,13 +117,13 @@
   </div>
   <div class="row my-3 awards end">
     <div class="col-12 d-flex align-items-center justify-content-center">
-      <img class="icon-pig" src="../assets/img/pig-crown.png" alt="">
+      <img class="icon-pig" title="Total Wins" src="../assets/img/pig-crown.png" alt="">
       <p class="pt-3 pl-1">
         X {{ state.wins.length }}
       </p>
     </div>
     <div class="col-12 d-flex align-items-center justify-content-center">
-      <img class="icon-pig" src="../assets/img/pig-normal.png" alt="">
+      <img class="icon-pig" title="Total Attempts" src="../assets/img/pig-normal.png" alt="">
       <p class="pt-3 pl-1">
         X {{ state.attempts.length }}
       </p>
@@ -227,4 +227,5 @@ export default {
   width: 120px;
   object-fit: cover;
 }
+
 </style>
