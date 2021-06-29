@@ -55,7 +55,6 @@ import { computed, watchEffect } from '@vue/runtime-core'
 import { AppState } from '../AppState'
 import { challengesService } from '../services/ChallengesService'
 import { ratingsService } from '../services/RatingsService'
-import { difficultyRatingAve, reviewRatingAve } from '../utils/RatingAve'
 export default {
   name: 'Home',
   setup() {
@@ -78,26 +77,15 @@ export default {
         state.state = newState
       },
       filterDifficulty(dStr) {
-        AppState.tempChallenges = []
         state.difficulty = dStr
-        state.challenges.forEach(c => {
-          const currentR = difficultyRatingAve(c.id)
-          if (currentR === dStr) {
-            AppState.tempChallenges.push(c)
-          }
-        })
+        ratingsService.filterDifficulty(dStr)
       },
       filterReset() {
         state.difficulty = 'All'
         AppState.tempChallenges = AppState.challenges
       },
       filterForks(num) {
-        AppState.tempChallenges = []
-        state.challenges.forEach(c => {
-          if (Math.round(reviewRatingAve(c.id)) === num) {
-            AppState.tempChallenges.push(c)
-          }
-        })
+        ratingsService.filterForks(num)
       }
     }
   }

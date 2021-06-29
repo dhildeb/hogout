@@ -1,5 +1,6 @@
 import { AppState } from '../AppState'
 import { Rating } from '../models/Rating'
+import { difficultyRatingAve, reviewRatingAve } from '../utils/RatingAve'
 import { api } from './AxiosService'
 
 class RatingsService {
@@ -45,6 +46,25 @@ class RatingsService {
       AppState.reviewRatings = AppState.reviewRatings.filter(r => r.id !== res.data.id)
       AppState.reviewRatings.push(new Rating(res.data))
     }
+  }
+
+  filterDifficulty(dStr) {
+    AppState.tempChallenges = []
+    AppState.challenges.forEach(c => {
+      const currentR = difficultyRatingAve(c.id)
+      if (currentR === dStr) {
+        AppState.tempChallenges.push(c)
+      }
+    })
+  }
+
+  filterForks(num) {
+    AppState.tempChallenges = []
+    AppState.challenges.forEach(c => {
+      if (Math.round(reviewRatingAve(c.id)) === num) {
+        AppState.tempChallenges.push(c)
+      }
+    })
   }
 }
 
