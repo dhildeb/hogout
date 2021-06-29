@@ -1,16 +1,5 @@
 <template>
-  <div class="d-none d-sm-block container-fluid">
-    <div class="row">
-      <div class="col-3 pl-0">
-        <SideBar />
-      </div>
-      <div class="col-8 justify-content-center">
-        <DesktopProfile :profile="state.profile" />
-      </div>
-    </div>
-  </div>
-
-  <div class="container-fluid color d-sm-none d-block">
+  <div class="container-fluid color">
     <MobileProfile :profile="state.profile" />
   </div>
 </template>
@@ -21,8 +10,6 @@ import { accountService } from '../services/AccountService'
 import { useRoute } from 'vue-router'
 import { AppState } from '../AppState'
 import { attemptsService } from '../services/AttemptsService'
-// import MobileProfile from '../components/MobileProfile.vue'
-// import 'materialize-css/dist/css/materialize.css'
 
 export default {
   name: 'Profile',

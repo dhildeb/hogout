@@ -48,23 +48,27 @@ class RatingsService {
     }
   }
 
-  filterDifficulty(dStr) {
+  filterDifficulty(filter) {
     AppState.tempChallenges = []
     AppState.challenges.forEach(c => {
       const currentR = difficultyRatingAve(c.id)
-      if (currentR === dStr) {
+      if (currentR === filter.difficulty) {
         AppState.tempChallenges.push(c)
       }
     })
   }
 
-  filterForks(num) {
+  filterForks(filter) {
     AppState.tempChallenges = []
     AppState.challenges.forEach(c => {
-      if (Math.round(reviewRatingAve(c.id)) === num) {
+      if (Math.round(reviewRatingAve(c.id)) === filter.forks) {
         AppState.tempChallenges.push(c)
       }
     })
+  }
+
+  filterReset() {
+    AppState.tempChallenges = AppState.challenges
   }
 }
 

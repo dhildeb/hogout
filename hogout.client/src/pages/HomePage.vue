@@ -63,13 +63,14 @@ export default {
       challenges: computed(() => AppState.challenges),
       temp: computed(() => AppState.tempChallenges),
       state: 'state',
-      difficulty: 'difficulty'
+      difficulty: 'difficulty',
+      filterBy: {}
     })
     watchEffect(async() => {
       await challengesService.getAllChallenges()
       await ratingsService.getDifficultyRatings()
       await ratingsService.getReviewRatings()
-      AppState.tempChallenges = AppState.challenges
+      ratingsService.filterReset()
     })
     return {
       state,
@@ -78,14 +79,16 @@ export default {
       },
       filterDifficulty(dStr) {
         state.difficulty = dStr
-        ratingsService.filterDifficulty(dStr)
+        state.filterBy.difficulty = dStr
+        ratingsService.filterDifficulty(state.filterBy)
       },
       filterReset() {
         state.difficulty = 'All'
-        AppState.tempChallenges = AppState.challenges
+        ratingsService.filterReset()
       },
       filterForks(num) {
-        ratingsService.filterForks(num)
+        state.filterBy.forks = num
+        ratingsService.filterForks(state.filterBy)
       }
     }
   }
