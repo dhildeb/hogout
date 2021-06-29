@@ -33,7 +33,23 @@
     </div>
     <div class="row">
       <div class="col-4">
-        {{ review }}
+        <div class="row justify-content-center align-items-center">
+          <div :title="state.aveRating">
+            <img class="icon-fork-desktop" src="../assets/img/fullFork.png" alt="" srcset="">
+
+            <img v-if="state.aveRating > 1.5" class="icon-fork-desktop" src="../assets/img/fullFork.png" alt="" srcset="">
+            <img v-else class="icon-fork-desktop" src="../assets/img/emptyFork.png" alt="" srcset="">
+
+            <img v-if="state.aveRating > 2.4" class="icon-fork-desktop" src="../assets/img/fullFork.png" alt="" srcset="">
+            <img v-else class="icon-fork-desktop" src="../assets/img/emptyFork.png" alt="" srcset="">
+
+            <img v-if="state.aveRating > 3.4" class="icon-fork-desktop" src="../assets/img/fullFork.png" alt="" srcset="">
+            <img v-else class="icon-fork-desktop" src="../assets/img/emptyFork.png" alt="" srcset="">
+
+            <img v-if="state.aveRating > 4.5" class="icon-fork-desktop" src="../assets/img/fullFork.png" alt="" srcset="">
+            <img v-else class="icon-fork-desktop" src="../assets/img/emptyFork.png" alt="" srcset="">
+          </div>
+        </div>
       </div>
       <div class="col-4 ">
         <img class="rounded-circle" src="https://placebear.com/250/250" alt="">
@@ -55,7 +71,10 @@
     <div class="row">
       <div class="col-12 justify-content-center text-center">
         <button @click="ITookChallenge" data-toggle="modal" data-target="#challengeDesktopModal" class="btn btn-primary location-b">
-          I TOOK ON THIS CHALLENGE
+          <span class="button-text m-auto">
+
+            I TOOK ON THIS CHALLENGE
+          </span>
         </button>
       </div>
     </div>
@@ -74,13 +93,13 @@
         </p>
       </div>
       <div class="col-12 mx-2">
-        <h3>
+        <h3 class="text-center">
           Rules
         </h3>
         <p>{{ state.challenge.rules }}</p>
       </div>
       <div class="col-12 mx-2">
-        <h3>
+        <h3 class="text-center">
           Rewards
         </h3>
         <p>{{ state.challenge.rewards }}</p>
@@ -93,7 +112,7 @@
   </div>
 
   <!-- Modal -->
-  <div class="modal fade"
+  <div class="modal fade bg-transparent"
        id="challengeDesktopModal"
        tabindex="-1"
        role="dialog"
@@ -136,7 +155,8 @@ export default {
       challenge: computed(() => AppState.activeChallenge),
       attempts: computed(() => AppState.attempts),
       wins: computed(() => AppState.attempts.filter(a => a.challengeId === state.challenge._id && a.completed)),
-      aveRatings: computed(() => AppState.reviewRatings),
+      aveRating: computed(() => reviewRatingAve(AppState.activeChallenge.id)),
+
       aveDifficulty: computed(() => AppState.difficultyRatings),
       posts: computed(() => AppState.posts),
       newAttempt: {}
@@ -187,9 +207,9 @@ position: relative;
   max-height: 25vw;
 }
 .location-b{
-  width: 80vw;
-  font-size: 45px;
-  height: 4vw;
+  min-width: 80vw;
+
+  min-height: 13vw;
 
 }
 .rating-title{
@@ -200,6 +220,13 @@ position: relative;
 }
 .difficulty-title{
   font-size: 30px;
+}
+.button-text{
+  font-size: 45px;
+}
+.icon-fork-desktop{
+  height: 13rem;
+  padding-right: .5rem;
 }
 
 </style>
