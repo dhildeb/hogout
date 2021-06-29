@@ -1,15 +1,15 @@
 <template>
   <div class="row p-0 my-0 justify-content-center d-none d-md-flex">
-    <div class="col-10 col-md-8 col-lg-6 shadow p-0 click" @click="goThere">
+    <div class="col-10 col-sm-8 shadow p-0 click" @click="goThere">
       <img class="banner img-fluid rounded-top" :src="challenge.challenge.banner" alt="banner">
     </div>
   </div>
   <div class="row pb-2 justify-content-center">
-    <div class="col-10 d-flex flex-column border rounded-bottom shadow d-flex bg-white">
+    <div class="col-10 col-sm-2 d-flex flex-column border rounded-bottom shadow d-flex bg-white">
       <span>wins: {{ state.wins }}</span>
       <span>attempts: {{ state.attempts }}</span>
     </div>
-    <div class="col-10 col-md-8 col-lg-6 click border rounded-bottom shadow d-flex bg-white p-0 py-2" @click="goThere">
+    <div class="col-10 col-sm-6 click border rounded-bottom shadow d-flex bg-white p-0 py-2" @click="goThere">
       <img class="img-fluid icon over-hang p-2" :src="challenge.challenge.image" alt="icon">
       <div class="d-flex flex-column w-100 px-2">
         <b class="p-1">{{ challenge.challenge.name }}</b>

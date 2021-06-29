@@ -116,7 +116,6 @@
     </div>
   </div>
   <div class="row my-3 awards end">
-    <!-- FIXME wins and attemps dont persist after reload -->
     <div class="col-12 d-flex align-items-center justify-content-center">
       <img class="icon-pig" src="../assets/img/pig-crown.png" alt="">
       <p class="pt-3 pl-1">
@@ -131,11 +130,11 @@
     </div>
   </div>
   <div class="row mt-3 shadow">
-    <div class="col-12 text-center m-auto shadow">
+    <div class="col-12 text-center bg-white m-auto shadow">
       <h4>Your Challenges</h4>
     </div>
   </div>
-  <div class="row challenges" v-if="state.challenges">
+  <div class="challenges" v-if="state.challenges">
     <ProfileChallengeCards v-for="challenge in state.challenges" :key="challenge.id" :challenge="challenge" />
   </div>
 </template>

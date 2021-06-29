@@ -16,12 +16,14 @@ export default {
   name: 'Profile',
   setup() {
     const state = reactive({
+      // FIXME cant go from other profiles to your profile
       profile: computed(() => AppState.activeProfile)
     })
     const route = useRoute()
     onMounted(async() => {
       await accountService.getProfileChallenges(route.params.id)
       await accountService.getProfile(route.params.id)
+      await accountService.getUserAttempts(route.params.id)
     })
     return {
       state
