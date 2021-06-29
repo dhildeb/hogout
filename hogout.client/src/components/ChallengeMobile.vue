@@ -89,38 +89,49 @@
       </div>
     </div>
     <div class="col-12">
-      <CreatePost />
+      <div class="row">
+        <div class="col-12 d-flex justify-content-center">
+          <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#review">
+            Post A Review
+          </button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12 d-flex justify-content-center">
+          <u><h2>Reviews</h2></u>
+        </div>
+      </div>
+      <div v-if="state.posts.length > 0" class="col-12">
+        <Post v-for="p in state.posts" :key="p.id" :post="p" />
+      </div>
     </div>
-    <div v-if="state.posts.length > 0" class="col-12">
-      <Post v-for="p in state.posts" :key="p.id" :post="p" />
-    </div>
-  </div>
 
-  <!-- Modal Taking On Challenge -->
-  <div class="modal fade bg-transparent min-100"
-       id="challenge"
-       tabindex="-1"
-       role="dialog"
-       aria-labelledby="challengeTitle"
-       aria-hidden="true"
-  >
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content ">
-        <div class="modal-header d-flex justify-content-center">
-          <h5 class="modal-title " id="exampleModalLongTitle">
-            Way to HOG OUT!
-          </h5>
-        </div>
-        <div class="modal-body d-flex justify-content-center">
-          <h4>Choose your results!</h4>
-        </div>
-        <div class="modal-footer d-flex flex-column">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal" @click="createAttempt(true)">
-            I Won the Challenge!
-          </button>
-          <button type="button" class="btn btn-primary" data-dismiss="modal" @click="createAttempt(false)">
-            I Tried and Failed!
-          </button>
+    <!-- Modal Taking On Challenge -->
+    <div class="modal fade bg-transparent min-100"
+         id="challenge"
+         tabindex="-1"
+         role="dialog"
+         aria-labelledby="challengeTitle"
+         aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content ">
+          <div class="modal-header d-flex justify-content-center">
+            <h5 class="modal-title " id="exampleModalLongTitle">
+              Way to HOG OUT!
+            </h5>
+          </div>
+          <div class="modal-body d-flex justify-content-center">
+            <h4>Choose your results!</h4>
+          </div>
+          <div class="modal-footer d-flex flex-column">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal" @click="createAttempt(true)">
+              I Won the Challenge!
+            </button>
+            <button type="button" class="btn btn-primary" data-dismiss="modal" @click="createAttempt(false)">
+              I Tried and Failed!
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -199,5 +210,10 @@ margin-left: 5px;
 
 .min-100{
   min-height: 100vh;
+}
+
+.max-width{
+  max-width: 100%;
+  z-index: 10;
 }
 </style>

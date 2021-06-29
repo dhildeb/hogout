@@ -112,7 +112,18 @@
   </div>
 
   <div class="col-12">
-    <CreatePostDesktop />
+    <div class="row">
+      <div class="col-12 d-flex justify-content-center">
+        <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#review">
+          Post A Review
+        </button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 d-flex justify-content-center">
+        <u><h2>Reviews</h2></u>
+      </div>
+    </div>
   </div>
   <div class="col-12 justify-content-center" v-if="state.posts.length > 0">
     <Post v-for="p in state.posts" :key="p.id" :post="p" />

@@ -1,28 +1,14 @@
 <template>
-  <div class="row">
-    <div class="col-12 d-flex justify-content-center">
-      <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#review">
-        Post A Review
-      </button>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-12 d-flex justify-content-center">
-      <u><h2>Reviews</h2></u>
-    </div>
-  </div>
   <!-- Modal Posting Review -->
   <div class="modal fade bg-transparent min-100"
        id="review"
        tabindex="-1"
        role="dialog"
-       aria-labelledby="reviewTitle"
-       aria-hidden="true"
   >
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header d-flex justify-content-center">
-          <h5 class="modal-title " id="exampleModalLongTitle">
+          <h5 class="modal-title ">
             Review This Challenge!
           </h5>
         </div>
@@ -97,6 +83,7 @@ export default {
         try {
           await postsService.createPost(route.params.id, state.newPost)
           $('#review').modal('hide')
+          $('.modal-backdrop').hide()
           state.newPost = {}
         } catch (error) {
           Notification.toast(error, 'error')
