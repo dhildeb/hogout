@@ -118,7 +118,7 @@ export default {
         await accountService.getUserAttempts(props.post.creatorId).filter(c => c.id === route.params.id)
       },
       setPlaceholder(event) {
-        event.target.src = 'https://lh3.googleusercontent.com/proxy/EMaudhfsgQ1y8QnVlrguR9e0TD86dUl6eB6XlO5_jKqs8-n9Zb4NrneELVxIdSfl5gaj3Jrl1R6u3i4CzlGN2DI'
+        event.target.src = 'https://www.meatsbylinz.com/Theme/Img/meatmap/mbl-coming-soon-pig.png'
       }
 
     }

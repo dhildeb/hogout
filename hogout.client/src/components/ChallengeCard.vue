@@ -12,9 +12,8 @@
           <b class="p-1">{{ challenge.name }}</b>
           <em class="text-secondary">{{ challenge.state }}</em>
           <span class="row p-1 m-0 text-danger">
-            <span class="col-12 col-md-5 p-0 pb-2 text-danger" title="">Difficulty: <em>{{ getDifficultyRating(challenge) }}</em></span>
-            <div class="col-12 col-md-6 p-0 d-flex">
-              <p>Rating: </p>
+            <h5 class="col-12 col-md-5 p-0 pb-2 text-danger" title="Difficulty"><em>{{ getDifficultyRating(challenge) }}</em></h5>
+            <div class="col-12 col-md-6 p-0 d-flex" title="Rating">
               <img src="../assets/img/fullFork.png" class="img-fluid icon-fork" alt="">
               <img v-if="getReviewRating(challenge) > 1.5" src="../assets/img/fullFork.png" class="img-fluid icon-fork" alt="">
               <img v-else src="../assets/img/emptyFork.png" class="img-fluid icon-fork" alt="">
@@ -75,7 +74,7 @@ export default {
 }
 .zoom:hover{
   transform: scale(1.1);
-  transition: all .5s linear;
+  transition: all .25s linear;
 }
 .click{
   cursor: pointer;

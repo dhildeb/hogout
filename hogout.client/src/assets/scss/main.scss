@@ -7,9 +7,9 @@
   --grey: #f6f6f6;
   --dark-pink: #F48A85;
   --pink: #FBA374;
-  --dark-green: #247B27;
-  --green: #369747;
-  --light-green: #CCA049;
+  --dark-blue: #547066;
+  --blue: #6F9082;
+  --light-blue: #D4B59B;
 }
 
 #app {
@@ -33,14 +33,14 @@ main {
 .text-pink{
   color: var(--pink);
 }
-.text-dark-green{
-  color: var(--dark-green);
+.text-dark-blue{
+  color: var(--dark-blue);
 }
-.text-green{
-  color: var(--green);
+.text-blue{
+  color: var(--blue);
 }
-.text-light-green{
-  color: var(--light-green);
+.text-light-blue{
+  color: var(--light-blue);
 }
 
 .bg-dark-pink{
@@ -49,12 +49,12 @@ main {
 .bg-pink{
   background-color: var(--pink);
 }
-.bg-dark-green{
-  background-color: var(--dark-green);
+.bg-dark-blue{
+  background-color: var(--dark-blue);
 }
-.bg-green{
-  background-color: var(--green);
+.bg-blue{
+  background-color: var(--blue);
 }
-.bg-light-green{
-  background-color: var(--light-green);
+.bg-light-blue{
+  background-color: var(--light-blue);
 }

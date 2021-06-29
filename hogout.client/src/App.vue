@@ -1,13 +1,13 @@
 <template>
   <Navbar />
-  <main>
+  <main class="bg-grey">
     <CreatePost />
     <router-view />
   </main>
 </template>
 
 <script>
-import { computed, onMounted } from 'vue'
+import { computed } from 'vue'
 import { AppState } from './AppState'
 
 export default {

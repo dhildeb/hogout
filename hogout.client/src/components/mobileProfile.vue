@@ -1,5 +1,5 @@
 <template>
-  <div class="fixed-action-btn" v-if="profile.id === state.account.id">
+  <div class="fixed-action-btn" v-show="profile.id === state.account.id">
     <a class="btn-floating btn-large red">
       <i class="mdi mdi-pencil"></i>
     </a>
@@ -145,9 +145,9 @@ import { computed, onMounted } from '@vue/runtime-core'
 import { AppState } from '../AppState'
 import { accountService } from '../services/AccountService'
 import { useRoute } from 'vue-router'
-import M from 'materialize-css'
 import { logger } from '../utils/Logger'
 import { ratingsService } from '../services/RatingsService'
+import M from 'materialize-css'
 
 export default {
   props: {

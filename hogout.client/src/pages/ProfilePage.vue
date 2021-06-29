@@ -10,16 +10,14 @@ import { accountService } from '../services/AccountService'
 import { useRoute } from 'vue-router'
 import { AppState } from '../AppState'
 import { attemptsService } from '../services/AttemptsService'
-// import MobileProfile from '../components/MobileProfile.vue'
-// import 'materialize-css/dist/css/materialize.css'
 
 export default {
   name: 'Profile',
   setup() {
+    const route = useRoute()
     const state = reactive({
       profile: computed(() => AppState.activeProfile)
     })
-    const route = useRoute()
     watchEffect(async() => {
       await accountService.getProfileChallenges(route.params.id)
       await accountService.getProfile(route.params.id)
@@ -36,5 +34,8 @@ export default {
 <style scoped>
 .color{
   background-color: #e8e8e8;
+}
+.sidebar-fit{
+  left:0
 }
 </style>
