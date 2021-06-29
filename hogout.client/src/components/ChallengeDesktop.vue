@@ -112,7 +112,7 @@
   </div>
 
   <div class="col-12">
-    <CreatePost />
+    <CreatePostDesktop />
   </div>
   <div class="col-12 justify-content-center" v-if="state.posts.length > 0">
     <Post v-for="p in state.posts" :key="p.id" :post="p" />
