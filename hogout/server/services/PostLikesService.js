@@ -12,7 +12,7 @@ class PostLikesService {
   }
 
   async handleLike(likeRequest) {
-    const like = await dbContext.PostLikes.find({ postId: likeRequest.postId, creatorId: likeRequest.creatorId })
+    const like = await dbContext.PostLikes.findOne({ postId: likeRequest.postId, creatorId: likeRequest.creatorId })
 
     if (!like) {
       const newLike = await dbContext.PostLikes.create(likeRequest)
