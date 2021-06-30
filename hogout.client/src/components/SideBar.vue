@@ -4,20 +4,20 @@
     <div class="row flex-column text-light bg-blue side-fit h-100 px-5">
       <div class="col-3">
         <router-link :to="{ name: 'Profile', params: {id: state.account.id}}">
-          <img class="rounded-circle profile-icon mb-3" :src="state.account.picture" alt="">
+          <img class="rounded-circle profile-icon my-3" :src="state.account.picture" alt="">
         </router-link>
       </div>
       <div class="col-1">
-        <h5 class="mb-5">
+        <h5 class="mb-5 ml-3">
           {{ state.account.name }}
         </h5>
       </div>
-      <div class="col-1 d-flex align-items-center">
+      <div class="col-1 d-flex align-items-center ml-4">
         <img title="Total Wins" class="icon-pig text-light" src="../assets/img/pig-crown.png" alt="Wins: " srcset="">
         <span class="p-3">X</span>
         <span>{{ state.wins.length }}</span>
       </div>
-      <div class="col-2 d-flex align-items-center">
+      <div class="col-1 d-flex align-items-center ml-4">
         <img title="Total Attempts" class="icon-pig text-light" src="../assets/img/pig-normal.png" alt="Attempts: " srcset="">
         <span class="p-3">X</span>
         <span>{{ state.attempts.length }}</span>
