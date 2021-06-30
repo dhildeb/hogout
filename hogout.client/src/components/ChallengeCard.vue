@@ -63,7 +63,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .icon{
   max-width: 100px;
   object-fit: scale-down;

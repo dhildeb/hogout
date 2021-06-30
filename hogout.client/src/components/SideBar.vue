@@ -1,19 +1,32 @@
 <template>
-  <div class="d-flex flex-column align-items-center text-light bg-blue side-fit h-100 p-5">
-    <router-link :to="{ name: 'Profile', params: {id: state.account.id}}">
-      <img class="rounded-circle profile-icon mb-3" :src="state.account.picture" alt="">
-    </router-link>
-    <h5 class="mb-5">
-      {{ state.account.name }}
-    </h5>
-    <span>
-      <img title="Total Wins" class="icon-pig text-light" src="../assets/img/pig-crown.png" alt="Wins: " srcset=""> X {{ state.wins.length }}</span>
-    <span>
-      <img title="Total Attempts" class="icon-pig text-light" src="../assets/img/pig-normal.png" alt="Attempts: " srcset=""> X {{ state.attempts.length }}</span>
+  <div class="container">
+    <div class="row flex-column text-light bg-blue side-fit h-100 p-5">
+      <div class="col-2">
+        <router-link :to="{ name: 'Profile', params: {id: state.account.id}}">
+          <img class="rounded-circle profile-icon mb-3" :src="state.account.picture" alt="">
+        </router-link>
+      </div>
+      <div class="col-2">
+        <h5 class="mb-5">
+          {{ state.account.name }}
+        </h5>
+      </div>
+      <div class="col-1 d-flex align-items-center">
+        <img title="Total Wins" class="icon-pig text-light" src="../assets/img/pig-crown.png" alt="Wins: " srcset="">
+        <span class="p-3">X</span>
+        <span>{{ state.wins.length }}</span>
+      </div>
+      <div class="col-2 d-flex align-items-center">
+        <img title="Total Attempts" class="icon-pig text-light" src="../assets/img/pig-normal.png" alt="Attempts: " srcset="">
+        <span class="p-3">X</span>
+        <span>{{ state.attempts.length }}</span>
+      </div>
+      <div class="col-2"></div>
+      <button class="btn btn-danger m-5 logout" @click="logout">
+        logout
+      </button>
+    </div>
   </div>
-  <button class="btn btn-danger logout" @click="logout">
-    logout
-  </button>
 </template>
 
 <script>
@@ -56,14 +69,10 @@ export default {
   position: fixed;
   top: 44px;
 }
-.logout{
-  position: fixed;
-  left: 64px;
-  top: 560px;
-}
 .icon-pig{
   width: 3.5rem;
   margin-bottom: 1rem;
   mix-blend-mode: color-burn;
+  max-height: 51px;
 }
 </style>
