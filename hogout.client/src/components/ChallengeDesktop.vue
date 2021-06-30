@@ -68,7 +68,7 @@
       </div>
     </div>
   </div>
-  <div class="row d-flex justify-content-center">
+  <div class="row d-flex justify-content-center" v-if="state.user.isAuthenticated">
     <div class="col-12 justify-content-center text-center">
       <button @click="ITookChallenge" data-toggle="modal" data-target="#challengeDesktopModal" class="btn btn-primary">
         <span class=" m-auto">
@@ -111,7 +111,7 @@
   </div>
 
   <div class="col-12">
-    <div class="row">
+    <div class="row" v-if="state.user.isAuthenticated">
       <div class="col-12 d-flex justify-content-center">
         <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#review">
           Post A Review
@@ -175,6 +175,7 @@ export default {
       aveRating: computed(() => reviewRatingAve(AppState.activeChallenge.id)),
       aveDifficulty: computed(() => AppState.difficultyRatings),
       posts: computed(() => AppState.posts),
+      user: computed(() => AppState.user),
       newAttempt: {}
     })
     const difficulty = difficultyRatingAve(state.challenge.id)
