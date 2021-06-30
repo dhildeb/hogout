@@ -72,7 +72,11 @@
     </div>
   </div>
   <div class="row my-1 bio end">
-    <div class="col mx-5">
+    <div class="col-2"></div>
+    <div class="col-8 mx-5 shadow border rounded bg-white p-4">
+      <h5 class="pb-3">
+        About Me
+      </h5>
       <h6>{{ state.profile.bio }}</h6>
     </div>
   </div>
