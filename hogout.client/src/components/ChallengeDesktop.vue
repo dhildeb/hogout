@@ -1,5 +1,5 @@
 <template>
-  <div class="d-flex col-12 card main-display-challenge">
+  <div class="d-flex col-12 card main-display-challenge pt-2">
     <div class="row justify-content-center">
       <div class="col-12">
         <img class="card-img-top challenge-banner" :src="state.challenge.banner" alt="Profile Banner">
@@ -220,6 +220,7 @@ position: relative;
 }
 .challenge-banner{
   max-height: 17vw;
+  object-fit: cover;
 }
 .card{
 background-color: rgb(250, 245, 240);

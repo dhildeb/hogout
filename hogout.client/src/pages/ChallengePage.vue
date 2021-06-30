@@ -9,7 +9,7 @@
       </div>
     </div>
   </div>
-  <div class="container our-bg mobile-render">
+  <div class="container mobile-render">
     <ChallengeMobile />
   </div>
 </template>
@@ -48,9 +48,7 @@ export default {
 }
 </script>
 <style>
-.our-bg{
-  background-color: #E8E8E8;
-}
+
 @media screen and (max-width: 1049px) {
 .desktop-render{
     display: none;
