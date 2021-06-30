@@ -11,17 +11,17 @@
       </li>
       <li>
         <p class="btn-floating yellow darken-1" @click="state.locationForm = !state.locationForm">
-          loc
+          Loc
         </p>
       </li>
       <li>
         <p class="btn-floating green" @click="state.bioForm = !state.bioForm">
-          bio
+          Bio
         </p>
       </li>
       <li>
         <p class="btn-floating blue" @click="state.pictureForm = !state.pictureForm">
-          pics
+          Pics
         </p>
       </li>
     </ul>
@@ -41,7 +41,7 @@
       <form @submit.prevent="editProfile()" id="nameForm" name="nameForm">
         <div class="input-group">
           <label for="name" class="sr-only"> name </label>
-          <input type="text" v-model="state.profile.name" class="form-control w-50" :placeholder="state.profile.name">
+          <input type="text" v-model="state.profile.name" class="form-control w-50" :placeholder="state.profile.name" maxlength="40">
           <div class="input-group-append">
             <button class="btn btn-outline-secondary ml-4" type="submit" id="button-addon2">
               Save
@@ -72,7 +72,7 @@
     </div>
   </div>
   <div class="row my-1 bio end">
-    <div class="col-12 text-center">
+    <div class="col mx-5">
       <h6>{{ state.profile.bio }}</h6>
     </div>
   </div>
@@ -116,13 +116,13 @@
     </div>
   </div>
   <div class="row my-3 awards end">
-    <div class="col-12 d-flex align-items-center justify-content-center">
+    <div class="col-12 col-md-6 d-flex align-items-center justify-content-center">
       <img class="icon-pig" title="Total Wins" src="../assets/img/pig-crown.png" alt="">
       <p class="pt-3 pl-1">
         X {{ state.wins.length }}
       </p>
     </div>
-    <div class="col-12 d-flex align-items-center justify-content-center">
+    <div class="col-12 col-md-6 d-flex align-items-center justify-content-center">
       <img class="icon-pig" title="Total Attempts" src="../assets/img/pig-normal.png" alt="">
       <p class="pt-3 pl-1">
         X {{ state.attempts.length }}
