@@ -121,17 +121,16 @@
               Way to HOG OUT!
             </h5>
           </div>
-          <div class="modal-body d-flex justify-content-center">
+          <div class="modal-body d-flex justify-content-center text-center">
             <h4>Choose your results!</h4>
           </div>
-          <div class="modal-footer d-flex flex-column">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal" @click="createAttempt(true)">
-              I Won the Challenge!
-            </button>
-            <button type="button" class="btn btn-primary" data-dismiss="modal" @click="createAttempt(false)">
-              I Tried and Failed!
-            </button>
-          </div>
+
+          <button type="button" class="btn btn-secondary  my-1" data-dismiss="modal" @click="createAttempt(true)">
+            I Won the Challenge!
+          </button>
+          <button type="button" class="btn btn-primary  my-1 mt-2" data-dismiss="modal" @click="createAttempt(false)">
+            I Tried and Failed!
+          </button>
         </div>
       </div>
     </div>

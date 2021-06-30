@@ -15,7 +15,7 @@
         <form @submit.prevent="postComment">
           <div>
             <div class="my-3 forks">
-              <RatingComponent :current-rating="state.newPost.rating" @rated="saveRating" />
+              <RatingComponent :current-rating="state.newRating.rating" @rated="saveRating" />
             </div>
           </div>
 
@@ -31,18 +31,19 @@
             ></textarea>
             <label for="Image">Comment</label>
           </div>
-
           <div>
-            <input v-model="state.newPost.images[0]" type="text" title="Image Url">
-            <label for="Image1">Optional Image Url</label>
-          </div>
-          <div>
-            <input v-model="state.newPost.images[1]" type="text" title="Image Url">
-            <label for="Image2">Optional Image Url</label>
-          </div>
-          <div>
-            <input v-model="state.newPost.images[2]" type="text" title="Image Url">
-            <label for="Image3">Optional Image Url</label>
+            <div>
+              <input v-model="state.newPost.images[0]" type="text" title="Image Url">
+              <label for="Image1">Optional Image Url</label>
+            </div>
+            <div>
+              <input v-model="state.newPost.images[1]" type="text" title="Image Url">
+              <label for="Image2">Optional Image Url</label>
+            </div>
+            <div>
+              <input v-model="state.newPost.images[2]" type="text" title="Image Url">
+              <label for="Image3">Optional Image Url</label>
+            </div>
           </div>
 
           <div class="modal-footer bg-transparent">
@@ -68,8 +69,10 @@ export default {
     const route = useRoute()
     const state = reactive({
       set: false,
+      newRating: {
+        rating: 1
+      },
       newPost: {
-        rating: 1,
         body: '',
         images: []
       }
@@ -80,18 +83,19 @@ export default {
       state,
       async postComment() {
         try {
-          await postsService.createPost(route.params.id, state.newPost)
-          await ratingsService.handleReviewRating(route.params.id, state.newPost.rating)
           $('#review').modal('hide')
-          $('.modal-backdrop').hide()
-          state.newPost = {}
+          await postsService.createPost(route.params.id, state.newPost)
+          await ratingsService.handleReviewRating(route.params.id, state.newRating)
+          state.newPost.body = ''
+          state.newPost.images = []
+          state.newRating.rating = 1
         } catch (error) {
           Notification.toast(error, 'error')
         }
       },
 
       saveRating(fork) {
-        state.newPost.rating = fork
+        state.newRating.rating = fork
       }
     }
   }
