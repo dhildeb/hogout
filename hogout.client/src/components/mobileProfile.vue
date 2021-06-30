@@ -1,27 +1,28 @@
 <template>
   <div class="fixed-action-btn click-to-toggle" v-show="profile.id === state.account.id">
-    <a class="btn-floating btn-large red">
+    <a class="btn-floating btn-large bun">
       <i class="mdi mdi-pencil"></i>
     </a>
     <ul>
       <li>
-        <p class="btn-floating red" @click="state.nameForm = !state.nameForm" name="edit name">
-          Name
+        <p class="btn-floating bun " @click="state.pictureForm = !state.pictureForm">
+          Pics
         </p>
       </li>
+
       <li>
-        <p class="btn-floating yellow darken-1" @click="state.locationForm = !state.locationForm">
+        <p class="btn-floating meat darken-1" @click="state.locationForm = !state.locationForm">
           Loc
         </p>
       </li>
       <li>
-        <p class="btn-floating green" @click="state.bioForm = !state.bioForm">
+        <p class="btn-floating cheese" @click="state.bioForm = !state.bioForm">
           Bio
         </p>
       </li>
       <li>
-        <p class="btn-floating blue" @click="state.pictureForm = !state.pictureForm">
-          Pics
+        <p class="btn-floating lettuce" @click="state.nameForm = !state.nameForm" name="edit name">
+          Name
         </p>
       </li>
     </ul>
@@ -209,6 +210,30 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.t-shd{
+
+}
+.bun{
+  width: 56px;
+  height: 56px;
+ background-color: #f6a230;
+}
+.lettuce{
+  width: 56px;
+  height: 56px;
+background-color: #a6ba24;
+}
+.cheese{
+width: 56px;
+  height: 56px;
+background-color:#f5e15e
+}
+.meat{
+  width: 56px;
+  height: 56px;
+background-color:#7e563d
+}
+
 .height{
   height: 22vh;
 }
@@ -252,14 +277,13 @@ export default {
 
 //Materialize buttons
 .fixed-action-btn{
-top:5em;
-left:1em;
-right: 63em;
-bottom: 56em;
+top:5rem;
+left:1rem;
+right: 90rem;
+bottom: 56rem;
   ul{
-  width: 1em;
-  top:5em;
-  left:.5em;
+  top:4.5rem;
+  left:0;
   }
 }
 
