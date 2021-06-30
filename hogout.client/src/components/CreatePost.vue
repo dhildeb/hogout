@@ -130,7 +130,7 @@ export default {
 
 </script>
 
-<style>
+<style scoped>
 .min-100{
   min-height: 100vh;
 }

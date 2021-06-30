@@ -160,7 +160,10 @@ export default {
     return {
       state,
       openMaps() {
-        window.location.href = `${state.challenge.location}${state.challenge.state}/`
+        window.open(
+          `${state.challenge.location}+${state.challenge.state}/`,
+          '_blank'
+        )
       },
       createAttempt(result) {
         state.newAttempt.completed = result
