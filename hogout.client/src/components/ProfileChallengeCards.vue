@@ -92,6 +92,13 @@ export default {
 </script>
 
 <style scoped>
+.icon{
+  max-width: 100px;
+  object-fit: scale-down;
+}
+.click{
+  cursor: pointer;
+}
 .icon-fork{
   width: .5rem;
   height: 2.25rem;
@@ -103,6 +110,7 @@ export default {
   margin-bottom: 1rem;
 }
 .banner{
+  height: 160px;
   width: fit-content;
   object-fit: cover;
 }

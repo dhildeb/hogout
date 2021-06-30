@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import { computed, watchEffect, reactive } from '@vue/runtime-core'
+import { computed, onMounted, reactive } from '@vue/runtime-core'
 import { accountService } from '../services/AccountService'
 import { useRoute } from 'vue-router'
 import { AppState } from '../AppState'
@@ -18,7 +18,7 @@ export default {
     const state = reactive({
       profile: computed(() => AppState.activeProfile)
     })
-    watchEffect(async() => {
+    onMounted(async() => {
       await accountService.getProfileChallenges(route.params.id)
       await accountService.getProfile(route.params.id)
       await accountService.getUserAttempts(route.params.id)

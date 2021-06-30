@@ -52,7 +52,7 @@
 
 <script>
 import { reactive } from '@vue/reactivity'
-import { computed, watchEffect } from '@vue/runtime-core'
+import { computed, onMounted } from '@vue/runtime-core'
 import { AppState } from '../AppState'
 import { challengesService } from '../services/ChallengesService'
 import { ratingsService } from '../services/RatingsService'
@@ -68,7 +68,7 @@ export default {
       rating: 'Rating',
       filterBy: {}
     })
-    watchEffect(async() => {
+    onMounted(async() => {
       await challengesService.getAllChallenges()
       await ratingsService.getDifficultyRatings()
       await ratingsService.getReviewRatings()
