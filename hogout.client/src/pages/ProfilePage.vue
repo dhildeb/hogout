@@ -1,5 +1,5 @@
 <template>
-  <div class="container-fluid color">
+  <div class="container-fluid bg-bg">
     <MobileProfile :profile="state.profile" />
   </div>
 </template>

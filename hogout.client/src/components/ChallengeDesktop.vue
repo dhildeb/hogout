@@ -20,7 +20,7 @@
             @click="openMaps"
             class="
               btn
-              btn-primary
+              btn-info
               my-2
               "
           >
@@ -28,10 +28,7 @@
           </button>
         </div>
         <div class="row justify-content-center align-items-center text-center rating-title">
-          <span class="mr-3">
-            <b class="text-center">User Rating: </b>
-          </span>
-          <div :title="state.aveRating">
+          <div :title="'User Rating: '+state.aveRating">
             <img class="icon-fork-desktop" src="../assets/img/fullFork.png" alt="" srcset="">
 
             <img v-if="state.aveRating > 1.5" class="icon-fork-desktop" src="../assets/img/fullFork.png" alt="" srcset="">
@@ -70,9 +67,8 @@
   </div>
   <div class="row d-flex justify-content-center" v-if="state.user.isAuthenticated">
     <div class="col-12 justify-content-center text-center">
-      <button @click="ITookChallenge" data-toggle="modal" data-target="#challengeDesktopModal" class="btn btn-primary">
+      <button @click="ITookChallenge" data-toggle="modal" data-target="#challengeDesktopModal" class="btn btn-warning">
         <span class=" m-auto">
-
           I TOOK ON THIS CHALLENGE
         </span>
       </button>
@@ -80,13 +76,15 @@
   </div>
   <div class="col-12 card">
     <div class="row">
-      <div class="mb-2 col-12 justify-content-center text-center">
+      <div class="mb-2 col-12 justify-content-center text-center pt-3 border-bottom">
         <h1 class="rating-title">
-          {{ state.challenge.restaurant }} {{ state.challenge.name }}
+          <b>
+            {{ state.challenge.restaurant }} {{ state.challenge.name }}
+          </b>
         </h1>
       </div>
       <div class="col-12 justify-content-center">
-        <p class="difficulty-title">
+        <p class="difficulty-title text-dark-pink">
           <b>Difficulty: </b>
           {{ difficulty }}
         </p>
