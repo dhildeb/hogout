@@ -26,8 +26,8 @@
       </div>
     </div>
     <div class="col-12">
-      <div class="row mr-1">
-        <div class="d-flex align-items-center ">
+      <div class="row mr-1 justify-content-between">
+        <div class="d-flex align-items-center col-10">
           <div class="rel">
             <img class="rounded-circle prof-pic m-3 pointer" :src="post.creator.picture" :alt="post.creator.name" @click="loadProfile">
             <div class="ab medal border border-dark rounded-circle">
@@ -56,6 +56,9 @@
             </p>
           </div>
         </div>
+        <div class="col-1 align-items-center">
+          <i class="mdi mdi-trash-can delete-icon" title="delete post" v-if="post.creatorId === state.account.id" @click="deletePost"></i>
+        </div>
       </div>
     </div>
   </div>
@@ -68,6 +71,8 @@ import { computed, onMounted } from '@vue/runtime-core'
 import { accountService } from '../services/AccountService'
 import { useRoute } from 'vue-router'
 import { AppState } from '../AppState'
+import { postsService } from '../services/PostsService'
+import Notification from '../utils/Notification'
 export default {
   props: { post: { type: Object, required: true } },
   setup(props) {
@@ -79,7 +84,8 @@ export default {
       images: props.post.images,
       currentPicIndex: 0,
       shownMedal: 0,
-      userMedals: computed(() => AppState.profileAttempts.filter(c => c.challengeId === route.params.id))
+      userMedals: computed(() => AppState.profileAttempts.filter(c => c.challengeId === route.params.id)),
+      account: computed(() => AppState.account)
 
     })
     return {
@@ -116,6 +122,11 @@ export default {
       },
       async getUserAttempts() {
         await accountService.getUserAttempts(props.post.creatorId).filter(c => c.id === route.params.id)
+      },
+      async deletePost() {
+        if (await Notification.confirmAction()) {
+          await postsService.deletePost(props.post.id)
+        }
       },
       setPlaceholder(event) {
         event.target.src = 'https://www.meatsbylinz.com/Theme/Img/meatmap/mbl-coming-soon-pig.png'
@@ -169,6 +180,10 @@ background: pink;
 }
 .pointer{
   cursor: pointer;
+}
+.delete-icon{
+  cursor: pointer;
+  font-size: 2.5rem;
 }
 
 </style>

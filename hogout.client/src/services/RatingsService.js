@@ -1,5 +1,6 @@
 import { AppState } from '../AppState'
 import { Rating } from '../models/Rating'
+import { logger } from '../utils/Logger'
 import { difficultyRatingAve, reviewRatingAve } from '../utils/RatingAve'
 import { api } from './AxiosService'
 
@@ -37,6 +38,7 @@ class RatingsService {
   }
 
   async handleReviewRating(challengeId, newRating) {
+    logger.log(newRating)
     const res = await api.post('api/challenges/' + challengeId + '/reviews', newRating)
     const rating = AppState.reviewRatings.find(r => r.id === res.data.id)
 
@@ -53,7 +55,7 @@ class RatingsService {
     AppState.tempChallenges = []
     AppState.challenges.forEach(c => {
       const currentR = difficultyRatingAve(c.id)
-      if (currentR === filter.difficulty) {
+      if (currentR === filter.difficulty || Math.round(reviewRatingAve(c.id)) === filter.forks) {
         AppState.tempChallenges.push(c)
       }
     })
@@ -62,7 +64,8 @@ class RatingsService {
   filterForks(filter) {
     AppState.tempChallenges = []
     AppState.challenges.forEach(c => {
-      if (Math.round(reviewRatingAve(c.id)) === filter.forks) {
+      const currentR = difficultyRatingAve(c.id)
+      if (Math.round(reviewRatingAve(c.id)) === filter.forks || currentR === filter.difficulty) {
         AppState.tempChallenges.push(c)
       }
     })

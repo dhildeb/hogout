@@ -6,14 +6,16 @@
       </div>
     </div>
     <div class="row pb-2 justify-content-center">
-      <div class="col-10 col-md-8 col-lg-6 click border rounded-bottom shadow d-flex bg-white p-0 py-2" @click="goThere">
-        <img class="img-fluid icon over-hang p-2" :src="challenge.image" alt="icon">
-        <div class="d-flex flex-column w-100 px-2">
-          <b class="p-1">{{ challenge.name }}</b>
-          <em class="text-secondary">{{ challenge.state }}</em>
-          <span class="row p-1 m-0 text-danger">
-            <h5 class="col-12 col-md-5 p-0 pb-2 text-danger" title="Difficulty"><em>{{ getDifficultyRating(challenge) }}</em></h5>
-            <div class="col-12 col-md-6 p-0 d-flex" title="Rating">
+      <div class="col-10 col-md-8 col-lg-6 click border rounded-bottom shadow d-flex bg-white align-self-center justify-content-center" @click="goThere">
+        <div class="row w-100 justify-content-around">
+          <img class="col-4 img-fluid icon over-hang" :src="challenge.image" alt="icon">
+          <div class="col-4 p-0 justify-content-center d-flex flex-column w-100">
+            <b class="p-1">{{ challenge.name }}</b>
+            <em class="text-secondary">{{ challenge.state }}</em>
+          </div>
+          <span class="col-4 p-0 d-xs-flex m-0 text-danger text-center">
+            <h5 class="text-danger p-3" title="Difficulty"><em>{{ getDifficultyRating(challenge) }}</em></h5>
+            <div class="d-flex mr-3 pt-2" title="Rating">
               <img src="../assets/img/fullFork.png" class="img-fluid icon-fork" alt="">
               <img v-if="getReviewRating(challenge) > 1.5" src="../assets/img/fullFork.png" class="img-fluid icon-fork" alt="">
               <img v-else src="../assets/img/emptyFork.png" class="img-fluid icon-fork" alt="">
@@ -83,5 +85,11 @@ export default {
   width: .7rem;
   margin-right: 5px;
   margin-left: 5px;
+  max-height: 38px;
+}
+@media screen and (max-width: 415px) {
+  .d-xs-flex{
+    display: flex;
+  }
 }
 </style>
