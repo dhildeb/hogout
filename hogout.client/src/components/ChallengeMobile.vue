@@ -84,14 +84,14 @@
         </h3>
         <p>{{ state.challenge.rewards }}</p>
       </div>
-      <div class="row justify-content-center my-3">
+      <div class="row justify-content-center my-3" v-if="state.user.isAuthenticated">
         <button type="button" data-toggle="modal" data-target="#challenge" class="btn btn-primary">
           I TOOK ON THIS CHALLENGE
         </button>
       </div>
     </div>
     <div class="col-12">
-      <div class="row">
+      <div class="row" v-if="state.user.isAuthenticated">
         <div class="col-12 d-flex justify-content-center">
           <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#review">
             Post A Review
@@ -156,6 +156,7 @@ export default {
       attempts: computed(() => AppState.attempts),
       wins: computed(() => AppState.attempts.filter(a => a.completed)),
       posts: computed(() => AppState.posts),
+      user: computed(() => AppState.user),
       newAttempt: {}
     })
 
