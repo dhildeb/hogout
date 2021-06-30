@@ -58,7 +58,7 @@
         </div>
         <div class="col-3 align-items-center">
           <i class="mdi mdi-thumb-up like-icon" title="like post" v-if="state.user.isAuthenticated && state.likes.filter(l => l.creatorId === state.account.id).length <= 0" @click="likePost"></i>
-          <i class="mdi mdi-thumb-down like-icon" title="like post" v-if="state.user.isAuthenticated && state.likes.filter(l => l.creatorId === state.account.id).length > 0" @click="likePost"></i>
+          <i class="mdi mdi-thumb-down like-icon" title="dislike post" v-if="state.user.isAuthenticated && state.likes.filter(l => l.creatorId === state.account.id).length > 0" @click="likePost"></i>
           <i class="mdi mdi-close"></i>
           <span>{{ state.likes.length }}</span>
         </div>
