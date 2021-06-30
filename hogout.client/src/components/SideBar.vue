@@ -1,8 +1,7 @@
 <template>
   <div class="container h-100">
-    <div class="col-1"></div>
     <div class="row flex-column text-light bg-blue side-fit h-100 px-5">
-      <div class="col-3">
+      <div class="col-3 mt-5">
         <router-link :to="{ name: 'Profile', params: {id: state.account.id}}">
           <img class="rounded-circle profile-icon my-3" :src="state.account.picture" alt="">
         </router-link>
