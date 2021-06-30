@@ -83,9 +83,7 @@ export default {
   props: { post: { type: Object, required: true } },
   setup(props) {
     const route = useRoute()
-    onMounted(async() =>
-      await accountService.getUserAttempts(props.post.creatorId)
-    )
+
     const state = reactive({
       images: props.post.images,
       currentPicIndex: 0,
