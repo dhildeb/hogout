@@ -4,12 +4,13 @@
 @import "./_overrides.scss";
 
 :root {
-  --grey: #f6f6f6;
+  --grey: #f5f5f5;
   --dark-pink: #F48A85;
   --pink: #FBA374;
   --dark-blue: #547066;
   --blue: #6F9082;
   --light-blue: #D4B59B;
+  --yellow: #f9f9f9;
 }
 
 #app {
@@ -26,7 +27,9 @@ main {
   display: flex;
   align-items: stretch;
 }
-
+.bg-bg{
+  background-color: var(--grey);
+}
 .text-dark-pink{
   color: var(--dark-pink);
 }
@@ -57,4 +60,7 @@ main {
 }
 .bg-light-blue{
   background-color: var(--light-blue);
+}
+.bg-yellow{
+  background-color: var(--yellow);
 }

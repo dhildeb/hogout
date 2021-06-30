@@ -1,7 +1,7 @@
 <template>
   <div style="height: 64px;"></div>
   <div class="container-fluid nav-fit">
-    <div class="row bg-dark-blue justify-content-between">
+    <div class="row bg-dark-blue justify-content-between border-nav">
       <div class="col navbar-brand d-flex m-auto">
         <router-link class="text-pink" :to="{ name: 'Home' }">
           <img class="hogout m-2" src="../assets/img/hogoutTitle.png" title="Hogout Home" alt="Hogout Logo">
@@ -97,6 +97,9 @@ a:hover {
 .bg-darker:hover {
   background-color: rgb(54, 54, 54);
   transition: all 0.15s linear;
+}
+.border-nav{
+  border-bottom: 3px solid #36544a;
 }
 .nav-link{
   text-transform: uppercase;

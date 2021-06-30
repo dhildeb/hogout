@@ -6,7 +6,7 @@
       </div>
     </div>
     <div class="row pb-2 justify-content-center">
-      <div class="col-10 col-md-8 col-lg-6 click border rounded-bottom shadow d-flex bg-white align-self-center justify-content-center" @click="goThere">
+      <div class="col-10 col-md-8 col-lg-6 click border rounded-bottom shadow d-flex bg-yellow align-self-center justify-content-center" @click="goThere">
         <div class="row w-100 justify-content-around">
           <img class="col-4 img-fluid icon over-hang" :src="challenge.image" alt="icon">
           <div class="col-4 p-0 justify-content-center d-flex flex-column w-100">

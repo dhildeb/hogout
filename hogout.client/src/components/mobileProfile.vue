@@ -27,13 +27,18 @@
     </ul>
   </div>
   <div class="row bg-img" :style="{backgroundImage: `url(${state.profile.banner})`}">
-    <div class="col-12 position text-center">
+    <div class="col-12 position text-center mb-3">
       <img :src="state.profile.picture" alt="profile-picture" class="rounded-circle profile-icon frame">
     </div>
   </div>
-  <div class="row mt-4 pt-5">
+  <div class="row">
     <div class="col-12 text-center">
-      <h3> {{ state.profile.name }} </h3>
+      <h3 v-if="state.profile.location === '' || !state.profile.location">
+        {{ state.profile.name }}
+      </h3>
+      <h3 v-else>
+        {{ state.profile.name }}, {{ state.profile.location }}
+      </h3>
     </div>
   </div>
   <div class="row form justify-content-center" v-if="state.nameForm">
@@ -51,11 +56,7 @@
       </form>
     </div>
   </div>
-  <div class="row my-1">
-    <div class="col-12 text-center">
-      <h6>{{ state.profile.location }} </h6>
-    </div>
-  </div>
+
   <div class="row form justify-content-center" v-if="state.locationForm">
     <div class="col-md-8 text-center ">
       <form @submit.prevent="editProfile()">
@@ -71,9 +72,26 @@
       </form>
     </div>
   </div>
+  <div class="row my-3 awards end">
+    <div class="col-md-4"></div>
+    <div class="col-12 col-md-2 d-flex align-items-center justify-content-center">
+      <img class="icon-pig" title="Total Wins" src="../assets/img/pig-crown.png" alt="">
+      <p class="pt-3 pl-1">
+        X {{ state.wins.length }}
+      </p>
+    </div>
+    <div class="col-12 col-md-2 d-flex align-items-center justify-content-center">
+      <img class="icon-pig" title="Total Attempts" src="../assets/img/pig-normal.png" alt="">
+      <p class="pt-3 pl-1">
+        X {{ state.attempts.length }}
+      </p>
+    </div>
+    <div class="col-md-4"></div>
+  </div>
+
   <div class="row my-1 bio end">
     <div class="col-2"></div>
-    <div class="col-8 mx-5 shadow border rounded bg-white p-4">
+    <div class="col-8 p-4 shadow border rounded bg-white">
       <h5 class="pb-3">
         About Me
       </h5>
@@ -119,22 +137,7 @@
       </form>
     </div>
   </div>
-  <div class="row my-3 awards end">
-    <div class="col-md-4"></div>
-    <div class="col-12 col-md-2 d-flex align-items-center justify-content-center">
-      <img class="icon-pig" title="Total Wins" src="../assets/img/pig-crown.png" alt="">
-      <p class="pt-3 pl-1">
-        X {{ state.wins.length }}
-      </p>
-    </div>
-    <div class="col-12 col-md-2 d-flex align-items-center justify-content-center">
-      <img class="icon-pig" title="Total Attempts" src="../assets/img/pig-normal.png" alt="">
-      <p class="pt-3 pl-1">
-        X {{ state.attempts.length }}
-      </p>
-    </div>
-    <div class="col-md-4"></div>
-  </div>
+
   <div class="row mt-3">
     <div class="col-12 text-center">
       <h4 class="border-lg-bottom pb-4">

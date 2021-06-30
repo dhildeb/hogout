@@ -1,6 +1,6 @@
 <template>
   <div class="row pb-2 justify-content-center">
-    <div class="col-xl-6 col-md-8 col-sm-6 col-10 click border rounded-bottom shadow d-flex bg-white p-0 py-2 zoom" @click="goThere">
+    <div class="col-xl-6 col-md-8 col-sm-6 col-10 click border rounded-bottom shadow d-flex bg-yellow p-0 py-2 zoom" @click="goThere">
       <img class="banner img-fluid rounded-top d-md-block d-none" :src="challenge.challenge.banner" alt="banner">
       <img class="img-fluid icon over-hang p-2" :src="challenge.challenge.image" alt="icon">
       <div class="d-flex flex-column w-100 px-2">
@@ -23,7 +23,7 @@
       </div>
     </div>
     <div class="col-sm-1"></div>
-    <div class="col-10 col-sm-1 challenge-stats d-flex flex-column-md justify-content-end border rounded-bottom shadow bg-white">
+    <div class="col-10 col-sm-1 challenge-stats d-flex flex-column-md justify-content-end border rounded-bottom shadow bg-yellow">
       <!-- options tab -->
       <div class="dropdown click options position-absolute"
            id="dropdownMenuButton"
