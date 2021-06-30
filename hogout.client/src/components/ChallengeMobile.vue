@@ -4,7 +4,7 @@
       <img class="card-img-top" :src="state.challenge.banner" alt="Profile Banner">
 
       <div class="row justify-content-center rel">
-        <img class="rounded-circle ab" :src="state.challenge.image" alt="Profile Image">
+        <img class="rounded-circle ab circle-img" :src="state.challenge.image" alt="Profile Image">
       </div>
       <div class="row sep"></div>
 
@@ -84,7 +84,7 @@
         </h3>
         <p>{{ state.challenge.rewards }}</p>
       </div>
-      <div class="row justify-content-center my-3" v-if="state.user.isAuthenticated">
+      <div class="row justify-content-center mt-3 mb-5" v-if="state.user.isAuthenticated">
         <button type="button" data-toggle="modal" data-target="#challenge" class="btn btn-primary">
           I TOOK ON THIS CHALLENGE
         </button>
@@ -92,15 +92,15 @@
     </div>
     <div class="col-12">
       <div class="row" v-if="state.user.isAuthenticated">
-        <div class="col-12 d-flex justify-content-center">
-          <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#review">
-            Post A Review
-          </button>
-        </div>
       </div>
       <div class="row">
         <div class="col-12 d-flex justify-content-center">
           <u><h2>Reviews</h2></u>
+        </div>
+        <div class="col-12 d-flex justify-content-center">
+          <button class="btn btn-primary btn-sm" type="button" data-toggle="modal" data-target="#review">
+            Post A Review
+          </button>
         </div>
       </div>
       <div v-if="state.posts.length > 0" class="col-12">
@@ -183,16 +183,17 @@ export default {
 </script>
 
 <style scoped>
+
+.card{
+background-color: rgb(250, 245, 240);
+}
 .vw-100{
   width: 100vw;
 }
 
 .ab{
   position: absolute;
-  min-width: 10rem;
-  min-height: 10rem;
-  height: 30vw;
-  width: 30vw;
+
   top: -15vw;
 }
 .rel{
@@ -200,7 +201,7 @@ position: relative;
 }
 
 .sep{
-
+max-height: 4rem;
   height: 11vw;
 }
 
@@ -222,4 +223,14 @@ margin-left: 5px;
   max-width: 100%;
   z-index: 10;
 }
+
+.circle-img{
+  max-height: 16rem;
+  max-width: 16rem;
+  min-width: 9rem;
+  min-height: 9rem;
+  height: 30vw;
+  width: 30vw;
+}
+
 </style>
