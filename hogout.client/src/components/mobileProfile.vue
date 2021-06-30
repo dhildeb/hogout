@@ -158,6 +158,7 @@ import { ratingsService } from '../services/RatingsService'
 import M from 'materialize-css'
 
 export default {
+  name: 'MobileProfile',
   props: {
     profile: { type: Object, required: true }
   },

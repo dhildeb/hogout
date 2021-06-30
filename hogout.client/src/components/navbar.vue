@@ -1,5 +1,5 @@
 <template>
-  <div style="height: 75px;"></div>
+  <div style="height: 64px;"></div>
   <div class="container-fluid nav-fit">
     <div class="row bg-dark-blue justify-content-between">
       <div class="col navbar-brand d-flex m-auto">
