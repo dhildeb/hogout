@@ -1,5 +1,5 @@
 <template>
-  <div class="fixed-action-btn" v-show="profile.id === state.account.id">
+  <div class="fixed-action-btn click-to-toggle" v-show="profile.id === state.account.id">
     <a class="btn-floating btn-large red">
       <i class="mdi mdi-pencil"></i>
     </a>
@@ -167,10 +167,17 @@ export default {
       pictureForm: false
     })
     onMounted(async() => {
-      M.AutoInit()
+      materializedInit()
       await ratingsService.getDifficultyRatings()
       await ratingsService.getReviewRatings()
     })
+    function materializedInit() {
+      const elems = document.querySelectorAll('.fixed-action-btn')
+      const instances = M.FloatingActionButton.init(elems, {
+        direction: 'bottom',
+        hoverEnabled: false
+      })
+    }
     return {
       state,
       findChallenges() {
@@ -226,6 +233,17 @@ export default {
   height: 120px;
   width: 120px;
   object-fit: cover;
+}
+
+//Materialize buttons
+.fixed-action-btn{
+top:5em;
+left:1em;
+  ul{
+  width: 1em;
+  top:5em;
+  left:.5em;
+  }
 }
 
 </style>
