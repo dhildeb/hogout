@@ -1,5 +1,5 @@
 <template>
-  <div class="d-sm-block   d-none ">
+  <div class="desktop-render">
     <div class="row">
       <div class="col-3">
         <SideBar />
@@ -9,7 +9,7 @@
       </div>
     </div>
   </div>
-  <div class="d-sm-none container  our-bg  d-block">
+  <div class="container our-bg mobile-render">
     <ChallengeMobile />
   </div>
 </template>
@@ -51,8 +51,14 @@ export default {
 .our-bg{
   background-color: #E8E8E8;
 }
-.desktop-display{
-  width: 80%;
-  right: 0;
+@media screen and (max-width: 1049px) {
+.desktop-render{
+    display: none;
+  }
+}
+@media screen and (min-width: 1050px) {
+.mobile-render{
+    display: none;
+  }
 }
 </style>
