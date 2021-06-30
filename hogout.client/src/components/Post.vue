@@ -27,9 +27,9 @@
     </div>
     <div class="col-12">
       <div class="row mr-1 justify-content-between">
-        <div class="d-flex align-items-center col-8">
+        <div class="d-flex align-items-center col">
           <div class="rel">
-            <img class="rounded-circle prof-pic m-3 pointer" :src="post.creator.picture" :alt="post.creator.name" @click="loadProfile">
+            <img class="rounded-circle prof-pic m-2 pointer" :src="post.creator.picture" :alt="post.creator.name" @click="loadProfile">
             <div class="ab medal border border-dark rounded-circle" v-if=" state.userMedals.length">
               <img
                 v-if=" state.userMedals.filter(u => u.completed).length === 0"
@@ -56,13 +56,18 @@
             </p>
           </div>
         </div>
-        <div class="col-3 align-items-center">
-          <i class="mdi mdi-thumb-up like-icon" title="like post" v-if="state.user.isAuthenticated && state.likes.filter(l => l.creatorId === state.account.id).length <= 0" @click="likePost"></i>
+        <div class=" ab like-pos">
+          <i class="mdi mdi-thumb-up like-icon mdi-18px
+          "
+             title="like post"
+             v-if="state.user.isAuthenticated && state.likes.filter(l => l.creatorId === state.account.id).length <= 0"
+             @click="likePost"
+          ></i>
           <i class="mdi mdi-thumb-down like-icon" title="dislike post" v-if="state.user.isAuthenticated && state.likes.filter(l => l.creatorId === state.account.id).length > 0" @click="likePost"></i>
           <i class="mdi mdi-close"></i>
           <span>{{ state.likes.length }}</span>
         </div>
-        <div class="col-1 align-items-center">
+        <div class="ab trash-pos">
           <i class="mdi mdi-trash-can delete-icon" title="delete post" v-if="post.creatorId === state.account.id" @click="deletePost"></i>
         </div>
       </div>
@@ -162,6 +167,10 @@ export default {
 
 }
 
+.trash-pos{
+top: -29px;
+right: 7px;
+}
 .rel{
 position: relative;
 }
@@ -202,11 +211,16 @@ background: pink;
 }
 .delete-icon{
   cursor: pointer;
-  font-size: 2.5rem;
+  font-size: 1.4rem;
+}
+
+.like-pos{
+top: 50px;
+right: 17px;
 }
 .like-icon{
   cursor: pointer;
-  font-size: 2.5rem;
+
 }
 
 </style>
