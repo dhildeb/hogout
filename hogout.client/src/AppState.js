@@ -15,4 +15,5 @@ export const AppState = reactive({
   postLikes: [],
   tempChallenges: [],
   profileChallenges: []
+
 })
