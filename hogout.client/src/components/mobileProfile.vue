@@ -135,9 +135,11 @@
     </div>
     <div class="col-md-4"></div>
   </div>
-  <div class="row mt-3 shadow">
-    <div class="col-12 text-center bg-white m-auto shadow">
-      <h4>Your Challenges</h4>
+  <div class="row mt-3">
+    <div class="col-12 text-center">
+      <h4 class="border-lg-bottom pb-4">
+        Your Challenges
+      </h4>
     </div>
   </div>
   <div class="challenges" v-if="state.challenges">
@@ -239,6 +241,9 @@ export default {
   height: 120px;
   width: 120px;
   object-fit: cover;
+}
+.border-lg-bottom{
+  border-bottom: 3px solid var(--dark-blue);
 }
 
 //Materialize buttons

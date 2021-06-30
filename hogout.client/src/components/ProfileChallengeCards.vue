@@ -23,7 +23,7 @@
       </div>
     </div>
     <div class="col-sm-1"></div>
-    <div class="col-10 col-sm-1 challenge-stats d-flex flex-column-md justify-content-around border rounded-bottom shadow bg-white">
+    <div class="col-10 col-sm-1 challenge-stats d-flex flex-column-md justify-content-end border rounded-bottom shadow bg-white">
       <!-- options tab -->
       <div class="dropdown click options position-absolute"
            id="dropdownMenuButton"
@@ -110,6 +110,8 @@ export default {
 }
 .banner{
   height: 160px;
+  min-width: 50%;
+  max-width: 50%;
   width: fit-content;
   object-fit: cover;
 }
