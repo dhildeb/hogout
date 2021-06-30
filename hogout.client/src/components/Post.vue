@@ -3,29 +3,44 @@
     <div class="col-12">
       <div v-if="state.images.length > 1" class="row justify-content-between ab rightarr">
         <div class="col d-flex justify-content-end">
-          <button @click="changePic('next')" class="btn btn-primary">
-            <i class="mdi mdi-arrow-right-thick"></i>
-          </button>
+          <div @click="changePic('next')" title="Next" class="bg-transparent pointer">
+            <i class="mdi mdi-24px mdi-arrow-right-bold "></i>
+          </div>
         </div>
       </div>
     </div>
     <div class="col-12">
       <div v-if="state.images.length > 1" class="row justify-content-between ab leftarr">
         <div class="col">
-          <button @click="changePic('prev')" class="btn btn-primary">
-            <i class="mdi mdi-arrow-left-thick"></i>
-          </button>
+          <div @click="changePic('prev')" title="Previous" class="bg-transparent pointer">
+            <i class="mdi mdi-24px mdi-arrow-left-bold "></i>
+          </div>
         </div>
       </div>
     </div>
     <div class="col-12">
       <div class="row ">
-        <div class="col-12 card-img-top d-flex justify-content-center">
-          <img class="pic-size" :src="currentPicture()" v-if="state.images.length > 0">
+        <div v-if="state.images.length > 0" class="col-12 card-img-top d-flex justify-content-center mb-3">
+          <img class="pic-size" :src="currentPicture()">
         </div>
       </div>
     </div>
-    <div class="col-12">
+    <div class="col-12 mt-3">
+      <div class=" ab like-pos">
+        <i class="mdi mdi-thumb-up-outline like-icon mdi-18px
+          "
+           title="like post"
+           v-if="state.user.isAuthenticated && state.likes.filter(l => l.creatorId === state.account.id).length <= 0"
+           @click="likePost"
+        ></i>
+        <i class="mdi mdi-thumb-down-outline like-icon mdi-18px" title="Dislike Post" v-if="state.user.isAuthenticated && state.likes.filter(l => l.creatorId === state.account.id).length > 0" @click="likePost"></i>
+        <i class="mdi mdi-thumb-up-outline like-icon mdi-18px" v-if="!state.user.isAuthenticated"></i>
+        <i class="mdi mdi-close"></i>
+        <span>{{ state.likes.length }}</span>
+      </div>
+      <div class="ab trash-pos">
+        <i class="mdi mdi-delete-outline delete-icon text-danger" title="Delete Post" v-if="post.creatorId === state.account.id" @click="deletePost"></i>
+      </div>
       <div class="row mr-1 justify-content-between">
         <div class="d-flex align-items-center col">
           <div class="rel">
@@ -56,21 +71,6 @@
             </p>
           </div>
         </div>
-        <div class=" ab like-pos">
-          <i class="mdi mdi-thumb-up like-icon mdi-18px
-          "
-             title="like post"
-             v-if="state.user.isAuthenticated && state.likes.filter(l => l.creatorId === state.account.id).length <= 0"
-             @click="likePost"
-          ></i>
-          <i class="mdi mdi-thumb-down like-icon" title="dislike post" v-if="state.user.isAuthenticated && state.likes.filter(l => l.creatorId === state.account.id).length > 0" @click="likePost"></i>
-          <i class="mdi mdi-thumb-up like-icon" v-if="!state.user.isAuthenticated"></i>
-          <i class="mdi mdi-close"></i>
-          <span>{{ state.likes.length }}</span>
-        </div>
-        <div class="ab trash-pos">
-          <i class="mdi mdi-trash-can delete-icon" title="delete post" v-if="post.creatorId === state.account.id" @click="deletePost"></i>
-        </div>
       </div>
     </div>
   </div>
@@ -79,7 +79,7 @@
 <script>
 import { reactive } from '@vue/reactivity'
 import { router } from '../router'
-import { computed, onMounted } from '@vue/runtime-core'
+import { computed } from '@vue/runtime-core'
 import { accountService } from '../services/AccountService'
 import { useRoute } from 'vue-router'
 import { AppState } from '../AppState'
@@ -112,11 +112,7 @@ export default {
           state.currentPicIndex--
         }
         if (direction === 'next') {
-          // if (state.images[state.currentPicIndex] === '' || null) {
-          //   state.currentPicIndex++
-          // }
           state.currentPicIndex++
-          // state.currentPicIndex %= props.post.images.length
         }
         if (state.currentPicIndex > props.post.images.length - 1) {
           state.currentPicIndex = 0
@@ -125,7 +121,6 @@ export default {
           state.currentPicIndex = props.post.images.length - 1
         }
         if (!state.images[state.currentPicIndex]) {
-          console.log('[broken link!]')
           this.changePic(direction)
         }
       },
@@ -169,24 +164,36 @@ export default {
 }
 
 .trash-pos{
-top: -29px;
-right: 7px;
+top: -41px;
+left: 10px;
 }
 .rel{
 position: relative;
 }
 
 .leftarr{
-left: 5px;
+  transition: all 0.5s;
+ color: gray;
+left: 20px;
 top: 100px;
+text-shadow: rgb(0, 0, 0) 2px 0px 0px, rgb(0, 0, 0) 1.75517px 0.958851px 0px, rgb(0, 0, 0) 1.0806px 1.68294px 0px, rgb(0, 0, 0) 0.141474px 1.99499px 0px, rgb(0, 0, 0) -0.832294px 1.81859px 0px, rgb(0, 0, 0) -1.60229px 1.19694px 0px, rgb(0, 0, 0) -1.97998px 0.28224px 0px, rgb(0, 0, 0) -1.87291px -0.701566px 0px, rgb(0, 0, 0) -1.30729px -1.5136px 0px, rgb(0, 0, 0) -0.421592px -1.95506px 0px, rgb(0, 0, 0) 0.567324px -1.91785px 0px, rgb(0, 0, 0) 1.41734px -1.41108px 0px, rgb(0, 0, 0) 1.92034px -0.558831px 0px;
 }
 .rightarr{
-right: 5px;
+  transition: all 0.5s;
+color: gray;
+right:20px;
 top: 100px;
+text-shadow: rgb(0, 0, 0) 2px 0px 0px, rgb(0, 0, 0) 1.75517px 0.958851px 0px, rgb(0, 0, 0) 1.0806px 1.68294px 0px, rgb(0, 0, 0) 0.141474px 1.99499px 0px, rgb(0, 0, 0) -0.832294px 1.81859px 0px, rgb(0, 0, 0) -1.60229px 1.19694px 0px, rgb(0, 0, 0) -1.97998px 0.28224px 0px, rgb(0, 0, 0) -1.87291px -0.701566px 0px, rgb(0, 0, 0) -1.30729px -1.5136px 0px, rgb(0, 0, 0) -0.421592px -1.95506px 0px, rgb(0, 0, 0) 0.567324px -1.91785px 0px, rgb(0, 0, 0) 1.41734px -1.41108px 0px, rgb(0, 0, 0) 1.92034px -0.558831px 0px;
+}
+.rightarr:hover{
+  color: white;
+}
+.leftarr:hover{
+  color: white;
 }
 .medal{
-top: 6px;
-left: 9px;
+top: -3px;
+left: 3px;
 background: pink;
 }
 .ab{
@@ -200,8 +207,9 @@ background: pink;
   object-fit: cover;
 }
 .prof-pic{
-
-  max-width: 4rem;
+width: 4rem;
+height: 4rem;
+object-fit: cover;
 
 }
 .ofwrap{
@@ -216,8 +224,8 @@ background: pink;
 }
 
 .like-pos{
-top: 50px;
-right: 17px;
+top: -41px;
+right: 10px;
 }
 .like-icon{
   cursor: pointer;
