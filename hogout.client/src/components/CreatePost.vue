@@ -18,8 +18,25 @@
               <RatingComponent :current-rating="state.newRating.rating" @rated="saveRating" />
             </div>
           </div>
+          <div class="dropdown py-2">
+            <div class="btn btn-outline-primary dropdown-toggle"
+                 id="dropdownMenuButton"
+                 data-toggle="dropdown"
+                 aria-haspopup="true"
+                 aria-expanded="false"
+            >
+              {{ state.newDifficulty.selectedDifficulty }}
+            </div>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <a class="dropdown-item" @click="setDifficulty('Guinea Pig',1)">Guinea Pig</a>
+              <a class="dropdown-item" @click="setDifficulty('Piglet',2)">Piglet</a>
+              <a class="dropdown-item" @click="setDifficulty('Pig',3)">Pig</a>
+              <a class="dropdown-item" @click="setDifficulty('Hog',4)">Hog</a>
+              <a class="dropdown-item" @click="setDifficulty('Wild Boar',5)">Wild Boar</a>
+            </div>
+          </div>
 
-          <label for="Rating">Rating</label>
+          <label for="Rating">Rating / Difficulty</label>
 
           <div>
             <textarea v-model="state.newPost.body"
@@ -31,6 +48,7 @@
             ></textarea>
             <label for="Image">Comment</label>
           </div>
+
           <div>
             <div>
               <input v-model="state.newPost.images[0]" type="text" title="Image Url">
@@ -69,6 +87,10 @@ export default {
     const route = useRoute()
     const state = reactive({
       set: false,
+      newDifficulty: {
+        selectedDifficulty: 'Difficulty',
+        rating: 3
+      },
       newRating: {
         rating: 1
       },
@@ -86,6 +108,7 @@ export default {
           $('#review').modal('hide')
           await postsService.createPost(route.params.id, state.newPost)
           await ratingsService.handleReviewRating(route.params.id, state.newRating)
+          await ratingsService.handleDifficultyRating(route.params.id, state.newDifficulty)
           state.newPost.body = ''
           state.newPost.images = []
           state.newRating.rating = 1
@@ -96,6 +119,10 @@ export default {
 
       saveRating(fork) {
         state.newRating.rating = fork
+      },
+      setDifficulty(name, rating) {
+        state.newDifficulty.selectedDifficulty = name
+        state.newDifficulty.rating = rating
       }
     }
   }
