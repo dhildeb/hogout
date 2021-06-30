@@ -30,16 +30,16 @@
         <div class="d-flex align-items-center col-8">
           <div class="rel">
             <img class="rounded-circle prof-pic m-3 pointer" :src="post.creator.picture" :alt="post.creator.name" @click="loadProfile">
-            <div class="ab medal border border-dark rounded-circle">
+            <div class="ab medal border border-dark rounded-circle" v-if=" state.userMedals.length">
               <img
-                v-if=" state.userMedals.length > 0 && state.userMedals.filter(u => u.completed).length === 0"
+                v-if=" state.userMedals.filter(u => u.completed).length === 0"
                 title="Attempted this challenge"
                 class="icon-pig"
                 src="../assets/img/pig-normal.png"
                 alt="Pig face"
               >
               <img
-                v-if=" state.userMedals.length > 0 && state.userMedals.filter(u => u.completed).length > 0"
+                v-if=" state.userMedals.filter(u => u.completed).length > 0"
                 title="Won this challenge"
                 class="icon-pig"
                 src="../assets/img/pig-crown.png"
@@ -88,7 +88,7 @@ export default {
       images: props.post.images,
       currentPicIndex: 0,
       shownMedal: 0,
-      userMedals: computed(() => AppState.profileAttempts.filter(c => c.challengeId === route.params.id)),
+      userMedals: computed(() => AppState.attempts.filter(a => a.creatorId === props.post.creatorId)),
       account: computed(() => AppState.account),
       user: computed(() => AppState.user),
       likes: computed(() => AppState.postLikes.filter(l => l.postId === props.post.id)),
