@@ -1,6 +1,6 @@
 <template>
   <div class="container-fluid color">
-    <mobileProfile :profile="state.profile" />
+    <MobileProfile :profile="state.profile" />
   </div>
 </template>
 

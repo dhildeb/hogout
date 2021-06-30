@@ -72,7 +72,11 @@
     </div>
   </div>
   <div class="row my-1 bio end">
-    <div class="col mx-5">
+    <div class="col-2"></div>
+    <div class="col-8 mx-5 shadow border rounded bg-white p-4">
+      <h5 class="pb-3">
+        About Me
+      </h5>
       <h6>{{ state.profile.bio }}</h6>
     </div>
   </div>
@@ -116,22 +120,26 @@
     </div>
   </div>
   <div class="row my-3 awards end">
-    <div class="col-12 col-md-6 d-flex align-items-center justify-content-center">
+    <div class="col-md-4"></div>
+    <div class="col-12 col-md-2 d-flex align-items-center justify-content-center">
       <img class="icon-pig" title="Total Wins" src="../assets/img/pig-crown.png" alt="">
       <p class="pt-3 pl-1">
         X {{ state.wins.length }}
       </p>
     </div>
-    <div class="col-12 col-md-6 d-flex align-items-center justify-content-center">
+    <div class="col-12 col-md-2 d-flex align-items-center justify-content-center">
       <img class="icon-pig" title="Total Attempts" src="../assets/img/pig-normal.png" alt="">
       <p class="pt-3 pl-1">
         X {{ state.attempts.length }}
       </p>
     </div>
+    <div class="col-md-4"></div>
   </div>
-  <div class="row mt-3 shadow">
-    <div class="col-12 text-center bg-white m-auto shadow">
-      <h4>Your Challenges</h4>
+  <div class="row mt-3">
+    <div class="col-12 text-center">
+      <h4 class="border-lg-bottom pb-4">
+        Your Challenges
+      </h4>
     </div>
   </div>
   <div class="challenges" v-if="state.challenges">
@@ -234,11 +242,16 @@ export default {
   width: 120px;
   object-fit: cover;
 }
+.border-lg-bottom{
+  border-bottom: 3px solid var(--dark-blue);
+}
 
 //Materialize buttons
 .fixed-action-btn{
 top:5em;
 left:1em;
+right: 63em;
+bottom: 56em;
   ul{
   width: 1em;
   top:5em;

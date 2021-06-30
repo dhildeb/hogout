@@ -22,7 +22,7 @@
         <span class="p-3">X</span>
         <span>{{ state.attempts.length }}</span>
       </div>
-      <div class="col d-flex align-items-center">
+      <div class="col d-flex align-items-end mb-5">
         <button class="btn btn-danger m-5 logout" @click="logout">
           logout
         </button>

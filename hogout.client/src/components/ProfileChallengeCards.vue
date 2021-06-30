@@ -7,9 +7,8 @@
         <b class="p-1">{{ challenge.challenge.name }}</b>
         <em class="text-secondary">{{ challenge.challenge.state }}</em>
         <span class="row p-1 m-0 text-danger">
-          <span class="col-12 p-0 pb-2 text-danger" title="">Difficulty: <em>{{ getDifficultyRating(challenge.challenge) }}</em></span>
-          <div class="col-10 p-0 d-flex">
-            <p>Rating: </p>
+          <span class="col-12 p-0 pb-2 text-danger" title="Difficulty"><em>{{ getDifficultyRating(challenge.challenge) }}</em></span>
+          <div class="col-10 p-0 d-flex" title="Rating">
             <img src="../assets/img/fullFork.png" class="img-fluid icon-fork" alt="">
             <img v-if="getReviewRating(challenge.challenge) > 1.5" src="../assets/img/fullFork.png" class="img-fluid icon-fork" alt="">
             <img v-else src="../assets/img/emptyFork.png" class="img-fluid icon-fork" alt="">
@@ -24,7 +23,7 @@
       </div>
     </div>
     <div class="col-sm-1"></div>
-    <div class="col-10 col-sm-1 challenge-stats d-flex flex-column-md justify-content-around border rounded-bottom shadow bg-white">
+    <div class="col-10 col-sm-1 challenge-stats d-flex flex-column-md justify-content-end border rounded-bottom shadow bg-white">
       <!-- options tab -->
       <div class="dropdown click options position-absolute"
            id="dropdownMenuButton"
@@ -111,6 +110,8 @@ export default {
 }
 .banner{
   height: 160px;
+  min-width: 50%;
+  max-width: 50%;
   width: fit-content;
   object-fit: cover;
 }
