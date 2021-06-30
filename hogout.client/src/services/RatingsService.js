@@ -1,5 +1,6 @@
 import { AppState } from '../AppState'
 import { Rating } from '../models/Rating'
+import { logger } from '../utils/Logger'
 import { difficultyRatingAve, reviewRatingAve } from '../utils/RatingAve'
 import { api } from './AxiosService'
 
@@ -37,6 +38,7 @@ class RatingsService {
   }
 
   async handleReviewRating(challengeId, newRating) {
+    logger.log(newRating)
     const res = await api.post('api/challenges/' + challengeId + '/reviews', newRating)
     const rating = AppState.reviewRatings.find(r => r.id === res.data.id)
 
