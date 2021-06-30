@@ -1,14 +1,14 @@
 <template>
-  <div style="height: 44px;"></div>
+  <div style="height: 75px;"></div>
   <div class="container-fluid nav-fit">
     <div class="row bg-dark-blue justify-content-between">
       <div class="col navbar-brand d-flex m-auto">
         <router-link class="text-pink" :to="{ name: 'Home' }">
-          Hog Out
+          <img class="hogout m-2" src="../assets/img/hogoutTitle.png" alt="">
         </router-link>
       </div>
 
-      <span class="navbar-text pr-3">
+      <span class="navbar-text pr-3 al-cen">
         <button
           class="btn btn-primary text-uppercase"
           @click="login"
@@ -76,7 +76,9 @@ export default {
 </script>
 
 <style scoped>
-
+.al-cen{
+  align-self: center;
+}
 .dropdown-menu {
   user-select: none;
   display: block;
@@ -123,5 +125,10 @@ a:hover {
 }
 a:hover{
   color: var(--grey)
+}
+.hogout{
+  image-rendering: initial;
+  max-width: 13rem;
+
 }
 </style>
