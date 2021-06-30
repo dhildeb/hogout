@@ -4,7 +4,7 @@
     <div class="row bg-dark-blue justify-content-between">
       <div class="col navbar-brand d-flex m-auto">
         <router-link class="text-pink" :to="{ name: 'Home' }">
-          <img class="hogout m-2" src="../assets/img/hogoutTitle.png" alt="">
+          <img class="hogout m-2" src="../assets/img/hogoutTitle.png" title="Hogout Home" alt="Hogout Logo">
         </router-link>
       </div>
 
