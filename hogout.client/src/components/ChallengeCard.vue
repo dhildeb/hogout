@@ -10,7 +10,9 @@
         <div class="row w-100 justify-content-around">
           <img class="col-4 img-fluid icon over-hang" :src="challenge.image" alt="icon">
           <div class="col-4 p-0 justify-content-center d-flex flex-column w-100">
-            <b class="p-1">{{ challenge.name }}</b>
+            <h3 class="p-1">
+              {{ challenge.name }}
+            </h3>
             <em class="text-secondary">{{ challenge.state }}</em>
           </div>
           <span class="col-4 p-0 d-xs-flex m-0 text-danger text-center">
