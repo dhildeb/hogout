@@ -1,9 +1,7 @@
 <template>
-  <div class="row pb-2 justify-content-center zoom">
-    <div class="col-4 shadow p-0 click d-none d-md-flex" @click="goThere">
-      <img class="banner img-fluid rounded-top" :src="challenge.challenge.banner" alt="banner">
-    </div>
-    <div class="col-10 col-lg-3 col-sm-5 click border rounded-bottom shadow d-flex bg-white p-0 py-2" @click="goThere">
+  <div class="row pb-2 justify-content-center">
+    <div class="col-xl-6 col-md-8 col-sm-6 col-10 click border rounded-bottom shadow d-flex bg-white p-0 py-2 zoom" @click="goThere">
+      <img class="banner img-fluid rounded-top d-md-block d-none" :src="challenge.challenge.banner" alt="banner">
       <img class="img-fluid icon over-hang p-2" :src="challenge.challenge.image" alt="icon">
       <div class="d-flex flex-column w-100 px-2">
         <b class="p-1">{{ challenge.challenge.name }}</b>
@@ -25,6 +23,7 @@
         </span>
       </div>
     </div>
+    <div class="col-sm-1"></div>
     <div class="col-10 col-sm-1 challenge-stats d-flex flex-column-md justify-content-around border rounded-bottom shadow bg-white">
       <!-- options tab -->
       <div class="dropdown click options position-absolute"
@@ -113,7 +112,7 @@ export default {
 }
 .zoom:hover{
   transform: scale(1.1);
-  transition: all .5s linear;
+  transition: all .25s linear;
 }
 
 @media screen and (min-width: 576px){

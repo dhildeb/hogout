@@ -31,7 +31,9 @@ export default {
       wins: computed(() => AppState.profileAttempts.filter(a => a.completed === true && a.creatorId === AppState.account.id))
     })
     watchEffect(async() => {
-      await accountService.getUserAttempts(state.account.id)
+      if (state.account.id) {
+        await accountService.getUserAttempts(state.account.id)
+      }
     })
     return {
       state,
