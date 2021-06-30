@@ -53,7 +53,7 @@ class RatingsService {
     AppState.tempChallenges = []
     AppState.challenges.forEach(c => {
       const currentR = difficultyRatingAve(c.id)
-      if (currentR === filter.difficulty) {
+      if (currentR === filter.difficulty || Math.round(reviewRatingAve(c.id)) === filter.forks) {
         AppState.tempChallenges.push(c)
       }
     })
@@ -62,7 +62,8 @@ class RatingsService {
   filterForks(filter) {
     AppState.tempChallenges = []
     AppState.challenges.forEach(c => {
-      if (Math.round(reviewRatingAve(c.id)) === filter.forks) {
+      const currentR = difficultyRatingAve(c.id)
+      if (Math.round(reviewRatingAve(c.id)) === filter.forks || currentR === filter.difficulty) {
         AppState.tempChallenges.push(c)
       }
     })

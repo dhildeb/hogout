@@ -13,9 +13,10 @@
                   aria-haspopup="true"
                   aria-expanded="false"
           >
-            Rating
+            {{ state.rating }}
           </button>
           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" @click="filterReset">All</a>
             <a class="dropdown-item" @click="filterForks(1)">1 Fork</a>
             <a class="dropdown-item" @click="filterForks(2)">2 Forks</a>
             <a class="dropdown-item" @click="filterForks(3)">3 Forks</a>
@@ -63,7 +64,8 @@ export default {
       challenges: computed(() => AppState.challenges),
       temp: computed(() => AppState.tempChallenges),
       state: 'state',
-      difficulty: 'difficulty',
+      difficulty: 'Difficulty',
+      rating: 'Rating',
       filterBy: {}
     })
     watchEffect(async() => {
@@ -83,10 +85,13 @@ export default {
         ratingsService.filterDifficulty(state.filterBy)
       },
       filterReset() {
-        state.difficulty = 'All'
+        state.rating = 'Rating'
+        state.difficulty = 'Difficulty'
+        state.filterBy = {}
         ratingsService.filterReset()
       },
       filterForks(num) {
+        state.rating = num
         state.filterBy.forks = num
         ratingsService.filterForks(state.filterBy)
       }
