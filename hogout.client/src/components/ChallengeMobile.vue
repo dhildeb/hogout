@@ -46,9 +46,11 @@
           </p>
         </div>
       </div>
-      <div class="row justify-content-center">
-        <p><b>Difficulty: </b></p>
-        <div>{{ state.aveDifficulty }}</div>
+      <div class="row align-items-baseline justify-content-center" :title="state.aveDifficulty">
+        <p class="mr-3">
+          <b>Difficulty:</b>
+        </p>
+        <h6>{{ state.aveDifficulty }}</h6>
       </div>
       <div class="row justify-content-center m-0">
         <p><b>User Rating: </b></p>
