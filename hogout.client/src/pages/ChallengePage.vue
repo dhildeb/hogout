@@ -22,12 +22,15 @@ import { attemptsService } from '../services/AttemptsService'
 import { ratingsService } from '../services/RatingsService'
 import Notification from '../utils/Notification'
 import { postsService } from '../services/PostsService'
+import { likesService } from '../services/LikesService'
 export default {
   name: 'Challenge',
   setup() {
     const route = useRoute()
-    onMounted(async() =>
+    onMounted(async() => {
       await attemptsService.getAttemptsByChallengeId(route.params.id)
+      await likesService.getAllPostLikes()
+    }
     )
     watchEffect(async() => {
       try {

@@ -254,5 +254,7 @@ background-color: rgb(250, 245, 240);
 .piggies{
   margin-top: 1rem;
 }
-
+.min-100{
+  min-height: 100vh;
+}
 </style>

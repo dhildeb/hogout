@@ -27,19 +27,19 @@
     </div>
     <div class="col-12">
       <div class="row mr-1 justify-content-between">
-        <div class="d-flex align-items-center col-10">
+        <div class="d-flex align-items-center col-8">
           <div class="rel">
             <img class="rounded-circle prof-pic m-3 pointer" :src="post.creator.picture" :alt="post.creator.name" @click="loadProfile">
-            <div class="ab medal border border-dark rounded-circle">
+            <div class="ab medal border border-dark rounded-circle" v-if=" state.userMedals.length">
               <img
-                v-if=" state.userMedals.length > 0 && state.userMedals.filter(u => u.completed).length === 0"
+                v-if=" state.userMedals.filter(u => u.completed).length === 0"
                 title="Attempted this challenge"
                 class="icon-pig"
                 src="../assets/img/pig-normal.png"
                 alt="Pig face"
               >
               <img
-                v-if=" state.userMedals.length > 0 && state.userMedals.filter(u => u.completed).length > 0"
+                v-if=" state.userMedals.filter(u => u.completed).length > 0"
                 title="Won this challenge"
                 class="icon-pig"
                 src="../assets/img/pig-crown.png"
@@ -55,6 +55,12 @@
               {{ post.body }}
             </p>
           </div>
+        </div>
+        <div class="col-3 align-items-center">
+          <i class="mdi mdi-thumb-up like-icon" title="like post" v-if="state.user.isAuthenticated && state.likes.filter(l => l.creatorId === state.account.id).length <= 0" @click="likePost"></i>
+          <i class="mdi mdi-thumb-down like-icon" title="dislike post" v-if="state.user.isAuthenticated && state.likes.filter(l => l.creatorId === state.account.id).length > 0" @click="likePost"></i>
+          <i class="mdi mdi-close"></i>
+          <span>{{ state.likes.length }}</span>
         </div>
         <div class="col-1 align-items-center">
           <i class="mdi mdi-trash-can delete-icon" title="delete post" v-if="post.creatorId === state.account.id" @click="deletePost"></i>
@@ -73,19 +79,21 @@ import { useRoute } from 'vue-router'
 import { AppState } from '../AppState'
 import { postsService } from '../services/PostsService'
 import Notification from '../utils/Notification'
+import { likesService } from '../services/LikesService'
 export default {
   props: { post: { type: Object, required: true } },
   setup(props) {
     const route = useRoute()
-    onMounted(async() =>
-      await accountService.getUserAttempts(props.post.creatorId)
-    )
+
     const state = reactive({
       images: props.post.images,
       currentPicIndex: 0,
       shownMedal: 0,
-      userMedals: computed(() => AppState.profileAttempts.filter(c => c.challengeId === route.params.id)),
-      account: computed(() => AppState.account)
+      userMedals: computed(() => AppState.attempts.filter(a => a.creatorId === props.post.creatorId)),
+      account: computed(() => AppState.account),
+      user: computed(() => AppState.user),
+      likes: computed(() => AppState.postLikes.filter(l => l.postId === props.post.id)),
+      newLike: { like: 'like' }
 
     })
     return {
@@ -121,11 +129,22 @@ export default {
         return selectedPicture
       },
       async getUserAttempts() {
-        await accountService.getUserAttempts(props.post.creatorId).filter(c => c.id === route.params.id)
+        try {
+          await accountService.getUserAttempts(props.post.creatorId).filter(c => c.id === route.params.id)
+        } catch (error) {
+          Notification.toast(error, 'error')
+        }
       },
       async deletePost() {
         if (await Notification.confirmAction()) {
           await postsService.deletePost(props.post.id)
+        }
+      },
+      async likePost() {
+        try {
+          await likesService.handlePostLike(props.post.id, state.newLike)
+        } catch (error) {
+          Notification.toast(error, 'error')
         }
       },
       setPlaceholder(event) {
@@ -182,6 +201,10 @@ background: pink;
   cursor: pointer;
 }
 .delete-icon{
+  cursor: pointer;
+  font-size: 2.5rem;
+}
+.like-icon{
   cursor: pointer;
   font-size: 2.5rem;
 }
