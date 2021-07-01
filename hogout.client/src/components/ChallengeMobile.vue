@@ -46,14 +46,14 @@
           </p>
         </div>
       </div>
-      <div class="row align-items-baseline justify-content-center" :title="state.aveDifficulty">
-        <p class="mr-3">
+      <div class="row align-items-baseline justify-content-center text-dark-pink" :title="state.aveDifficulty">
+        <h5 class="mr-3 ">
           <b>Difficulty:</b>
-        </p>
-        <h6>{{ state.aveDifficulty }}</h6>
+        </h5>
+        <h5>{{ state.aveDifficulty }}</h5>
       </div>
       <div class="row justify-content-center m-0">
-        <p><b>User Rating: </b></p>
+        <h5><b>User Rating: </b></h5>
       </div>
       <div class="row justify-content-center align-items-center">
         <div :title="state.aveRating">

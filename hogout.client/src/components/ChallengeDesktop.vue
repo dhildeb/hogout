@@ -1,16 +1,32 @@
 <template>
-  <div class="d-flex col-12 card main-display-challenge pt-2">
-    <div class="row justify-content-center">
-      <div class="col-12">
-        <img class="card-img-top challenge-banner" :src="state.challenge.banner" alt="Profile Banner">
-      </div>
+  <div class="row card main-display-challenge pt-2">
+    <div class="col-12">
+      <img class="card-img-top challenge-banner" :src="state.challenge.banner" alt="Profile Banner">
     </div>
-    <div class="row justify-content-center text-center pt-4">
-      <div class="col-4 justify-content-center mb-5 ">
+
+    <div class="col-12 d-flex justify-content-center text-center pt-4">
+      <div class="col-4 justify-content-center pl-5 ">
         <img class="rounded-circle db" :src="state.challenge.image" alt="Profile Image">
+        <div class="row">
+          <div title="Total Attempts" class="col d-flex align-items-center justify-content-start piggies mx-2">
+            <img class="icon-pig-desktop" src="../assets/img/pig-normal.png" alt="Pig face">
+            <i class="mdi mdi-close"></i>
+            <p class="m-0">
+              {{ state.attempts.length }}
+            </p>
+          </div>
+          <div title="Total Wins" class="col d-flex align-items-center mx-2">
+            <img class="icon-pig-desktop" src="../assets/img/pig-crown.png" alt="Crown Pig Face">
+            <i class="mdi mdi-close"></i>
+            <p class="m-0">
+              {{ state.wins.length }}
+            </p>
+          </div>
+        </div>
       </div>
-      <div class="col-8">
-        <div class="row title-challenge justify-content-center">
+
+      <div class="col-9">
+        <div class="row title-challenge justify-content-center mx-5">
           <span>
             {{ state.challenge.restaurant }}, {{ state.challenge.state }}
           </span>
@@ -44,66 +60,48 @@
             <img v-else class="icon-fork-desktop" src="../assets/img/emptyFork.png" alt="" srcset="">
           </div>
         </div>
-        <div class="row justify-content-center piggies">
-          <div title="Total Attempts" class=" d-flex align-items-center flex-wrap justify-content-center">
-            <img class="icon-pig-desktop" src="../assets/img/pig-normal.png" alt="Pig face">
-            <div class="d-flex align-items-center">
-              <i class="mdi mdi-close"></i>
-              <span class="m-0 score-text  text-wrap">
-                {{ state.attempts.length }}
-              </span>
-            </div>
-            <img class="icon-pig-desktop" src="../assets/img/pig-crown.png" alt="Crown Pig Face">
-            <div class="d-flex align-items-center">
-              <i class="mdi mdi-close"></i>
-              <span class="m-0 score-text  center">
-                {{ state.wins.length }}
-              </span>
-            </div>
-          </div>
+      </div>
+    </div>
+    <div class="col-12">
+      <div class="row">
+        <div class="mb-2 col-12 justify-content-center text-center pt-3 border-bottom">
+          <h1 class="rating-title">
+            <b>
+              {{ state.challenge.name }}
+            </b>
+          </h1>
+        </div>
+        <div class="col-12 justify-content-center">
+          <p class="difficulty-title text-dark-pink">
+            <b>Difficulty: </b>
+            {{ difficulty }}
+          </p>
+        </div>
+        <div class="col-12 mx-2">
+          <h3 class=" ">
+            Rules
+          </h3>
+          <p class="challenge-desc">
+            {{ state.challenge.rules }}
+          </p>
+        </div>
+        <div class="col-12 mx-2">
+          <h3 class=" ">
+            Rewards
+          </h3>
+          <p class="challenge-desc">
+            {{ state.challenge.rewards }}
+          </p>
         </div>
       </div>
     </div>
-  </div>
-  <div class="row d-flex justify-content-center" v-if="state.user.isAuthenticated">
-    <div class="col-12 justify-content-center text-center">
-      <button @click="ITookChallenge" data-toggle="modal" data-target="#challengeDesktopModal" class="btn btn-warning">
-        <span class=" m-auto">
-          I TOOK ON THIS CHALLENGE
-        </span>
-      </button>
-    </div>
-  </div>
-  <div class="col-12 card">
-    <div class="row">
-      <div class="mb-2 col-12 justify-content-center text-center pt-3 border-bottom">
-        <h1 class="rating-title">
-          <b>
-            {{ state.challenge.restaurant }} {{ state.challenge.name }}
-          </b>
-        </h1>
-      </div>
-      <div class="col-12 justify-content-center">
-        <p class="difficulty-title text-dark-pink">
-          <b>Difficulty: </b>
-          {{ difficulty }}
-        </p>
-      </div>
-      <div class="col-12 mx-2">
-        <h3 class="text-center ">
-          Rules
-        </h3>
-        <p class="challenge-desc">
-          {{ state.challenge.rules }}
-        </p>
-      </div>
-      <div class="col-12 mx-2">
-        <h3 class="text-center ">
-          Rewards
-        </h3>
-        <p class="challenge-desc">
-          {{ state.challenge.rewards }}
-        </p>
+    <div class="row d-flex justify-content-center" v-if="state.user.isAuthenticated">
+      <div class="col-12 justify-content-center text-center">
+        <button @click="ITookChallenge" data-toggle="modal" data-target="#challengeDesktopModal" class="btn btn-warning">
+          <span class=" m-auto">
+            I TOOK ON THIS CHALLENGE
+          </span>
+        </button>
       </div>
     </div>
   </div>
@@ -184,7 +182,10 @@ export default {
       difficulty,
       review,
       openMaps() {
-        window.location.href = `${state.challenge.location}${state.challenge.state}/`
+        window.open(
+          `${state.challenge.location}+${state.challenge.state}/`,
+          '_blank'
+        )
       },
       createAttempt(result) {
         state.newAttempt.completed = result
@@ -235,8 +236,8 @@ background-color: rgb(250, 245, 240);
 }
 
 .icon-fork-desktop{
-  height: 4rem;
-  padding-right: 2rem;
+  height: 5rem;
+  padding-right: 1rem;
 }
 .icon-pig-desktop{
   height: 5rem;
@@ -252,7 +253,7 @@ background-color: rgb(250, 245, 240);
 }
 
 .piggies{
-  margin-top: 1rem;
+  margin-top: 7rem;
 }
 .min-100{
   min-height: 100vh;
