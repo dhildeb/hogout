@@ -163,10 +163,14 @@ export default {
     return {
       state,
       openMaps() {
-        window.open(
-          `${state.challenge.location}+${state.challenge.state}/`,
-          '_blank'
-        )
+        try {
+          window.open(
+            `${state.challenge.location}+${state.challenge.state}/`,
+            '_blank'
+          )
+        } catch (error) {
+          Notification.toast(error, 'error')
+        }
       },
       createAttempt(result) {
         state.newAttempt.completed = result

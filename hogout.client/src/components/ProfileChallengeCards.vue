@@ -83,7 +83,11 @@ export default {
         router.push({ name: 'Challenge', params: { id: props.challenge.challenge._id } })
       },
       async deleteAttempt() {
-        await attemptsService.deleteAttempt(props.challenge.challenge._id)
+        try {
+          await attemptsService.deleteAttempt(props.challenge.challenge._id)
+        } catch (error) {
+          Notification.toast(error, 'error')
+        }
       }
     }
   }
