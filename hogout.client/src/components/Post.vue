@@ -33,7 +33,7 @@
            v-if="state.user.isAuthenticated && state.likes.filter(l => l.creatorId === state.account.id).length <= 0"
            @click="likePost"
         ></i>
-        <i class="mdi mdi-thumb-down-outline like-icon mdi-18px" title="Dislike Post" v-if="state.user.isAuthenticated && state.likes.filter(l => l.creatorId === state.account.id).length > 0" @click="likePost"></i>
+        <i class="mdi mdi-undo like-icon mdi-18px" title="Dislike Post" v-if="state.user.isAuthenticated && state.likes.filter(l => l.creatorId === state.account.id).length > 0" @click="likePost"></i>
         <i class="mdi mdi-thumb-up-outline like-icon mdi-18px" v-if="!state.user.isAuthenticated"></i>
         <i class="mdi mdi-close"></i>
         <span>{{ state.likes.length }}</span>

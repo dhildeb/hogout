@@ -9,13 +9,13 @@
       <div class="row sep"></div>
 
       <div class="mt-4 mb-2 row justify-content-center">
-        <h4 class="">
+        <h4 class="mx-3">
           <b>
             {{ state.challenge.name }}
           </b>
         </h4>
       </div>
-      <div class="row justify-content-center">
+      <div class="row justify-content-center mx-3">
         <h6>{{ state.challenge.restaurant }}, {{ state.challenge.state }}</h6>
       </div>
       <div class="row justify-content-center">
@@ -72,13 +72,13 @@
           <img v-else class="icon-fork" src="../assets/img/emptyFork.png" alt="" srcset="">
         </div>
       </div>
-      <div class="row mx-2">
+      <div class="row d-block mx-2">
         <h3>
           Rules
         </h3>
         <p>{{ state.challenge.rules }}</p>
       </div>
-      <div class="row mx-2">
+      <div class="row d-block mx-2">
         <h3>
           Rewards
         </h3>
