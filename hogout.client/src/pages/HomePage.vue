@@ -20,7 +20,7 @@
             <a class="dropdown-item" @click="filterForks(1)">1 Fork</a>
             <a class="dropdown-item" @click="filterForks(2)">2 Forks</a>
             <a class="dropdown-item" @click="filterForks(3)">3 Forks</a>
-            <a class="dropdown-item" @click="filterForks(4)">Fork Forks</a>
+            <a class="dropdown-item" @click="filterForks(4)">4 Forks</a>
             <a class="dropdown-item" @click="filterForks(5)">5 Forks</a>
           </div>
         </div>
@@ -91,7 +91,7 @@ export default {
         ratingsService.filterReset()
       },
       filterForks(num) {
-        state.rating = num
+        state.rating = num + ' Forks'
         state.filterBy.forks = num
         ratingsService.filterForks(state.filterBy)
       }

@@ -1,3 +1,4 @@
+/* eslint-disable eqeqeq */
 import { AppState } from '../AppState'
 import { Rating } from '../models/Rating'
 import { logger } from '../utils/Logger'
@@ -54,8 +55,11 @@ class RatingsService {
     AppState.tempChallenges = []
     AppState.challenges.forEach(c => {
       const currentR = difficultyRatingAve(c.id)
-      if (currentR === filter.difficulty || Math.round(reviewRatingAve(c.id)) === filter.forks) {
-        AppState.tempChallenges.push(c)
+      if (currentR === filter.difficulty) {
+        // eslint-disable-next-line eqeqeq
+        if (filter.forks == Math.round(reviewRatingAve(c.id)) || !filter.forks) {
+          AppState.tempChallenges.push(c)
+        }
       }
     })
   }
@@ -64,8 +68,10 @@ class RatingsService {
     AppState.tempChallenges = []
     AppState.challenges.forEach(c => {
       const currentR = difficultyRatingAve(c.id)
-      if (Math.round(reviewRatingAve(c.id)) === filter.forks || currentR === filter.difficulty) {
-        AppState.tempChallenges.push(c)
+      if (filter.forks == Math.round(reviewRatingAve(c.id))) {
+        if (currentR == filter.difficulty || !filter.difficulty) {
+          AppState.tempChallenges.push(c)
+        }
       }
     })
   }
