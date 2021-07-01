@@ -1,7 +1,7 @@
 <template>
   <div class="about text-center">
     <h1>Welcome {{ account.name }}</h1>
-    <img class="rounded" :src="account.picture" alt="" />
+    <img class="rounded" :src="account.picture" alt="profile picture" />
     <p>{{ account.email }}</p>
   </div>
 </template>

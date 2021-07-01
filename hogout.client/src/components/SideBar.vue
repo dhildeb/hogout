@@ -2,7 +2,7 @@
   <div class=" col h-100 side-fit  text-light bg-dark-blue ">
     <div class="row  justify-content-center mt-5">
       <router-link :to="{ name: 'Profile', params: {id: state.account.id}}">
-        <img class="rounded-circle profile-icon mt-3" title="My Profile" :src="state.account.picture" alt="">
+        <img class="rounded-circle profile-icon mt-3" title="My Profile" :src="state.account.picture" alt="profile picture">
       </router-link>
     </div>
     <div class="row justify-content-center">
