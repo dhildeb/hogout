@@ -1,17 +1,17 @@
 <template>
-  <div class="fixed-action-btn click-to-toggle" v-show="profile.id === state.account.id">
+  <div class="fixed-action-btn click-to-toggle" @click="state.open=!state.open" v-show="profile.id === state.account.id">
     <a class="btn-floating btn-large bun">
-      <i class="mdi mdi-pencil"></i>
+      <i class="mdi mdi-pencil" :class="state.open ? 'buntop' : 'fullburger'"></i>
     </a>
     <ul>
       <li>
-        <p class="btn-floating bun " @click="state.pictureForm = !state.pictureForm">
+        <p class="btn-floating bunbottom" @click="state.pictureForm = !state.pictureForm">
           Pics
         </p>
       </li>
 
       <li>
-        <p class="btn-floating meat darken-1" @click="state.locationForm = !state.locationForm">
+        <p class="btn-floating meat" @click="state.locationForm = !state.locationForm">
           Loc
         </p>
       </li>
@@ -177,7 +177,8 @@ export default {
       nameForm: false,
       bioForm: false,
       locationForm: false,
-      pictureForm: false
+      pictureForm: false,
+      open: false
     })
     onMounted(async() => {
       materializedInit()
@@ -210,28 +211,39 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.t-shd{
+.text-shdw{
 
 }
-.bun{
-  width: 56px;
-  height: 56px;
- background-color: #f6a230;
+.fullburger{
+    background-image: url('../assets/img/b-full.png');
+   background-size: contain;
+   background-repeat: no-repeat;
+}
+
+.buntop{
+  background-image: url('../assets/img/b-buntop.png');
+   background-size: contain;
+   background-repeat: no-repeat;
+}
+.bunbottom{
+  background-image: url('../assets/img/b-bunbottom.png');
+   background-size: contain;
+   background-repeat: no-repeat;
 }
 .lettuce{
-  width: 56px;
-  height: 56px;
-background-color: #a6ba24;
+  background-image: url('../assets/img/b-lettuce.png');
+   background-size: contain;
+   background-repeat: no-repeat;
 }
 .cheese{
-width: 56px;
-  height: 56px;
-background-color:#f5e15e
+  background-image: url('../assets/img/b-cheese.png');
+   background-size: contain;
+   background-repeat: no-repeat;
 }
 .meat{
-  width: 56px;
-  height: 56px;
-background-color:#7e563d
+  background-image: url('../assets/img/b-meat.png');
+   background-size: contain;
+   background-repeat: no-repeat;
 }
 
 .height{
@@ -275,15 +287,31 @@ background-color:#7e563d
   border-bottom: 3px solid var(--dark-blue);
 }
 
+.btn-floating{
+background-color: transparent;
+box-shadow: none;
+border-radius: 0;
+margin: 0;
+width: 56px;
+height: 56px;
+transition: all .3s;
+}
+
 //Materialize buttons
 .fixed-action-btn{
+background-color: transparent;
+box-shadow: none;
+margin: 0;
+transition: all .3s;
 top:5rem;
 left:1rem;
 right: 90rem;
 bottom: 56rem;
+
   ul{
   top:4.5rem;
   left:0;
+  margin:0;
   }
 }
 
