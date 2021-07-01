@@ -28,20 +28,8 @@
     </ul>
   </div>
   <div class="row bg-img" :style="{backgroundImage: `url(${state.profile.banner})`}">
-    <div class="col-12 position text-center mb-3">
-      <img :src="state.profile.picture" alt="profile-picture" class="rounded-circle profile-icon frame">
-    </div>
   </div>
-  <div class="row">
-    <div class="col-12 text-center">
-      <h3 v-if="state.profile.location === '' || !state.profile.location">
-        {{ state.profile.name }}
-      </h3>
-      <h3 v-else>
-        {{ state.profile.name }}, {{ state.profile.location }}
-      </h3>
-    </div>
-  </div>
+  <img :src="state.profile.picture" alt="profile-picture" class="rounded-circle profile-icon frame position ">
   <div class="row form justify-content-center" v-if="state.nameForm">
     <div class="col-md-8">
       <form @submit.prevent="editProfile()" id="nameForm" name="nameForm">
@@ -73,30 +61,36 @@
       </form>
     </div>
   </div>
-  <div class="row my-3 awards end">
-    <div class="col-md-4"></div>
-    <div class="col-12 col-md-2 d-flex align-items-center justify-content-center">
-      <img class="icon-pig" title="Total Wins" src="../assets/img/pig-crown.png" alt="">
-      <p class="pt-3 pl-1">
-        X {{ state.wins.length }}
-      </p>
-    </div>
-    <div class="col-12 col-md-2 d-flex align-items-center justify-content-center">
-      <img class="icon-pig" title="Total Attempts" src="../assets/img/pig-normal.png" alt="">
-      <p class="pt-3 pl-1">
-        X {{ state.attempts.length }}
-      </p>
-    </div>
-    <div class="col-md-4"></div>
-  </div>
-
-  <div class="row my-1 bio end">
-    <div class="col-2"></div>
-    <div class="col-8 p-4 shadow border rounded bg-white">
-      <h5 class="pb-3">
-        About Me
-      </h5>
-      <h6>{{ state.profile.bio }}</h6>
+  <div class="row my-3 awards d-flex">
+    <div class="col-sm-10 col-md-10 m-auto card end shadow border">
+      <div class="card-header text-center bg-white py-3">
+        <h3 v-if="state.profile.location === '' || !state.profile.location">
+          {{ state.profile.name }}
+        </h3>
+        <h3 v-else>
+          {{ state.profile.name }}, {{ state.profile.location }}
+        </h3>
+      </div>
+      <div class=" d-flex card-body d-flex justify-content-around">
+        <div>
+          <img class="icon-pig" title="Total Wins" src="../assets/img/pig-crown.png" alt="pig-crown">
+          <p class="center">
+            X {{ state.wins.length }}
+          </p>
+        </div>
+        <div>
+          <img class="icon-pig justify-content-right text-right" title="Total Attempts" src="../assets/img/pig-normal.png" alt="normal-pig">
+          <p class="center">
+            X {{ state.attempts.length }}
+          </p>
+        </div>
+      </div>
+      <div class=" p-4 rounded bg-white card-footer text-center">
+        <h5 class="pb-3">
+          About Me
+        </h5>
+        <p>{{ state.profile.bio }}</p>
+      </div>
     </div>
   </div>
   <div class="row my-1 form justify-content-center" v-if="state.bioForm">
@@ -114,7 +108,7 @@
       </form>
     </div>
   </div>
-  <div class="row my-1 from justify-content-center" v-if="state.pictureForm">
+  <div class="row my-1 justify-content-center" v-if="state.pictureForm">
     <div class="col-md-8 text-center ">
       <form class="my-2" @submit.prevent="editProfile()">
         <label for="picture">Profile Picture </label>
@@ -232,9 +226,8 @@ li{
 }
 
 .buntop{
-
-  width: 80px;
-  height:80px;
+  width: 6rem;
+  height:5rem;
   background-image: url('../assets/img/b-buntop.png');
    background-size: contain;
    background-repeat: no-repeat;
@@ -271,15 +264,22 @@ li{
   background-repeat: no-repeat;
 }
 .position{
-  margin-top: 5rem;
+  position: absolute;
+  right: 31rem;
+  top: 16rem
 }
 .frame{
-    border: 4px black solid;
+    border: 4px #f2f2f2 solid;
 }
 .line{
   border-bottom: 4px solid black;
 }
+.awards{
+  padding-top: 10rem;
+}
 .end{
+  margin-left: 2rem;
+  margin-right: 2rem;
     border-bottom: px solid rgb(109, 106, 106);
 }
 .gold{
@@ -295,10 +295,12 @@ li{
 .bg-img{
   background-repeat: no-repeat;
   background-size: cover;
+    height: 36vh;
+
 }
 .profile-icon{
-  height: 120px;
-  width: 120px;
+  height: 18rem;
+  width: 18rem;
   object-fit: cover;
 }
 .border-lg-bottom{

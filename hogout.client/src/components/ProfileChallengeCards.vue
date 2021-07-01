@@ -1,25 +1,33 @@
 <template>
   <div class="row pb-2 justify-content-center">
-    <div class="col-xl-6 col-md-8 col-sm-6 col-10 click border rounded-bottom shadow d-flex bg-yellow p-0 py-2 zoom" @click="goThere">
-      <img class="banner img-fluid rounded-top d-md-block d-none" :src="challenge.challenge.banner" alt="banner">
-      <img class="img-fluid icon over-hang p-2" :src="challenge.challenge.image" alt="icon">
-      <div class="d-flex flex-column w-100 px-2">
+    <div class="col-xl-6 col-md-8 col-sm-6 col-10 click border rounded-bottom shadow d-flex bg-yellow p-0 py-2 zoom card" @click="goThere">
+      <!-- <div class="card-header h-50" :style="{backgroundImage: `url(${challenge.challenge.banner})`}">
+      <! <img class="banner img-fluid rounded-top d-md-block d-none" :src="challenge.challenge.banner" alt="banner"> -->
+      <!-- </div> -->
+      <div class="card-header text-center">
         <b class="p-1">{{ challenge.challenge.name }}</b>
-        <em class="text-secondary">{{ challenge.challenge.state }}</em>
-        <span class="row p-1 m-0 text-danger">
-          <span class="col-12 p-0 pb-2 text-danger" title="Difficulty"><em>{{ getDifficultyRating(challenge.challenge) }}</em></span>
-          <div class="col-10 p-0 d-flex" title="Rating">
-            <img src="../assets/img/fullFork.png" class="img-fluid icon-fork" alt="">
-            <img v-if="getReviewRating(challenge.challenge) > 1.5" src="../assets/img/fullFork.png" class="img-fluid icon-fork" alt="">
-            <img v-else src="../assets/img/emptyFork.png" class="img-fluid icon-fork" alt="">
-            <img v-if="getReviewRating(challenge.challenge) > 2.4" src="../assets/img/fullFork.png" class="img-fluid icon-fork" alt="">
-            <img v-else src="../assets/img/emptyFork.png" class="img-fluid icon-fork" alt="">
-            <img v-if="getReviewRating(challenge.challenge) > 3.4" src="../assets/img/fullFork.png" class="img-fluid icon-fork" alt="">
-            <img v-else src="../assets/img/emptyFork.png" class="img-fluid icon-fork" alt="">
-            <img v-if="getReviewRating(challenge.challenge) > 4.5" src="../assets/img/fullFork.png" class="img-fluid icon-fork" alt="">
-            <img v-else src="../assets/img/emptyFork.png" class="img-fluid icon-fork" alt="">
-          </div>
-        </span>
+      </div>
+      <div class="card-body d-flex">
+        <!-- <img class="img-fluid icon over-hang p-2" :src="challenge.challenge.image" alt="icon"> -->
+        <div>
+          <p>
+            <em class="text-secondary"> {{ challenge.challenge.state }} </em>
+            <em class="text-right"> {{ getDifficultyRating(challenge.challenge) }} </em>
+          </p>
+        </div>
+      </div>
+      <div class="card-footer">
+        <div class="justify-content-end p-0 d-flex" title="Rating">
+          <img src="../assets/img/fullFork.png" class="img-fluid icon-fork" alt="">
+          <img v-if="getReviewRating(challenge.challenge) > 1.5" src="../assets/img/fullFork.png" class="img-fluid icon-fork" alt="">
+          <img v-else src="../assets/img/emptyFork.png" class="img-fluid icon-fork" alt="">
+          <img v-if="getReviewRating(challenge.challenge) > 2.4" src="../assets/img/fullFork.png" class="img-fluid icon-fork" alt="">
+          <img v-else src="../assets/img/emptyFork.png" class="img-fluid icon-fork" alt="">
+          <img v-if="getReviewRating(challenge.challenge) > 3.4" src="../assets/img/fullFork.png" class="img-fluid icon-fork" alt="">
+          <img v-else src="../assets/img/emptyFork.png" class="img-fluid icon-fork" alt="">
+          <img v-if="getReviewRating(challenge.challenge) > 4.5" src="../assets/img/fullFork.png" class="img-fluid icon-fork" alt="">
+          <img v-else src="../assets/img/emptyFork.png" class="img-fluid icon-fork" alt="">
+        </div>
       </div>
     </div>
     <div class="col-sm-1"></div>
@@ -113,7 +121,7 @@ export default {
   min-width: 50%;
   max-width: 50%;
   width: fit-content;
-  object-fit: cover;
+  object-fit: contain;
 }
 .options{
   right: 8px;
