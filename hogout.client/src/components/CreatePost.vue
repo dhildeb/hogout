@@ -6,7 +6,7 @@
        role="dialog"
   >
     <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
+      <div class="modal-content leftpadding">
         <div class="modal-header d-flex justify-content-center">
           <h5 class="modal-title ">
             Review This Challenge!
@@ -135,6 +135,18 @@ export default {
 </script>
 
 <style scoped>
+
+@media screen and (max-width: 1049px) {
+.leftpadding{
+    left:0px;
+  }
+}
+@media screen and (min-width: 1050px) {
+.leftpadding{
+     left:135px;
+  }
+}
+
 .min-100{
   min-height: 100vh;
 }

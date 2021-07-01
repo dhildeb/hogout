@@ -46,16 +46,10 @@
           </p>
         </div>
       </div>
-      <div class="row align-items-baseline justify-content-center text-dark-pink" :title="state.aveDifficulty">
-        <h5 class="mr-3 ">
-          <b>Difficulty:</b>
-        </h5>
-        <h5>{{ state.aveDifficulty }}</h5>
-      </div>
       <div class="row justify-content-center m-0">
         <h5><b>User Rating: </b></h5>
       </div>
-      <div class="row justify-content-center align-items-center">
+      <div class="row py-3 justify-content-center align-items-center">
         <div :title="state.aveRating">
           <img class="icon-fork" src="../assets/img/fullFork.png" alt="" srcset="">
 
@@ -71,6 +65,12 @@
           <img v-if="state.aveRating > 4.5" class="icon-fork" src="../assets/img/fullFork.png" alt="" srcset="">
           <img v-else class="icon-fork" src="../assets/img/emptyFork.png" alt="" srcset="">
         </div>
+      </div>
+      <div class="row align-items-baseline my-3 justify-content-center text-dark-pink" :title="state.aveDifficulty">
+        <h5 class="mr-3 ">
+          <b>Difficulty:</b>
+        </h5>
+        <h5>{{ state.aveDifficulty }}</h5>
       </div>
       <div class="row d-block mx-2">
         <h3>

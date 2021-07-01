@@ -73,7 +73,7 @@
               </b>
             </h1>
           </div>
-          <div class="col-12 justify-content-center">
+          <div class="col-12 justify-content-center mx-2">
             <p class="difficulty-title text-dark-pink">
               <b>Difficulty: </b>
               {{ difficulty }}
@@ -135,11 +135,11 @@
          aria-hidden="true"
     >
       <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
+        <div class="modal-content modal-pos">
           <div class="modal-header d-flex justify-content-center">
-            <h5 class="modal-title " id="exampleModalLongTitle">
+            <h2 class="modal-title " id="exampleModalLongTitle">
               Way to HOG OUT!
-            </h5>
+            </h2>
           </div>
           <div class="modal-body d-flex justify-content-center">
             <h4>Choose your results!</h4>
@@ -274,5 +274,8 @@ background-color: rgb(250, 245, 240);
 }
 .min-100{
   min-height: 100vh;
+}
+.modal-pos{
+  left: 135px;
 }
 </style>
