@@ -3,12 +3,13 @@
     <SideBar />
   </div>
   <div class="container bg-grey">
-    <p class="row p-5">
+    <div class="row p-5 justify-content-center">
       <button class="btn btn-outline-info" data-toggle="collapse" data-target="#collapseExample">
         Filter
       </button>
-    </p>
-    <div class="row collapse" id="collapseExample">
+      <div class="col-8"></div>
+    </div>
+    <div class="row m-0 collapse" id="collapseExample">
       <div class="card-body d-flex justify-content-center">
         <div class="dropdown mr-5">
           <button class="btn btn-outline-secondary dropdown-toggle"
@@ -22,7 +23,6 @@
             {{ state.rating }}
           </button>
           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <a class="dropdown-item" @click="filterReset">All</a>
             <a class="dropdown-item" @click="filterForks(1)">1 Fork</a>
             <a class="dropdown-item" @click="filterForks(2)">2 Forks</a>
             <a class="dropdown-item" @click="filterForks(3)">3 Forks</a>
@@ -42,7 +42,6 @@
             {{ state.difficulty }}
           </div>
           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <a class="dropdown-item" @click="filterReset()">All</a>
             <a class="dropdown-item" @click="filterDifficulty('Guinea Pig')">Guinea Pig</a>
             <a class="dropdown-item" @click="filterDifficulty('Piglet')">Piglet</a>
             <a class="dropdown-item" @click="filterDifficulty('Pig')">Pig</a>
@@ -63,6 +62,7 @@
           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
             <a class="dropdown-item" @click="filterState('Idaho')">Idaho</a>
             <a class="dropdown-item" @click="filterState('Oregon')">Oregon</a>
+            <a class="dropdown-item" @click="filterState('Washington')">Washington</a>
           </div>
         </div>
         <button class="btn btn-danger" @click="filterReset" v-show="state.filterBy.difficulty || state.filterBy.forks || state.filterBy.state">
@@ -70,7 +70,7 @@
         </button>
       </div>
     </div>
-    <div class="row justify-content-center pt-4">
+    <div class="row justify-content-center">
       <div class="col-10 col-md-8 col-lg-6 px-0 d-flex justify-content-between text-center">
       </div>
     </div>
