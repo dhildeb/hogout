@@ -56,6 +56,7 @@ import { computed, onMounted } from '@vue/runtime-core'
 import { AppState } from '../AppState'
 import { challengesService } from '../services/ChallengesService'
 import { ratingsService } from '../services/RatingsService'
+import Notification from '../utils/Notification'
 export default {
   name: 'Home',
   setup() {
@@ -69,10 +70,14 @@ export default {
       filterBy: {}
     })
     onMounted(async() => {
-      await challengesService.getAllChallenges()
-      await ratingsService.getDifficultyRatings()
-      await ratingsService.getReviewRatings()
-      ratingsService.filterReset()
+      try {
+        await challengesService.getAllChallenges()
+        await ratingsService.getDifficultyRatings()
+        await ratingsService.getReviewRatings()
+        await ratingsService.filterReset()
+      } catch (error) {
+        Notification.toast(error, 'error')
+      }
     })
     return {
       state,

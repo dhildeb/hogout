@@ -10,6 +10,7 @@ import { accountService } from '../services/AccountService'
 import { useRoute } from 'vue-router'
 import { AppState } from '../AppState'
 import { attemptsService } from '../services/AttemptsService'
+import Notification from '../utils/Notification'
 
 export default {
   name: 'Profile',
@@ -19,10 +20,14 @@ export default {
       profile: computed(() => AppState.activeProfile)
     })
     onMounted(async() => {
-      await accountService.getProfileChallenges(route.params.id)
-      await accountService.getProfile(route.params.id)
-      await accountService.getUserAttempts(route.params.id)
-      await attemptsService.getAllAttempts()
+      try {
+        await accountService.getProfileChallenges(route.params.id)
+        await accountService.getProfile(route.params.id)
+        await accountService.getUserAttempts(route.params.id)
+        await attemptsService.getAllAttempts()
+      } catch (error) {
+        Notification.toast(error, 'error')
+      }
     })
     return {
       state

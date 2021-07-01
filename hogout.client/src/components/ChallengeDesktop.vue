@@ -164,6 +164,7 @@ import { AppState } from '../AppState'
 import { computed } from '@vue/runtime-core'
 import { attemptsService } from '../services/AttemptsService'
 import { difficultyRatingAve, reviewRatingAve } from '../utils/RatingAve'
+import Notification from '../utils/Notification'
 
 export default {
   setup() {
@@ -185,10 +186,14 @@ export default {
       difficulty,
       review,
       openMaps() {
-        window.open(
-          `${state.challenge.location}+${state.challenge.state}/`,
-          '_blank'
-        )
+        try {
+          window.open(
+            `${state.challenge.location}+${state.challenge.state}/`,
+            '_blank'
+          )
+        } catch (error) {
+          Notification.toast(error, 'error')
+        }
       },
       createAttempt(result) {
         state.newAttempt.completed = result

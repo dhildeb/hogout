@@ -63,7 +63,11 @@ export default {
       state,
       user: computed(() => AppState.user),
       async login() {
-        AuthService.loginWithPopup()
+        try {
+          await AuthService.loginWithPopup()
+        } catch (error) {
+          Notification.toast(error, 'error')
+        }
       },
       async logout() {
         if (await Notification.confirmAction('are you sure you want to logout?')) {

@@ -160,6 +160,7 @@ import { useRoute } from 'vue-router'
 import { logger } from '../utils/Logger'
 import { ratingsService } from '../services/RatingsService'
 import M from 'materialize-css'
+import Notification from '../utils/Notification'
 
 export default {
   name: 'MobileProfile',
@@ -182,28 +183,36 @@ export default {
     })
     onMounted(async() => {
       materializedInit()
-      await ratingsService.getDifficultyRatings()
-      await ratingsService.getReviewRatings()
+      try {
+        await ratingsService.getDifficultyRatings()
+        await ratingsService.getReviewRatings()
+      } catch (error) {
+        Notification.toast(error, 'error')
+      }
     })
     function materializedInit() {
-      const elems = document.querySelectorAll('.fixed-action-btn')
-      const instances = M.FloatingActionButton.init(elems, {
-        direction: 'bottom',
-        hoverEnabled: false
-      })
+      try {
+        const elems = document.querySelectorAll('.fixed-action-btn')
+        const instances = M.FloatingActionButton.init(elems, {
+          direction: 'bottom',
+          hoverEnabled: false
+        })
+      } catch (error) {
+        Notification.toast(error, 'error')
+      }
     }
     return {
       state,
-      findChallenges() {
-        const attempts = AppState.attempts.filter(a => a.creatorId === route.params.id)
-        logger.log(attempts)
-      },
       async editProfile() {
-        await accountService.editProfile(state.profile)
-        state.nameForm = false
-        state.bioForm = false
-        state.locationForm = false
-        state.pictureForm = false
+        try {
+          await accountService.editProfile(state.profile)
+          state.nameForm = false
+          state.bioForm = false
+          state.locationForm = false
+          state.pictureForm = false
+        } catch (error) {
+          Notification.toast(error, 'error')
+        }
       }
     }
   }

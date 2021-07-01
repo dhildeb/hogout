@@ -105,7 +105,11 @@ export default {
     return {
       state,
       loadProfile() {
-        router.push({ path: `/profile/${props.post.creatorId}` })
+        try {
+          router.push({ path: `/profile/${props.post.creatorId}` })
+        } catch (error) {
+          Notification.toast(error, 'error')
+        }
       },
       changePic(direction) {
         if (direction === 'prev') {
