@@ -70,11 +70,12 @@ export default {
       filterBy: {}
     })
     onMounted(async() => {
+      window.scrollTo({ top: 0 })
       try {
         await challengesService.getAllChallenges()
         await ratingsService.getDifficultyRatings()
         await ratingsService.getReviewRatings()
-        await ratingsService.filterReset()
+        await ratingsService.filterChallenges()
       } catch (error) {
         Notification.toast(error, 'error')
       }
@@ -87,18 +88,18 @@ export default {
       filterDifficulty(dStr) {
         state.difficulty = dStr
         state.filterBy.difficulty = dStr
-        ratingsService.filterDifficulty(state.filterBy)
+        ratingsService.filterChallenges(state.filterBy)
       },
       filterReset() {
         state.rating = 'Rating'
         state.difficulty = 'Difficulty'
         state.filterBy = {}
-        ratingsService.filterReset()
+        ratingsService.filterChallenges()
       },
       filterForks(num) {
         state.rating = num + ' Forks'
         state.filterBy.forks = num
-        ratingsService.filterForks(state.filterBy)
+        ratingsService.filterChallenges(state.filterBy)
       }
     }
   }

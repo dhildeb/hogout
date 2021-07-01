@@ -24,6 +24,7 @@ export default {
   setup() {
     const route = useRoute()
     onMounted(async() => {
+      window.scrollTo({ top: 0 })
       try {
         await attemptsService.getAttemptsByChallengeId(route.params.id)
         await likesService.getAllPostLikes()

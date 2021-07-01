@@ -20,6 +20,7 @@ export default {
       profile: computed(() => AppState.activeProfile)
     })
     onMounted(async() => {
+      window.scrollTo({ top: 0 })
       try {
         await accountService.getProfileChallenges(route.params.id)
         await accountService.getProfile(route.params.id)

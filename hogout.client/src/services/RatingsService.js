@@ -51,33 +51,17 @@ class RatingsService {
     }
   }
 
-  filterDifficulty(filter) {
-    AppState.tempChallenges = []
-    AppState.challenges.forEach(c => {
-      const currentR = difficultyRatingAve(c.id)
-      if (currentR === filter.difficulty) {
-        // eslint-disable-next-line eqeqeq
-        if (filter.forks == Math.round(reviewRatingAve(c.id)) || !filter.forks) {
-          AppState.tempChallenges.push(c)
+  filterChallenges(filter) {
+    AppState.tempChallenges = AppState.challenges.filter(c => {
+      c.forks = Math.round(reviewRatingAve(c.id))
+      c.difficulty = difficultyRatingAve(c.id)
+      for (const key in filter) {
+        if (filter[key] !== c[key]) {
+          return false
         }
       }
+      return true
     })
-  }
-
-  filterForks(filter) {
-    AppState.tempChallenges = []
-    AppState.challenges.forEach(c => {
-      const currentR = difficultyRatingAve(c.id)
-      if (filter.forks == Math.round(reviewRatingAve(c.id))) {
-        if (currentR == filter.difficulty || !filter.difficulty) {
-          AppState.tempChallenges.push(c)
-        }
-      }
-    })
-  }
-
-  filterReset() {
-    AppState.tempChallenges = AppState.challenges
   }
 }
 
