@@ -3,15 +3,21 @@
     <SideBar />
   </div>
   <div class="container bg-grey">
-    <div class="row justify-content-center py-4">
-      <div class="col-10 col-md-8 col-lg-6 px-0 d-flex justify-content-between text-center">
-        <div class="dropdown">
+    <p class="row p-5">
+      <button class="btn btn-outline-info" data-toggle="collapse" data-target="#collapseExample">
+        Filter
+      </button>
+    </p>
+    <div class="row collapse" id="collapseExample">
+      <div class="card-body d-flex justify-content-center">
+        <div class="dropdown mr-5">
           <button class="btn btn-outline-secondary dropdown-toggle"
                   type="button"
                   id="dropdownMenuButton"
                   data-toggle="dropdown"
                   aria-haspopup="true"
                   aria-expanded="false"
+                  title="Filter By Rating"
           >
             {{ state.rating }}
           </button>
@@ -25,12 +31,13 @@
           </div>
         </div>
 
-        <div class="dropdown">
+        <div class="dropdown mr-5">
           <div class="btn btn-outline-primary dropdown-toggle"
                id="dropdownMenuButton"
                data-toggle="dropdown"
                aria-haspopup="true"
                aria-expanded="false"
+               title="Filter By Difficulty"
           >
             {{ state.difficulty }}
           </div>
@@ -43,6 +50,28 @@
             <a class="dropdown-item" @click="filterDifficulty('Wild Boar')">Wild Boar</a>
           </div>
         </div>
+        <div class="dropdown mr-5">
+          <div class="btn btn-outline-warning dropdown-toggle"
+               id="dropdownMenuButton"
+               data-toggle="dropdown"
+               aria-haspopup="true"
+               aria-expanded="false"
+               title="Filter By Difficulty"
+          >
+            {{ state.state }}
+          </div>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" @click="filterState('Idaho')">Idaho</a>
+            <a class="dropdown-item" @click="filterState('Oregon')">Oregon</a>
+          </div>
+        </div>
+        <button class="btn btn-danger" @click="filterReset" v-show="state.filterBy.difficulty || state.filterBy.forks || state.filterBy.state">
+          Clear Filter
+        </button>
+      </div>
+    </div>
+    <div class="row justify-content-center pt-4">
+      <div class="col-10 col-md-8 col-lg-6 px-0 d-flex justify-content-between text-center">
       </div>
     </div>
     <ChallengeCard v-for="challenge in state.temp" :key="challenge.id" :challenge="challenge" />
@@ -64,7 +93,7 @@ export default {
       account: computed(() => AppState.account),
       challenges: computed(() => AppState.challenges),
       temp: computed(() => AppState.tempChallenges),
-      state: 'state',
+      state: 'State',
       difficulty: 'Difficulty',
       rating: 'Rating',
       filterBy: {}
@@ -93,12 +122,18 @@ export default {
       filterReset() {
         state.rating = 'Rating'
         state.difficulty = 'Difficulty'
+        state.state = 'State'
         state.filterBy = {}
         ratingsService.filterChallenges()
       },
       filterForks(num) {
         state.rating = num + ' Forks'
         state.filterBy.forks = num
+        ratingsService.filterChallenges(state.filterBy)
+      },
+      filterState(newState) {
+        state.newState = newState
+        state.filterBy.state = newState
         ratingsService.filterChallenges(state.filterBy)
       }
     }
