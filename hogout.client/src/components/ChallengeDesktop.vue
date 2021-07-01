@@ -8,7 +8,7 @@
 
       <div class="col-12 d-flex justify-content-center text-center pt-4">
         <div class="col-4 justify-content-center pl-5 ">
-          <img class="rounded-circle db" :src="state.challenge.image" alt="Profile Image">
+          <img class="rounded-circle db profColor" :src="state.challenge.image" alt="Profile Image">
           <div class="row d-block">
             <div title="Total Attempts" class="col d-flex align-items-center justify-content-start piggies ml-5 ">
               <img class="icon-pig-desktop" src="../assets/img/pig-normal.png" alt="Pig face">
@@ -209,6 +209,9 @@ export default {
 </script>
 
 <style scoped>
+.profColor{
+  background-color: #faf5f0;
+}
 
 .perfectWidth{
   margin-left: calc(3vw + 280px);
