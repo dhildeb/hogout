@@ -1,27 +1,26 @@
 <template>
-  <div class="fixed-action-btn click-to-toggle" @click="state.open=!state.open" v-show="profile.id === state.account.id">
-    <a class="btn-floating btn-large bun">
+  <div class="fixed-action-btn click-to-toggle burger" @click="state.open=!state.open" v-show="profile.id === state.account.id">
+    <a class="btn-floating btn-large bun burger">
       <i class="mdi mdi-pencil otext" title="Toggle Edit Profile" :class="state.open ? 'buntop' : 'fullburger'"></i>
     </a>
     <ul>
-      <li>
-        <p class="btn-floating bunbottom otext" title="Edit Pictures" @click="state.pictureForm = !state.pictureForm">
+      <li class="burger">
+        <p class="btn-floating bunbottom otext " title="Edit Pictures" @click="state.pictureForm = !state.pictureForm">
           Pics
         </p>
       </li>
-
-      <li>
-        <p class="btn-floating meat otext" title="Edit Location" @click="state.locationForm = !state.locationForm">
+      <li class="burger">
+        <p class="btn-floating meat otext " title="Edit Location" @click="state.locationForm = !state.locationForm">
           Loc
         </p>
       </li>
-      <li>
-        <p class="btn-floating cheese otext" title="Edit Bio" @click="state.bioForm = !state.bioForm">
+      <li class="burger">
+        <p class="btn-floating cheese otext " title="Edit Bio" @click="state.bioForm = !state.bioForm">
           Bio
         </p>
       </li>
-      <li>
-        <p class="btn-floating lettuce otext" title="Edit Name" @click="state.nameForm = !state.nameForm" name="edit name">
+      <li class="burger">
+        <p class="btn-floating lettuce otext " title="Edit Name" @click="state.nameForm = !state.nameForm" name="edit name">
           Name
         </p>
       </li>
@@ -29,37 +28,10 @@
   </div>
   <div class="row bg-img" :style="{backgroundImage: `url(${state.profile.banner})`}">
   </div>
-  <img :src="state.profile.picture" alt="profile-picture" class="rounded-circle profile-icon frame position ">
-  <div class="row form justify-content-center" v-if="state.nameForm">
-    <div class="col-md-8">
-      <form @submit.prevent="editProfile()" id="nameForm" name="nameForm">
-        <div class="input-group">
-          <label for="name" class="sr-only"> name </label>
-          <input type="text" v-model="state.profile.name" class="form-control w-50" :placeholder="state.profile.name" maxlength="40">
-          <div class="input-group-append">
-            <button class="btn btn-outline-secondary ml-4" type="submit" id="button-addon2">
-              Save
-            </button>
-          </div>
-        </div>
-      </form>
-    </div>
+  <div class="row d-flex justify-content-center">
+    <img :src="state.profile.picture" alt="profile-picture" class="rounded-circle profile-icon frame position d-flex justify-content-center">
   </div>
-
-  <div class="row form justify-content-center" v-if="state.locationForm">
-    <div class="col-md-8 text-center ">
-      <form @submit.prevent="editProfile()">
-        <div class="input-group">
-          <label for="location" class="sr-only"> location </label>
-          <input type="text" v-model="state.profile.location" class="form-control w-50" :placeholder="state.profile.location || 'Location'">
-          <div class="input-group-append">
-            <button class="btn btn-outline-secondary ml-4" type="submit" id="button-addon2">
-              Save
-            </button>
-          </div>
-        </div>
-      </form>
-    </div>
+  <div class="row form justify-content-center">
   </div>
   <div class="row my-3 awards d-flex">
     <div class="col-sm-10 col-md-10 m-auto card end shadow border">
@@ -70,6 +42,32 @@
         <h3 v-else>
           {{ state.profile.name }}, {{ state.profile.location }}
         </h3>
+        <div class="col-md-8 m-auto py-2" v-if="state.nameForm">
+          <form @submit.prevent="editProfile()" id="nameForm" name="nameForm">
+            <div class="input-group">
+              <label for="name" class="sr-only"> name </label>
+              <input type="text" v-model="state.profile.name" class="form-control w-50" :placeholder="state.profile.name" maxlength="40">
+              <div class="input-group-append">
+                <button class="btn btn-outline-secondary ml-4" type="submit" id="button-addon2">
+                  Save
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="col-md-8 m-auto py-2 text-center" v-if="state.locationForm">
+          <form @submit.prevent="editProfile()">
+            <div class="input-group">
+              <label for="location" class="sr-only"> location </label>
+              <input type="text" v-model="state.profile.location" class="form-control w-50" :placeholder="state.profile.location || 'Location'">
+              <div class="input-group-append">
+                <button class="btn btn-outline-secondary ml-4" type="submit" id="button-addon2">
+                  Save
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
       </div>
       <div class=" d-flex card-body d-flex justify-content-around">
         <div>
@@ -90,49 +88,44 @@
           About Me
         </h5>
         <p>{{ state.profile.bio }}</p>
+        <div class="col-md-8 m-auto py-2 text-center" v-if="state.bioForm">
+          <form @submit.prevent="editProfile()">
+            <div class="input-group">
+              <label for="bio" class="sr-only"> bio </label>
+              <input type="text" v-model="state.profile.bio" class="form-control w-50" :placeholder="state.profile.bio || 'bio'">
+              <div class="input-group-append">
+                <button class="btn btn-outline-secondary ml-4" type="submit" id="button-addon2">
+                  Save
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="col-md-8 text-center py-2 m-auto" v-if="state.pictureForm">
+          <form class="my-2" @submit.prevent="editProfile()">
+            <label for="picture">Profile Picture </label>
+            <div class="input-group">
+              <input type="text" v-model="state.profile.picture" class="form-control w-50" :placeholder="state.profile.picture || 'picture'">
+              <div class="input-group-append">
+                <button class="btn btn-outline-secondary ml-4" type="submit" id="button-addon2">
+                  Save
+                </button>
+              </div>
+            </div>
+            <label for="banner"> Profile Banner </label>
+            <div class="input-group">
+              <input type="text" v-model="state.profile.banner" class="form-control w-50" :placeholder="state.profile.banner || 'banner'">
+              <div class="input-group-append">
+                <button class="btn btn-outline-secondary ml-4" type="submit" id="button-addon2">
+                  Save
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
   </div>
-  <div class="row my-1 form justify-content-center" v-if="state.bioForm">
-    <div class="col-md-8 text-center">
-      <form @submit.prevent="editProfile()">
-        <div class="input-group">
-          <label for="bio" class="sr-only"> bio </label>
-          <input type="text" v-model="state.profile.bio" class="form-control w-50" :placeholder="state.profile.bio || 'bio'">
-          <div class="input-group-append">
-            <button class="btn btn-outline-secondary ml-4" type="submit" id="button-addon2">
-              Save
-            </button>
-          </div>
-        </div>
-      </form>
-    </div>
-  </div>
-  <div class="row my-1 justify-content-center" v-if="state.pictureForm">
-    <div class="col-md-8 text-center ">
-      <form class="my-2" @submit.prevent="editProfile()">
-        <label for="picture">Profile Picture </label>
-        <div class="input-group">
-          <input type="text" v-model="state.profile.picture" class="form-control w-50" :placeholder="state.profile.picture || 'picture'">
-          <div class="input-group-append">
-            <button class="btn btn-outline-secondary ml-4" type="submit" id="button-addon2">
-              Save
-            </button>
-          </div>
-        </div>
-        <label for="banner"> Profile Banner </label>
-        <div class="input-group">
-          <input type="text" v-model="state.profile.banner" class="form-control w-50" :placeholder="state.profile.banner || 'banner'">
-          <div class="input-group-append">
-            <button class="btn btn-outline-secondary ml-4" type="submit" id="button-addon2">
-              Save
-            </button>
-          </div>
-        </div>
-      </form>
-    </div>
-  </div>
-
   <div class="row mt-3">
     <div class="col-12 text-center">
       <h4 class="border-lg-bottom pb-4">
@@ -265,6 +258,11 @@ li{
    background-size: contain;
    background-repeat: no-repeat;
 }
+.burger{
+  transition: all .2s ease-in-out;
+}
+.burger:hover {
+  transform: scale(1.1); }
 
 .height{
   height: 22vh;
@@ -274,7 +272,6 @@ li{
 }
 .position{
   position: absolute;
-  right: 31rem;
   top: 16rem
 }
 .frame{
