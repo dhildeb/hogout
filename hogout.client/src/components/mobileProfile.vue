@@ -71,13 +71,17 @@
       </div>
       <div class=" d-flex card-body d-flex justify-content-around">
         <div>
-          <img class="icon-pig" title="Total Wins" src="../assets/img/pig-crown.png" alt="pig-crown">
+          <div class="bg-dark pig rounded-circle">
+            <img class="icon-pig" title="Total Wins" src="../assets/img/pig-crown-sheet-colored.png" alt="pig-crown">
+          </div>
           <p class="center">
             X {{ state.wins.length }}
           </p>
         </div>
         <div>
-          <img class="icon-pig justify-content-right text-right" title="Total Attempts" src="../assets/img/pig-normal.png" alt="normal-pig">
+          <div class="pig-no-crown bg-dark rounded-circle justify-content-center align-self-center">
+            <img class="icon-pig center-pig text-right" title="Total Attempts" src="../assets/img/pig-normal-colored.png" alt="normal-pig">
+          </div>
           <p class="center">
             X {{ state.attempts.length }}
           </p>
@@ -270,6 +274,9 @@ li{
 .banner-size{
   background-repeat: no-repeat;
 }
+.center-pig{
+  margin-top: -.50rem;
+}
 .position{
   position: absolute;
   top: 16rem
@@ -312,7 +319,14 @@ li{
 .border-lg-bottom{
   border-bottom: 3px solid var(--dark-blue);
 }
-
+.pig{
+  height: 3.5rem;
+  width: 3.5rem;
+}
+.pig-no-crown{
+  height: 3.5rem;
+  width: 3.5rem;
+}
 .btn-floating{
 background-color: transparent;
 box-shadow: none;
