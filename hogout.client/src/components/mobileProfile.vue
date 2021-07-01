@@ -1,27 +1,27 @@
 <template>
   <div class="fixed-action-btn click-to-toggle" @click="state.open=!state.open" v-show="profile.id === state.account.id">
     <a class="btn-floating btn-large bun">
-      <i class="mdi mdi-pencil" :class="state.open ? 'buntop' : 'fullburger'"></i>
+      <i class="mdi mdi-pencil otext" title="Toggle Edit Profile" :class="state.open ? 'buntop' : 'fullburger'"></i>
     </a>
     <ul>
       <li>
-        <p class="btn-floating bunbottom otext" @click="state.pictureForm = !state.pictureForm">
+        <p class="btn-floating bunbottom otext" title="Edit Pictures" @click="state.pictureForm = !state.pictureForm">
           Pics
         </p>
       </li>
 
       <li>
-        <p class="btn-floating meat otext" @click="state.locationForm = !state.locationForm">
+        <p class="btn-floating meat otext" title="Edit Location" @click="state.locationForm = !state.locationForm">
           Loc
         </p>
       </li>
       <li>
-        <p class="btn-floating cheese otext" @click="state.bioForm = !state.bioForm">
+        <p class="btn-floating cheese otext" title="Edit Bio" @click="state.bioForm = !state.bioForm">
           Bio
         </p>
       </li>
       <li>
-        <p class="btn-floating lettuce otext" @click="state.nameForm = !state.nameForm" name="edit name">
+        <p class="btn-floating lettuce otext" title="Edit Name" @click="state.nameForm = !state.nameForm" name="edit name">
           Name
         </p>
       </li>
@@ -214,7 +214,7 @@ export default {
 
 .otext{
   font-size: 1.5rem;
-  padding-top: 1.5rem;
+
 text-shadow: rgb(0, 0, 0) 2px 0px 0px, rgb(0, 0, 0) 1.75517px 0.958851px 0px, rgb(0, 0, 0) 1.0806px 1.68294px 0px, rgb(0, 0, 0) 0.141474px 1.99499px 0px, rgb(0, 0, 0) -0.832294px 1.81859px 0px, rgb(0, 0, 0) -1.60229px 1.19694px 0px, rgb(0, 0, 0) -1.97998px 0.28224px 0px, rgb(0, 0, 0) -1.87291px -0.701566px 0px, rgb(0, 0, 0) -1.30729px -1.5136px 0px, rgb(0, 0, 0) -0.421592px -1.95506px 0px, rgb(0, 0, 0) 0.567324px -1.91785px 0px, rgb(0, 0, 0) 1.41734px -1.41108px 0px, rgb(0, 0, 0) 1.92034px -0.558831px 0px;}
 
 li{
@@ -232,6 +232,7 @@ li{
 }
 
 .buntop{
+
   width: 80px;
   height:80px;
   background-image: url('../assets/img/b-buntop.png');
@@ -239,21 +240,25 @@ li{
    background-repeat: no-repeat;
 }
 .bunbottom{
+  padding-top: .8rem;
   background-image: url('../assets/img/b-bunbottom.png');
    background-size: contain;
    background-repeat: no-repeat;
 }
 .lettuce{
+  padding-top: .8rem;
   background-image: url('../assets/img/b-lettuce.png');
    background-size: contain;
    background-repeat: no-repeat;
 }
 .cheese{
+  padding-top: .8rem;
   background-image: url('../assets/img/b-cheese.png');
    background-size: contain;
    background-repeat: no-repeat;
 }
 .meat{
+  padding-top: .8rem;
   background-image: url('../assets/img/b-meat.png');
    background-size: contain;
    background-repeat: no-repeat;
