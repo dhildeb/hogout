@@ -4,7 +4,7 @@
   </div>
   <div class="container bg-grey">
     <div class="row p-5 justify-content-center">
-      <button class="btn btn-outline-info" data-toggle="collapse" data-target="#collapseExample">
+      <button class="btn btn-outline-info" data-toggle="collapse" data-target="#collapseExample" title="Filter">
         Filter
       </button>
       <div class="col-8"></div>

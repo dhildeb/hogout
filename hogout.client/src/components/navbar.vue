@@ -70,7 +70,7 @@ export default {
         }
       },
       async logout() {
-        if (await Notification.confirmAction('are you sure you want to logout?')) {
+        if (await Notification.confirmAction('You are about to logout of Hogout!', '', 'warning', 'Logout')) {
           AuthService.logout({ returnTo: window.location.origin })
         }
       }
