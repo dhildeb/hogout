@@ -1,5 +1,5 @@
 <template>
-  <div class="fixed-action-btn click-to-toggle burger" @click="state.open=!state.open" v-show="profile.id === state.account.id">
+  <div class="fixed-action-btn click-to-toggle" @click="state.open=!state.open" v-show="profile.id === state.account.id">
     <a class="btn-floating btn-large bun burger">
       <i class="mdi mdi-pencil otext" title="Toggle Edit Profile" :class="state.open ? 'buntop' : 'fullburger'"></i>
     </a>
