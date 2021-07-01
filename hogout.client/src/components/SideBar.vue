@@ -1,31 +1,36 @@
 <template>
-  <div class="container h-100">
-    <div class="row flex-column text-light bg-dark-blue side-fit h-100 px-5">
-      <div class="col-3 mt-5">
-        <router-link :to="{ name: 'Profile', params: {id: state.account.id}}">
-          <img class="rounded-circle profile-icon my-3" :src="state.account.picture" alt="">
-        </router-link>
-      </div>
-      <div class="col-1">
-        <h5 class="mb-5 ml-3">
+  <div class="container h-100 sidebarw text-light bg-dark-blue side-fit">
+    <div class="row justify-content-center mt-5">
+      <router-link :to="{ name: 'Profile', params: {id: state.account.id}}">
+        <img class="rounded-circle profile-icon my-3" :src="state.account.picture" alt="">
+      </router-link>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col mx-3">
+        <h5>
           {{ state.account.name }}
         </h5>
       </div>
-      <div class="col-1 d-flex align-items-center ml-4">
-        <img title="Total Wins" class="icon-pig text-light" src="../assets/img/pig-crown.png" alt="Wins: " srcset="">
-        <span class="p-3">X</span>
-        <span>{{ state.wins.length }}</span>
-      </div>
-      <div class="col-1 d-flex align-items-center ml-4">
-        <img title="Total Attempts" class="icon-pig text-light" src="../assets/img/pig-normal.png" alt="Attempts: " srcset="">
-        <span class="p-3">X</span>
-        <span>{{ state.attempts.length }}</span>
-      </div>
-      <div class="col d-flex align-items-end mb-5">
-        <button class="btn btn-danger m-5 logout" @click="logout">
-          logout
-        </button>
-      </div>
+    </div>
+    <div class="row justify-content-center align-items-center mb-0">
+      <img title="Total Wins" class="icon-pig text-light" src="../assets/img/pig-crown.png" alt="Wins: " srcset="">
+      <span class="px-2"><i class="mdi mdi-close"></i></span>
+      <h5 class="mb-1">
+        {{ state.wins.length }}
+      </h5>
+    </div>
+    <div class="row justify-content-center align-items-center">
+      <img title="Total Attempts" class="icon-pig text-light" src="../assets/img/pig-normal.png" alt="Attempts: " srcset="">
+      <span class="p-2"><i class="mdi mdi-close"></i></span>
+      <h5 class="mb-1">
+        {{ state.attempts.length }}
+      </h5>
+    </div>
+    <div class="row spacer"></div>
+    <div class="row justify-content-center ">
+      <button class="btn btn-danger  logout" @click="logout">
+        logout
+      </button>
     </div>
   </div>
 </template>
@@ -62,9 +67,19 @@ export default {
 </script>
 
 <style scoped>
+
+.spacer{
+  height: 23rem;
+}
+.sidebarw{
+width: 17rem;
+}
+
 .profile-icon {
   height: 160px;
   width: 160px;
+  border-style: solid;
+  border-color: #ebc3ec;
 }
 .side-fit{
   position: fixed;
