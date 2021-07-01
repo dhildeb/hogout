@@ -1,34 +1,37 @@
 <template>
-  <div class="zoom">
-    <div class="row p-0 my-0 justify-content-center d-none d-md-flex">
-      <div class="col-10 col-md-8 col-lg-6 shadow p-0 click" @click="goThere">
-        <img class="banner img-fluid rounded-top" :src="challenge.banner" alt="banner">
-      </div>
-    </div>
-    <div class="row pb-2 justify-content-center">
-      <div class="col-10 col-md-8 col-lg-6 click border rounded-bottom shadow d-flex bg-yellow align-self-center justify-content-center" @click="goThere">
-        <div class="row w-100 justify-content-around">
-          <img class="col-4 img-fluid icon over-hang" :src="challenge.image" alt="icon">
-          <div class="col-4 p-0 justify-content-center d-flex flex-column w-100">
-            <h3 class="p-1">
+  <div class="row justify-content-center">
+    <div @click="goThere" class=" zoom  click card bg-yellow challenge ">
+      <img class=" d-none d-md-block card-img-top banner" :src="challenge.banner" alt="Challenge Banner">
+      <div class="rel">
+        <img class="ab pic-loc icon" :src="challenge.image" alt="Challenge Icon">
+        <div class="ab p-2 loc-loc d-flex align-items-center">
+          <i class="mdi wshd mdi-map-marker text-primary mdi-24px d-flex justify-content-center"></i>
+          <h5 class="m-0 ml-1 shd">
+            {{ challenge.state }}
+          </h5>
+        </div>
+        <div class="row m-0 my-4">
+          <div class="col ">
+            <h2 class="mx-3 mb-4 text-center">
               {{ challenge.name }}
-            </h3>
-            <em class="text-secondary">{{ challenge.state }}</em>
-          </div>
-          <span class="col-4 p-0 d-xs-flex m-0 text-danger text-center">
-            <h5 class="text-danger p-3" title="Difficulty"><em>{{ getDifficultyRating(challenge) }}</em></h5>
-            <div class="d-flex mr-3 pt-2" title="Rating">
-              <img src="../assets/img/fullFork.png" class="img-fluid icon-fork" alt="">
-              <img v-if="getReviewRating(challenge) > 1.5" src="../assets/img/fullFork.png" class="img-fluid icon-fork" alt="">
-              <img v-else src="../assets/img/emptyFork.png" class="img-fluid icon-fork" alt="">
-              <img v-if="getReviewRating(challenge) > 2.4" src="../assets/img/fullFork.png" class="img-fluid icon-fork" alt="">
-              <img v-else src="../assets/img/emptyFork.png" class="img-fluid icon-fork" alt="">
-              <img v-if="getReviewRating(challenge) > 3.4" src="../assets/img/fullFork.png" class="img-fluid icon-fork" alt="">
-              <img v-else src="../assets/img/emptyFork.png" class="img-fluid icon-fork" alt="">
-              <img v-if="getReviewRating(challenge) > 4.5" src="../assets/img/fullFork.png" class="img-fluid icon-fork" alt="">
-              <img v-else src="../assets/img/emptyFork.png" class="img-fluid icon-fork" alt="">
+            </h2>
+            <div class=" m-0 justify-content-between row">
+              <h5 class=" col m-0 text-danger align-self-center">
+                {{ getDifficultyRating(challenge) }}
+              </h5>
+              <div class=" col d-flex mr-3  justify-content-end" title="Rating">
+                <img src="../assets/img/fullFork.png" class="img-fluid icon-fork" alt="">
+                <img v-if="getReviewRating(challenge) > 1.5" src="../assets/img/fullFork.png" class=" icon-fork" alt="">
+                <img v-else src="../assets/img/emptyFork.png" class=" icon-fork" alt="">
+                <img v-if="getReviewRating(challenge) > 2.4" src="../assets/img/fullFork.png" class=" icon-fork" alt="">
+                <img v-else src="../assets/img/emptyFork.png" class=" icon-fork" alt="">
+                <img v-if="getReviewRating(challenge) > 3.4" src="../assets/img/fullFork.png" class=" icon-fork" alt="">
+                <img v-else src="../assets/img/emptyFork.png" class=" icon-fork" alt="">
+                <img v-if="getReviewRating(challenge) > 4.5" src="../assets/img/fullFork.png" class=" icon-fork" alt="">
+                <img v-else src="../assets/img/emptyFork.png" class="img-fluid icon-fork" alt="">
+              </div>
             </div>
-          </span>
+          </div>
         </div>
       </div>
     </div>
@@ -79,14 +82,54 @@ export default {
 </script>
 
 <style scoped>
+
+.loc-loc{
+  top: -172px;
+  left: 9px;
+  color: white;
+
+}
+.shd{
+  text-shadow: rgb(0, 0, 0) 2px 0px 0px, rgb(0, 0, 0) 1.75517px 0.958851px 0px, rgb(0, 0, 0) 1.0806px 1.68294px 0px, rgb(0, 0, 0) 0.141474px 1.99499px 0px, rgb(0, 0, 0) -0.832294px 1.81859px 0px, rgb(0, 0, 0) -1.60229px 1.19694px 0px, rgb(0, 0, 0) -1.97998px 0.28224px 0px, rgb(0, 0, 0) -1.87291px -0.701566px 0px, rgb(0, 0, 0) -1.30729px -1.5136px 0px, rgb(0, 0, 0) -0.421592px -1.95506px 0px, rgb(0, 0, 0) 0.567324px -1.91785px 0px, rgb(0, 0, 0) 1.41734px -1.41108px 0px, rgb(0, 0, 0) 1.92034px -0.558831px 0px;
+
+}
+.wshd{
+  text-shadow: rgb(187, 224, 228) 2px 0px 0px, rgb(187, 224, 228) 1.75517px 0.958851px 0px,
+   rgb(187, 224, 228) 1.0806px 1.68294px 0px, rgb(187, 224, 228) 0.141474px 1.99499px 0px,
+   rgb(187, 224, 228) -0.832294px 1.81859px 0px, rgb(187, 224, 228) -1.60229px 1.19694px 0px,
+   rgb(187, 224, 228) -1.97998px 0.28224px 0px, rgb(187, 224, 228) -1.87291px -0.701566px 0px,
+   rgb(187, 224, 228) -1.30729px -1.5136px 0px, rgb(187, 224, 228) -0.421592px -1.95506px 0px,
+   rgb(187, 224, 228) 0.567324px -1.91785px 0px, rgb(187, 224, 228) 1.41734px -1.41108px 0px,rgb(187, 224, 228) 1.92034px -0.558831px 0px;
+
+}
+.challenge{
+  width: 35vw;
+}
+
+.ab{
+  position: absolute;
+}
+.rel{
+  position: relative;
+}
+
+.pic-loc{
+  right: 13px;
+  top: -171px;
+}
+
 .icon{
-  max-width: 100px;
+  max-height: 135px;
+
+  border-radius: 10%;
+  width: fit-content;
+  max-width: 130px;
   object-fit: scale-down;
+  background-color: #ffffffaf;
 }
 
 .banner{
-  height: 160px;
-  width: fit-content;
+  height: 180px;
   object-fit: cover;
 }
 .zoom:hover{
@@ -97,14 +140,22 @@ export default {
   cursor: pointer;
 }
 .icon-fork{
-  width: .7rem;
   margin-right: 5px;
-  margin-left: 5px;
   max-height: 38px;
 }
-@media screen and (max-width: 415px) {
-  .d-xs-flex{
-    display: flex;
+@media screen and (max-width: 767px) {
+  .challenge{
+    width: 100vw;
+  }}
+
+@media screen and (max-width: 1049px) {
+  .challenge{
+    width: 60vw;
+  }
+}
+@media screen and (min-width: 1050px) {
+  .challenge{
+    width: 40vw;
   }
 }
 </style>
