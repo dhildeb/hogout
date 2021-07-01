@@ -139,6 +139,5 @@ a:hover{
 .hogout{
   image-rendering: initial;
   max-width: 13rem;
-
 }
 </style>

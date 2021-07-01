@@ -148,4 +148,7 @@ export default {
 .bg-gray{
   background-color: #E8E8E8;
 }
+::-webkit-scrollbar-thumb {
+  background-image: url('https://res.cloudinary.com/ddbxzcb7k/image/upload/v1564751401/fill-01_vgkaj7.svg');
+}
 </style>
