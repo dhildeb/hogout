@@ -1,23 +1,37 @@
 <template>
   <div class="row pb-2 justify-content-center">
-    <div class="col-xl-6 col-md-8 col-sm-6 col-10 click border rounded-bottom shadow d-flex bg-yellow p-0 py-2 zoom card" @click="goThere">
-      <!-- <div class="card-header h-50" :style="{backgroundImage: `url(${challenge.challenge.banner})`}">
-      <! <img class="banner img-fluid rounded-top d-md-block d-none" :src="challenge.challenge.banner" alt="banner"> -->
-      <!-- </div> -->
-      <div class="card-header text-center">
-        <b class="p-1">{{ challenge.challenge.name }}</b>
-      </div>
-      <div class="card-body d-flex">
-        <!-- <img class="img-fluid icon over-hang p-2" :src="challenge.challenge.image" alt="icon"> -->
-        <div>
-          <p>
-            <em class="text-secondary"> {{ challenge.challenge.state }} </em>
-            <em class="text-right"> {{ getDifficultyRating(challenge.challenge) }} </em>
-          </p>
+    <div class="col-xl-6 col-md-8 col-sm-6 col-10 click border rounded-bottom shadow d-flex bg-yellow p-0 py-2 zoom card bg-white">
+      <div class=" bg-white text-right challenge-title card-header">
+        <div class="dropdown click options position-absolute"
+             id="dropdownMenuButton"
+             data-toggle="dropdown"
+             aria-haspopup="true"
+             aria-expanded="false"
+             title="options"
+             v-if="state.profileId === state.account.id"
+        >
+          <h1 class="dots">
+            ...
+          </h1>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <button class="text-danger dropdown-item" @click="deleteAttempt">
+              Remove Attempt
+            </button>
+          </div>
         </div>
+        <h5 @click="goThere">
+          {{ challenge.challenge.name }}
+        </h5>
       </div>
-      <div class="card-footer">
-        <div class="justify-content-end p-0 d-flex" title="Rating">
+      <div class="card-body d-flex bg-white" @click="goThere">
+        <img class="img-fluid icon over-hang p-2" :src="challenge.challenge.image" alt="icon">
+        <div class="justify-content-between d-flex">
+          <i class="text-secondary move"> State: {{ challenge.challenge.state }} </i>
+        </div>
+        <div>
+          <i class="text-right move-more"> Difficulty: {{ getDifficultyRating(challenge.challenge) }} </i>
+        </div>
+        <div class="justify-content-end d-flex forks" title="Rating">
           <img src="../assets/img/fullFork.png" class="img-fluid icon-fork" alt="">
           <img v-if="getReviewRating(challenge.challenge) > 1.5" src="../assets/img/fullFork.png" class="img-fluid icon-fork" alt="">
           <img v-else src="../assets/img/emptyFork.png" class="img-fluid icon-fork" alt="">
@@ -29,32 +43,18 @@
           <img v-else src="../assets/img/emptyFork.png" class="img-fluid icon-fork" alt="">
         </div>
       </div>
-    </div>
-    <div class="col-sm-1"></div>
-    <div class="col-10 col-sm-1 challenge-stats d-flex flex-column-md justify-content-end border rounded-bottom shadow bg-yellow">
-      <!-- options tab -->
-      <div class="dropdown click options position-absolute"
-           id="dropdownMenuButton"
-           data-toggle="dropdown"
-           aria-haspopup="true"
-           aria-expanded="false"
-           title="options"
-           v-if="state.profileId === state.account.id"
-      >
-        <h1>...</h1>
+      <div class="card-footer bg-white">
+        <div class="justify-content-around d-flex">
+          <div>
+            <img class="icon-pig" title="Challenge Wins" src="../assets/img/pig-crown.png" alt="pig-crown">
+            X {{ state.wins.length }}
+          </div>
+          <div>
+            <img class="icon-pig" title="Challenge Attempts" src="../assets/img/pig-normal.png" alt="pig">
+            X {{ state.attempts.length }}
+          </div>
+        </div>
       </div>
-      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-        <button class="text-danger dropdown-item" @click="deleteAttempt">
-          Remove Attempt
-        </button>
-      </div>
-      <!-- end of options tab -->
-      <span>
-        <img class="icon-pig" title="Challenge Wins" src="../assets/img/pig-crown.png" alt="">
-        X {{ state.wins.length }}</span>
-      <span>
-        <img class="icon-pig" title="Challenge Attempts" src="../assets/img/pig-normal.png" alt="">
-        X {{ state.attempts.length }}</span>
     </div>
   </div>
 </template>
@@ -104,8 +104,11 @@ export default {
 
 <style scoped>
 .icon{
-  max-width: 100px;
+  max-width: 13rem;
   object-fit: scale-down;
+}
+.dots{
+  padding-top: 1.25rem;
 }
 .click{
   cursor: pointer;
@@ -116,9 +119,25 @@ export default {
   margin-right: 5px;
   margin-left: 5px;
 }
+.move{
+  margin-left: 7rem;
+  font-size: 16px;
+}
+.move-more{
+    color: red;
+  margin-left: 6rem;
+  font-size: 16px;
+}
+.challenge-title{
+  padding-right: 10rem;
+}
 .icon-pig{
   width: 3.5rem;
   margin-bottom: 1rem;
+}
+.forks{
+  padding-top: 4rem;
+  margin-left: -13rem
 }
 .banner{
   height: 160px;
