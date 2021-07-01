@@ -38,7 +38,7 @@
               @click="openMaps"
               class="
               btn
-              btn-info
+              btn-color
               my-2
               "
             >
@@ -99,7 +99,7 @@
       </div>
       <div class="row d-flex justify-content-center" v-if="state.user.isAuthenticated">
         <div class="col-12 justify-content-center text-center">
-          <button @click="ITookChallenge" data-toggle="modal" data-target="#challengeDesktopModal" class="btn btn-warning">
+          <button @click="ITookChallenge" data-toggle="modal" data-target="#challengeDesktopModal" class="btn btn-color">
             <span class=" m-auto">
               I TOOK ON THIS CHALLENGE
             </span>
@@ -116,7 +116,7 @@
       </div>
       <div class="row perfectWidth" v-if="state.user.isAuthenticated">
         <div class="col-12 d-flex justify-content-center">
-          <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#review">
+          <button class="btn btn-color" type="button" data-toggle="modal" data-target="#review">
             Post A Review
           </button>
         </div>
@@ -145,10 +145,10 @@
             <h4>Choose your results!</h4>
           </div>
           <div class="modal-footer d-flex flex-column">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal" @click="createAttempt(true)">
+            <button type="button" class="btn btn-pink" data-dismiss="modal" @click="createAttempt(true)">
               I Won the Challenge!
             </button>
-            <button type="button" class="btn btn-primary" data-dismiss="modal" @click="createAttempt(false)">
+            <button type="button" class="btn btn-color" data-dismiss="modal" @click="createAttempt(false)">
               I Tried and Failed!
             </button>
           </div>
@@ -237,6 +237,20 @@ position: relative;
 .challenge-banner{
   max-height: 17vw;
   object-fit: cover;
+}
+.btn-pink{
+      background-color: #ebc3ec;
+    border-color: #547066;
+    border-width: medium;
+    color: #547066;
+    font-weight: bold;
+}
+.btn-color{
+  background-color: #7fa597;
+    border-color: #547066;
+    border-width: medium;
+    color: #f9fdfc;
+    font-weight: bold;
 }
 .card{
 background-color: rgb(250, 245, 240);

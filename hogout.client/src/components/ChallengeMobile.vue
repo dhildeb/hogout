@@ -23,7 +23,7 @@
           @click="openMaps"
           class="
               btn
-              btn-primary
+              btn-color
 
               my-2"
         >
@@ -85,7 +85,7 @@
         <p>{{ state.challenge.rewards }}</p>
       </div>
       <div class="row justify-content-center mt-3 mb-5" v-if="state.user.isAuthenticated">
-        <button type="button" data-toggle="modal" data-target="#challenge" class="btn btn-primary">
+        <button type="button" data-toggle="modal" data-target="#challenge" class="btn btn-color">
           I TOOK ON THIS CHALLENGE
         </button>
       </div>
@@ -98,7 +98,7 @@
           <u><h2>Reviews</h2></u>
         </div>
         <div class="col-12 d-flex justify-content-center">
-          <button class="btn btn-primary btn-sm" type="button" data-toggle="modal" data-target="#review">
+          <button class="btn btn-color btn-sm" type="button" data-toggle="modal" data-target="#review">
             Post A Review
           </button>
         </div>
@@ -127,10 +127,10 @@
             <h4>Choose your results!</h4>
           </div>
 
-          <button type="button" class="btn btn-secondary  my-1" data-dismiss="modal" @click="createAttempt(true)">
+          <button type="button" class="btn btn-pink  my-1" data-dismiss="modal" @click="createAttempt(true)">
             I Won the Challenge!
           </button>
-          <button type="button" class="btn btn-primary  my-1 mt-2" data-dismiss="modal" @click="createAttempt(false)">
+          <button type="button" class="btn btn-color  my-1 mt-2" data-dismiss="modal" @click="createAttempt(false)">
             I Tried and Failed!
           </button>
         </div>
@@ -211,7 +211,20 @@ position: relative;
 max-height: 4rem;
   height: 11vw;
 }
-
+.btn-pink{
+      background-color: #ebc3ec;
+    border-color: #547066;
+    border-width: medium;
+    color: #547066;
+    font-weight: bold;
+}
+.btn-color{
+  background-color: #7fa597;
+    border-color: #547066;
+    border-width: medium;
+    color: #f9fdfc;
+    font-weight: bold;
+}
 .icon-pig{
   width: 3.5rem;
   margin-bottom: 1rem;
