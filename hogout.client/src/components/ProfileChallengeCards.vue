@@ -32,15 +32,15 @@
           <i class="text-right move-more"> Difficulty: {{ getDifficultyRating(challenge.challenge) }} </i>
         </div>
         <div class="justify-content-end d-flex forks" title="Rating">
-          <img src="../assets/img/fullFork.png" class="img-fluid icon-fork" alt="">
-          <img v-if="getReviewRating(challenge.challenge) > 1.5" src="../assets/img/fullFork.png" class="img-fluid icon-fork" alt="">
-          <img v-else src="../assets/img/emptyFork.png" class="img-fluid icon-fork" alt="">
-          <img v-if="getReviewRating(challenge.challenge) > 2.4" src="../assets/img/fullFork.png" class="img-fluid icon-fork" alt="">
-          <img v-else src="../assets/img/emptyFork.png" class="img-fluid icon-fork" alt="">
-          <img v-if="getReviewRating(challenge.challenge) > 3.4" src="../assets/img/fullFork.png" class="img-fluid icon-fork" alt="">
-          <img v-else src="../assets/img/emptyFork.png" class="img-fluid icon-fork" alt="">
-          <img v-if="getReviewRating(challenge.challenge) > 4.5" src="../assets/img/fullFork.png" class="img-fluid icon-fork" alt="">
-          <img v-else src="../assets/img/emptyFork.png" class="img-fluid icon-fork" alt="">
+          <img src="../assets/img/fullFork.png" class="img-fluid icon-fork" alt="fork">
+          <img v-if="getReviewRating(challenge.challenge) > 1.5" src="../assets/img/fullFork.png" class="img-fluid icon-fork" alt="fork">
+          <img v-else src="../assets/img/emptyFork.png" class="img-fluid icon-fork" alt="empty fork">
+          <img v-if="getReviewRating(challenge.challenge) > 2.4" src="../assets/img/fullFork.png" class="img-fluid icon-fork" alt="fork">
+          <img v-else src="../assets/img/emptyFork.png" class="img-fluid icon-fork" alt="empty fork">
+          <img v-if="getReviewRating(challenge.challenge) > 3.4" src="../assets/img/fullFork.png" class="img-fluid icon-fork" alt="fork">
+          <img v-else src="../assets/img/emptyFork.png" class="img-fluid icon-fork" alt="empty fork">
+          <img v-if="getReviewRating(challenge.challenge) > 4.5" src="../assets/img/fullFork.png" class="img-fluid icon-fork" alt="fork">
+          <img v-else src="../assets/img/emptyFork.png" class="img-fluid icon-fork" alt="empty fork">
         </div>
       </div>
       <div class="card-footer bg-white">

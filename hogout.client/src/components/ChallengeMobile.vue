@@ -51,19 +51,19 @@
       </div>
       <div class="row py-3 justify-content-center align-items-center">
         <div :title="state.aveRating">
-          <img class="icon-fork" src="../assets/img/fullFork.png" alt="" srcset="">
+          <img class="icon-fork" src="../assets/img/fullFork.png" alt="fork" srcset="">
 
-          <img v-if="state.aveRating > 1.5" class="icon-fork" src="../assets/img/fullFork.png" alt="" srcset="">
-          <img v-else class="icon-fork" src="../assets/img/emptyFork.png" alt="" srcset="">
+          <img v-if="state.aveRating > 1.5" class="icon-fork" src="../assets/img/fullFork.png" alt="fork" srcset="">
+          <img v-else class="icon-fork" src="../assets/img/emptyFork.png" alt="empty fork" srcset="">
 
-          <img v-if="state.aveRating > 2.4" class="icon-fork" src="../assets/img/fullFork.png" alt="" srcset="">
-          <img v-else class="icon-fork" src="../assets/img/emptyFork.png" alt="" srcset="">
+          <img v-if="state.aveRating > 2.4" class="icon-fork" src="../assets/img/fullFork.png" alt="fork" srcset="">
+          <img v-else class="icon-fork" src="../assets/img/emptyFork.png" alt="empty fork" srcset="">
 
-          <img v-if="state.aveRating > 3.4" class="icon-fork" src="../assets/img/fullFork.png" alt="" srcset="">
-          <img v-else class="icon-fork" src="../assets/img/emptyFork.png" alt="" srcset="">
+          <img v-if="state.aveRating > 3.4" class="icon-fork" src="../assets/img/fullFork.png" alt="fork" srcset="">
+          <img v-else class="icon-fork" src="../assets/img/emptyFork.png" alt="empty fork" srcset="">
 
-          <img v-if="state.aveRating > 4.5" class="icon-fork" src="../assets/img/fullFork.png" alt="" srcset="">
-          <img v-else class="icon-fork" src="../assets/img/emptyFork.png" alt="" srcset="">
+          <img v-if="state.aveRating > 4.5" class="icon-fork" src="../assets/img/fullFork.png" alt="fork" srcset="">
+          <img v-else class="icon-fork" src="../assets/img/emptyFork.png" alt="empty fork" srcset="">
         </div>
       </div>
       <div class="row align-items-baseline my-3 justify-content-center text-dark-pink" :title="state.aveDifficulty">

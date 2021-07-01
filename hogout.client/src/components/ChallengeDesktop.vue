@@ -47,19 +47,19 @@
           </div>
           <div class="row justify-content-center align-items-center text-center rating-title">
             <div :title="'User Rating: '+state.aveRating">
-              <img class="icon-fork-desktop" src="../assets/img/fullFork.png" alt="" srcset="">
+              <img class="icon-fork-desktop" src="../assets/img/fullFork.png" alt="fork" srcset="">
 
-              <img v-if="state.aveRating > 1.5" class="icon-fork-desktop" src="../assets/img/fullFork.png" alt="" srcset="">
-              <img v-else class="icon-fork-desktop" src="../assets/img/emptyFork.png" alt="" srcset="">
+              <img v-if="state.aveRating > 1.5" class="icon-fork-desktop" src="../assets/img/fullFork.png" alt="fork" srcset="">
+              <img v-else class="icon-fork-desktop" src="../assets/img/emptyFork.png" alt="empty fork" srcset="">
 
-              <img v-if="state.aveRating > 2.4" class="icon-fork-desktop" src="../assets/img/fullFork.png" alt="" srcset="">
-              <img v-else class="icon-fork-desktop" src="../assets/img/emptyFork.png" alt="" srcset="">
+              <img v-if="state.aveRating > 2.4" class="icon-fork-desktop" src="../assets/img/fullFork.png" alt="fork" srcset="">
+              <img v-else class="icon-fork-desktop" src="../assets/img/emptyFork.png" alt="empty fork" srcset="">
 
-              <img v-if="state.aveRating > 3.4" class="icon-fork-desktop" src="../assets/img/fullFork.png" alt="" srcset="">
-              <img v-else class="icon-fork-desktop" src="../assets/img/emptyFork.png" alt="" srcset="">
+              <img v-if="state.aveRating > 3.4" class="icon-fork-desktop" src="../assets/img/fullFork.png" alt="fork" srcset="">
+              <img v-else class="icon-fork-desktop" src="../assets/img/emptyFork.png" alt="empty fork" srcset="">
 
-              <img v-if="state.aveRating > 4.5" class="icon-fork-desktop" src="../assets/img/fullFork.png" alt="" srcset="">
-              <img v-else class="icon-fork-desktop" src="../assets/img/emptyFork.png" alt="" srcset="">
+              <img v-if="state.aveRating > 4.5" class="icon-fork-desktop" src="../assets/img/fullFork.png" alt="fork" srcset="">
+              <img v-else class="icon-fork-desktop" src="../assets/img/emptyFork.png" alt="empty fork" srcset="">
             </div>
           </div>
         </div>

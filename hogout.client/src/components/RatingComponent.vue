@@ -5,12 +5,12 @@
       <!-- first is the img that is a good rating (ex the 3rd fork in a 4 fork rating) -->
       <div @mouseover="setTemp(fork)">
         <div v-show="fork <= (state.temp ? state.tempRating : state.forks)">
-          <img class="rating pointer" src="../assets/img/fullFork.png" alt="">
+          <img class="rating pointer" src="../assets/img/fullFork.png" alt="fork">
         </div>
         <!-- <i v-show="fork <= (state.temp ? state.tempRating : state.forks)" class="fas fa-star large"></i> -->
         <!-- then the image that is not rated (ex the 4th fork in a 3 fork rating) -->
         <div v-show="fork > (state.temp ? state.tempRating : state.forks)">
-          <img class="rating pointer" src="../assets/img/emptyFork.png" alt="">
+          <img class="rating pointer" src="../assets/img/emptyFork.png" alt="empty fork">
         </div>
         <!-- <i v-show="fork > (state.temp ? state.tempRating : state.forks)" class="far fa-star large"></i> -->
       </div>
