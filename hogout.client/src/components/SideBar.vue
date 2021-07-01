@@ -1,13 +1,13 @@
 <template>
-  <div class="container h-100 sidebarw text-light bg-dark-blue side-fit">
-    <div class="row justify-content-center mt-5">
+  <div class=" col  h-100 side-fit  text-light bg-dark-blue ">
+    <div class="row  justify-content-center mt-5">
       <router-link :to="{ name: 'Profile', params: {id: state.account.id}}">
-        <img class="rounded-circle profile-icon my-3" :src="state.account.picture" alt="">
+        <img class="rounded-circle profile-icon mt-3" :src="state.account.picture" alt="">
       </router-link>
     </div>
     <div class="row justify-content-center">
       <div class="col mx-3">
-        <h5>
+        <h5 class="text-center">
           {{ state.account.name }}
         </h5>
       </div>
@@ -71,9 +71,6 @@ export default {
 .spacer{
   height: 23rem;
 }
-.sidebarw{
-width: 17rem;
-}
 
 .profile-icon {
   height: 160px;
@@ -84,6 +81,9 @@ width: 17rem;
 .side-fit{
   position: fixed;
   top: 44px;
+  z-index: 3;
+  left:0;
+  width: 280px;
 }
 .icon-pig{
   width: 3.5rem;

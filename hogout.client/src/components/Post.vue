@@ -126,7 +126,7 @@ export default {
       },
       currentPicture() {
         const selectedPicture = state.images[state.currentPicIndex]
-        // console.log('selected picture', selectedPicture)
+
         return selectedPicture
       },
       async getUserAttempts() {
@@ -158,6 +158,7 @@ export default {
 </script>
 
 <style scoped>
+
 .icon-pig{
   width: 2rem;
 

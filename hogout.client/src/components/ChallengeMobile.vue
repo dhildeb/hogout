@@ -1,5 +1,5 @@
 <template>
-  <div class="row mx-1">
+  <div class="row mx-1 mt-4">
     <div class=" col card pt-2">
       <img class="card-img-top" :src="state.challenge.banner" alt="Profile Banner">
 

@@ -1,14 +1,10 @@
 <template>
-  <div class="desktop-render">
-    <div class="row">
-      <div class="col-3">
-        <SideBar />
-      </div>
-      <div class="col-8 justify-content-center">
-        <ChallengeDesktop />
-      </div>
+  <div id="desktop" class="container-fluid desktop-render">
+    <div class="row justify-content-center">
+      <ChallengeDesktop />
     </div>
   </div>
+
   <div class="container mobile-render">
     <ChallengeMobile />
   </div>
