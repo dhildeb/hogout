@@ -34,8 +34,8 @@
   <div class="row form justify-content-center">
   </div>
   <div class="row my-3 awards d-flex">
-    <div class="col-sm-10 col-md-10 m-auto card end shadow border">
-      <div class="card-header text-center bg-white py-3">
+    <div class="col-sm-10 col-md-10 m-auto card card-bg end shadow border">
+      <div class="card-header text-center py-3">
         <h3 v-if="state.profile.location === '' || !state.profile.location">
           {{ state.profile.name }}
         </h3>
@@ -69,7 +69,7 @@
           </form>
         </div>
       </div>
-      <div class=" d-flex card-body d-flex justify-content-around">
+      <div class=" d-flex card-body card-bg d-flex justify-content-around">
         <div>
           <div class="bg-dark pig rounded-circle">
             <img class="icon-pig" title="Total Wins" src="../assets/img/pig-crown-sheet-colored.png" alt="pig-crown">
@@ -87,7 +87,7 @@
           </p>
         </div>
       </div>
-      <div class=" p-4 rounded bg-white card-footer text-center">
+      <div class=" p-4 rounded card-bg card-footer text-center">
         <h5 class="pb-3">
           About Me
         </h5>
@@ -249,6 +249,9 @@ li{
   background-image: url('../assets/img/b-lettuce.png');
    background-size: contain;
    background-repeat: no-repeat;
+}
+.card-bg{
+  background-color: #faf5f0;
 }
 .cheese{
   padding-top: .8rem;
