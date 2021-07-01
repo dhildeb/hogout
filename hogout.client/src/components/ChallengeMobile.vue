@@ -1,10 +1,10 @@
 <template>
   <div class="row mx-1 mt-4">
     <div class=" col card pt-2">
-      <img class="card-img-top" :src="state.challenge.banner" alt="Profile Banner">
+      <img class="card-img-top banner" :src="state.challenge.banner" alt="Profile Banner">
 
       <div class="row justify-content-center rel">
-        <img class="rounded-circle ab circle-img" :src="state.challenge.image" alt="Profile Image">
+        <img class="rounded-circle ab circle-img profColor" :src="state.challenge.image" alt="Profile Image">
       </div>
       <div class="row sep"></div>
 
@@ -188,6 +188,9 @@ export default {
 
 <style scoped>
 
+.profColor{
+  background-color: #faf5f0;
+}
 .card{
 background-color: rgb(250, 245, 240);
 }
@@ -235,6 +238,10 @@ margin-left: 5px;
   min-height: 9rem;
   height: 30vw;
   width: 30vw;
+}
+.banner{
+  max-height: 30vw;
+  object-fit: cover;
 }
 
 </style>

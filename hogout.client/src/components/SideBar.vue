@@ -2,7 +2,7 @@
   <div class=" col h-100 side-fit  text-light bg-dark-blue ">
     <div class="row  justify-content-center mt-5">
       <router-link :to="{ name: 'Profile', params: {id: state.account.id}}">
-        <img class="rounded-circle profile-icon mt-3" :src="state.account.picture" alt="">
+        <img class="rounded-circle profile-icon mt-3" title="My Profile" :src="state.account.picture" alt="">
       </router-link>
     </div>
     <div class="row justify-content-center">
@@ -13,14 +13,14 @@
       </div>
     </div>
     <div class="row justify-content-center align-items-center mb-0">
-      <img title="Total Wins" class="icon-pig text-light" src="../assets/img/pig-crown.png" alt="Wins: " srcset="">
+      <img title="Total Wins" class="icon-pig text-light" src="../assets/img/pig-crown-sheet-colored.png" alt="Wins: " srcset="">
       <span class="px-2"><i class="mdi mdi-close"></i></span>
       <h5 class="mb-1">
         {{ state.wins.length }}
       </h5>
     </div>
     <div class="row justify-content-center align-items-center">
-      <img title="Total Attempts" class="icon-pig text-light" src="../assets/img/pig-normal.png" alt="Attempts: " srcset="">
+      <img title="Total Attempts" class="icon-pig text-light" src="../assets/img/pig-normal-colored.png" alt="Attempts: " srcset="">
       <span class="p-2"><i class="mdi mdi-close"></i></span>
       <h5 class="mb-1">
         {{ state.attempts.length }}
@@ -87,7 +87,7 @@ export default {
 .icon-pig{
   width: 3.5rem;
   margin-bottom: 1rem;
-  mix-blend-mode: color-burn;
+
   max-height: 51px;
 }
 </style>

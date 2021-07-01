@@ -30,15 +30,15 @@
             class="dropdown-menu p-0 list-group w-100"
           >
             <router-link :to="{ name: 'Profile', params: {id: state.account.id}}">
-              <div class="list-group-item list-group-item-action hoverable bg-darker text-light p-1 pl-3">
+              <div class="list-group-item list-group-item-action hoverable dropdownBg text-light p-1 pl-3">
                 Profile
               </div>
             </router-link>
             <div
-              class="list-group-item list-group-item-action hoverable bg-darker text-light p-1 pl-3"
+              class="list-group-item list-group-item-action hoverable dropdownBg text-light p-1 pl-3"
               @click="logout"
             >
-              logout
+              Logout
             </div>
           </div>
 
@@ -80,6 +80,9 @@ export default {
 </script>
 
 <style scoped>
+.dropdownBg{
+  background-color: #36544a ;
+}
 .al-cen{
   align-self: center;
 }
