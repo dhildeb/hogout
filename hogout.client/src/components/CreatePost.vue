@@ -118,7 +118,11 @@ export default {
       },
 
       saveRating(fork) {
-        state.newRating.rating = fork
+        try {
+          state.newRating.rating = fork
+        } catch (error) {
+          Notification.toast(error, 'error')
+        }
       },
       setDifficulty(name, rating) {
         state.newDifficulty.selectedDifficulty = name

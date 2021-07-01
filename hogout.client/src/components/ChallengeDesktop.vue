@@ -8,16 +8,16 @@
 
       <div class="col-12 d-flex justify-content-center text-center pt-4">
         <div class="col-4 justify-content-center pl-5 ">
-          <img class="rounded-circle db" :src="state.challenge.image" alt="Profile Image">
-          <div class="row">
-            <div title="Total Attempts" class="col d-flex align-items-center justify-content-start piggies mx-2">
+          <img class="rounded-circle db profColor" :src="state.challenge.image" alt="Profile Image">
+          <div class="row d-block">
+            <div title="Total Attempts" class="col d-flex align-items-center justify-content-start piggies ml-5 ">
               <img class="icon-pig-desktop" src="../assets/img/pig-normal.png" alt="Pig face">
               <i class="mdi mdi-close"></i>
               <p class="m-0">
                 {{ state.attempts.length }}
               </p>
             </div>
-            <div title="Total Wins" class="col d-flex align-items-center mx-2">
+            <div title="Total Wins" class="col d-flex align-items-center ml-5">
               <img class="icon-pig-desktop" src="../assets/img/pig-crown.png" alt="Crown Pig Face">
               <i class="mdi mdi-close"></i>
               <p class="m-0">
@@ -164,6 +164,7 @@ import { AppState } from '../AppState'
 import { computed } from '@vue/runtime-core'
 import { attemptsService } from '../services/AttemptsService'
 import { difficultyRatingAve, reviewRatingAve } from '../utils/RatingAve'
+import Notification from '../utils/Notification'
 
 export default {
   setup() {
@@ -185,10 +186,14 @@ export default {
       difficulty,
       review,
       openMaps() {
-        window.open(
-          `${state.challenge.location}+${state.challenge.state}/`,
-          '_blank'
-        )
+        try {
+          window.open(
+            `${state.challenge.location}+${state.challenge.state}/`,
+            '_blank'
+          )
+        } catch (error) {
+          Notification.toast(error, 'error')
+        }
       },
       createAttempt(result) {
         state.newAttempt.completed = result
@@ -204,6 +209,9 @@ export default {
 </script>
 
 <style scoped>
+.profColor{
+  background-color: #faf5f0;
+}
 
 .perfectWidth{
   margin-left: calc(3vw + 280px);

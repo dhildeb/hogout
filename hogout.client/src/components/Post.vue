@@ -44,13 +44,13 @@
       <div class="row mr-1 justify-content-between">
         <div class="d-flex align-items-center col">
           <div class="rel">
-            <img class="rounded-circle prof-pic m-2 pointer" :src="post.creator.picture" :alt="post.creator.name" @click="loadProfile">
+            <img class="rounded-circle prof-pic m-2 pointer" :title="post.creator.name + '\'s Profile'" :src="post.creator.picture" :alt="post.creator.name" @click="loadProfile">
             <div class="ab medal border border-dark rounded-circle" v-if=" state.userMedals.length">
               <img
                 v-if=" state.userMedals.filter(u => u.completed).length === 0"
                 title="Attempted this challenge"
                 class="icon-pig"
-                src="../assets/img/pig-normal.png"
+                src="../assets/img/pig-normal2.png"
                 alt="Pig face"
               >
               <img
@@ -105,7 +105,11 @@ export default {
     return {
       state,
       loadProfile() {
-        router.push({ path: `/profile/${props.post.creatorId}` })
+        try {
+          router.push({ path: `/profile/${props.post.creatorId}` })
+        } catch (error) {
+          Notification.toast(error, 'error')
+        }
       },
       changePic(direction) {
         if (direction === 'prev') {

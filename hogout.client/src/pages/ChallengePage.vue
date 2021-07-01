@@ -24,8 +24,13 @@ export default {
   setup() {
     const route = useRoute()
     onMounted(async() => {
-      await attemptsService.getAttemptsByChallengeId(route.params.id)
-      await likesService.getAllPostLikes()
+      window.scrollTo({ top: 0 })
+      try {
+        await attemptsService.getAttemptsByChallengeId(route.params.id)
+        await likesService.getAllPostLikes()
+      } catch (error) {
+        Notification.toast(error, 'error')
+      }
     }
     )
     watchEffect(async() => {

@@ -39,6 +39,7 @@
 import { reactive } from '@vue/reactivity'
 import { difficultyRatingAve, reviewRatingAve } from '../utils/RatingAve'
 import { useRouter } from 'vue-router'
+import Notification from '../utils/Notification'
 export default {
   props: {
     challenge: { type: Object, required: true }
@@ -51,13 +52,25 @@ export default {
     return {
       state,
       getReviewRating(data) {
-        return reviewRatingAve(data.id)
+        try {
+          return reviewRatingAve(data.id)
+        } catch (error) {
+          Notification.toast(error, 'error')
+        }
       },
       getDifficultyRating(data) {
-        return difficultyRatingAve(data.id)
+        try {
+          return difficultyRatingAve(data.id)
+        } catch (error) {
+          Notification.toast(error, 'error')
+        }
       },
       goThere() {
-        router.push({ name: 'Challenge', params: { id: state.challengeId } })
+        try {
+          router.push({ name: 'Challenge', params: { id: state.challengeId } })
+        } catch (error) {
+          Notification.toast(error, 'error')
+        }
       }
     }
   }
