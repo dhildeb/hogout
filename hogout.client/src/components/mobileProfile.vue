@@ -71,7 +71,7 @@
       </div>
       <div class=" d-flex card-body card-bg d-flex justify-content-around">
         <div>
-          <div class="bg-dark pig rounded-circle">
+          <div class="pig-frame pig rounded-circle text-center">
             <img class="icon-pig" title="Total Wins" src="../assets/img/pig-crown-sheet-colored.png" alt="pig-crown">
           </div>
           <p class="center">
@@ -79,7 +79,7 @@
           </p>
         </div>
         <div>
-          <div class="pig-no-crown bg-dark rounded-circle justify-content-center align-self-center">
+          <div class="pig-no-crown pig-frame rounded-circle text-center">
             <img class="icon-pig center-pig text-right" title="Total Attempts" src="../assets/img/pig-normal-colored.png" alt="normal-pig">
           </div>
           <p class="center">
@@ -148,7 +148,6 @@ import { computed, onMounted } from '@vue/runtime-core'
 import { AppState } from '../AppState'
 import { accountService } from '../services/AccountService'
 import { useRoute } from 'vue-router'
-import { logger } from '../utils/Logger'
 import { ratingsService } from '../services/RatingsService'
 import M from 'materialize-css'
 import Notification from '../utils/Notification'
@@ -222,6 +221,10 @@ li{
   margin-bottom: 0;
   align-self: flex-start;
 
+}
+.pig-frame{
+  background: #303e48;
+  border: 2px solid #c794c9;
 }
 .fullburger{
    width: 80px;
@@ -323,12 +326,12 @@ li{
   border-bottom: 3px solid var(--dark-blue);
 }
 .pig{
-  height: 3.5rem;
-  width: 3.5rem;
+  height: 3.95rem;
+  width: 3.85rem;
 }
 .pig-no-crown{
-  height: 3.5rem;
-  width: 3.5rem;
+  height: 3.75rem;
+  width: 3.95rem;
 }
 .btn-floating{
 background-color: transparent;
