@@ -63,6 +63,7 @@
             <a class="dropdown-item" @click="filterState('Idaho')">Idaho</a>
             <a class="dropdown-item" @click="filterState('Oregon')">Oregon</a>
             <a class="dropdown-item" @click="filterState('Washington')">Washington</a>
+            <a class="dropdown-item" @click="filterState('Nevada')">Nevada</a>
           </div>
         </div>
         <button class="btn btn-danger" @click="filterReset" v-show="state.filterBy.difficulty || state.filterBy.forks || state.filterBy.state">
