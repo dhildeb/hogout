@@ -18,7 +18,7 @@
   </div>
 </template>
 <script>
-import { reactive } from '@vue/reactivity'
+import { reactive, watchEffect } from 'vue'
 export default {
   props: {
     currentRating: {
@@ -32,7 +32,7 @@ export default {
       temp: false,
       tempRating: props.currentRating
     })
-
+    watchEffect(() => { state.forks = props.currentRating })
     return {
       state,
       rate(fork) {
