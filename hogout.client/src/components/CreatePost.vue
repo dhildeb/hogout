@@ -116,9 +116,7 @@ export default {
             selectedDifficulty: 'Difficulty',
             rating: 3
           }
-          state.newRating = {
-            rating: 1
-          }
+          state.newRating.rating = 1
         } catch (error) {
           Notification.toast(error, 'error')
         }

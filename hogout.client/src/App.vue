@@ -46,5 +46,8 @@ width: 16px;
   background-image: url('./assets/img/scroll-bottom-bun.png');
   background-size: cover;
 }
+body{
+  overflow-x: hidden;
+}
 
 </style>
