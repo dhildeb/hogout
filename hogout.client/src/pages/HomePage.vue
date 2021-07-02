@@ -57,7 +57,7 @@
                aria-expanded="false"
                title="Filter By Difficulty"
           >
-            {{ state.state }}
+            {{ state.newState }}
           </div>
           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
             <a class="dropdown-item" @click="filterState('Idaho')">Idaho</a>
@@ -94,7 +94,7 @@ export default {
       account: computed(() => AppState.account),
       challenges: computed(() => AppState.challenges),
       temp: computed(() => AppState.tempChallenges),
-      state: 'State',
+      newState: 'State',
       difficulty: 'Difficulty',
       rating: 'Rating',
       filterBy: {}
