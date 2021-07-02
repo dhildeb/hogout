@@ -12,7 +12,7 @@
     <div class="row m-0 collapse" id="collapseExample">
       <div class="card-body d-flex justify-content-center">
         <div class="dropdown mr-5">
-          <button class="btn btn-color dropdown-toggle"
+          <button class="btn btn-rating dropdown-toggle"
                   type="button"
                   id="dropdownMenuButton"
                   data-toggle="dropdown"
@@ -32,7 +32,7 @@
         </div>
 
         <div class="dropdown mr-5">
-          <div class="btn btn-color dropdown-toggle"
+          <div class="btn btn-diff dropdown-toggle"
                id="dropdownMenuButton"
                data-toggle="dropdown"
                aria-haspopup="true"
@@ -50,7 +50,7 @@
           </div>
         </div>
         <div class="dropdown mr-5">
-          <div class="btn btn-color dropdown-toggle"
+          <div class="btn btn-location dropdown-toggle"
                id="dropdownMenuButton"
                data-toggle="dropdown"
                aria-haspopup="true"
@@ -154,7 +154,30 @@ export default {
 .btn-color{
     border-color: #547066;
     border-width: medium;
-    color: #547066;
+    color: #6c8d81;
+    background-color: #f2f2f2 !important;
     font-weight: bold;
 }
+.btn-diff{
+    border-color: #547066;
+    border-width: medium;
+    color: rgb(168, 55, 55);
+    background-color: #f2f2f2 !important;
+    font-weight: bold;
+}
+.btn-rating{
+    border-color: #547066;
+    border-width: medium;
+    color: #dfa3e1;
+    background-color: #f2f2f2 !important;
+    font-weight: bold;
+}
+.btn-location{
+    border-color: #547066;
+    border-width: medium;
+    color: #3ba5dc;
+    background-color: #f2f2f2 !important;
+    font-weight: bold;
+}
+
 </style>
