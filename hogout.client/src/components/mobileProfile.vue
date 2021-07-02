@@ -34,7 +34,7 @@
   <div class="row form justify-content-center">
   </div>
   <div class="row my-3 awards d-flex">
-    <div class="col-sm-10 col-md-10 m-auto card card-bg end shadow border">
+    <div class="col-sm-10 col-md-10 m-auto card card-bg shadow border">
       <div class="card-header text-center py-3">
         <h3 v-if="state.profile.location === '' || !state.profile.location">
           {{ state.profile.name }}
@@ -210,128 +210,16 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
-.otext{
-  font-size: 1.5rem;
-
-text-shadow: rgb(0, 0, 0) 2px 0px 0px, rgb(0, 0, 0) 1.75517px 0.958851px 0px, rgb(0, 0, 0) 1.0806px 1.68294px 0px, rgb(0, 0, 0) 0.141474px 1.99499px 0px, rgb(0, 0, 0) -0.832294px 1.81859px 0px, rgb(0, 0, 0) -1.60229px 1.19694px 0px, rgb(0, 0, 0) -1.97998px 0.28224px 0px, rgb(0, 0, 0) -1.87291px -0.701566px 0px, rgb(0, 0, 0) -1.30729px -1.5136px 0px, rgb(0, 0, 0) -0.421592px -1.95506px 0px, rgb(0, 0, 0) 0.567324px -1.91785px 0px, rgb(0, 0, 0) 1.41734px -1.41108px 0px, rgb(0, 0, 0) 1.92034px -0.558831px 0px;}
-
-li{
-  margin: 0;
-  margin-bottom: 0;
-  align-self: flex-start;
-
-}
-.pig-frame{
-  background: #303e48;
-  border: 2px solid #c794c9;
-}
-.fullburger{
-   width: 80px;
-  height:80px;
-    background-image: url('../assets/img/b-full.png');
-   background-size: contain;
-   background-repeat: no-repeat;
-}
-
-.buntop{
-  width: 6rem;
-  height:5rem;
-  background-image: url('../assets/img/b-buntop.png');
-   background-size: contain;
-   background-repeat: no-repeat;
-}
-.bunbottom{
-  padding-top: .8rem;
-  background-image: url('../assets/img/b-bunbottom.png');
-   background-size: contain;
-   background-repeat: no-repeat;
-}
-.lettuce{
-  padding-top: .8rem;
-  background-image: url('../assets/img/b-lettuce.png');
-   background-size: contain;
-   background-repeat: no-repeat;
-}
-.card-bg{
-  background-color: #faf5f0;
-}
-.cheese{
-  padding-top: .8rem;
-  background-image: url('../assets/img/b-cheese.png');
-   background-size: contain;
-   background-repeat: no-repeat;
-}
-.meat{
-  padding-top: .8rem;
-  background-image: url('../assets/img/b-meat.png');
-   background-size: contain;
-   background-repeat: no-repeat;
-}
-.burger{
-  transition: all .2s ease-in-out;
-}
-.burger:hover {
-  transform: scale(1.1); }
-
-.height{
-  height: 22vh;
-}
-.banner-size{
-  background-repeat: no-repeat;
-}
-.center-pig{
-  margin-top: -.50rem;
-}
-.position{
-  position: absolute;
-  top: 16rem
-}
-.frame{
-    border: 4px #f2f2f2 solid;
-}
-.line{
-  border-bottom: 4px solid black;
-}
 .awards{
   padding-top: 10rem;
-}
-.end{
-  margin-left: 2rem;
-  margin-right: 2rem;
-    border-bottom: px solid rgb(109, 106, 106);
-}
-.gold{
-  color: #ffd54f;
-}
-.blue-ribbon{
-  color: #4c4cde;
-}
-.icon-pig{
-  width: 3.5rem;
-  margin-bottom: 1rem;
 }
 .bg-img{
   background-repeat: no-repeat;
   background-size: cover;
-    height: 36vh;
-
-}
-.profile-icon{
-  height: 18rem;
-  width: 18rem;
-  object-fit: cover;
+  height: 36vh;
 }
 .border-lg-bottom{
   border-bottom: 3px solid var(--dark-blue);
-}
-.pig{
-  height: 3.95rem;
-  width: 3.85rem;
-}
-.pig-no-crown{
-  height: 3.75rem;
-  width: 3.95rem;
 }
 .btn-floating{
 background-color: transparent;
@@ -343,7 +231,37 @@ height: 80px;
 left: 0px;
 transition: all .3s;
 }
-
+.bunbottom{
+  padding-top: .8rem;
+  background-image: url('../assets/img/b-bunbottom.png');
+   background-size: contain;
+   background-repeat: no-repeat;
+}
+.buntop{
+  width: 6rem;
+  height:5rem;
+  background-image: url('../assets/img/b-buntop.png');
+   background-size: contain;
+   background-repeat: no-repeat;
+}
+.burger{
+  transition: all .2s ease-in-out;
+}
+.burger:hover {
+  transform: scale(1.1);
+}
+.card-bg{
+  background-color: #faf5f0;
+}
+.center-pig{
+  margin-top: -.50rem;
+}
+.cheese{
+  padding-top: .8rem;
+  background-image: url('../assets/img/b-cheese.png');
+   background-size: contain;
+   background-repeat: no-repeat;
+}
 //Materialize buttons
 .fixed-action-btn{
 background-color: transparent;
@@ -360,5 +278,60 @@ bottom: 56rem;
 
   }
 }
+.frame{
+    border: 4px #f2f2f2 solid;
+}
+.fullburger{
+   width: 80px;
+  height:80px;
+    background-image: url('../assets/img/b-full.png');
+   background-size: contain;
+   background-repeat: no-repeat;
+}
+.icon-pig{
+  width: 3.5rem;
+  margin-bottom: 1rem;
+}
+.lettuce{
+  padding-top: .8rem;
+  background-image: url('../assets/img/b-lettuce.png');
+   background-size: contain;
+   background-repeat: no-repeat;
+}
+li{
+  margin: 0;
+  margin-bottom: 0;
+  align-self: flex-start;
+}
+.meat{
+  padding-top: .8rem;
+  background-image: url('../assets/img/b-meat.png');
+   background-size: contain;
+   background-repeat: no-repeat;
+}
+.otext{
+  font-size: 1.5rem;
 
+text-shadow: rgb(0, 0, 0) 2px 0px 0px, rgb(0, 0, 0) 1.75517px 0.958851px 0px, rgb(0, 0, 0) 1.0806px 1.68294px 0px, rgb(0, 0, 0) 0.141474px 1.99499px 0px, rgb(0, 0, 0) -0.832294px 1.81859px 0px, rgb(0, 0, 0) -1.60229px 1.19694px 0px, rgb(0, 0, 0) -1.97998px 0.28224px 0px, rgb(0, 0, 0) -1.87291px -0.701566px 0px, rgb(0, 0, 0) -1.30729px -1.5136px 0px, rgb(0, 0, 0) -0.421592px -1.95506px 0px, rgb(0, 0, 0) 0.567324px -1.91785px 0px, rgb(0, 0, 0) 1.41734px -1.41108px 0px, rgb(0, 0, 0) 1.92034px -0.558831px 0px;}
+.pig{
+  height: 3.95rem;
+  width: 3.85rem;
+}
+.pig-frame{
+  background: #303e48;
+  border: 2px solid #c794c9;
+}
+.pig-no-crown{
+  height: 3.75rem;
+  width: 3.95rem;
+}
+.position{
+  position: absolute;
+  top: 16rem
+}
+.profile-icon{
+  height: 18rem;
+  width: 18rem;
+  object-fit: cover;
+}
 </style>
