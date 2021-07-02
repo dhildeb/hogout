@@ -167,10 +167,12 @@ export default {
   right: 8px;
   top: -22px;
 }
-.zoom:hover{
-  transform: scale(1.1);
+.zoom{
   transition: all .25s linear;
 }
+.zoom:hover{
+  transform: scale(1.1);
+  }
 
 @media screen and (min-width: 576px){
 
