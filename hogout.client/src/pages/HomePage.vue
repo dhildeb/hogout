@@ -94,7 +94,7 @@ export default {
       account: computed(() => AppState.account),
       challenges: computed(() => AppState.challenges),
       temp: computed(() => AppState.tempChallenges),
-      newState: 'State',
+      newState: 'Idaho',
       difficulty: 'Difficulty',
       rating: 'Rating',
       filterBy: {}
