@@ -250,9 +250,6 @@ transition: all .3s;
 .burger:hover {
   transform: scale(1.1);
 }
-.card-bg{
-  background-color: #faf5f0;
-}
 .center-pig{
   margin-top: -.50rem;
 }
