@@ -199,6 +199,7 @@ export default {
         state.newAttempt.completed = result
         try {
           attemptsService.createAttempt(state.challenge.id, state.newAttempt)
+          Notification.toast(state.newAttempt.completed ? 'Way to Hog Out!' : 'Better luck next time', 'success')
         } catch (error) {
           Notification.toast(error, 'error')
         }
