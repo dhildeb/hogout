@@ -79,8 +79,8 @@
             </h1>
           </div>
           <div class="col-12 justify-content-center mx-2">
-            <p class="difficulty-title text-dark-pink">
-              <b>Difficulty: </b>
+            <p class="difficulty-title text-danger">
+              <b class="text-danger">Difficulty: </b>
               {{ state.aveDifficulty }}
             </p>
           </div>
@@ -228,7 +228,6 @@ export default {
   margin-left: calc(3vw + 280px);
   margin-right: 3vw ;
 }
-
 .db{
   position: absolute;
   height: 20vw;
