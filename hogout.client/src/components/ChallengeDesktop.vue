@@ -1,7 +1,7 @@
 <template>
   <SideBar />
   <div class="col-12">
-    <div class="row perfectWidth card main-display-challenge pt-2 mt-5">
+    <div class="row perfectWidth bg-yellow main-display-challenge pt-2 mt-5">
       <div class="col-12">
         <img class="card-img-top challenge-banner" :src="state.challenge.banner" alt="Profile Banner">
       </div>
@@ -251,9 +251,7 @@ position: relative;
     color: #f9fdfc;
     font-weight: bold;
 }
-.card{
-background-color: rgb(250, 245, 240);
-}
+
 .rating-title{
   font-size: 1.7rem;
 }

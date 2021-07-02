@@ -112,6 +112,13 @@ export default {
           state.newPost.body = ''
           state.newPost.images = []
           state.newRating.rating = 1
+          state.newDifficulty = {
+            selectedDifficulty: 'Difficulty',
+            rating: 3
+          }
+          state.newRating = {
+            rating: 1
+          }
         } catch (error) {
           Notification.toast(error, 'error')
         }
