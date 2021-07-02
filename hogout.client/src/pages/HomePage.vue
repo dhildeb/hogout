@@ -155,7 +155,7 @@ export default {
 .btn-color{
     border-color: #547066;
     border-width: medium;
-    color: #6c8d81;
+    color: #547066;
     background-color: #f2f2f2 !important;
     font-weight: bold;
 }

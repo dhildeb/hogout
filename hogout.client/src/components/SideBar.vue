@@ -1,5 +1,5 @@
 <template>
-  <div class=" col h-100 side-fit  text-light bg-dark-blue ">
+  <div class=" col h-100 side-fit text-light bg-dark-blue ">
     <div class="row  justify-content-center mt-5">
       <router-link :to="{ name: 'Profile', params: {id: state.account.id}}">
         <img class="rounded-circle profile-icon mt-3" title="My Profile" :src="state.account.picture" alt="profile picture">
@@ -26,8 +26,8 @@
         {{ state.attempts.length }}
       </h5>
     </div>
-    <div class="row  ">
-      <button class=" btn btn-danger  fixed-bottom m-f logout" @click="logout">
+    <div class="row ">
+      <button class=" btn btn-red text-white fixed-bottom m-f logout" @click="logout">
         logout
       </button>
     </div>
@@ -89,5 +89,9 @@ export default {
   margin-bottom: 1rem;
 
   max-height: 51px;
+}
+.btn-red{
+  background-color: #d20e0e;
+  border: solid 2px #752222;
 }
 </style>
