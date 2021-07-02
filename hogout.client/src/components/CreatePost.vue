@@ -82,6 +82,7 @@ import { useRoute } from 'vue-router'
 import $ from 'jquery'
 import Notification from '../utils/Notification'
 import { ratingsService } from '../services/RatingsService'
+import { onMounted } from '@vue/runtime-core'
 export default {
   setup() {
     const route = useRoute()
@@ -99,6 +100,18 @@ export default {
         images: []
       }
 
+    })
+    onMounted(() => {
+      $('#review').on('hidden.bs.modal', () => {
+        state.newPost.body = ''
+        state.newPost.images = []
+        state.newRating.rating = 1
+        state.newDifficulty = {
+          selectedDifficulty: 'Difficulty',
+          rating: 3
+        }
+        state.newRating.rating = 1
+      })
     })
 
     return {
