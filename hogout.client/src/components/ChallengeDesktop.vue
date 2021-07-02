@@ -1,7 +1,7 @@
 <template>
   <SideBar />
   <div class="col-12">
-    <div class="row perfectWidth card main-display-challenge pt-2 mt-5">
+    <div class="row perfectWidth bg-yellow main-display-challenge pt-2 mt-5">
       <div class="col-12">
         <img class="card-img-top challenge-banner" :src="state.challenge.banner" alt="Profile Banner">
       </div>
@@ -76,7 +76,7 @@
           <div class="col-12 justify-content-center mx-2">
             <p class="difficulty-title text-dark-pink">
               <b>Difficulty: </b>
-              {{ difficulty }}
+              {{ state.aveDifficulty }}
             </p>
           </div>
           <div class="col-12 mx-2">
@@ -165,26 +165,24 @@ import { computed } from '@vue/runtime-core'
 import { attemptsService } from '../services/AttemptsService'
 import { difficultyRatingAve, reviewRatingAve } from '../utils/RatingAve'
 import Notification from '../utils/Notification'
+import { useRoute } from 'vue-router'
 
 export default {
   setup() {
+    const route = useRoute()
     const state = reactive({
+      aveDifficulty: computed(() => difficultyRatingAve(route.params.id)),
+      aveRating: computed(() => reviewRatingAve(route.params.id)),
       challenge: computed(() => AppState.activeChallenge),
       attempts: computed(() => AppState.attempts),
       wins: computed(() => AppState.attempts.filter(a => a.completed)),
-      aveRating: computed(() => reviewRatingAve(AppState.activeChallenge.id)),
-      aveDifficulty: computed(() => AppState.difficultyRatings),
       posts: computed(() => AppState.posts),
       user: computed(() => AppState.user),
       newAttempt: {}
     })
-    const difficulty = difficultyRatingAve(state.challenge.id)
-    const review = reviewRatingAve(state.challenge.id)
 
     return {
       state,
-      difficulty,
-      review,
       openMaps() {
         try {
           window.open(
@@ -253,9 +251,7 @@ position: relative;
     color: #f9fdfc;
     font-weight: bold;
 }
-.card{
-background-color: rgb(250, 245, 240);
-}
+
 .rating-title{
   font-size: 1.7rem;
 }

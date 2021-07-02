@@ -1,5 +1,5 @@
 <template>
-  <div class="row card pt-3">
+  <div class="row bg-yellow pt-3">
     <div class="col-12">
       <div v-if="state.images.length > 1" class="row justify-content-between ab rightarr">
         <div class="col d-flex justify-content-end">
