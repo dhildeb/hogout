@@ -1,7 +1,12 @@
 <template>
-  <SideBar />
+  <SideBar v-if="state.user.isAuthenticated" />
   <div class="col-12">
-    <div class="row perfectWidth bg-yellow main-display-challenge pt-2 mt-5">
+    <div :class="{
+           'perfectWidth': state.user.isAuthenticated,
+           'perfectMargin': !state.user.isAuthenticated
+         }"
+         class="row card bg-yellow main-display-challenge pt-2 mt-5"
+    >
       <div class="col-12">
         <img class="card-img-top challenge-banner" :src="state.challenge.banner" alt="Profile Banner">
       </div>
@@ -123,7 +128,14 @@
       </div>
     </div>
     <div class="col-12 justify-content-center " v-if="state.posts.length > 0">
-      <Post class="perfectWidth" v-for="p in state.posts" :key="p.id" :post="p" />
+      <Post :class="{
+              'perfectWidth': state.user.isAuthenticated,
+              'perfectMargin': !state.user.isAuthenticated
+            }"
+            v-for="p in state.posts"
+            :key="p.id"
+            :post="p"
+      />
     </div>
 
     <!-- Modal -->
@@ -288,5 +300,9 @@ position: relative;
 }
 .modal-pos{
   left: 135px;
+}
+.perfectMargin{
+  margin-left: 17vw;
+  margin-right: 17vw;
 }
 </style>
