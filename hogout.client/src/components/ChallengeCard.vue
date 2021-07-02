@@ -1,7 +1,7 @@
 <template>
   <div class="row justify-content-center pb-4">
     <div @click="goThere" class=" zoom  click card bg-yellow challenge ">
-      <img class=" d-none d-md-block card-img-top banner" :src="challenge.banner" alt="Challenge Banner">
+      <img class=" d-none d-md-block card-img-top banner " :src="challenge.banner" alt="Challenge Banner">
       <div class="rel challengeTop">
         <img class="ab pic-loc icon" :src="challenge.image" alt="Challenge Icon">
         <div class="ab p-2 loc-loc d-flex align-items-center">
@@ -133,9 +133,13 @@ height: 135px;
   height: 180px;
   object-fit: cover;
 }
+
+.zoom{
+  transition: all .25s linear;
+}
 .zoom:hover{
   transform: scale(1.1);
-  transition: all .25s linear;
+
 }
 .click{
   cursor: pointer;
@@ -154,7 +158,7 @@ height: 135px;
   top: -80px;
 }
   .icon{
-  right: 202px;
+right: 11px;
   top: -116px;
   border-style: dashed;
   border-width: 1.5px;
