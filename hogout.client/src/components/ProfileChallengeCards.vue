@@ -1,7 +1,7 @@
 <template>
   <div class="row pb-2 justify-content-center">
-    <div class="col-xl-6 col-md-8 col-sm-6 col-10 click border rounded-bottom shadow d-flex bg-yellow p-0 py-2 zoom card bg">
-      <div class=" bg card-header">
+    <div class="col-xl-6 col-md-8 col-sm-6 col-10 click border rounded-bottom shadow d-flex bg-yellow p-0 py-2 zoom card ">
+      <div class=" bg-yellow card-header">
         <div class="dropdown click options position-absolute"
              id="dropdownMenuButton"
              data-toggle="dropdown"
@@ -30,7 +30,7 @@
         </div>
       </div>
 
-      <div class="card-body bg justify-content-md-around" @click="goThere">
+      <div class="card-body justify-content-md-around bg-yellow" @click="goThere">
         <div class="row">
           <div class="col-3">
             <img class="img-fluid icon over-hang" :src="challenge.challenge.image" alt="icon">
@@ -58,7 +58,7 @@
           </div>
         </div>
       </div>
-      <div class="card-footer bg">
+      <div class="card-footer bg-yellow">
         <div class="justify-content-around d-flex">
           <div>
             <img class="icon-pig" title="Challenge Wins" src="../assets/img/pig-crown.png" alt="pig-crown">
