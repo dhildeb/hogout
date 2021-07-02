@@ -10,7 +10,7 @@
 
       <span class="navbar-text pr-3 al-cen">
         <button
-          class="btn btn-primary text-uppercase"
+          class="btn btn-color text-uppercase"
           @click="login"
           v-if="!user.isAuthenticated"
         >
@@ -139,5 +139,11 @@ a:hover{
 .hogout{
   image-rendering: initial;
   max-width: 13rem;
+}
+.btn-color{
+    border-color: #ebc3ec;
+    border-width: medium;
+    color: #ebc3ec;
+    font-weight: bold;
 }
 </style>

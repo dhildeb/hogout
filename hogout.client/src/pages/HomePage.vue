@@ -4,7 +4,7 @@
   </div>
   <div class="container bg-grey">
     <div class="row p-5 justify-content-center">
-      <button class="btn btn-outline-info" data-toggle="collapse" data-target="#collapseExample" title="Filter">
+      <button class="btn btn-color" data-toggle="collapse" data-target="#collapseExample" title="Filter">
         Filter
       </button>
       <div class="col-8"></div>
@@ -12,7 +12,7 @@
     <div class="row m-0 collapse" id="collapseExample">
       <div class="card-body d-flex justify-content-center">
         <div class="dropdown mr-5">
-          <button class="btn btn-outline-secondary dropdown-toggle"
+          <button class="btn btn-color dropdown-toggle"
                   type="button"
                   id="dropdownMenuButton"
                   data-toggle="dropdown"
@@ -32,7 +32,7 @@
         </div>
 
         <div class="dropdown mr-5">
-          <div class="btn btn-outline-primary dropdown-toggle"
+          <div class="btn btn-color dropdown-toggle"
                id="dropdownMenuButton"
                data-toggle="dropdown"
                aria-haspopup="true"
@@ -50,7 +50,7 @@
           </div>
         </div>
         <div class="dropdown mr-5">
-          <div class="btn btn-outline-warning dropdown-toggle"
+          <div class="btn btn-color dropdown-toggle"
                id="dropdownMenuButton"
                data-toggle="dropdown"
                aria-haspopup="true"
@@ -150,5 +150,11 @@ export default {
 }
 ::-webkit-scrollbar-thumb {
   background-image: url('https://res.cloudinary.com/ddbxzcb7k/image/upload/v1564751401/fill-01_vgkaj7.svg');
+}
+.btn-color{
+    border-color: #547066;
+    border-width: medium;
+    color: #547066;
+    font-weight: bold;
 }
 </style>

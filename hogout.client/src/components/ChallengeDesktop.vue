@@ -241,9 +241,9 @@ position: relative;
 }
 .btn-pink{
       background-color: #ebc3ec;
-    border-color: #547066;
+    border-color: #1f312b;
     border-width: medium;
-    color: #547066;
+    color: #1f312b;
     font-weight: bold;
 }
 .btn-color{

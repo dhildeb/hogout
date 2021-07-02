@@ -35,7 +35,7 @@
   </div>
   <div class="row my-3 awards d-flex">
     <div class="col-sm-10 col-md-10 m-auto card card-bg shadow border">
-      <div class="card-header text-center py-3">
+      <div class="card-header text-center py-3 card-bg">
         <h3 v-if="state.profile.location === '' || !state.profile.location">
           {{ state.profile.name }}
         </h3>
