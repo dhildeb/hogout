@@ -43,7 +43,7 @@ width: 16px;
 }
 ::-webkit-scrollbar-button:vertical:increment{
   background-color: #36544a;
-  background-image: url('./assets/img/b-bunbottom.png');
+  background-image: url('./assets/img/scroll-bottom-bun.png');
   background-size: cover;
 }
 

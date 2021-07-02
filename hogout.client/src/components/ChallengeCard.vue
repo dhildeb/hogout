@@ -1,8 +1,8 @@
 <template>
-  <div class="row justify-content-center">
+  <div class="row justify-content-center pb-4">
     <div @click="goThere" class=" zoom  click card bg-yellow challenge ">
       <img class=" d-none d-md-block card-img-top banner" :src="challenge.banner" alt="Challenge Banner">
-      <div class="rel">
+      <div class="rel challengeTop">
         <img class="ab pic-loc icon" :src="challenge.image" alt="Challenge Icon">
         <div class="ab p-2 loc-loc d-flex align-items-center">
           <i class="mdi wshd mdi-map-marker text-primary mdi-24px d-flex justify-content-center"></i>
@@ -102,6 +102,7 @@ export default {
    rgb(187, 224, 228) 0.567324px -1.91785px 0px, rgb(187, 224, 228) 1.41734px -1.41108px 0px,rgb(187, 224, 228) 1.92034px -0.558831px 0px;
 
 }
+
 .challenge{
   width: 35vw;
 }
@@ -119,8 +120,8 @@ export default {
 }
 
 .icon{
-  max-height: 135px;
 
+height: 135px;
   border-radius: 10%;
   width: fit-content;
   max-width: 130px;
@@ -145,17 +146,39 @@ export default {
 }
 @media screen and (max-width: 767px) {
   .challenge{
-    width: 100vw;
-  }}
-
-@media screen and (max-width: 1049px) {
-  .challenge{
-    width: 60vw;
+    width: 80vw;
   }
+
+.loc-loc{
+  right: 0px;
+  top: -80px;
+}
+  .icon{
+  right: 202px;
+  top: -116px;
+  border-style: dashed;
+  border-width: 1.5px;
+  border-color: rgba(0, 0, 0, 0.212);
+}
+.challengeTop{
+  margin-top: 85px;
+}
+}
+
+@media screen and (min-width: 768px) {
+  .challenge{
+    width: 50vw;
+  }
+  .challengeTop{
+  margin-top: 0px;
+}
 }
 @media screen and (min-width: 1050px) {
   .challenge{
     width: 40vw;
   }
+    .challengeTop{
+  margin-top: 0px;
+}
 }
 </style>
