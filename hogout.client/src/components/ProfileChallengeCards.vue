@@ -20,13 +20,11 @@
           </div>
         </div>
         <div class="row">
-          <div class="col-sm-5"></div>
-          <div class="col-sm-4">
+          <div class="col d-flex justify-content-center">
             <h5 class="pl-3" @click="goThere">
               {{ challenge.challenge.name }}
             </h5>
           </div>
-          <div class="col-sm-3"></div>
         </div>
       </div>
 
