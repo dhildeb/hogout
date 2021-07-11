@@ -98,7 +98,7 @@
           <u><h2>Reviews</h2></u>
         </div>
         <div class="col-12 d-flex justify-content-center">
-          <button class="btn btn-color btn-sm" type="button" data-toggle="modal" data-target="#review">
+          <button v-if="state.user.isAuthenticated" class="btn btn-color btn-sm" type="button" data-toggle="modal" data-target="#review">
             Post A Review
           </button>
         </div>

@@ -113,20 +113,22 @@
       </div>
     </div>
 
-    <div class="col-12">
-      <div class="row perfectWidth">
-        <div class="col-12 d-flex justify-content-center">
-          <u><h2>Reviews</h2></u>
-        </div>
-      </div>
-      <div class="row perfectWidth" v-if="state.user.isAuthenticated">
-        <div class="col-12 d-flex justify-content-center">
-          <button class="btn btn-color" type="button" data-toggle="modal" data-target="#review">
-            Post A Review
-          </button>
-        </div>
+    <div :class="{
+           'perfectWidth': state.user.isAuthenticated,
+           '': !state.user.isAuthenticated
+         }"
+         class="row justify-content-center"
+    >
+      <u><h2>Reviews</h2></u>
+    </div>
+    <div class="row perfectWidth" v-if="state.user.isAuthenticated">
+      <div class="col-12 d-flex justify-content-center">
+        <button class="btn btn-color" type="button" data-toggle="modal" data-target="#review">
+          Post A Review
+        </button>
       </div>
     </div>
+
     <div class="col-12 justify-content-center " v-if="state.posts.length > 0">
       <Post :class="{
               'perfectWidth': state.user.isAuthenticated,
