@@ -10,7 +10,7 @@
              title="options"
              v-if="state.profileId === state.account.id"
         >
-          <h1 class="dots">
+          <h1>
             ...
           </h1>
           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -21,7 +21,7 @@
         </div>
         <div class="row">
           <div class="col d-flex justify-content-center">
-            <h5 class="pl-3" @click="goThere">
+            <h5 class="pl-3 text-center" @click="goThere">
               {{ challenge.challenge.name }}
             </h5>
           </div>
@@ -30,15 +30,23 @@
 
       <div class="card-body justify-content-md-around bg-yellow" @click="goThere">
         <div class="row">
-          <div class="col-3">
+          <div class="col d-flex justify-content-center">
+            <h5 class="text-light-red text-center font-italic">
+              State: {{ challenge.challenge.state }}
+            </h5>
+          </div>
+
+          <div class="col d-flex justify-content-center">
+            <h5 class="text-red text-center font-italic">
+              Difficulty: {{ getDifficultyRating(challenge.challenge) }}
+            </h5>
+          </div>
+        </div>
+        <div class="row align-items-center">
+          <div class="col-12 col-md d-flex justify-content-center mb-3 mb-md-0">
             <img class="img-fluid icon over-hang" :src="challenge.challenge.image" alt="icon">
           </div>
-          <div class="justify-content-between d-flex col-3">
-            <h6 class="text-light-red font-italic">
-              State: {{ challenge.challenge.state }}
-            </h6>
-          </div>
-          <div class="text-center d-flex forks col-3" title="Rating">
+          <div class="justify-content-center d-flex forks col" title="Rating">
             <img src="../assets/img/fullFork.png" class="img-fluid icon-fork" alt="fork">
             <img v-if="getReviewRating(challenge.challenge) > 1.5" src="../assets/img/fullFork.png" class="img-fluid icon-fork" alt="fork">
             <img v-else src="../assets/img/emptyFork.png" class="img-fluid icon-fork" alt="empty fork">
@@ -48,11 +56,6 @@
             <img v-else src="../assets/img/emptyFork.png" class="img-fluid icon-fork" alt="empty fork">
             <img v-if="getReviewRating(challenge.challenge) > 4.5" src="../assets/img/fullFork.png" class="img-fluid icon-fork" alt="fork">
             <img v-else src="../assets/img/emptyFork.png" class="img-fluid icon-fork" alt="empty fork">
-          </div>
-          <div class="col-3 text-center p-0">
-            <h6 class="text-red font-italic">
-              Difficulty: {{ getDifficultyRating(challenge.challenge) }}
-            </h6>
           </div>
         </div>
       </div>
@@ -127,8 +130,7 @@ export default {
   cursor: pointer;
 }
 .icon-fork{
-  width: .5rem;
-  height: 2.25rem;
+  width: 1.3rem;
   margin-right: 5px;
   margin-left: 5px;
 }
@@ -152,7 +154,7 @@ export default {
   margin-bottom: 1rem;
 }
 .forks{
-  padding-top: 4rem;
+max-height: 77px;
 }
 .text-light-red{
   color: #e00000 ;
@@ -186,5 +188,16 @@ export default {
 .flex-column-md{
 flex-direction: column;
 }
+}
+*{
+  user-select: none;
+}
+.icon{
+height: 135px;
+  border-radius: 10%;
+  width: fit-content;
+  max-width: 200px;
+  object-fit: scale-down;
+  background-color: #ffffffaf;
 }
 </style>
