@@ -1,10 +1,10 @@
 <template>
   <div class="row mx-1 mt-4">
     <div class=" col card pt-2">
-      <img class="card-img-top banner" :src="state.challenge.banner" alt="Profile Banner">
+      <img class="card-img-top banner" :src="state.challenge.banner" @error="state.challenge.banner='/img/default-burger.e0b93deb.jpg'" alt="Profile Banner">
 
       <div class="row justify-content-center rel">
-        <img class="rounded-circle ab circle-img profColor" :src="state.challenge.image" alt="Profile Image">
+        <img class="rounded-circle ab circle-img profColor" :src="state.challenge.image" @error="state.challenge.image='/img/burgerdefaulticon.55d12ebb.png'" alt="Profile Image">
       </div>
       <div class="row sep"></div>
 

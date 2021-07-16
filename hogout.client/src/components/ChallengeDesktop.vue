@@ -8,12 +8,12 @@
          class="row card bg-yellow main-display-challenge pt-2 mt-5"
     >
       <div class="col-12">
-        <img class="card-img-top challenge-banner" :src="state.challenge.banner" alt="Profile Banner">
+        <img class="card-img-top challenge-banner" :src="state.challenge.banner" @error="state.challenge.banner='/img/default-burger.e0b93deb.jpg'" alt="Profile Banner">
       </div>
 
       <div class="col-12 d-flex justify-content-center text-center pt-4">
         <div class="col-4 justify-content-center pl-5 ">
-          <img class="rounded-circle db profColor" :src="state.challenge.image" alt="Profile Image">
+          <img class="rounded-circle db profColor" :src="state.challenge.image" @error="state.challenge.image='/img/burgerdefaulticon.55d12ebb.png'" alt="Profile Image">
           <div class="row d-block">
             <div title="Total Attempts" class="col d-flex align-items-center justify-content-start piggies ml-5 ">
               <img class="icon-pig-desktop" src="../assets/img/pig-normal.png" alt="Pig face">
