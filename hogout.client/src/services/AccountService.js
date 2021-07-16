@@ -1,4 +1,3 @@
-import { get } from 'jquery'
 import { AppState } from '../AppState'
 import { Profile } from '../models/Profile'
 import { logger } from '../utils/Logger'
