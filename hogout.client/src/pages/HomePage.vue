@@ -3,75 +3,76 @@
     <SideBar />
   </div>
   <div class="container bg-grey">
-    <div class="row p-5 justify-content-center">
-      <button class="btn btn-color" data-toggle="collapse" data-target="#collapseExample" title="Filter">
-        Filter
-      </button>
-      <div class="col-8"></div>
-    </div>
-    <div class="row m-0 collapse" id="collapseExample">
-      <div class="card-body d-flex justify-content-center">
-        <div class="dropdown mr-5">
-          <button class="btn btn-rating dropdown-toggle"
-                  type="button"
-                  id="dropdownMenuButton"
-                  data-toggle="dropdown"
-                  aria-haspopup="true"
-                  aria-expanded="false"
-                  title="Filter By Rating"
-          >
-            {{ state.rating }}
-          </button>
-          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <a class="dropdown-item" @click="filterForks(1)">1 Fork</a>
-            <a class="dropdown-item" @click="filterForks(2)">2 Forks</a>
-            <a class="dropdown-item" @click="filterForks(3)">3 Forks</a>
-            <a class="dropdown-item" @click="filterForks(4)">4 Forks</a>
-            <a class="dropdown-item" @click="filterForks(5)">5 Forks</a>
-          </div>
-        </div>
-
-        <div class="dropdown mr-5">
-          <div class="btn btn-diff dropdown-toggle"
-               id="dropdownMenuButton"
-               data-toggle="dropdown"
-               aria-haspopup="true"
-               aria-expanded="false"
-               title="Filter By Difficulty"
-          >
-            {{ state.difficulty }}
-          </div>
-          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <a class="dropdown-item" @click="filterDifficulty('Guinea Pig')">Guinea Pig</a>
-            <a class="dropdown-item" @click="filterDifficulty('Piglet')">Piglet</a>
-            <a class="dropdown-item" @click="filterDifficulty('Pig')">Pig</a>
-            <a class="dropdown-item" @click="filterDifficulty('Hog')">Hog</a>
-            <a class="dropdown-item" @click="filterDifficulty('Wild Boar')">Wild Boar</a>
-          </div>
-        </div>
-        <div class="dropdown mr-5">
-          <div class="btn btn-location dropdown-toggle"
-               id="dropdownMenuButton"
-               data-toggle="dropdown"
-               aria-haspopup="true"
-               aria-expanded="false"
-               title="Filter By Difficulty"
-          >
-            {{ state.newState }}
-          </div>
-          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <a class="dropdown-item" @click="filterState('Idaho')">Idaho</a>
-            <a class="dropdown-item" @click="filterState('Oregon')">Oregon</a>
-            <a class="dropdown-item" @click="filterState('Washington')">Washington</a>
-            <a class="dropdown-item" @click="filterState('Nevada')">Nevada</a>
-          </div>
-        </div>
-        <button class="btn btn-danger" @click="filterReset" v-show="state.filterBy.difficulty || state.filterBy.forks || state.filterBy.state">
-          Clear Filter
+    <div class="row p-5 justify-content-between">
+      <div class="col">
+        <button class="btn btn-color" data-toggle="collapse" data-target="#collapseExample" title="Filter">
+          Filter
+        </button>
+      </div>
+      <div class="col d-flex justify-content-end">
+        <button class="btn btn-color text-red wrapper" @click="filterReset" v-show="state.filterBy.difficulty || state.filterBy.forks || state.filterBy.state" title="Filter Reset">
+          Reset
         </button>
       </div>
     </div>
-    <div class="row justify-content-center">
+    <div class="row m-0 collapse" id="collapseExample">
+      <div class="col dropdown d-flex justify-content-md-end justify-content-center">
+        <button class="btn btn-rating dropdown-toggle"
+                type="button"
+                id="dropdownMenuButton"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+                title="Filter By Rating"
+        >
+          {{ state.rating }}
+        </button>
+        <div class="dropdown-menu bg-grey" aria-labelledby="dropdownMenuButton">
+          <a class="dropdown-item" @click="filterForks(1)">1 Fork</a>
+          <a class="dropdown-item" @click="filterForks(2)">2 Forks</a>
+          <a class="dropdown-item" @click="filterForks(3)">3 Forks</a>
+          <a class="dropdown-item" @click="filterForks(4)">4 Forks</a>
+          <a class="dropdown-item" @click="filterForks(5)">5 Forks</a>
+        </div>
+      </div>
+
+      <div class="col-12 col-sm dropdown d-flex justify-content-center my-3 my-sm-0">
+        <div class="btn btn-diff dropdown-toggle"
+             id="dropdownMenuButton"
+             data-toggle="dropdown"
+             aria-haspopup="true"
+             aria-expanded="false"
+             title="Filter By Difficulty"
+        >
+          {{ state.difficulty }}
+        </div>
+        <div class="dropdown-menu bg-grey" aria-labelledby="dropdownMenuButton">
+          <a class="dropdown-item" @click="filterDifficulty('Guinea Pig')">Guinea Pig</a>
+          <a class="dropdown-item" @click="filterDifficulty('Piglet')">Piglet</a>
+          <a class="dropdown-item" @click="filterDifficulty('Pig')">Pig</a>
+          <a class="dropdown-item" @click="filterDifficulty('Hog')">Hog</a>
+          <a class="dropdown-item" @click="filterDifficulty('Wild Boar')">Wild Boar</a>
+        </div>
+      </div>
+      <div class="col dropdown d-flex justify-content-md-start justify-content-center">
+        <div class="btn btn-location dropdown-toggle"
+             id="dropdownMenuButton"
+             data-toggle="dropdown"
+             aria-haspopup="true"
+             aria-expanded="false"
+             title="Filter By Difficulty"
+        >
+          {{ state.newState }}
+        </div>
+        <div class="dropdown-menu bg-grey" aria-labelledby="dropdownMenuButton">
+          <a class="dropdown-item" @click="filterState('Idaho')">Idaho</a>
+          <a class="dropdown-item" @click="filterState('Oregon')">Oregon</a>
+          <a class="dropdown-item" @click="filterState('Washington')">Washington</a>
+          <a class="dropdown-item" @click="filterState('Nevada')">Nevada</a>
+        </div>
+      </div>
+    </div>
+    <div class="row justify-content-center pt-5">
       <div class="col-10 col-md-8 col-lg-6 px-0 d-flex justify-content-between text-center">
       </div>
     </div>
@@ -128,7 +129,7 @@ export default {
         ratingsService.filterChallenges()
       },
       filterForks(num) {
-        state.rating = num + ' Forks'
+        state.rating = num > 1 ? num + ' Forks' : num + ' Fork'
         state.filterBy.forks = num
         ratingsService.filterChallenges(state.filterBy)
       },
@@ -180,5 +181,14 @@ export default {
     background-color: #f2f2f2 !important;
     font-weight: bold;
 }
-
+.perfectWidth{
+  margin-left: calc(3vw + 280px);
+  margin-right: 3vw ;
+}
+.wrapper{
+  white-space: nowrap;
+}
+.bg-grey{
+      background-color: #f2f2f2 !important;
+}
 </style>
