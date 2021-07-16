@@ -1,13 +1,12 @@
-
 {
   "folders": [
     {
       "path": "hogout.client",
-      "name": "client"
+      "name": "hogout.client"
     },
     {
       "path": "hogout",
-      "name": "server"
+      "name": "hogout"
     }
   ],
   "settings": {
