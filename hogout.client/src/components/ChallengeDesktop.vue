@@ -261,7 +261,7 @@ position: relative;
   background-color: #7fa597;
     border-color: #547066;
     border-width: medium;
-    color: #f9fdfc;
+    color: #2c3034;
     font-weight: bold;
 }
 
