@@ -2,6 +2,7 @@
   "name": "hogout",
   "version": "1.0.0",
   "scripts": {
+    "build": "npm run setup:server",
     "setup:app": "npm run setup:client && npm run setup:server",
     "setup:client": "cd hogout.client && npm i",
     "setup:server": "cd hogout && npm i",
