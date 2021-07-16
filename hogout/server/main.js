@@ -5,7 +5,7 @@ import { DbConnection } from './db/DbConfig'
 import { logger } from './utils/Logger'
 import { createServer } from 'http'
 
-// create server & socketServer
+// create server & socket
 const app = express()
 const port = process.env.PORT || 3000
 
