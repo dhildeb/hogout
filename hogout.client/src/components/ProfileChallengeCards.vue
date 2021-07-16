@@ -34,7 +34,7 @@
             <img class="img-fluid icon over-hang" :src="challenge.challenge.image" alt="icon">
           </div>
           <div class="justify-content-between d-flex col-3">
-            <h6 class="text-secondary font-italic">
+            <h6 class="text-light-red font-italic">
               State: {{ challenge.challenge.state }}
             </h6>
           </div>
@@ -50,7 +50,7 @@
             <img v-else src="../assets/img/emptyFork.png" class="img-fluid icon-fork" alt="empty fork">
           </div>
           <div class="col-3 text-center p-0">
-            <h6 class="text-danger font-italic">
+            <h6 class="text-red font-italic">
               Difficulty: {{ getDifficultyRating(challenge.challenge) }}
             </h6>
           </div>
@@ -153,6 +153,12 @@ export default {
 }
 .forks{
   padding-top: 4rem;
+}
+.text-light-red{
+  color: #e00000 ;
+}
+.text-red{
+  color: #cd0505;
 }
 .banner{
   height: 160px;

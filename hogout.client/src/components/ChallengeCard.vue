@@ -16,7 +16,7 @@
               {{ challenge.name }}
             </h2>
             <div class=" m-0 justify-content-between row">
-              <h5 class=" col m-0 text-danger align-self-center">
+              <h5 class=" col m-0 text-red align-self-center">
                 {{ getDifficultyRating(challenge) }}
               </h5>
               <div class=" col d-flex mr-3  justify-content-end" title="Rating">
@@ -104,7 +104,9 @@ export default {
    rgb(187, 224, 228) 0.567324px -1.91785px 0px, rgb(187, 224, 228) 1.41734px -1.41108px 0px,rgb(187, 224, 228) 1.92034px -0.558831px 0px;
 
 }
-
+.text-red{
+  color: #e00000 ;
+}
 .challenge{
   width: 35vw;
 }

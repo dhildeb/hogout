@@ -21,7 +21,7 @@
     <div class="col-12">
       <div class="row ">
         <div v-if="state.images.length > 0" class="col-12 card-img-top d-flex justify-content-center mb-3">
-          <img class="pic-size" :src="currentPicture()">
+          <img class="pic-size" :src="currentPicture()" alt="post-image">
         </div>
       </div>
     </div>
