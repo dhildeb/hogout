@@ -1,7 +1,7 @@
 <template>
   <div class="row pb-2 justify-content-center">
-    <div class="col-xl-6 col-md-8 col-sm-6 col-10 click border rounded-bottom shadow d-flex bg-yellow p-0 py-2 zoom card ">
-      <div class=" bg-yellow card-header">
+    <div class="col-xl-6 col-md-8 col-sm-6 col-10 click border rounded-bottom shadow d-flex bg-yellow p-0 py-2 pt-4 zoom card ">
+      <div class=" bg-yellow card-header p-0 px-5 pt-3">
         <div class="dropdown click options position-absolute"
              id="dropdownMenuButton"
              data-toggle="dropdown"
@@ -170,8 +170,8 @@ max-height: 77px;
   object-fit: contain;
 }
 .options{
-  right: 8px;
-  top: -22px;
+  right: 12px;
+  top: -15px;
 }
 .zoom{
   transition: all .25s linear;
