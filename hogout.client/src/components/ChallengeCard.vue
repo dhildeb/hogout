@@ -1,9 +1,9 @@
 <template>
   <div class="row justify-content-center pb-4">
     <div @click="goThere" class=" zoom  click card bg-yellow challenge ">
-      <img class="d-none d-md-block card-img-top banner" :src="state.banner" @error="state.banner='/img/default-burger.e0b93deb.jpg'" alt="Challenge Banner">
+      <img class="d-none d-md-block card-img-top banner" :src="state.banner" @error="state.banner='https://source.unsplash.com/8l8Yl2ruUsg/1600x800'" alt="Challenge Banner">
       <div class="rel challengeTop">
-        <img class="ab pic-loc icon" :src="state.image" @error="state.image='/img/burgerdefaulticon.55d12ebb.png'" alt="Challenge Icon">
+        <img class="ab pic-loc icon" :src="state.image" @error="state.image='https://source.unsplash.com/vWyLVrlOdus/800x800'" alt="Challenge Icon">
         <div class="ab p-2 loc-loc d-flex align-items-center">
           <i class="mdi wshd mdi-map-marker text-primary mdi-24px d-flex justify-content-center"></i>
           <h5 class="m-0 ml-1 shd">
