@@ -4,12 +4,12 @@
   </div>
   <div class="container bg-grey">
     <div class="row p-5 justify-content-between">
-      <div class="col">
+      <div class="col d-flex justify-content-center">
         <button class="btn btn-color" data-toggle="collapse" data-target="#collapseExample" title="Filter">
           Filter
         </button>
       </div>
-      <div class="col d-flex justify-content-end">
+      <div class="col d-flex justify-content-center">
         <button class="btn btn-color text-red wrapper" @click="filterReset" v-show="state.filterBy.difficulty || state.filterBy.forks || state.filterBy.state" title="Filter Reset">
           Reset
         </button>
